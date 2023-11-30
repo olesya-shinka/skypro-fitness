@@ -89,27 +89,28 @@ export const Course = styled.image`
   border-radius: 30px;
   `
 export const CourseYoga = styled(Course)`
-background-image: url("./img/card1.svg");
+background-image: url("./img/card1.png");
 background-position: 50% 50%;
 `
 export const CourseStrech = styled(Course)`
-background-image: url("./img/card2.svg");
+background-image: url("./img/card2.png");
 background-position: 50% 50%;
 
 `
 
 export const CourseDance = styled(Course)`
-background-image: url("./img/card3.svg");
+background-image: url("./img/card3.png");
+background-size: cover;
 `
 
 export const CourseStep = styled(Course)`
-background-image: url("./img/card4.svg");
-
+background-image: url("./img/card4.png");
+background-size: cover;
 `
 
 export const CourseBodyflex = styled(Course)`
-background-image: url("./img/card5.svg");
-
+background-image: url("./img/card5.png");
+    background-size: cover;
 `
 
   

@@ -20,7 +20,7 @@ export const MainPage = () =>{
             <S.Courses>
                 <S.CourseYoga  >
                     <S.CourseName>Йога</S.CourseName>
-                    
+                 
                 
                 </S.CourseYoga>
                 <S.CourseStrech >
