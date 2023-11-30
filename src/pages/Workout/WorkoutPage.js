@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import ReactPlayer from "react-player";
 
-const Workout = () => {
+const WorkoutPage = () => {
   return (
     <S.Container>
       <S.Header></S.Header>
@@ -9,7 +9,7 @@ const Workout = () => {
         <S.Heading>Йога</S.Heading>
         <S.Title>Красота и здоровье / Йога на каждый день / 2 день</S.Title>
         <S.Player>
-        <ReactPlayer
+          <ReactPlayer
             url={`www.youtube.com/embed/oqe98Dxivns`}
             width="100%"
             height="100%"
@@ -20,8 +20,7 @@ const Workout = () => {
             <S.TitleExercises>Упражнения</S.TitleExercises>
             <S.ListExercises>
               <S.ListExercisesItem>
-                Наклон вперед (10 повторений) 
-                Наклон назад (10 повторений)
+                Наклон вперед (10 повторений) Наклон назад (10 повторений)
                 Поднятие ног, согнутых в коленях (5 повторений)
               </S.ListExercisesItem>
             </S.ListExercises>
@@ -63,4 +62,4 @@ const Workout = () => {
   );
 };
 
-export default Workout;
+export default WorkoutPage;

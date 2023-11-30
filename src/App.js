@@ -1,8 +1,8 @@
 import "./App.css";
-import Workout from "./pages/Workout/WorkoutPage";
+import WorkoutPage from "./pages/Workout/WorkoutPage";
 
 function App() {
-  return <Workout />;
+  return <WorkoutPage />;
 }
 
 export default App;
