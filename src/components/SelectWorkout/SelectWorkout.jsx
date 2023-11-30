@@ -34,7 +34,7 @@ export default function SelectWorkout() {
     },
   ];
   const LessonList = lessons.map((lesson) => (
-    <S.SelectItem $isFinished={lesson.isFinished}>
+    <S.SelectItem key={lesson.id} $isFinished={lesson.isFinished}>
       {lesson.name}
       {lesson.isFinished ? (
         <S.SelectItemCheckboxImg>
