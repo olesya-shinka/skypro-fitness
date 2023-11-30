@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
 export const Container = styled.div`
   padding-left: calc(50% - 580px);
   padding-right: calc(50% - 580px);
+  background-color: rgba(250, 250, 250, 1);
 `;
 
 export const Header = styled.header`
@@ -109,7 +110,7 @@ export const ButtonProgress = styled.button`
   width: 275px;
   height: 52px;
   background-color: rgba(88, 14, 162, 1);
-  color: rgba(250, 250, 250, 1);
+  color: rgba(255, 255, 255, 1);
   font-size: 18px;
   ::hover {
     cursor: pointer;
@@ -139,12 +140,13 @@ export const ListProgress = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
-  margin: 20px;
+  margin: 15px;
+  font-size: 24px;
 `;
 
 export const Wrapper = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
+
+  
   height: 100%;
   width: 100%;
   top: 0;
@@ -196,6 +198,9 @@ export const FormModal = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgba(255, 255, 255, 1);
+  width: 444px;
+  height: 554px;
 `;
 
 export const TitleModal = styled.h2`
@@ -216,7 +221,7 @@ export const InputsModal = styled.div`
 export const InputsText = styled.label`
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.33;
+  line-height: 24px;
   letter-spacing: -0.05px;
 `;
 
@@ -226,7 +231,7 @@ export const Input = styled.input`
   font-family: inherit;
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.33;
+  line-height: 24px;
   letter-spacing: -0.05px;
   border: none;
   outline: none;

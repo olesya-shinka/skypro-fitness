@@ -1,10 +1,13 @@
 import * as S from "./styles";
 import ReactPlayer from "react-player";
+import ProgressModal from "./ProgressModal";
+import SuccessModal from "./SuccessModal";
+import MaketModal from "./MaketModal";
 
 const WorkoutPage = () => {
   return (
     <S.Container>
-      <S.Header></S.Header>
+      <S.Header />
       <S.Main>
         <S.Heading>Йога</S.Heading>
         <S.Title>Красота и здоровье / Йога на каждый день / 1 день</S.Title>
@@ -39,6 +42,10 @@ const WorkoutPage = () => {
           </S.Progress>
         </S.Exercises>
       </S.Main>
+      <MaketModal>
+        <ProgressModal />
+      </MaketModal>
+      <SuccessModal />
     </S.Container>
   );
 };
