@@ -87,24 +87,21 @@ export const Course = styled.image`
   height: 480px;
   width: 360px;
   border-radius: 30px;
-  box-shadow: -10px 10px 15.99882px 0px rgba(0, 0, 0, 0.10), 10px -10px 16px 0px rgba(0, 0, 0, 0.10);
-  background-size: cover;
-
   `
 export const CourseYoga = styled(Course)`
 background-image: url("./img/card1.svg");
-
+background-position: 50% 50%;
 `
 export const CourseStrech = styled(Course)`
 background-image: url("./img/card2.svg");
+background-position: 50% 50%;
 
 `
 
 export const CourseDance = styled(Course)`
 background-image: url("./img/card3.svg");
-height: 440px;
-width: 330px;
 `
+
 export const CourseStep = styled(Course)`
 background-image: url("./img/card4.svg");
 
@@ -119,10 +116,10 @@ background-image: url("./img/card5.svg");
 export const CourseName = styled.h2`
 color: #000;
 font-variant-numeric: lining-nums proportional-nums;
-font-family: Abhaya Libre ExtraBold;
+font-family: "StratosSkyeng", sans-serif;
 font-size: 36px;
 font-style: normal;
-font-weight: 800;
+font-weight: 600;
 line-height: 110%;
 letter-spacing: -0.5px;
 width: 290px;
@@ -148,9 +145,10 @@ export const ButtonUp= styled.button`
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 32px; /* 133.333% */
+  line-height: 32px; 
   letter-spacing: -0.1px;
   margin-top: 34px;
+  margin-bottom: 60px;
   :hover{
     background: #DAF289;
   }
