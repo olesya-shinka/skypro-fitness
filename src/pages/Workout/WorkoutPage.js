@@ -3,8 +3,22 @@ import ReactPlayer from "react-player";
 import ProgressModal from "./ProgressModal";
 import SuccessModal from "./SuccessModal";
 import MaketModal from "./MaketModal";
+import { useState } from "react";
 
 const WorkoutPage = () => {
+  const [isProgressModalShow, setIsProgressModalShow] = useState(false);
+  const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
+
+  const handleClick = () => setIsProgressModalShow(true);
+  const openClosedProgModal = () => {
+    setIsProgressModalShow(!isProgressModalShow);
+  };
+
+  const handleSendClick = () => {
+    setIsProgressModalShow(false);
+    setIsSuccessModalShow(true);
+  };
+
   return (
     <S.Container>
       <S.Header />
@@ -18,7 +32,7 @@ const WorkoutPage = () => {
             height="100%"
           />
         </S.Player>
-        <S.Exercises>
+        <S.Exercises onClick={handleClick}>
           <S.ContentExercises>
             <S.TitleExercises>Упражнения</S.TitleExercises>
             <S.ListExercises>
@@ -42,10 +56,16 @@ const WorkoutPage = () => {
           </S.Progress>
         </S.Exercises>
       </S.Main>
-      <MaketModal>
-        <ProgressModal />
-      </MaketModal>
-      <SuccessModal />
+      {isProgressModalShow && (
+        <MaketModal onClick={openClosedProgModal}>
+          <ProgressModal onClick={handleSendClick} />
+        </MaketModal>
+      )}
+      {isSuccessModalShow && (
+        <MaketModal onClick={openClosedProgModal}>
+          <SuccessModal setIsSuccessModalShown={setIsSuccessModalShow} />
+        </MaketModal>
+      )}
     </S.Container>
   );
 };

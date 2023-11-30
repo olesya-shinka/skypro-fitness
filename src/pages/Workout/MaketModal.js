@@ -1,10 +1,10 @@
 import * as S from "./styles";
 
-const MaketModal = () => {
+const MaketModal = ({ children, onClick }) => {
   return (
     <S.Wrapper>
-      <S.Modal />
-      <S.ModalClose />
+      <S.Modal>{children}</S.Modal>
+      <S.ModalClose onClick={onClick} />
     </S.Wrapper>
   );
 };
