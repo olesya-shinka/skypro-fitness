@@ -1,4 +1,5 @@
 import * as S from "./styles";
+import ReactPlayer from "react-player";
 
 const Workout = () => {
   return (
@@ -8,7 +9,11 @@ const Workout = () => {
         <S.Heading>Йога</S.Heading>
         <S.Title>Красота и здоровье / Йога на каждый день / 2 день</S.Title>
         <S.Player>
-          url="https://www.youtube.com/embed/oqe98Dxivns"
+        <ReactPlayer
+            url={`www.youtube.com/embed/oqe98Dxivns`}
+            width="100%"
+            height="100%"
+          />
         </S.Player>
         <S.Exercises>
           <S.ContentExercises>
