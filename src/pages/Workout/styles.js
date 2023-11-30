@@ -99,9 +99,6 @@ export const ListExercisesItem = styled.li`
 `;
 
 export const ButtonProgress = styled.button`
-  font-family: "StratosSkyeng", sans-serif;
-  font-style: normal;
-  border: none;
   border-radius: 46px;
   display: flex;
   align-items: center;
@@ -109,6 +106,16 @@ export const ButtonProgress = styled.button`
   cursor: pointer;
   line-height: 24px;
   letter-spacing: -0.05px;
+  width: 275px;
+  height: 52px;
+  background-color: rgba(88, 14, 162, 1);
+  color: rgba(250, 250, 250, 1);
+  font-size: 18px;
+  ::hover {
+    cursor: pointer;
+    color: rgba(39, 26, 88, 1);
+    transform: scale(1.004);
+  }
 `;
 
 export const Progress = styled.div`
@@ -132,6 +139,7 @@ export const ListProgress = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
+  margin: 20px;
 `;
 
 export const Wrapper = styled.div`

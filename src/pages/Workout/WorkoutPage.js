@@ -7,7 +7,7 @@ const WorkoutPage = () => {
       <S.Header></S.Header>
       <S.Main>
         <S.Heading>Йога</S.Heading>
-        <S.Title>Красота и здоровье / Йога на каждый день / 2 день</S.Title>
+        <S.Title>Красота и здоровье / Йога на каждый день / 1 день</S.Title>
         <S.Player>
           <ReactPlayer
             url={`www.youtube.com/embed/oqe98Dxivns`}
@@ -20,7 +20,12 @@ const WorkoutPage = () => {
             <S.TitleExercises>Упражнения</S.TitleExercises>
             <S.ListExercises>
               <S.ListExercisesItem>
-                Наклон вперед (10 повторений) Наклон назад (10 повторений)
+                Наклон вперед (10 повторений)
+              </S.ListExercisesItem>
+              <S.ListExercisesItem>
+                Наклон назад (10 повторений)
+              </S.ListExercisesItem>
+              <S.ListExercisesItem>
                 Поднятие ног, согнутых в коленях (5 повторений)
               </S.ListExercisesItem>
             </S.ListExercises>
@@ -28,36 +33,12 @@ const WorkoutPage = () => {
           </S.ContentExercises>
           <S.Progress>
             <S.TitleProgress>Мой прогресс по тренировке:</S.TitleProgress>
-            <S.ListProgress>проценты</S.ListProgress>
+            <S.ListProgress>Наклоны вперед</S.ListProgress>
+            <S.ListProgress>Наклоны назад</S.ListProgress>
+            <S.ListProgress>Поднятие ног, согнутых в коленях</S.ListProgress>
           </S.Progress>
         </S.Exercises>
       </S.Main>
-      <S.Wrapper>
-        <S.Modal>gfd</S.Modal>
-        <S.ModalClose />
-      </S.Wrapper>
-      <S.FormModal>
-        <S.TitleModal>Мой прогресс</S.TitleModal>
-        <S.InputsModal>
-          <S.InputsText>
-            Сколько раз вы сделали упражнение?
-            <S.Input>
-              Введите значение
-              <S.Message>gfdgfdgdfg</S.Message>
-            </S.Input>
-          </S.InputsText>
-        </S.InputsModal>
-        <S.ButtonProgress>Отправить</S.ButtonProgress>
-      </S.FormModal>
-      <S.Wrapper>
-        <S.Modal>
-          <S.ModalClose>
-            <S.ContentSuccess>
-              <S.SuccessText>Ваш прогресс засчитан!</S.SuccessText>
-            </S.ContentSuccess>
-          </S.ModalClose>
-        </S.Modal>
-      </S.Wrapper>
     </S.Container>
   );
 };
