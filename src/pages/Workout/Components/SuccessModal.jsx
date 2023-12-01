@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import { ReactComponent as HandOk } from "./handOk.svg";
-import MaketModal from "./../../MaketModal/MaketModal";
+import MaketModal from "../../MaketModal/MaketModal";
 import { useEffect } from "react";
 
 const SuccessModal = ({ setIsSuccessModalShow }) => {

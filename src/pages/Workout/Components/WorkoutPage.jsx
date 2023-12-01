@@ -2,7 +2,7 @@ import * as S from "./styles";
 import ReactPlayer from "react-player";
 import ProgressModal from "./ProgressModal";
 import SuccessModal from "./SuccessModal";
-import MaketModal from "./../../MaketModal/MaketModal";
+import MaketModal from "../../MaketModal/MaketModal";
 import { useState } from "react";
 
 const WorkoutPage = () => {
@@ -50,9 +50,41 @@ const WorkoutPage = () => {
           </S.ContentExercises>
           <S.Progress>
             <S.TitleProgress>Мой прогресс по тренировке:</S.TitleProgress>
-            <S.ListProgress>Наклоны вперед</S.ListProgress>
-            <S.ListProgress>Наклоны назад</S.ListProgress>
-            <S.ListProgress>Поднятие ног, согнутых в коленях</S.ListProgress>
+            <div className="percent-workout">
+              
+            </div>
+            <S.ListProgress>
+              Наклоны вперед{" "}
+              <img
+                className="percent-workout"
+                src="img/1percent.svg"
+                alt="percent"
+                width={278}
+                height={36}
+              />
+            </S.ListProgress>
+
+            <S.ListProgress>
+              Наклоны назад{" "}
+              <img
+                className="percent-workout"
+                src="img/2percent.svg"
+                alt="percent"
+                width={278}
+                height={36}
+              />
+            </S.ListProgress>
+
+            <S.ListProgress>
+              Поднятие ног, согнутых в коленях{" "}
+              <img
+                className="percent-workout"
+                src="img/3percent.svg"
+                alt="percent"
+                width={278}
+                height={36}
+              />
+            </S.ListProgress>
           </S.Progress>
         </S.Exercises>
       </S.Main>

@@ -137,15 +137,13 @@ export const ListProgress = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 26px;
-  margin: 0;
-  padding: 0;
   list-style: none;
   margin: 15px;
   font-size: 24px;
+  padding: 0;
 `;
 
 export const Wrapper = styled.div`
-
   position: fixed;
   height: 100%;
   width: 100%;
@@ -268,3 +266,4 @@ export const SuccessText = styled.h2`
   margin: 0;
   margin-bottom: 10px;
 `;
+
