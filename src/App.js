@@ -1,5 +1,5 @@
 import "./App.css";
-import WorkoutPage from "./pages/Workout/WorkoutPage";
+import WorkoutPage from "./pages/Workout/Components/WorkoutPage";
 
 function App() {
   return <WorkoutPage />;

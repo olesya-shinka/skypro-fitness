@@ -2,7 +2,7 @@ import * as S from "./styles";
 import ReactPlayer from "react-player";
 import ProgressModal from "./ProgressModal";
 import SuccessModal from "./SuccessModal";
-import MaketModal from "./MaketModal";
+import MaketModal from "./../../MaketModal/MaketModal";
 import { useState } from "react";
 
 const WorkoutPage = () => {
@@ -62,9 +62,7 @@ const WorkoutPage = () => {
         </MaketModal>
       )}
       {isSuccessModalShow && (
-        <MaketModal onClick={openClosedProgModal}>
-          <SuccessModal setIsSuccessModalShown={setIsSuccessModalShow} />
-        </MaketModal>
+        <SuccessModal setIsSuccessModalShow={setIsSuccessModalShow} />
       )}
     </S.Container>
   );
