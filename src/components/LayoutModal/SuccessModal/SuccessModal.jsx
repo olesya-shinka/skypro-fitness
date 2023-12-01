@@ -1,6 +1,6 @@
 import * as S from "./styles";
 import { ReactComponent as HandOk } from "./handOk.svg";
-import MaketModal from "../../MaketModal/MaketModal";
+import LayoutModal from "../layout/LayoutModal";
 import { useEffect } from "react";
 
 const SuccessModal = ({ setIsSuccessModalShow }) => {
@@ -13,12 +13,12 @@ const SuccessModal = ({ setIsSuccessModalShow }) => {
   }, [setIsSuccessModalShow]);
 
   return (
-    <MaketModal>
+    <LayoutModal>
       <S.ContentSuccess>
         <S.SuccessText>Ваш прогресс засчитан!</S.SuccessText>
         <HandOk />
       </S.ContentSuccess>
-    </MaketModal>
+    </LayoutModal>
   );
 };
 

@@ -1,8 +1,8 @@
 import * as S from "./styles";
 import ReactPlayer from "react-player";
-import ProgressModal from "./ProgressModal";
-import SuccessModal from "./SuccessModal";
-import MaketModal from "../../MaketModal/MaketModal";
+import ProgressModal from "./../../components/LayoutModal/ProgressModal/ProgressModal";
+import SuccessModal from "./../../components/LayoutModal/SuccessModal/SuccessModal";
+import LayoutModal from "../../components/LayoutModal/layout/LayoutModal";
 import { useState } from "react";
 
 const WorkoutPage = () => {
@@ -50,9 +50,7 @@ const WorkoutPage = () => {
           </S.ContentExercises>
           <S.Progress>
             <S.TitleProgress>Мой прогресс по тренировке:</S.TitleProgress>
-            <div className="percent-workout">
-              
-            </div>
+            <div className="percent-workout"></div>
             <S.ListProgress>
               Наклоны вперед{" "}
               <img
@@ -89,9 +87,9 @@ const WorkoutPage = () => {
         </S.Exercises>
       </S.Main>
       {isProgressModalShow && (
-        <MaketModal onClick={openClosedProgModal}>
+        <LayoutModal onClick={openClosedProgModal}>
           <ProgressModal onClick={handleSendClick} />
-        </MaketModal>
+        </LayoutModal>
       )}
       {isSuccessModalShow && (
         <SuccessModal setIsSuccessModalShow={setIsSuccessModalShow} />

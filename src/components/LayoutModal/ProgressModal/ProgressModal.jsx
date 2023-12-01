@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import InputProgress from "./InputProgress";
+import InputProgress from "../InputProgress/InputProgress";
 
 const ProgressModal = () => {
   return (

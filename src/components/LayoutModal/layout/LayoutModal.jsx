@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-const MaketModal = ({ children, onClick }) => {
+const LayoutModal = ({ children, onClick }) => {
   return (
     <S.Wrapper>
       <S.Modal>{children}</S.Modal>
@@ -9,4 +9,4 @@ const MaketModal = ({ children, onClick }) => {
   );
 };
 
-export default MaketModal;
+export default LayoutModal;
