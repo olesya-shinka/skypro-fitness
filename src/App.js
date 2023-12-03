@@ -1,17 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+// import CourseInfo from './pages/description/description.js';
+// import SignInPage from './pages/log-in/login.js';
+import SignUpPage from './pages/sign-up/signup.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
+    <div>
+     {/* <CourseInfo/> */}
+     {/* <SignInPage/> */}
+     <SignUpPage/>
+     
     </div>
   );
 }
-
 export default App;
