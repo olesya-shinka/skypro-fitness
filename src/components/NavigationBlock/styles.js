@@ -44,6 +44,7 @@ export const User = styled.div`
   gap: 14px;
   justify-content: flex-end;
   margin-left: 750px;
+  max-width: 200px;
   :hover {
     cursor: pointer;
   }
@@ -53,4 +54,11 @@ export const NameUser = styled.p`
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
+  border: 2px
+`;
+
+export const Contain = styled.div`
+  background-color: transparent;
+  place-self: center start;
+  cursor: pointer;
 `;

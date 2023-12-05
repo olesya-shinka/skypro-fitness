@@ -1,11 +1,12 @@
 import * as S from "./styles";
 //import ButtonEnter from "./ButtonEnter";
 import User from "./User";
+import Logo from "./Logo";
 
 const NavigateBlock = () => {
   return (
     <S.Sidebar>
-      <img src="img/logo.svg" alt="logo" />
+      <Logo />
       <User />
       {/* позже будет логика: если юзер = true, то Имя, если false, то кнопка Войти */}
       {/* <ButtonEnter /> */}
