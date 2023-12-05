@@ -1,8 +1,18 @@
 
-import "./App.css";
-import WorkoutPage from "./pages/Workout/WorkoutPage";
+// import './App.css';
+// import CourseInfo from './pages/description/description.js';
+// import SignInPage from './pages/log-in/login.js';
+import SignUpPage from './pages/sign-up/signup.js';
 
 function App() {
-  return <WorkoutPage />;
+  return (
+    <div>
+     {/* <CourseInfo/> */}
+     {/* <SignInPage/> */}
+     <SignUpPage/>
+     
+    </div>
+  );
 }
 export default App;
+

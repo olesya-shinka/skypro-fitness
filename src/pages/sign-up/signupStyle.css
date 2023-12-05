@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: #FAFAFA;
+    font-family: "StratosSkyeng", sans-serif; 
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .center {
+    padding-left: calc(50% - 580px);
+    padding-right: calc(50% - 580px);
+  }
+  
+  .header__nav {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  .logo__img {
+    height: 35px;
+    width: 230px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .loginButton {
+    border-radius: 46px;
+  background: #140D40;
+  
+  display: inline-flex;
+  padding: 5px 16px 7px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  
+    color: #FFF;
+    text-align: center;
+    font-variant-numeric: lining-nums proportional-nums;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 16px;
+    line-height: 24px;
+  
+    cursor: pointer;
+  }
+  
+  
+  .loginButton:hover {
+    background: #2D1F79;
+  }
+  
+  .loginButton:active {
+    background: #3B29A1;
+  }
+  
+  .footer__button {
+    width: 147px;
+    height: 48px;
+    border-radius: 46px;
+    background-color: #c7e957;
+    margin: 0 auto;
+    display: block;
+  
+    color: #000;
+    text-align: center;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.1px;
+  
+    cursor: pointer;
+  }
+  .content__btn:hover,
+  .footer__button:hover {
+    background: #DAF289;
+  }
+  
+  .content__btn:active,
+  .footer__button:active {
+    background: #EBFFAB;
+  }
+    
+  .__btn {
+    width: 278px;
+    height: 52px;
+    border-radius: 46px;
+    border: none;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    background: #580ea2;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .get__btn {
+    margin-top: 60px;
+   
+  }
+  .button__edit:hover,
+  .application__btn:hover,
+  .get__btn_new:hover,
+  .get__btn:hover {
+    background: #3f007d;
+  }
+  
+  .button__edit:active,
+  .application__btn:active,
+  .get__btn_new:active,
+  .get__btn:active {
+    background: #271a58;
+  }
+
+body {
+    background: #271A58;
+}
+
+.login {
+    display: flex;
+    height: 100vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  .logo__svg {
+    margin-top: 33px;
+  }
+  
+  .login__box {
+    display: flex;
+    width: 366px;
+    height: 439px;
+    border-radius: 12px;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  
+  .password {
+    height:  401px;
+  }
+  
+  .login__text {
+    margin-top: 38px;
+    width: 278px;
+    text-align: start;
+  }
+  
+  .login__text h3 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  
+  .login__form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 38px;
+    row-gap: 38px;
+  }
+  
+  .login__form-new {
+    margin-top: 20px;
+  }
+  
+  .login__form-text {
+    width: 278px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #d0cece;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  
+  .login__form-text::placeholder {
+    color: #d0cece;
+  }
+  
+  .reg__btn {
+    color: black;
+    margin-top: 20px;
+    border: 1px solid #d0cece;
+    background: #fff;
+  }
+  
+  .reg__btn:hover {
+    background: #f4f5f6;
+  }
+  
+  .reg__btn:active {
+    background: #d9d9d9;
+  }
+
+  .login__new {
+    height: 331px;
+  }
+    
+  .get__btn_new {
+    margin-top: 50px;
+  }
+  
