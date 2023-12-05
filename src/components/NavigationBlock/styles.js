@@ -4,7 +4,6 @@ export const Sidebar = styled.div`
   max-width: 1200px;
   min-height: 100px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   column-gap: 10px;
   row-gap: 10px;
@@ -15,7 +14,7 @@ export const Sidebar = styled.div`
   padding-bottom: 10px;
 `;
 
-export const Enter = styled.div`
+export const Enter = styled.button`
   border: none;
   border-radius: 46px;
   display: flex;
@@ -37,4 +36,21 @@ export const Enter = styled.div`
   :active {
     background-color: #3b29a1;
   }
+`;
+
+export const User = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: flex-end;
+  margin-left: 750px;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+export const NameUser = styled.p`
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
 `;
