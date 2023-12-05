@@ -4,6 +4,7 @@ import ProgressModal from "./../../components/LayoutModal/ProgressModal/Progress
 import SuccessModal from "./../../components/LayoutModal/SuccessModal/SuccessModal";
 import LayoutModal from "../../components/LayoutModal/layout/LayoutModal";
 import { useState } from "react";
+import NavigateBlock from "../../components/NavigationBlock/Navi";
 
 const WorkoutPage = () => {
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
@@ -21,7 +22,9 @@ const WorkoutPage = () => {
 
   return (
     <S.Container>
-      <S.Header />
+      <S.Header>
+        <NavigateBlock />
+      </S.Header>
       <S.Main>
         <S.Heading>Йога</S.Heading>
         <S.Title>Красота и здоровье / Йога на каждый день / 1 день</S.Title>
