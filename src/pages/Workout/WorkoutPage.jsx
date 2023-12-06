@@ -5,6 +5,7 @@ import SuccessModal from "./../../components/LayoutModal/SuccessModal/SuccessMod
 import LayoutModal from "../../components/LayoutModal/layout/LayoutModal";
 import { useState } from "react";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
+import ProgressExercises from "../../components/ProgressExercises/ProgressExercises";
 
 const WorkoutPage = () => {
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
@@ -51,42 +52,7 @@ const WorkoutPage = () => {
             </S.ListExercises>
             <S.ButtonProgress>Заполнить свой прогресс</S.ButtonProgress>
           </S.ContentExercises>
-          <S.Progress>
-            <S.TitleProgress>Мой прогресс по тренировке:</S.TitleProgress>
-            <div className="percent-workout"></div>
-            <S.ListProgress>
-              Наклоны вперед{" "}
-              <img
-                className="percent-workout"
-                src="img/1percent.svg"
-                alt="percent"
-                width={278}
-                height={36}
-              />
-            </S.ListProgress>
-
-            <S.ListProgress>
-              Наклоны назад{" "}
-              <img
-                className="percent-workout"
-                src="img/2percent.svg"
-                alt="percent"
-                width={278}
-                height={36}
-              />
-            </S.ListProgress>
-
-            <S.ListProgress>
-              Поднятие ног, согнутых в коленях{" "}
-              <img
-                className="percent-workout"
-                src="img/3percent.svg"
-                alt="percent"
-                width={278}
-                height={36}
-              />
-            </S.ListProgress>
-          </S.Progress>
+          <ProgressExercises />
         </S.Exercises>
       </S.Main>
       {isProgressModalShow && (
