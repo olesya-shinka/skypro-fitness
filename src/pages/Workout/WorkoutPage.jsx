@@ -6,6 +6,7 @@ import LayoutModal from "../../components/LayoutModal/layout/LayoutModal";
 import { useState } from "react";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
 import ProgressExercises from "../../components/ProgressExercises/ProgressExercises";
+import ExercisesList from "../../components/Exercises/Exercises";
 
 const WorkoutPage = () => {
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
@@ -36,24 +37,12 @@ const WorkoutPage = () => {
             height="100%"
           />
         </S.Player>
+        {currentWorkout && currentWorkout.length > 0 && (
         <S.Exercises onClick={handleClick}>
-          <S.ContentExercises>
-            <S.TitleExercises>Упражнения</S.TitleExercises>
-            <S.ListExercises>
-              <S.ListExercisesItem>
-                Наклон вперед (10 повторений)
-              </S.ListExercisesItem>
-              <S.ListExercisesItem>
-                Наклон назад (10 повторений)
-              </S.ListExercisesItem>
-              <S.ListExercisesItem>
-                Поднятие ног, согнутых в коленях (5 повторений)
-              </S.ListExercisesItem>
-            </S.ListExercises>
-            <S.ButtonProgress>Заполнить свой прогресс</S.ButtonProgress>
-          </S.ContentExercises>
-          <ProgressExercises />
+          <ExercisesList exercises={currentWorkout} onClick={handleClick} />
+          <ProgressExercises exercises={currentWorkout} />
         </S.Exercises>
+        )}
       </S.Main>
       {isProgressModalShow && (
         <LayoutModal onClick={openClosedProgModal}>
