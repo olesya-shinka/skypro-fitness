@@ -16,6 +16,8 @@ export const Courses = () => {
     
     }, [])
 
+    const name = courses.map((course) => course.nameRu)
+   // console.log(name);
 return (
     <S.Courses>
     <S.CourseYoga  >
@@ -43,5 +45,6 @@ return (
 </S.Courses>
 
 )
+
 
 }
