@@ -1,4 +1,3 @@
-import ButtonMain from "../Ui/ButtonMain";
 import * as S from "./styles";
 
 const ExercisesList = ({ exercises, onClick }) => {
