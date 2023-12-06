@@ -1,5 +1,21 @@
+import { useEffect, useState } from "react";
 import * as S from "./Style";
+import { getCourses, getWorkouts } from "../../Api";
 export const Courses = () => {
+    //для проверки гет запроса
+    const [courses, setСourses] = useState([]);
+
+     useEffect(() => {
+      getCourses()
+        .then((data) => {
+          setСourses(data)
+        })
+       .catch((error) => {
+         console.log(error.message);
+       })
+    
+    }, [])
+
 return (
     <S.Courses>
     <S.CourseYoga  >
