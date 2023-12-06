@@ -1,8 +1,10 @@
 import * as S from "./styles";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SelectWorkout from "../../components/SelectWorkout/SelectWorkout";
 import { ChangeEmail } from "../../components/ChangeEmail/ChangeEmail";
 import { ChangePass } from "../../components/ChangePass/ChangePass";
+import { getCourses, getWorkouts } from "../../Api";
+
 
 const courses = [
   { id: "1", title: "Йога", img: "/img/profCard1.png" },
@@ -14,6 +16,34 @@ export const PersonalPage = () => {
   const [isEditEmail, setIsEditEmail] = useState(false);
   const [isEditPass, setIsEditPass] = useState(false);
   const [isShowForm, setIsShowForm] = useState(false);
+
+  const [coursesData, setСoursesData] = useState([]);
+  const [workoutData, setWorkoutData] = useState([]);
+
+  useEffect(() => {
+   getCourses()
+     .then((data) => {
+      console.log(data)
+       setСoursesData(data)
+     })
+    .catch((error) => {
+      console.log(error.message);
+    })
+ 
+ }, [])
+ console.log(coursesData)
+ useEffect(() => {
+  getWorkouts()
+    .then((data) => {
+     console.log(data)
+      setWorkoutData(data)
+    })
+   .catch((error) => {
+     console.log(error.message);
+   })
+
+}, [])
+console.log(coursesData)
 
   return (
     <S.Wrap>
@@ -38,6 +68,7 @@ export const PersonalPage = () => {
           </S.ChangeButton>
         </S.ChangeDate>
         <S.CourseWrap>
+
           <S.TitleCourse>Мои курсы</S.TitleCourse>
           <S.ProfList>
             {courses.map((course) => (
