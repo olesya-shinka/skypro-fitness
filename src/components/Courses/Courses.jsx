@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import * as S from "./Style";
-import { getCourses, getWorkouts } from "../../Api";
+import { getCourses,  getCourses2,  getWorkouts } from "../../Api";
 export const Courses = () => {
     //для проверки гет запроса
     const [courses, setСourses] = useState([]);

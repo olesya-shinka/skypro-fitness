@@ -5,6 +5,7 @@
 import SignUpPage from './pages/sign-up/signup.js';
 import { AppRoutes } from './routes.js';
 import { useState } from "react";
+import './firebase';
 function App() {
   const [user, setUser] = useState(true);
 
