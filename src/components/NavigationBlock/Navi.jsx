@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import ButtonEnter from "./ButtonEnter";
+//import ButtonEnter from "./ButtonEnter";
 import User from "./User";
 import Logo from "./Logo";
 
@@ -8,7 +8,8 @@ const NavigateBlock = () => {
     <S.Sidebar>
       <Logo />
       <User />
-      <ButtonEnter />
+      {/* позже будет логика: если юзер = true, то Имя, если false, то кнопка Войти */}
+      {/* <ButtonEnter /> */}
     </S.Sidebar>
   );
 };
