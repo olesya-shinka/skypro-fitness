@@ -1,7 +1,29 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+export const GlobalStyle = createGlobalStyle`
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 
+  }
+  @font-face {
+    font-family: "StratosSkyeng", sans-serif;
+    src: local("StratosSkyeng"), local("StratosSkyeng"),
+      url("../../../public/fonts/StratosSkyeng.woff2") format("woff2"),
+      url("../../../public/fonts/StratosSkyeng.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+  } 
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    font-family: StratosSkyeng, sans-serif;
+    font-family: "StratosSkyeng", sans-serif;
+    color: #ffffff;
+  }
+`
 export const Wrap = styled.div`
-  font-family: "StratosSkyeng";
   font-style: normal;
   position: relative;
   width: 100%;
@@ -20,7 +42,6 @@ export const Title = styled.div`
   align-items: flex-start;
 `;
 export const TitleText = styled.span`
-  font-weight: 400;
   font-size: 48px;
   line-height: 56px;
   font-feature-settings: "pnum" on, "lnum" on;
@@ -29,9 +50,6 @@ export const TitleText = styled.span`
 `;
 
 export const TitleTextLogin = styled.span`
-  font-family: "StratosSkyeng";
-  font-style: normal;
-  font-weight: 400;
   font-size: 24px;
   line-height: 32px;
   font-feature-settings: "pnum" on, "lnum" on;
@@ -39,9 +57,6 @@ export const TitleTextLogin = styled.span`
   padding-top: 40px;
 `;
 export const TitleTextPass = styled.span`
-  font-family: "StratosSkyeng";
-  font-style: normal;
-  font-weight: 400;
   font-size: 24px;
   line-height: 32px;
   font-feature-settings: "pnum" on, "lnum" on;
@@ -85,9 +100,6 @@ export const CourseWrap = styled.div`
   align-items: flex-start;
 `;
 export const TitleCourse = styled.div`
-  font-family: "StratosSkyeng";
-  font-style: normal;
-  font-weight: 400;
   font-size: 48px;
   line-height: 56px;
   font-feature-settings: "pnum" on, "lnum" on;
@@ -121,9 +133,6 @@ export const ProfButton = styled.button`
   top: 410px;
   background: #c7e957;
   border-radius: 80px;
-  font-family: "StratosSkyeng";
-  font-style: normal;
-  font-weight: 400;
   font-size: 20px;
   line-height: 115%;
   font-feature-settings: "pnum" on, "lnum" on;
