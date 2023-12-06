@@ -1,34 +1,35 @@
+import { calculator } from "./utils";
 import * as S from "./styles";
 
-const ProgressExercises = ({ exercises }) => {
-  return (
-    <S.Progress>
-      <S.Title>Мой прогресс по тренировке:</S.Title>
-      <S.ListExercises>
-        {exercises?.map((exercise, i) => {
-          const percent = Math.round(
-            ((Number(exercise.exercisesDone) || 0) / exercise.count) * 100
-          );
+const ProgressExercises = ({ exercises, progress }) => {
+  const currentExercises = exercises.exercises;
 
-          return (
-            <S.ListExercisesItem key={i + 1}>
-              <S.NameExercises>{exercise.name.split("(")[0]}</S.NameExercises>
-              <S.ProgressBar>
-                <S.Done style={{ width: `${percent}%` }}></S.Done>
-                <S.Percent
-                  style={{
-                    left: `${percent}px`,
-                    color: percent > 0 ? "#fff" : "#000",
-                  }}
-                >
-                  {percent}%
-                </S.Percent>
-              </S.ProgressBar>
-            </S.ListExercisesItem>
-          );
-        })}
-      </S.ListExercises>
-    </S.Progress>
+  const currentProgress = progress
+    ? Object.keys(progress).map((key) => progress[key])
+    : null;
+  return (
+    <S.ProgressBlock>
+      <S.ProgressTitle>Мой прогресс по тренировке:</S.ProgressTitle>
+
+      <S.ProgressStats>
+        {currentExercises && currentProgress
+          ? currentExercises.map(({ name, quantity }, index) => {
+              const done = Number(currentProgress[index]);
+              return (
+                <S.ProgressStatsItem $colorIndex={index} key={index}>
+                  <S.ProgressName>{name}</S.ProgressName>
+
+                  <S.ProgressBar>
+                    <S.Progress $percentage={calculator(done, quantity)}>
+                      <span>{calculator(done, quantity)} %</span>
+                    </S.Progress>
+                  </S.ProgressBar>
+                </S.ProgressStatsItem>
+              );
+            })
+          : null}
+      </S.ProgressStats>
+    </S.ProgressBlock>
   );
 };
 
