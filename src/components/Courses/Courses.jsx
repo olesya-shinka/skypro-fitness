@@ -1,5 +1,23 @@
+import { useEffect, useState } from "react";
 import * as S from "./Style";
+import { getCourses,  getCourses2,  getWorkouts } from "../../Api";
 export const Courses = () => {
+    //для проверки гет запроса
+    const [courses, setСourses] = useState([]);
+
+     useEffect(() => {
+      getCourses()
+        .then((data) => {
+          setСourses(data)
+        })
+       .catch((error) => {
+         console.log(error.message);
+       })
+    
+    }, [])
+
+    const name = courses.map((course) => course.nameRu)
+   // console.log(name);
 return (
     <S.Courses>
     <S.CourseYoga  >
@@ -27,5 +45,6 @@ return (
 </S.Courses>
 
 )
+
 
 }
