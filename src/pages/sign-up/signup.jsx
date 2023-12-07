@@ -1,5 +1,5 @@
-import * as S from "./signupStyle.jsx"
-import './signup.js'
+import * as S from "./signupStyle.js"
+import './signup.jsx'
 import LogoSvg from '../description/LogoSvg.jsx'
 
 export default function SignUpPage() {

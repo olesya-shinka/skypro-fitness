@@ -2,7 +2,6 @@
 // import './App.css';
 // import CourseInfo from './pages/description/description.js';
 // import SignInPage from './pages/log-in/login.js';
-import SignUpPage from './pages/sign-up/signup.js';
 import { AppRoutes } from './routes.js';
 import { useState } from "react";
 import './firebase';
@@ -11,10 +10,7 @@ function App() {
 
   return (
     <div>
-     {/* <CourseInfo/> */}
-     {/* <SignInPage/> */}
      <AppRoutes user={user} />
-   
      
     </div>
   );
