@@ -26,9 +26,9 @@ export const Container = styled.div`
 export const Main = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-left: 140px;
-  margin-right: 140px;
+  // align-items: center;
+  // margin-left: 140px;
+  // margin-right: 140px;
   `
 
 export const Header = styled.div`
@@ -77,7 +77,7 @@ export const SaleSticker = styled.image`
 `
 export const Courses = styled.div`
   display: grid;
-  margin-left: 140px;
+  // margin-left: 140px;
   grid-gap: 37px 44px;
   grid-template-columns: repeat(3, 360px);
 

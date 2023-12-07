@@ -3,6 +3,8 @@ import { useState } from "react";
 import SelectWorkout from "../../components/SelectWorkout/SelectWorkout";
 import { ChangeEmail } from "../../components/ChangeEmail/ChangeEmail";
 import { ChangePass } from "../../components/ChangePass/ChangePass";
+// import Header from "../../components/Header/Header.js"
+import HeaderProfile from "../../components/Header/HeaderPersonal";
 
 const courses = [
   { id: "1", title: "Йога", img: "/img/profCard1.png" },
@@ -17,6 +19,7 @@ export const PersonalPage = () => {
 
   return (
     <S.Wrap>
+      <HeaderProfile />
       <S.Content>
         <S.Title>
           <S.TitleText>Мой профиль</S.TitleText>

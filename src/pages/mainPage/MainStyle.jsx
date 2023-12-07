@@ -1,33 +1,22 @@
-import styled, { createGlobalStyle } from "styled-components";
-export const GlobalStyle = createGlobalStyle`
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+import styled from "styled-components";
 
-  }
-  @font-face {
-    font-family: "StratosSkyeng", sans-serif;
-    src: local("StratosSkyeng"), local("StratosSkyeng"),
-      url("../../../public/fonts/StratosSkyeng.woff2") format("woff2"),
-      url("../../../public/fonts/StratosSkyeng.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
-  } 
-`
 
 export const Container = styled.div`
   background-color: #271A58;
-  width: 100%;
-  height: 100%;
+  padding-left: calc(50% - 580px);
+  padding-right: calc(50% - 580px);
+  // width: 100%;
+  // height: 100%;
+
       `
   
 export const Main = styled.div`
+  margin-top: -110px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-left: 140px;
-  margin-right: 140px;
+  // align-items: center;
+  // margin-left: 140px;
+  // margin-right: 140px;
   `
 
 export const Header = styled.div`
@@ -48,7 +37,7 @@ export const Title = styled.h1`
   font-family: "StratosSkyeng", sans-serif;
   margin-top: 100px;
   opacity: 0.5;
-    `
+  `
 export const Slogan = styled.p`
   color: #F4F4FF;
   font-variant-numeric: lining-nums proportional-nums;
@@ -71,16 +60,12 @@ export const SaleSticker = styled.image`
   stroke: #FF8071;
   position: relative;
   top: 80px;
-
-
+  margin-left: 170px;
 `
 export const Courses = styled.div`
   display: grid;
-  margin-left: 140px;
   grid-gap: 37px 44px;
   grid-template-columns: repeat(3, 360px);
-
-
 `
 export const Course = styled.image`
   color: black;
@@ -95,7 +80,6 @@ background-position: 50% 50%;
 export const CourseStrech = styled(Course)`
 background-image: url("./img/card2.png");
 background-position: 50% 50%;
-
 `
 
 export const CourseDance = styled(Course)`
@@ -113,7 +97,6 @@ background-image: url("./img/card5.png");
     background-size: cover;
 `
 
-  
 export const CourseName = styled.h2`
 color: #000;
 font-variant-numeric: lining-nums proportional-nums;
@@ -127,7 +110,6 @@ width: 290px;
 padding-top: 30px;
 padding-left: 30px;
 `
-
 
 export const ButtonUp= styled.button`
   display: inline-flex;

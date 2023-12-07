@@ -1,10 +1,13 @@
 import { Courses } from '../../components/Courses/Courses';
+// import Header from "../../components/Header/Header.js"
+import HeaderMain from '../../components/Header/HeaderMain';
+
 import * as S from  './MainStyle';
 export const MainPage = () =>{
     return (
         <>
-        <S.GlobalStyle />
     <S.Container>
+        <HeaderMain />
         <S.Main>
             <S.Header>
                 <S.Text>
