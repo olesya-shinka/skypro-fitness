@@ -33,6 +33,7 @@ export const Main = styled.div`
 
 export const Header = styled.div`
   display: flex;
+
   `
 export const Text = styled.div`
 display: flex;
@@ -77,44 +78,26 @@ export const SaleSticker = styled.image`
 `
 export const Courses = styled.div`
   display: grid;
+  box-sizing: border-box
   margin-left: 140px;
   grid-gap: 37px 44px;
   grid-template-columns: repeat(3, 360px);
-
-
+  position: relative;
 `
-export const Course = styled.image`
+
+export const Course = styled.div`
+  background: tracnsparent;
+  box-shadow: -10px 10px 15.999px 0px rgba(0, 0, 0, 0.10), 10px -10px 16px 0px rgba(0, 0, 0, 0.10);
+2x;
   color: black;
   height: 480px;
   width: 360px;
   border-radius: 30px;
+  display: inline-block;
+  position: relative;
+  z-index: 0;
   `
-export const CourseYoga = styled(Course)`
-background-image: url("./img/card1.png");
-background-position: 50% 50%;
-`
-export const CourseStrech = styled(Course)`
-background-image: url("./img/card2.png");
-background-position: 50% 50%;
 
-`
-
-export const CourseDance = styled(Course)`
-background-image: url("./img/card3.png");
-background-size: cover;
-`
-
-export const CourseStep = styled(Course)`
-background-image: url("./img/card4.png");
-background-size: cover;
-`
-
-export const CourseBodyflex = styled(Course)`
-background-image: url("./img/card5.png");
-    background-size: cover;
-`
-
-  
 export const CourseName = styled.h2`
 color: #000;
 font-variant-numeric: lining-nums proportional-nums;
@@ -127,8 +110,21 @@ letter-spacing: -0.5px;
 width: 290px;
 padding-top: 30px;
 padding-left: 30px;
-`
+position: relative;
+z-index: 1;
 
+`
+export const CourseImg = styled.img`
+height: 480px;
+width: 360px;
+border-radius: 30px;
+background-position: 50% 50%;
+background-size: cover;
+overflow: hidden;
+position: relative;
+
+`
+//z-index: -1; если указать то картинки совсем исчезают
 
 export const ButtonUp= styled.button`
   display: inline-flex;

@@ -1,48 +1,26 @@
 import { useEffect, useState } from "react";
 import * as S from "./Style";
 import { getCourses,  getCourses2,  getWorkouts } from "../../Api";
-export const Courses = () => {
+export const Courses = ({courses}) => {
     //для проверки гет запроса
-    const [courses, setСourses] = useState([]);
 
-     useEffect(() => {
-      getCourses()
-        .then((data) => {
-          setСourses(data)
-        })
-       .catch((error) => {
-         console.log(error.message);
-       })
-    
-    }, [])
+    const images = [
+      { src: '/img/card-1.png' },
+      { src: '/img/card-2.png' },
+      { src: '/img/card-3.png' },
+      { src: '/img/card-4.png' },
+      { src: '/img/card-5.png' },
+      ];
 
-    const name = courses.map((course) => course.nameRu)
-   // console.log(name);
 return (
-    <S.Courses>
-    <S.CourseYoga  >
-        <S.CourseName>Йога</S.CourseName>
+    <S.Courses  >
      
-    
-    </S.CourseYoga>
-    <S.CourseStrech >
-    <S.CourseName>Стретчинг </S.CourseName>
-   
-    </S.CourseStrech>
-    <S.CourseDance>
-    <S.CourseName>Танцевальный фитнес</S.CourseName>
-    
-    </S.CourseDance>
-    <S.CourseStep >
-    <S.CourseName>Степ-аэробика</S.CourseName>
-    
-    </S.CourseStep>
-    <S.CourseBodyflex>
-    <S.CourseName> Бодифлекс</S.CourseName>
-    
-    </S.CourseBodyflex>
-
-</S.Courses>
+    {courses?.sort((a, b) => a.order - b.order).map((course) => <S.Course  key={course.id}   >
+      <S.CourseName>{course.nameRU}</S.CourseName>
+      
+      </S.Course>)}
+      {images.map((image) => <S.CourseImg src = {image.src}></S.CourseImg>)}
+    </S.Courses>
 
 )
 

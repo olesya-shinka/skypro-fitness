@@ -32,6 +32,7 @@ export const Main = styled.div`
 
 export const Header = styled.div`
   display: flex;
+  gap: 15px;
   `
 export const Text = styled.div`
 display: flex;
@@ -63,7 +64,7 @@ export const Slogan = styled.p`
   margin-top: 17px;
   margin-bottom: 52px;
      `
-export const SaleSticker = styled.image`
+export const SaleSticker = styled.div`
   width: 151.741px;
   height: 212.27px;
   fill: #271A58;
@@ -79,53 +80,6 @@ export const Courses = styled.div`
   margin-left: 140px;
   grid-gap: 37px 44px;
   grid-template-columns: repeat(3, 360px);
-
-
-`
-export const Course = styled.image`
-  color: black;
-  height: 480px;
-  width: 360px;
-  border-radius: 30px;
-  `
-export const CourseYoga = styled(Course)`
-background-image: url("./img/card1.png");
-background-position: 50% 50%;
-`
-export const CourseStrech = styled(Course)`
-background-image: url("./img/card2.png");
-background-position: 50% 50%;
-
-`
-
-export const CourseDance = styled(Course)`
-background-image: url("./img/card3.png");
-background-size: cover;
-`
-
-export const CourseStep = styled(Course)`
-background-image: url("./img/card4.png");
-background-size: cover;
-`
-
-export const CourseBodyflex = styled(Course)`
-background-image: url("./img/card5.png");
-    background-size: cover;
-`
-
-  
-export const CourseName = styled.h2`
-color: #000;
-font-variant-numeric: lining-nums proportional-nums;
-font-family: "StratosSkyeng", sans-serif;
-font-size: 36px;
-font-style: normal;
-font-weight: 600;
-line-height: 110%;
-letter-spacing: -0.5px;
-width: 290px;
-padding-top: 30px;
-padding-left: 30px;
 `
 
 
@@ -157,3 +111,16 @@ export const ButtonUp= styled.button`
     background: #EBFFAB;
   }
 `
+export const Sidebar = styled.div`
+  max-width: 1200px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  row-gap: 10px;
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+`;

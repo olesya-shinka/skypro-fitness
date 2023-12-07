@@ -1,10 +1,26 @@
+import { useEffect, useState } from 'react';
 import { Courses } from '../../components/Courses/Courses';
+import NavigateBlock from '../../components/NavigationBlock/Navi';
 import * as S from  './MainStyle';
+import { getCourses } from '../../Api';
 export const MainPage = () =>{
+    const [courses, setСourses] = useState([]);
+    useEffect(() => {
+        getCourses()
+          .then((data) => {
+            console.log(data);
+            setСourses(data)
+          })
+         .catch((error) => {
+           console.log(error.message);
+         })
+
+      }, [])
     return (
         <>
         <S.GlobalStyle />
     <S.Container>
+        <NavigateBlock/>
         <S.Main>
             <S.Header>
                 <S.Text>
@@ -18,7 +34,7 @@ export const MainPage = () =>{
                 </S.SaleSticker>
                 
             </S.Header>
-            <Courses />
+            <Courses courses = {courses} />
 
             <S.ButtonUp>Наверх&#129045;</S.ButtonUp>
     
