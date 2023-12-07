@@ -41,12 +41,6 @@ export default function SignInPage() {
     } else if (!passPattern.test(password)) {
       newErrors.password = "Пароль не должен содержать пробелы";
       isValid = false;
-    } else if (password.length < 6) {
-      newErrors.password = "Пароль должен быть длинее шести символов";
-      isValid = false;
-    } else if (password.length > 20) {
-      newErrors.password = "Пароль должен быть короче двадцати символов";
-      isValid = false;
     } else {
       newErrors.password = "";
     }
@@ -119,6 +113,7 @@ export default function SignInPage() {
           <S.LoginFormText
             type="password"
             placeholder="Пароль"
+            value={password}
             onChange={(event) => {
               setPassword(event.target.value);
             }}
@@ -128,7 +123,7 @@ export default function SignInPage() {
         {error && <S.error>{error}</S.error>}
 
         <S.GetBtn type="button" onClick={handleLogin} disabled={offButton}>
-        {offButton ? "Осуществляем регистрацию" : "Войти"}
+        {offButton ? "Осуществляем вход" : "Войти"}
         </S.GetBtn>
         <S.RegBtn type="button">
           <Link to="/SignUp">Зарегистрироваться</Link>
