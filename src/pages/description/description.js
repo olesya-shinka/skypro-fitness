@@ -4,7 +4,6 @@ export default function CourseInfo() {
   return (  
     <S.Container>
       <S.HeaderNav>
-        <LogoSvg />
       </S.HeaderNav>
       <S.Course>
         <S.CourseBox>

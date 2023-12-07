@@ -16,11 +16,16 @@ export const MainPage = () =>{
          })
 
       }, [])
+const ButtonUp = () => {
+    window.scrollTo({ 
+        top: 0,  
+        behavior: 'smooth'
+      }); 
+}
     return (
         <>
         <S.GlobalStyle />
     <S.Container>
-        <NavigateBlock/>
         <S.Main>
             <S.Header>
                 <S.Text>
@@ -36,7 +41,7 @@ export const MainPage = () =>{
             </S.Header>
             <Courses courses = {courses} />
 
-            <S.ButtonUp>Наверх&#129045;</S.ButtonUp>
+            <S.ButtonUp onClick={ButtonUp}>Наверх&#129045;</S.ButtonUp>
     
 
         </S.Main>  

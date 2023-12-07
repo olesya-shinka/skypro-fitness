@@ -4,7 +4,6 @@ import ProgressModal from "./../../components/LayoutModal/ProgressModal/Progress
 import SuccessModal from "./../../components/LayoutModal/SuccessModal/SuccessModal";
 import LayoutModal from "../../components/LayoutModal/layout/LayoutModal";
 import { useState } from "react";
-import NavigateBlock from "../../components/NavigationBlock/Navi";
 
 const WorkoutPage = () => {
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
@@ -23,7 +22,6 @@ const WorkoutPage = () => {
   return (
     <S.Container>
       <S.Header>
-        <NavigateBlock />
       </S.Header>
       <S.Main>
         <S.Heading>Йога</S.Heading>
@@ -58,7 +56,7 @@ const WorkoutPage = () => {
               Наклоны вперед{" "}
               <img
                 className="percent-workout"
-                src="img/1percent.svg"
+                src="/img/1percent.svg"
                 alt="percent"
                 width={278}
                 height={36}
@@ -69,7 +67,7 @@ const WorkoutPage = () => {
               Наклоны назад{" "}
               <img
                 className="percent-workout"
-                src="img/2percent.svg"
+                src="/img/2percent.svg"
                 alt="percent"
                 width={278}
                 height={36}
@@ -80,7 +78,7 @@ const WorkoutPage = () => {
               Поднятие ног, согнутых в коленях{" "}
               <img
                 className="percent-workout"
-                src="img/3percent.svg"
+                src="/img/3percent.svg"
                 alt="percent"
                 width={278}
                 height={36}

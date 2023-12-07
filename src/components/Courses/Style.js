@@ -1,4 +1,5 @@
 
+import { NavLink } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -121,7 +122,7 @@ border-radius: 30px;
 background-position: 50% 50%;
 background-size: cover;
 overflow: hidden;
-position: relative;
+
 
 `
 //z-index: -1; если указать то картинки совсем исчезают
@@ -153,4 +154,7 @@ export const ButtonUp= styled.button`
   :active{
     background: #EBFFAB;
   }
+`
+export const Link = styled(NavLink)`
+text-decoration: none;
 `
