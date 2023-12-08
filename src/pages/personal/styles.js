@@ -1,3 +1,8 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import styled from "styled-components";
 
 export const Wrap = styled.div`
@@ -23,7 +28,9 @@ export const TitleText = styled.span`
   font-weight: 400;
   font-size: 48px;
   line-height: 56px;
-  font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings:
+    "pnum" on,
+    "lnum" on;
   color: #000000;
   padding-top: 74px;
 `;
@@ -34,7 +41,9 @@ export const TitleTextLogin = styled.span`
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings:
+    "pnum" on,
+    "lnum" on;
   color: #000000;
   padding-top: 40px;
 `;
@@ -44,7 +53,9 @@ export const TitleTextPass = styled.span`
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings:
+    "pnum" on,
+    "lnum" on;
   color: #000000;
   padding-top: 20px;
 `;
@@ -68,7 +79,9 @@ export const ChangeButton = styled.button`
   font-size: 18px;
   line-height: 24px;
   letter-spacing: -0.05px;
-  font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings:
+    "pnum" on,
+    "lnum" on;
   color: #ffffff;
   border: none;
   &:hover {
@@ -90,7 +103,9 @@ export const TitleCourse = styled.div`
   font-weight: 400;
   font-size: 48px;
   line-height: 56px;
-  font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings:
+    "pnum" on,
+    "lnum" on;
   color: #000000;
 `;
 
@@ -126,7 +141,9 @@ export const ProfButton = styled.button`
   font-weight: 400;
   font-size: 20px;
   line-height: 115%;
-  font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings:
+    "pnum" on,
+    "lnum" on;
   color: #000000;
   position: absolute;
   border: none;

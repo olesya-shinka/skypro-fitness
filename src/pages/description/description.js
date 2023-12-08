@@ -1,3 +1,8 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import * as S from "./descriptionStyle.jsx"
 import LogoSvg from "./LogoSvg.jsx" 
 export default function CourseInfo() {

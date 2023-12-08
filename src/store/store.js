@@ -1,20 +1,20 @@
 /* eslint-disable prettier/prettier */
-import { configureStore } from "@reduxjs/toolkit";
-import { coursesReducer } from "./slices/courseSlice";
-import { workoutsReducer } from "./workouts/workoutsSlice";
-import databaseURL from "../firebase";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { fitnessApi } from "../services/fitnessApi";
+import { coursesSlice } from "./slices/coursesSlice";
+import { authSlice } from "./slices/authSlice";
+import { progressSlice } from "./slices/progressSlice";
+
+const rootReducer = combineReducers({
+  [fitnessApi.reducerPath]: fitnessApi.reducer,
+  courses: coursesSlice.reducer,
+  auth: authSlice.reducer,
+  progress: progressSlice.reducer
+});
 
 export const store = configureStore({
-  reducer: {
-    courses: coursesReducer,
-    workouts: workoutsReducer
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      thunk: {
-        extraArgument: {
-          databaseURL,
-        }
-      }
-    })
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(fitnessApi.middleware)
 });
+
+export default store;

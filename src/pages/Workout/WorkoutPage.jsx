@@ -1,6 +1,10 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-undef */
 /* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import * as S from "./styles";
 import ReactPlayer from "react-player/youtube";
 import ProgressModal from "./../../components/LayoutModal/ProgressModal/ProgressModal";

@@ -1,3 +1,8 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import styled from "styled-components";
 
 export const Btn = styled.button`
@@ -10,3 +15,4 @@ export const Btn = styled.button`
   line-height: 24px;
   letter-spacing: -0.05px;
 `;
+export default Btn;

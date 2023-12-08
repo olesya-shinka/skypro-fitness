@@ -1,3 +1,8 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import * as S from "./styles";
 import { useState } from "react";
 import SelectWorkout from "../../components/SelectWorkout/SelectWorkout";
@@ -7,7 +12,7 @@ import { ChangePass } from "../../components/ChangePass/ChangePass";
 const courses = [
   { id: "1", title: "Йога", img: "/img/profCard1.png" },
   { id: "2", title: "Стретчинг", img: "/img/profCard2.png" },
-  { id: "3", title: "Бодифлекс", img: "/img/profCard5.png" },
+  { id: "3", title: "Бодифлекс", img: "/img/profCard5.png" }
 ];
 
 export const PersonalPage = () => {
@@ -30,12 +35,8 @@ export const PersonalPage = () => {
           {isEditPass ? <ChangePass setIsEditPass={setIsEditPass} /> : null}
         </S.Title>
         <S.ChangeDate>
-          <S.ChangeButton onClick={() => setIsEditEmail(true)}>
-            Редактировать логин
-          </S.ChangeButton>
-          <S.ChangeButton onClick={() => setIsEditPass(true)}>
-            Редактировать пароль
-          </S.ChangeButton>
+          <S.ChangeButton onClick={() => setIsEditEmail(true)}>Редактировать логин</S.ChangeButton>
+          <S.ChangeButton onClick={() => setIsEditPass(true)}>Редактировать пароль</S.ChangeButton>
         </S.ChangeDate>
         <S.CourseWrap>
           <S.TitleCourse>Мои курсы</S.TitleCourse>
@@ -44,17 +45,13 @@ export const PersonalPage = () => {
               <S.Prof key={course.id}>
                 <S.ProfCard src={course.img} alt="prof_card" />
 
-                <S.ProfButton onClick={() => setIsShowForm(true)}>
-                  Перейти →
-                </S.ProfButton>
+                <S.ProfButton onClick={() => setIsShowForm(true)}>Перейти →</S.ProfButton>
               </S.Prof>
             ))}
           </S.ProfList>
         </S.CourseWrap>
 
-        {isShowForm ? (
-          <SelectWorkout setIsShowForm={setIsShowForm}></SelectWorkout>
-        ) : null}
+        {isShowForm ? <SelectWorkout setIsShowForm={setIsShowForm}></SelectWorkout> : null}
       </S.Content>
     </S.Wrap>
   );
