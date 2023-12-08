@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const fetchWorkouts = createAsyncThunk("workouts/fetchWorkouts", async (course) => {
   const response = await fetch(
@@ -27,5 +28,19 @@ export const workoutsSlice = createSlice({
     });
   }
 });
+
+export const workoutApi = createApi({
+  reducerPath: "workoutApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://fitness-pro-d307e-default-rtdb.europe-west1.firebasedatabase.app/"
+  }),
+  endpoints: (builder) => ({
+    getWorkoutById: builder.query({
+      query: (id) => `courses/${id}.json`
+    })
+  })
+});
+
+export const { useGetWorkoutByIdQuery } = workoutApi;
 
 export default workoutsSlice.reducer;

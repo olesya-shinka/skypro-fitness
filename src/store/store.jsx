@@ -1,20 +1,23 @@
 /* eslint-disable prettier/prettier */
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { fitnessApi } from "../services/fitnessApi";
-import { coursesSlice } from "./slices/coursesSlice";
-import { authSlice } from "./slices/authSlice";
-import { progressSlice } from "./slices/progressSlice";
-
-const rootReducer = combineReducers({
-  [fitnessApi.reducerPath]: fitnessApi.reducer,
-  courses: coursesSlice.reducer,
-  auth: authSlice.reducer,
-  progress: progressSlice.reducer
-});
+import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import { workoutApi } from "../store/slices/workoutsSlice";
+import loadingReducer from "./slices/loadingSlice";
+import selectedWorkoutReducer from "./slices/selectWorkoutSlice";
+import userCoursesReducer from "./slices/userCoursesSlice";
+import workoutsReducer from "./slices/workoutsSlice";
+import selectedTrainingReducer from "./slices/selectTrainSlice";
 
 export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(fitnessApi.middleware)
+  reducer: {
+    [workoutApi.reducerPath]: workoutApi.reducer,
+    loading: loadingReducer,
+    selectedWorkout: selectedWorkoutReducer,
+    userCourses: userCoursesReducer,
+    workouts: workoutsReducer,
+    selectedTraining: selectedTrainingReducer
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(workoutApi.middleware)
 });
 
-export default store;
+setupListeners(store.dispatch);
