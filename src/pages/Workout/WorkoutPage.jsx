@@ -19,6 +19,10 @@ import NavigateBlock from "../../components/NavigationBlock/Navi";
 import ProgressExercises from "../../components/ProgressExercises/ProgressExercises";
 import ExercisesList from "../../components/Exercises/Exercises";
 import SelectWorkout from "../../components/SelectWorkout/SelectWorkout";
+import { selectedWorkoutSlice } from "../../store/slices/selectWorkoutSlice";
+import { userCoursesSlice } from "../../store/slices/userCourseSlice";
+import { coursesSlice } from "../../store/slices/courseSlice";
+
 
 const WorkoutPage = () => {
   const workoutId = useParams();
