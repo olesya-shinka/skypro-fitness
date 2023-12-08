@@ -7,7 +7,7 @@ import LogoSvg from './LogoSvg'
 function HeaderProfile() {
     const navigate = useNavigate()
     const goHome = () => {
-    navigate('PersonalPage')
+    navigate('/')
     }
 
   return (

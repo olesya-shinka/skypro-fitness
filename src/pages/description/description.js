@@ -1,6 +1,6 @@
 import * as S from "./descriptionStyle.jsx"
 // import LogoSvg from "./LogoSvg.jsx" 
-import Header from "../../components/Header/Header.js"
+import Header from "../../components/Header/Header.jsx"
 
 export default function CourseInfo() {
   return (  

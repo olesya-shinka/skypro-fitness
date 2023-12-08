@@ -2,8 +2,8 @@ import * as S from "./loginStyles.jsx"
 import "./loginStyles.jsx"
 // import Header from "../../components/Header/Header.js"
 import LogoSvg from '../../components/Header/LogoSvg'
-
 // import LogoSvg from '../description/LogoSvg.jsx'
+
 export default function SignInPage() {
     return (
         <S.Login>

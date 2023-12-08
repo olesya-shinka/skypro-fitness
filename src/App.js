@@ -19,8 +19,8 @@ function App() {
 
      {/* <CourseInfo/> */}
      {/* <SignInPage/> */}
-     {/* <AppRoutes user={user} /> */}
-     <PersonalPage />
+     <AppRoutes user={user} />
+     {/* <PersonalPage /> */}
      {/* <MainPage /> */}
    
      
