@@ -9,7 +9,8 @@ import LayoutModal from "../../components/LayoutModal/layout/LayoutModal";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-
+import { selectCourses } from "../../store/selectors/course";
+import { selectWorkouts } from "../../store/slices/workoutsSlice";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
 import ProgressExercises from "../../components/ProgressExercises/ProgressExercises";
 import ExercisesList from "../../components/Exercises/Exercises";
@@ -18,8 +19,7 @@ import SelectWorkout from "../../components/SelectWorkout/SelectWorkout";
 const WorkoutPage = () => {
   const workoutId = useParams();
   const dispatch = useDispatch();
-  const { id } = useSelector(selectUser);
-  
+
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
 
