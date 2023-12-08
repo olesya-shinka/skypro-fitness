@@ -1,4 +1,8 @@
-
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 export const ErrorMessage = styled.div`
   display: flex;
   width: 100%;
