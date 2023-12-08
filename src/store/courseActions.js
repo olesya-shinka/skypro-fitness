@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const loadCourses = createAsyncThunk(
   "courses/all",
-  async (_, { extra: { apiClient, api }, rejectWithValue }) => {
+  async (_, { extra: {  databaseURL, api }, rejectWithValue }) => {
     try {
       const config = {
         headers: {
@@ -11,7 +11,7 @@ export const loadCourses = createAsyncThunk(
         },
         skipAuth: true
       };
-      const response = await apiClient.get(api.COURSES, config);
+      const response = await  databaseURL.get(api.COURSES, config);
       if (response.statusText !== "OK") {
         throw new Error("Что-то пошло не так");
       }
