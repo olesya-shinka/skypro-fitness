@@ -1,58 +1,36 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/jsx-key */
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-undef */
+/* eslint-disable prettier/prettier */
 import * as S from "./styles";
+import { NavLink } from "react-router-dom";
 
-export default function SelectWorkout() {
-  const lessons = [
-    {
-      id: "1",
-      isFinished: true,
-      name: "Утренняя практика",
-      dis: "Йога на каждый день / 1 день ",
-    },
-    {
-      id: "3",
-      isFinished: true,
-      name: "Красота и здоровье",
-      dis: "Йога на каждый день / 2 день ",
-    },
-    {
-      id: "4",
-      isFinished: false,
-      name: "Асаны стоя",
-      dis: "Йога на каждый день / 3 день ",
-    },
-    {
-      id: "5",
-      isFinished: false,
-      name: "Растягиваем мышцы бедра",
-      dis: "Йога на каждый день / 4 день ",
-    },
-    {
-      id: "6",
-      isFinished: false,
-      name: "Гибкость спины",
-      dis: "Йога на каждый день / 5 день ",
-    },
-  ];
-  const LessonList = lessons.map((lesson) => (
-    <S.SelectItem key={lesson.id} $isFinished={lesson.isFinished}>
-      {lesson.name}
-      {lesson.isFinished ? (
-        <S.SelectItemCheckboxImg>
-          <use xlinkHref="/img/isFinished.svg" />
-        </S.SelectItemCheckboxImg>
-      ) : (
-        ""
-      )}
-      <S.SelectItemType>{lesson.dis}</S.SelectItemType>
-    </S.SelectItem>
-  ));
+export function SelectWorkout({ openClosedTrainingModal }) {
+  const dispatch = useDispatch;
+  const { id } = useSelector(selectUser);
+  dispatch(userCourses(id));
+
+  const workouts = useSelector(selectCurrentWorkout);
+  const currentUserCourses = useSelector(selectUserCourses);
+
+  const selectWorkouts = getCurrentWorkouts(currentUserCourses, workouts);
 
   return (
     <S.SelectContainer>
-      <S.SelectWrapper>
-        <S.SelectTitle>Выберите тренировку</S.SelectTitle>
-        <S.SelectList>{LessonList}</S.SelectList>
-      </S.SelectWrapper>
+      <S.SelectTitle>Выберите тренировку</S.SelectTitle>
+      <S.SelectList>
+        {selectWorkouts?.map((workout) => (
+          <NavLink to={`/workout/${workout._id}`}>
+            <S.SelectItem key={workout._id} onClick={openClosedTrainingModal}>
+              {workout.name}
+            </S.SelectItem>
+            <S.SelectItemType>{workout.details}</S.SelectItemType>
+          </NavLink>
+        ))}
+      </S.SelectList>
     </S.SelectContainer>
   );
 }
+export default SelectWorkout;
