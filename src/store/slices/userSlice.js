@@ -6,6 +6,20 @@ const initialState = {
   id: null,
 };
 
+const localStorageMiddleware = (store) => (next) => (action) => {
+  if (action.type === userSlice.actions.initializeUserFromLocalStorage.type) {
+    const storedEmail = localStorage.getItem("email");
+    const storedToken = localStorage.getItem("token");
+    const storedId = localStorage.getItem("id");
+
+    if (storedEmail && storedToken && storedId) {
+      store.dispatch(userSlice.actions.setUser({ email: storedEmail, token: storedToken, id: storedId }));
+    }
+  }
+
+  return next(action);
+};
+
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -26,8 +40,14 @@ const userSlice = createSlice({
       localStorage.removeItem("token");
       localStorage.removeItem("id");
     },
+
+    initializeUserFromLocalStorage() {
+      // Пустное действие, middleware будет обрабатывать это действие
+    },
+
   },
 });
 
-export const { setUser, removeUser } = userSlice.actions;
+export const { setUser, removeUser, initializeUserFromLocalStorage } = userSlice.actions;
 export default userSlice.reducer;
+export {localStorageMiddleware};
