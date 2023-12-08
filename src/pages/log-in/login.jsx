@@ -5,6 +5,8 @@ import * as S from "./loginStyles.js";
 import LogoSvg from "../description/LogoSvg.jsx";
 import { login } from "../../authApi.js";
 import { setUser } from "../../store/slices/userSlice.js";
+
+
 export default function SignInPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -59,13 +61,13 @@ export default function SignInPage() {
     const newErrors = { ...errorsForm };
     newErrors.email = "";
     setErrorsForm(newErrors);
-  }, [email, errorsForm]);
+  }, [email]);
 
   useEffect(() => {
     const newErrors = { ...errorsForm };
     newErrors.password = "";
     setErrorsForm(newErrors);
-  }, [password, errorsForm]);
+  }, [password]);
 
   const handleLogin = async () => {
     if (validateForm()) {
@@ -77,6 +79,7 @@ export default function SignInPage() {
             email: response.email,
             id: response.uid,
             token: response.accessToken,
+            password: password,
           })
         );
         setOffButton(true);

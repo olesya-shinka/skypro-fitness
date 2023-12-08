@@ -95,6 +95,7 @@ export default function SignUpPage() {
             email: response.email,
             id: response.uid,
             token: response.accessToken,
+            password: password,
           })
         );
         setOffButton(true);
