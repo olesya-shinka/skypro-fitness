@@ -2,7 +2,7 @@ export default function LogoSvg () {
 return (
 <div>
   <svg
-    classname="logo__svg"
+    className="logo__svg"
     xmlns="http://www.w3.org/2000/svg"
     width={222}
     height={36}
@@ -71,7 +71,7 @@ return (
     />
     <mask
       id="mask0_26_1150"
-      colorinterpolationfilters="mask-type:alpha"
+      colorInterpolationFilters="mask-type:alpha"
       maskUnits="userSpaceOnUse"
       x={11}
       y={9}
@@ -99,9 +99,9 @@ return (
         width="20.9825"
         height="22.9216"
         filterUnits="userSpaceOnUse"
-        colorinterpolationfilters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood floodopacity={0} result="BackgroundImageFix" />
+        <feFlood floodOpacity={0} result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
