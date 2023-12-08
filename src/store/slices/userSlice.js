@@ -1,10 +1,11 @@
+/* eslint-disable prettier/prettier */
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   email: null,
   token: null,
   id: null,
-  password: null,
+  password: null
 };
 
 const localStorageMiddleware = (store) => (next) => (action) => {
@@ -15,7 +16,14 @@ const localStorageMiddleware = (store) => (next) => (action) => {
     const storedPassword = localStorage.getItem("password");
 
     if (storedEmail && storedToken && storedId && storedPassword) {
-      store.dispatch(userSlice.actions.setUser({ email: storedEmail, token: storedToken, id: storedId, password: storedPassword }));
+      store.dispatch(
+        userSlice.actions.setUser({
+          email: storedEmail,
+          token: storedToken,
+          id: storedId,
+          password: storedPassword
+        })
+      );
     }
   }
 
@@ -49,11 +57,10 @@ const userSlice = createSlice({
 
     initializeUserFromLocalStorage() {
       // Пустное действие, middleware будет обрабатывать это действие
-    },
-
-  },
+    }
+  }
 });
 
 export const { setUser, removeUser, initializeUserFromLocalStorage } = userSlice.actions;
 export default userSlice.reducer;
-export {localStorageMiddleware};
+export { localStorageMiddleware };

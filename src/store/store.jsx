@@ -7,10 +7,12 @@ import selectedWorkoutReducer from "./slices/selectWorkoutSlice";
 import userCoursesReducer from "./slices/userCoursesSlice";
 import workoutsReducer from "./slices/workoutsSlice";
 import selectedTrainingReducer from "./slices/selectTrainSlice";
+import authReducer from "./slices/userSlice";
 
 export const store = configureStore({
   reducer: {
     [workoutApi.reducerPath]: workoutApi.reducer,
+    user: authReducer,
     loading: loadingReducer,
     selectedWorkout: selectedWorkoutReducer,
     userCourses: userCoursesReducer,
