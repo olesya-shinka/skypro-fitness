@@ -11,7 +11,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser(state, action) {
-      state.userMail = action.payload.email;
+      state.email = action.payload.email;
       state.token = action.payload.token;
       state.id = action.payload.id;
       localStorage.setItem("email", state.email);
