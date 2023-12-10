@@ -9,7 +9,7 @@ const User = () => {
       <S.User onClick ={toggleVisibility}>
         <img src="/img/avatar.png" alt="avatar" />
         <S.NameUser >name</S.NameUser>
-        
+        &#9660;
         {openMenu ? 
         (<S.NavMenu>
           <S.MenuList>

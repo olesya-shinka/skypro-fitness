@@ -5,7 +5,7 @@ import Logo from "./Logo";
 import ButtonEnter from "./ButtonEnter";
 
 const NavigateBlock = () => {
-  const user = null
+  const user = 1
   return (
     <S.Sidebar>
       <Logo />

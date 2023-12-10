@@ -103,12 +103,14 @@ visibility: visible;
 
 export const MenuList = styled.ul`
 padding: 18px 0 10px 0;
+position: absolute;
+box-sizing: border-box;
 `
 
 export const MenuItem = styled.li`
 padding: 5px 0;
 margin-bottom: 16px;
-position: absolute;
+position: relative;
 `
 
 export const Menulink = styled(NavLink)`
@@ -117,14 +119,4 @@ font-weight: 400;
 font-size: 16px;
 line-height: 24px;
 text-decoration: none;
-`
-export const DropdownContent= styled.ul`    
-overflow-y: auto;
-box-sizing: border-box;
-height: 200px;
-width: auto;
-background-color: #313131;
-border-radius: 20px;
-position: absolute;
-
 `
