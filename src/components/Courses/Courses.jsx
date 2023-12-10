@@ -12,19 +12,33 @@ export const Courses = ({courses}) => {
 
 return (
       <S.Courses  >
-         {images.map((image) => <S.Link to='/CourseInfo/:id'><S.CourseImg src = {image.src}></S.CourseImg></S.Link>)}
+
+{images.map((image) => <S.Link to='/CourseInfo/:id'><S.CourseImg src = {image.src}></S.CourseImg></S.Link>)}
+
       </S.Courses>
+      
+      )
 
-)
-
-
+        
 }
    
-// {courses?.sort((a, b) => a.order - b.order).map((course) => 
-//   <S.Link to='/CourseInfo/:id'>
-//   <S.Course  key={course.id}   >
-//    <S.CourseName>{course.nameRU}</S.CourseName>
-//     </S.Course>
-//     </S.Link>
+// {courses?.sort((a, b) => a.order - b.order).map((course, id) => 
+//       <S.Link to='/CourseInfo/:id'>
+//       <S.Course  key={id}   >
+//        <S.CourseName>{course.nameRU}</S.CourseName>
+//        <S.CourseImg src = {`/img/card-${id  + 1 }.png`}></S.CourseImg>
+//         </S.Course>
+//         </S.Link>
+        
+//         )}
+
+// {courses?.sort((a, b) => a.order - b.order).map((course, index) => 
+
+//       <S.Link to='/CourseInfo/:id'>
+//       <S.Course  key={index} image = {images[index] + 1}  >
     
-//     )}
+//        <S.CourseName>{course.nameRU}</S.CourseName>
+//         </S.Course>
+//         </S.Link>
+        
+//         )}
