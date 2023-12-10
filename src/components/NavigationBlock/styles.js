@@ -98,6 +98,7 @@ background-color: #d3d3d3;
 export const NavMenu = styled.div`
 display: block;
 visibility: visible;
+
 `
 
 export const MenuList = styled.ul`
@@ -107,6 +108,7 @@ padding: 18px 0 10px 0;
 export const MenuItem = styled.li`
 padding: 5px 0;
 margin-bottom: 16px;
+position: absolute;
 `
 
 export const Menulink = styled(NavLink)`

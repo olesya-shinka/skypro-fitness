@@ -4,15 +4,14 @@ import User from "./User";
 import Logo from "./Logo";
 import ButtonEnter from "./ButtonEnter";
 
-const NavigateBlock = ({children}) => {
-  const currentUser =1
+const NavigateBlock = () => {
+  const user = null
   return (
     <S.Sidebar>
       <Logo />
-      {currentUser ? <User /> : <ButtonEnter/>}
+      {user ? <User /> : <ButtonEnter/>}
       {/* позже будет логика: если юзер = true, то Имя, если false, то кнопка Войти */}
       {/* <ButtonEnter /> */}
-      {children}
     </S.Sidebar>
   );
 };

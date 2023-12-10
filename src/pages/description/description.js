@@ -1,5 +1,4 @@
 import * as S from "./descriptionStyle.jsx"
-import LogoSvg from "./LogoSvg.jsx" 
 export default function CourseInfo() {
   return (  
     <S.Container>

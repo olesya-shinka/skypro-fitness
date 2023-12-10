@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Courses } from '../../components/Courses/Courses';
-import NavigateBlock from '../../components/NavigationBlock/Navi';
 import * as S from  './MainStyle';
 import { getCourses } from '../../Api';
 export const MainPage = () =>{

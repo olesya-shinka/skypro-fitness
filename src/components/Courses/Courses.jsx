@@ -1,4 +1,3 @@
-import {  NavLink } from "react-router-dom";
 import * as S from "./Style";
 export const Courses = ({courses}) => {
     //для проверки гет запроса
@@ -8,7 +7,7 @@ export const Courses = ({courses}) => {
       { src: '/img/profCard2.png' },
       { src: '/img/profCard3.png' },
       { src: '/img/profCard4.png' },
-      { src: '/img/profCard1.png' },
+      { src: '/img/profCard5.png' },
       ];
 
 return (
