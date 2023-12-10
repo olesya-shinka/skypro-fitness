@@ -38,7 +38,7 @@ const workoutsSlice = createSlice({
 export const workoutsReducer = workoutsSlice.reducer;
 export const { setCurrentId } = workoutsSlice.actions;
 
-//selectors
+//селектор
 
 export const selectWorkoutsInfo = (state) => ({
   status: state.workouts.status,
