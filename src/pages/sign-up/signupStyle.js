@@ -73,4 +73,11 @@ export const Login = styled.div`
     }
   `;
 
-  
+  export const error = styled.div`
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  font-family: "StratosSkyeng", sans-serif;
+  color: #DD4333;
+`;
+
