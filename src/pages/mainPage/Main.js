@@ -1,6 +1,26 @@
+import { useEffect, useState } from 'react';
 import { Courses } from '../../components/Courses/Courses';
 import * as S from  './MainStyle';
+import { getCourses } from '../../Api';
 export const MainPage = () =>{
+    const [courses, setСourses] = useState([]);
+    useEffect(() => {
+        getCourses()
+          .then((data) => {
+            console.log(data);
+            setСourses(data)
+          })
+         .catch((error) => {
+           console.log(error.message);
+         })
+
+      }, [])
+const ButtonUp = () => {
+    window.scrollTo({ 
+        top: 0,  
+        behavior: 'smooth'
+      }); 
+}
     return (
         <>
         <S.GlobalStyle />
@@ -18,9 +38,9 @@ export const MainPage = () =>{
                 </S.SaleSticker>
                 
             </S.Header>
-            <Courses />
+            <Courses courses = {courses} />
 
-            <S.ButtonUp>Наверх&#129045;</S.ButtonUp>
+            <S.ButtonUp onClick={ButtonUp}>Наверх&#129045;</S.ButtonUp>
     
 
         </S.Main>  

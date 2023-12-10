@@ -104,4 +104,3 @@ export const Login = styled.div`
       background: #d9d9d9;
     }
   `;
-

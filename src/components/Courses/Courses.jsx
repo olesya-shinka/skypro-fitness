@@ -1,50 +1,44 @@
-import { useEffect, useState } from "react";
 import * as S from "./Style";
-import { getCourses,  getCourses2,  getWorkouts } from "../../Api";
-export const Courses = () => {
+export const Courses = ({courses}) => {
     //для проверки гет запроса
-    const [courses, setСourses] = useState([]);
 
-     useEffect(() => {
-      getCourses()
-        .then((data) => {
-          setСourses(data)
-        })
-       .catch((error) => {
-         console.log(error.message);
-       })
-    
-    }, [])
+    const images = [
+      { src: '/img/profCard1.png' },
+      { src: '/img/profCard2.png' },
+      { src: '/img/profCard3.png' },
+      { src: '/img/profCard4.png' },
+      { src: '/img/profCard5.png' },
+      ];
 
-    const name = courses.map((course) => course.nameRu)
-   // console.log(name);
 return (
-    <S.Courses>
-    <S.CourseYoga  >
-        <S.CourseName>Йога</S.CourseName>
-     
-    
-    </S.CourseYoga>
-    <S.CourseStrech >
-    <S.CourseName>Стретчинг </S.CourseName>
-   
-    </S.CourseStrech>
-    <S.CourseDance>
-    <S.CourseName>Танцевальный фитнес</S.CourseName>
-    
-    </S.CourseDance>
-    <S.CourseStep >
-    <S.CourseName>Степ-аэробика</S.CourseName>
-    
-    </S.CourseStep>
-    <S.CourseBodyflex>
-    <S.CourseName> Бодифлекс</S.CourseName>
-    
-    </S.CourseBodyflex>
+      <S.Courses  >
 
-</S.Courses>
+{images.map((image) => <S.Link to='/CourseInfo/:id'><S.CourseImg src = {image.src}></S.CourseImg></S.Link>)}
 
-)
+      </S.Courses>
+      
+      )
 
-
+        
 }
+   
+// {courses?.sort((a, b) => a.order - b.order).map((course, id) => 
+//       <S.Link to='/CourseInfo/:id'>
+//       <S.Course  key={id}   >
+//        <S.CourseName>{course.nameRU}</S.CourseName>
+//        <S.CourseImg src = {`/img/card-${id  + 1 }.png`}></S.CourseImg>
+//         </S.Course>
+//         </S.Link>
+        
+//         )}
+
+// {courses?.sort((a, b) => a.order - b.order).map((course, index) => 
+
+//       <S.Link to='/CourseInfo/:id'>
+//       <S.Course  key={index} image = {images[index] + 1}  >
+    
+//        <S.CourseName>{course.nameRU}</S.CourseName>
+//         </S.Course>
+//         </S.Link>
+        
+//         )}
