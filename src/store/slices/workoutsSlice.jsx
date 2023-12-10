@@ -1,46 +1,59 @@
 /* eslint-disable prettier/prettier */
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { selectCourses } from "../selectors/course";
+import { loadWorkouts } from "../../Api";
 
-export const fetchWorkouts = createAsyncThunk("workouts/fetchWorkouts", async (course) => {
-  const response = await fetch(
-    `https://fitness-pro-d307e-default-rtdb.europe-west1.firebasedatabase.app/`
-  );
-  const data = await response.json();
-  return Object.values(data[course].workout);
-});
+const initialState = {
+  status: "idle",
+  error: null,
+  list: {},
+  currentId: ""
+};
 
-export const workoutsSlice = createSlice({
+const workoutsSlice = createSlice({
   name: "workouts",
-  initialState: { data: [], status: "idle", error: null },
-  reducers: {},
+  initialState,
+  reducers: {
+    setCurrentId(state, action) {
+      state.currentId = action.payload;
+    }
+  },
   extraReducers: (builder) => {
-    builder.addCase(fetchWorkouts.pending, (state) => {
-      state.status = "loading";
-    });
-    builder.addCase(fetchWorkouts.fulfilled, (state, action) => {
-      state.status = "succeeded";
-      state.data = action.payload;
-    });
-    builder.addCase(fetchWorkouts.rejected, (state, action) => {
-      state.status = "failed";
-      state.error = action.error.message;
-    });
+    builder
+      .addCase(loadWorkouts.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(loadWorkouts.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload;
+      })
+      .addCase(loadWorkouts.fulfilled, (state, action) => {
+        state.status = "received";
+        state.list = Object.values(action.payload);
+      });
   }
 });
 
-export const workoutApi = createApi({
-  reducerPath: "workoutApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "https://fitness-pro-d307e-default-rtdb.europe-west1.firebasedatabase.app/"
-  }),
-  endpoints: (builder) => ({
-    getWorkoutById: builder.query({
-      query: (id) => `courses/${id}.json`
-    })
-  })
+export const workoutsReducer = workoutsSlice.reducer;
+export const { setCurrentId } = workoutsSlice.actions;
+
+//selectors
+
+export const selectWorkoutsInfo = (state) => ({
+  status: state.workouts.status,
+  error: state.workouts.error,
+  qty: state.workouts.list.length
 });
 
-export const { useGetWorkoutByIdQuery } = workoutApi;
+export const selectWorkouts = (state) => state.workouts.list;
+export const selectCurrentId = (state) => state.workouts.currentId;
 
-export default workoutsSlice.reducer;
+export const selectCurrentWorkout = createSelector(
+  [selectCourses, selectCurrentId, selectWorkouts],
+  (courses, id, workouts) => {
+    const idsWorkouts = courses?.filter((c) => c._id.includes(id));
+
+    return workouts.filter((w) => idsWorkouts[0].workout.includes(w._id));
+  }
+);

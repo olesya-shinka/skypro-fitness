@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { createSlice } from "@reduxjs/toolkit";
 
-const loadingSlice = createSlice({
+export const loadingSlice = createSlice({
   name: "loading",
   initialState: true,
   reducers: {

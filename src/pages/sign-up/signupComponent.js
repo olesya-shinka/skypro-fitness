@@ -4,7 +4,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 import * as S from "./signupStyle.jsx";
-import "./signup.js";
+import "./signupComponent.js";
 import LogoSvg from "../description/LogoSvg.jsx";
 
 export default function SignUpPage() {

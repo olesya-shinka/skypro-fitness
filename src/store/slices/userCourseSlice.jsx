@@ -1,23 +1,68 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable no-undef */
+/* eslint-disable prettier/prettier */
 import { createSlice } from "@reduxjs/toolkit";
+import { addProgress, newCourse, userCourses } from "../../Api";
 
 const initialState = {
-  userCourses: []
+  status: "idle",
+  error: null,
+  list: []
 };
 
-const userCoursesSlice = createSlice({
-  name: "userCourses",
+const profileSlice = createSlice({
+  name: "profile",
   initialState,
-  reducers: {
-    addCourse: (state, action) => {
-      state.userCourses.push(action.payload);
-    },
-    removeCourse: (state, action) => {
-      state.userCourses = state.userCourses.filter((courseId) => courseId !== action.payload);
-    }
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(() => initialState)
+      .addCase(userCourses.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(userCourses.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload;
+      })
+      .addCase(userCourses.fulfilled, (state, action) => {
+        state.status = "received";
+        state.error = null;
+        state.list = action.payload;
+      })
+      .addCase(newCourse.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(newCourse.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload;
+      })
+      .addCase(newCourse.fulfilled, (state) => {
+        state.status = "received";
+        state.error = null;
+      })
+      .addCase(addProgress.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(addProgress.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload;
+      })
+      .addCase(addProgress.fulfilled, (state) => {
+        state.status = "received";
+        state.error = null;
+      });
   }
 });
 
-export const { addCourse, removeCourse } = userCoursesSlice.actions;
+export const { setCurrentUser, setLogin, setPassword, setLoading, setError } = profileSlice.actions;
 
-export default userCoursesSlice.reducer;
+export const profileReducer = profileSlice.reducer;
+
+export const selectProfile = (state) => state.profile;
+export const selectProfileInfo = (state) => ({
+  status: state.profile.status,
+  error: state.profile.error
+});

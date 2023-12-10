@@ -6,6 +6,12 @@
 /* eslint-disable prettier/prettier */
 import * as S from "./styles";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCurrentWorkout } from "../../store/slices/workoutsSlice";
+import { selectUserCourses } from "../../store/selectors/progress";
+import { selectUser } from "../../store/selectors/user";
+import { userCourses } from "../../Api";
+import { getCurrentWorkouts } from "./utils";
 
 export function SelectWorkout({ openClosedTrainingModal }) {
   const dispatch = useDispatch;

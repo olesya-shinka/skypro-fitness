@@ -6,12 +6,10 @@
 import { calculator } from "./utils";
 import * as S from "./styles";
 
-const ProgressExercises = ({ exercises, progress }) => {
+export const ProgressExercises = ({ exercises, progress }) => {
   const currentExercises = exercises.exercises;
 
-  const currentProgress = progress
-    ? Object.keys(progress).map((key) => progress[key])
-    : null;
+  const currentProgress = progress ? Object.keys(progress).map((key) => progress[key]) : null;
   return (
     <S.ProgressBlock>
       <S.ProgressTitle>Мой прогресс по тренировке:</S.ProgressTitle>

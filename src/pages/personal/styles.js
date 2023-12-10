@@ -20,9 +20,12 @@ export const Content = styled.div`
 `;
 
 export const Title = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 56px;
+  padding-left: calc(50% - 580px);
+  padding-right: calc(50% - 580px);
+  padding-bottom: 40px;
 `;
 export const TitleText = styled.span`
   font-weight: 400;
@@ -33,6 +36,11 @@ export const TitleText = styled.span`
     "lnum" on;
   color: #000000;
   padding-top: 74px;
+`;
+
+export const Cards = styled.div`
+  padding-top: 20px;
+  text-align: center;
 `;
 
 export const TitleTextLogin = styled.span`
@@ -151,4 +159,18 @@ export const ProfButton = styled.button`
 
 export const Text = styled.span`
   margin-left: 10px;
+`;
+
+export const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
+`;
+
+export const Courses = styled.div`
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  padding: 10px;
 `;

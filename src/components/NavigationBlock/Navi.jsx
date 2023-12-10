@@ -8,7 +8,7 @@ import * as S from "./styles";
 import User from "./User";
 import Logo from "./Logo";
 
-const NavigateBlock = () => {
+export const NavigateBlock = () => {
   return (
     <S.Sidebar>
       <Logo />

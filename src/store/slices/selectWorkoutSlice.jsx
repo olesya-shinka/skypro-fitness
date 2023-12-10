@@ -3,7 +3,7 @@
 /* eslint-disable prettier/prettier */
 import { createSlice } from "@reduxjs/toolkit";
 
-const selectedWorkoutSlice = createSlice({
+export const selectedWorkoutSlice = createSlice({
   name: "selectedWorkout",
   initialState: null,
   reducers: {

@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 import { getDatabase, ref, query, get, push, set, remove } from "firebase/database";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export async function getCourses() {
   const oSnapshot = await get(
@@ -50,3 +51,115 @@ export async function getWorkouts() {
   console.log("workouts", oArr);
   return oArr;
 }
+
+export const userCourses = createAsyncThunk(
+  "profile/userCourses",
+  async (id, { extra: { databaseURL, api }, rejectWithValue }) => {
+    try {
+      const response = await databaseURL.get(api.USER_COURSES(id));
+
+      if (response.statusText !== "OK") {
+        throw new Error("Что-то пошло не так");
+      }
+      const { data } = await response;
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const newCourse = createAsyncThunk(
+  "profile/newCourse",
+  async (
+    { id, idCourse, name, pathName, workouts },
+    { extra: { databaseURL, api }, rejectWithValue }
+  ) => {
+    try {
+      const response = await databaseURL.post(api.ADD_COURSE(id), {
+        _id: idCourse,
+        name: name,
+        pathName: pathName,
+        workouts: workouts
+      });
+
+      if (response.statusText !== "OK") {
+        throw new Error("Что-то пошло не так");
+      }
+      const { data } = await response;
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const addProgress = createAsyncThunk(
+  "profile/addProgress",
+  async (
+    { id, courseId, workoutIndex, progress },
+    { extra: { databaseURL, api }, rejectWithValue }
+  ) => {
+    try {
+      const response = await databaseURL.patch(api.ADD_PROGRESS(id, courseId, workoutIndex), {
+        progress
+      });
+
+      if (response.statusText !== "OK") {
+        throw new Error("Что-то пошло не так");
+      }
+      const { data } = await response;
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getUserWorkouts = (allWorkouts, course) => {
+  const userWorkouts = [];
+
+  for (let i = 0; i < allWorkouts.length; i++) {
+    course[0].workout.map((workout) =>
+      workout === allWorkouts[i]._id ? userWorkouts.push(allWorkouts[i]) : ""
+    );
+  }
+
+  return userWorkouts;
+};
+
+export const doNotAddCourse = (userCoursesList, course) => {
+  const existingCourses = [];
+
+  let existingCourse;
+  for (const key in userCoursesList) {
+    existingCourse = userCoursesList[key].pathName;
+
+    existingCourses.push(existingCourse);
+  }
+
+  return existingCourses.includes(course[0].pathName);
+};
+
+export const loadWorkouts = createAsyncThunk(
+  'workouts/all',
+  async (_, { extra: { databaseURL, api }, rejectWithValue }) => {
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        skipAuth: true,
+      }
+      const response = await databaseURL.get(api.WORKOUTS, config)
+      if (response.statusText !== 'OK') {
+        throw new Error('Что-то пошло не так')
+      }
+      const { data } = await response
+
+      return data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)

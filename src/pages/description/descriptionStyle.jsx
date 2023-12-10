@@ -21,191 +21,114 @@ export const GlobalStyle = createGlobalStyle`
     font-style: normal;
   } 
 `;
-  
-export const Container = styled.div`
-  padding-left: calc(50% - 580px);
-  padding-right: calc(50% - 580px);
-`;
-  
-export const HeaderNav = styled.nav`
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-`;
-  
-export const Course = styled.main`
-  margin-top: 75px;
-  height: 310px;
+
+export const Wrapper = styled.div`
+  font-size: 30px;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-bottom: 95px;
 `;
 
-export const CourseBox = styled.div`
-  height: 310px;
-  width: 1160px;
+export const Header = styled.header``;
+
+export const Container = styled.div`
+  font-size: 24px;
+  line-height: 32px;
+  margin-top: 75px;
+`;
+
+export const TitleBox = styled.div`
+  background-color: rgba(205, 205, 205, 0.1);
   display: flex;
   justify-content: space-between;
-  background: rgba(205, 205, 205, 0.10); 
   border-radius: 30px;
-`;
-
-export const CourseYoga = styled.h1`
-  padding-left: 30px;
-  margin-top: 30px;
-  font-size: 64px;
-  font-weight: 400;
-  line-height: 72px;
-  font-family: "StratosSkyeng", sans-serif;
-`;
-
-export const CourseImgBox = styled.div`
-  width: 425px;
   height: 310px;
-  position: relative;
-  overflow: hidden;
 `;
 
-// export const CourseImg = styled.img`
-//   background: #FAFAFA;
-//   position: absolute;
-//   transform: translate(-8px, -172px);
-//   width: 427px;
-//   height: 550px;
-// `;
-
-export const Tender = styled.div`
-  margin-top: 75px;
-  margin-bottom: 75px;
+export const Title = styled.h1`
+  margin: 30px;
 `;
 
-export const TenderTitle = styled.h2`
-  font-size: 40px;
-  font-weight: 400;
-  line-height: 48px;
-  font-family: "StratosSkyeng", sans-serif;
-`;
-
-export const Offers = styled.div`
-  margin-top: 40px;
+export const ForYou = styled.div`
   display: flex;
+  flex-direction: column;
+`;
+
+export const Heading = styled.h2`
+  font-size: 40px;
+  line-height: 48px;
+  margin-top: 75px;
+  margin-bottom: 20px;
+`;
+
+export const ForYouList = styled.ol`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 87px;
 `;
 
-export const OffersBox = styled.div`
+export const ForYouListItem = styled.li`
+  counter-increment: item;
   display: flex;
-  gap: 24px;
+  align-items: flex-start;
+  ::before {
+    margin-right: 24px;
+    content: counter(item);
+    background: #c7e957;
+    border-radius: 50%;
+    color: #000;
+    width: 67px;
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+  }
 `;
 
-export const OffersNumber = styled.div`
+export const Directions = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 1202px;
-  background: #c7e957;
-  width: 67px;
-  height: 67px;
-  color: #000;
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 40px;
-`;
-
-export const P = styled.p`
-  color: #000;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 32px;
-  margin-top: 0;
-  font-family: "StratosSkyeng", sans-serif;
-`;
-
-export const OffersText = styled.div`
-  width: 244px;
-`;
-
-export const PNum = styled.p`
-  color: #000;
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 40px;
-  font-family: "StratosSkyeng", sans-serif;
-`;
-
-export const DirectionsTitle = styled.h2`
-  margin-bottom: 22px;
-  font-size: 40px;
-  font-weight: 400;
-  line-height: 48px;
-  font-family: "StratosSkyeng", sans-serif;
-`;
-
-export const DirectionsLine = styled.div`
-  display: flex;
-  column-gap: 168px;
-  padding-left: 35px;
-`;
-
-export const DirectionsText = styled.ul`
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 32px;
-  font-family: "StratosSkyeng", sans-serif;
-`;
-
-export const Li = styled.li`
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 32px;
-`;
-
-export const DescribeText = styled.p`
-  margin-top: 75px;
+  flex-direction: column;
   margin-bottom: 75px;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 32px;
-  font-family: "StratosSkyeng", sans-serif;
 `;
 
-export const RegisterBox = styled.div`
-  background: #f9ebff;
-  height: 300px;
-  border-radius: 30px;
-  display: flex;
-  margin-bottom: 95px;
+export const DirectionsList = styled.ul`
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+`;
+
+export const DirectionsListItem = styled.li`
+  list-style-type: disc;
+  list-style-position: inside;
+`;
+
+export const Results = styled.div`
+  margin-bottom: 75px;
+`;
+
+export const ResultsText = styled.p`
+  font-size: 32px;
+  line-height: 40px;
+  margin-bottom: 35px;
+  text-align: center;
 `;
 
 export const Application = styled.div`
-  padding-left: 52px;
+  background: #f9ebff;
+  border-radius: 30px;
+  padding: 46px 52px;
+  margin-bottom: 95px;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-export const ApplicationText = styled.h3`
-  color: #000;
-  margin-bottom: 46px;
+export const ApplicationText = styled.p`
   font-size: 32px;
-  font-weight: 400;
   line-height: 40px;
-  font-family: "StratosSkyeng", sans-serif;
-`;
-
-export const ApplicationBtn = styled.button`
-  border-radius: 46px;
-  width: 275px;
-  height: 52px;
-  background: #580ea2;
-  color: #fff;
-  border: none;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 24px;
-  font-family: "StratosSkyeng", sans-serif;
-  :hover{
-    background: #DAF289;
-  }
-  :active{
-    background: #EBFFAB;
-  }
-`;
-
-export const CourseImgAddBox = styled.div`
-  margin-top: -165px;
+  margin-bottom: 35px;
+  text-align: center;
 `;

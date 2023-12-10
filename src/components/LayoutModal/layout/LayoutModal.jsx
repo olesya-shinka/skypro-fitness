@@ -5,7 +5,7 @@
 /* eslint-disable prettier/prettier */
 import * as S from "./styles";
 
-const LayoutModal = ({ children, onClick }) => {
+export const LayoutModal = ({ children, onClick }) => {
   return (
     <S.Wrapper>
       <S.Modal>{children}</S.Modal>

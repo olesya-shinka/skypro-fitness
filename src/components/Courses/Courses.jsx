@@ -11,7 +11,7 @@ export const Courses = () => {
         <S.CourseName>Йога</S.CourseName>
       </S.CourseYoga>
       <S.CourseStrech>
-        <S.CourseName>Стретчинг </S.CourseName>
+        <S.CourseName>Стретчинг</S.CourseName>
       </S.CourseStrech>
       <S.CourseDance>
         <S.CourseName>Танцевальный фитнес</S.CourseName>
@@ -20,7 +20,7 @@ export const Courses = () => {
         <S.CourseName>Степ-аэробика</S.CourseName>
       </S.CourseStep>
       <S.CourseBodyflex>
-        <S.CourseName> Бодифлекс</S.CourseName>
+        <S.CourseName>Бодифлекс</S.CourseName>
       </S.CourseBodyflex>
     </S.Courses>
   );

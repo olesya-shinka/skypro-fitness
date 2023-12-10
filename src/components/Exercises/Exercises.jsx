@@ -6,7 +6,7 @@
 import * as S from "./styles";
 import ButtonMain from "../ButtonMain/ButtonMain";
 
-const ExercisesList = ({ exercises, onClick }) => {
+export const ExercisesList = ({ exercises, onClick }) => {
   return (
     <div className="content">
       <S.TitleExercises>Упражнения</S.TitleExercises>
