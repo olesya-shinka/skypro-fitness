@@ -10,7 +10,7 @@ import ButtonMain from "../../ButtonMain/ButtonMain";
 import { addProgress } from "../../../Api";
 import { selectUser } from "../../../store/selectors/user";
 import InputProgress from "../InputProgress/InputProgress";
-import { getUserProgress } from "./utils";
+import { getUserProgress } from "../../../Api";
 
 export const ProgressModal = ({ exercises, onClick, courseName }) => {
   const dispatch = useDispatch();

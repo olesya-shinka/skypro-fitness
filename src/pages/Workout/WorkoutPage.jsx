@@ -26,7 +26,6 @@ import { selectUser } from "../../store/selectors/user";
 import { selectUserCourses } from "../../store/selectors/progress";
 
 const WorkoutPage = () => {
-
   const workoutId = useParams();
   const dispatch = useDispatch();
   const { id } = useSelector(selectUser);

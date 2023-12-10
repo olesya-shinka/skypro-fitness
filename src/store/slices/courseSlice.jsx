@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { createSlice } from "@reduxjs/toolkit";
-import loadingSlice from "./loadingSlice";
+import { loadingSlice } from "./loadingSlice";
 
 const initialState = {
   status: "idle",
