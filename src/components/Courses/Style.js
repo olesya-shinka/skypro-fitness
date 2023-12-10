@@ -15,7 +15,13 @@ export const GlobalStyle = createGlobalStyle`
       url("../../../public/fonts/StratosSkyeng.woff") format("woff");
     font-weight: 400;
     font-style: normal;
-  } 
+  }
+  .pagination{
+    color: red;
+}
+.active{
+    color: blue;
+}
 `
 
 export const Container = styled.div`
@@ -84,6 +90,7 @@ export const Courses = styled.div`
   grid-gap: 37px 44px;
   grid-template-columns: repeat(3, 360px);
   position: relative;
+
 `
 
 export const Course = styled.div`
@@ -161,4 +168,12 @@ export const ButtonUp= styled.button`
 `
 export const Link = styled(NavLink)`
 text-decoration: none;
+`
+
+export const Pagination = styled.div`
+display: flex;
+color: white;
+`
+export const Active = styled.div`
+color: red;
 `

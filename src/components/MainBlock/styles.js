@@ -35,8 +35,9 @@ ul li {
 export const WrapperStyle = styled.div`
 width: 100%;
 min-height: 100%;
-overflow: hidden;
+overflow: scroll;
 background-color: rgb(250, 250, 250);
+
 `
 
 export const ContainerStyle = styled.div`
@@ -45,4 +46,5 @@ height: 100vh;
 margin: 0 auto;
 position: relative;
 background-color: rgb(250, 250, 250);
+
 `

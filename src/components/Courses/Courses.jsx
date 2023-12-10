@@ -1,6 +1,8 @@
 import * as S from "./Style";
+import { useEffect, useState } from 'react';
+import ReactPaginate from "react-paginate"; 
+import './style.css'
 export const Courses = ({courses}) => {
-    //для проверки гет запроса
 
     const images = [
       { src: '/img/profCard1.png' },
@@ -9,19 +11,38 @@ export const Courses = ({courses}) => {
       { src: '/img/profCard4.png' },
       { src: '/img/profCard5.png' },
       ];
-
+      const [currentPage, setCurrentPage] = useState(0);
+      const handlePageChange = ({ selected }) => {
+        setCurrentPage(selected);
+      };
+      const itemsPerPage = 6;
+      const offset = currentPage * itemsPerPage;
+      const paginatedData = images.slice(offset, offset + itemsPerPage);
 return (
+      <>
       <S.Courses  >
-
-{images.map((image) => <S.Link to='/CourseInfo/:id'><S.CourseImg src = {image.src}></S.CourseImg></S.Link>)}
-
+       {paginatedData.map((image) => (
+        <S.Link to='/CourseInfo/:id'><S.CourseImg src = {image.src}></S.CourseImg></S.Link>
+      ))}
       </S.Courses>
-      
+      <S.Pagination>
+                <ReactPaginate
+            previousLabel={'Предыдущая'}
+            nextLabel={'Следующая'}
+            pageCount={Math.ceil( images.length / itemsPerPage)}//общее количество страниц
+            marginPagesDisplayed={2}//количество страниц, которые должны быть видны по бокам от текущей страницы
+            pageRangeDisplayed={5}//количество видимых страниц внутри компонента
+            onPageChange={handlePageChange}//функция-обработчик, которая будет вызываться при каждом клике на страницу
+            containerClassName={'pagination'}//класс для обертки пагинации
+            activeClassName={'active'}//класс для активной страницы
+/>        
+</S.Pagination>
+      </>
       )
 
         
 }
-   
+//{images.map((image) => <S.Link to='/CourseInfo/:id'><S.CourseImg src = {image.src}></S.CourseImg></S.Link>)}
 // {courses?.sort((a, b) => a.order - b.order).map((course, id) => 
 //       <S.Link to='/CourseInfo/:id'>
 //       <S.Course  key={id}   >

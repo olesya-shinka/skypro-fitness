@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
 export const Container = styled.div`
   background-color: #271A58;
   width: 100%;
-  height: 100%;
+
       `
   
 export const Main = styled.div`

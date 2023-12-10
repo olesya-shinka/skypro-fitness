@@ -21,6 +21,7 @@ const ButtonUp = () => {
         behavior: 'smooth'
       }); 
 }
+
     return (
         <>
         <S.GlobalStyle />
@@ -38,6 +39,7 @@ const ButtonUp = () => {
                 </S.SaleSticker>
                 
             </S.Header>
+
             <Courses courses = {courses} />
 
             <S.ButtonUp onClick={ButtonUp}>Наверх&#129045;</S.ButtonUp>
