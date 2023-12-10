@@ -4,6 +4,7 @@ import * as api from "./config";
 import { store } from "../store/store";
 import { KJUR } from "jsrsasign";
 import { auth } from "../firebase";
+import { returnAll } from "../store/utils";
 
 export const databaseURL = axios.create({
   baseURL: api.BASE_URL,
@@ -57,7 +58,7 @@ databaseURL.interceptors.response.use(
     } = response;
 
     if (status === 401) {
-      store.dispatch();
+      store.dispatch(returnAll());
     } else if (errors) {
       console.log("ошибки", errors);
     }

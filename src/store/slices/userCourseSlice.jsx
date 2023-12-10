@@ -3,6 +3,7 @@
 /* eslint-disable prettier/prettier */
 import { createSlice } from "@reduxjs/toolkit";
 import { addProgress, newCourse, userCourses } from "../../Api";
+import { returnAll } from "../utils";
 
 const initialState = {
   status: "idle",
@@ -16,7 +17,7 @@ const profileSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(() => initialState)
+      .addCase(returnAll, () => initialState)
       .addCase(userCourses.pending, (state) => {
         state.status = "loading";
         state.error = null;
