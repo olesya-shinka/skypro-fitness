@@ -2,13 +2,21 @@ import { useEffect, useState } from 'react';
 import { Courses } from '../../components/Courses/Courses';
 import * as S from  './MainStyle';
 import { getCourses } from '../../Api';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPageCourses } from '../../store/slices/coursesSlice';
+//import { PageCoursesSelector } from '../../store/selectors/PageCourses';
 export const MainPage = () =>{
     const [courses, setСourses] = useState([]);
+    const dispatch = useDispatch();
+    //const courses = useSelector(PageCoursesSelector) //- ошибка undefine
+    
+
     useEffect(() => {
         getCourses()
           .then((data) => {
-            console.log(data);
+           // console.log(data);
             setСourses(data)
+           //dispatch(getPageCourses(data))
           })
          .catch((error) => {
            console.log(error.message);
@@ -40,7 +48,7 @@ const ButtonUp = () => {
                 
             </S.Header>
 
-            <Courses courses = {courses} />
+            <Courses courses = {courses}/>
 
             <S.ButtonUp onClick={ButtonUp}>Наверх&#129045;</S.ButtonUp>
     

@@ -1,11 +1,24 @@
+import { useState } from "react";
 import NavigateBlock from "../NavigationBlock/Navi.jsx"
 import * as S from "./styles.js"
+import { useEffect } from "react";
 export default function MainBlock({children}){
+const[UrlBackgroundColor, setUrlBackgroundColor] = useState('');
+const getUrl = window.location.pathname;
+useEffect(() => {
+    if(getUrl === '/'){
+     // console.log("running")
+      setUrlBackgroundColor('#271a58');
+    }else{
+        setUrlBackgroundColor('#fafafa');
+    }
+  },[getUrl]);// фон меняется только при ручном обновлении страницы
+  
 return (<>
     <S.GlobalStyle />
-        <S.WrapperStyle>
-        <S.ContainerStyle>
-            <NavigateBlock/>
+        <S.WrapperStyle >
+        <S.ContainerStyle style={{backgroundColor: UrlBackgroundColor}}>
+            <NavigateBlock  />
               {children}
         </S.ContainerStyle>
         </S.WrapperStyle>
