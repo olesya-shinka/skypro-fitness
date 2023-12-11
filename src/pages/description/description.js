@@ -26,6 +26,7 @@ export default function CourseInfo() {
   const courseList = useSelector(selectCourses);
   const userCoursesList = useSelector(selectUserCourses);
   const { login } = useSelector(selectUser);
+  const course = courseList?.filter((course) => course.pathName === title.title);
 
   const allWorkouts = useSelector(selectWorkouts);
 
@@ -69,8 +70,6 @@ export default function CourseInfo() {
       }, 500);
     }
   }, [dispatch, id]);
-
-  const course = courseList?.filter((course) => course.pathName === title.title);
 
   return (
     <S.Wrapper>

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-undef */
 const databaseURL = process.env.REACT_APP_FIREBASE_DATABASEURL;
 
