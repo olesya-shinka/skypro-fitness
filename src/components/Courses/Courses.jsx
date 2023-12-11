@@ -1,7 +1,6 @@
 import * as S from "./Style";
 import { useEffect, useState } from 'react';
 import ReactPaginate from "react-paginate"; 
-import './style.css'
 export const Courses = ({courses}) => {
 
     const images = [
@@ -15,7 +14,7 @@ export const Courses = ({courses}) => {
       const handlePageChange = ({ selected }) => {
         setCurrentPage(selected);
       };
-      const itemsPerPage = 6;
+      const itemsPerPage = 6;//количество элементов на странице
       const offset = currentPage * itemsPerPage;
       const paginatedData = images.slice(offset, offset + itemsPerPage);
 return (
@@ -25,8 +24,9 @@ return (
         <S.Link to='/CourseInfo/:id'><S.CourseImg src = {image.src}></S.CourseImg></S.Link>
       ))}
       </S.Courses>
-      <S.Pagination>
-                <ReactPaginate
+
+                <ReactPaginate 
+                
             previousLabel={'Предыдущая'}
             nextLabel={'Следующая'}
             pageCount={Math.ceil( images.length / itemsPerPage)}//общее количество страниц
@@ -35,8 +35,9 @@ return (
             onPageChange={handlePageChange}//функция-обработчик, которая будет вызываться при каждом клике на страницу
             containerClassName={'pagination'}//класс для обертки пагинации
             activeClassName={'active'}//класс для активной страницы
+
 />        
-</S.Pagination>
+
       </>
       )
 

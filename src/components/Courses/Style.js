@@ -16,12 +16,6 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-style: normal;
   }
-  .pagination{
-    color: red;
-}
-.active{
-    color: blue;
-}
 `
 
 export const Container = styled.div`
@@ -168,12 +162,4 @@ export const ButtonUp= styled.button`
 `
 export const Link = styled(NavLink)`
 text-decoration: none;
-`
-
-export const Pagination = styled.div`
-display: flex;
-color: white;
-`
-export const Active = styled.div`
-color: red;
 `
