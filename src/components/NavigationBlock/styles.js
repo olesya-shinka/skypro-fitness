@@ -105,7 +105,7 @@ export const MenuList = styled.ul`
 padding: 18px 0 10px 0;
 position: absolute;
 box-sizing: border-box;
-
+list-style-type: none; 
 `
 
 export const MenuItem = styled.li`
