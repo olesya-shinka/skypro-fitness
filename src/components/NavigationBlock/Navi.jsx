@@ -9,6 +9,7 @@ import User from "./User";
 import Logo from "./Logo";
 import ButtonEnter from "./ButtonEnter";
 
+
 export const NavigateBlock = ({ login, onClick }) => {
   return (
     <S.Sidebar>
