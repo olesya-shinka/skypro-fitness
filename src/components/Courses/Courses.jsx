@@ -4,11 +4,11 @@ import ReactPaginate from "react-paginate";
 export const Courses = ({courses}) => {
 
     const images = [
-      { src: '/img/profCard1.png' },
-      { src: '/img/profCard2.png' },
-      { src: '/img/profCard3.png' },
-      { src: '/img/profCard4.png' },
-      { src: '/img/profCard5.png' },
+      { src: '/img/card-1.png' },
+      { src: '/img/card-2.png' },
+      { src: '/img/card-3.png' },
+      { src: '/img/card-4.png' },
+      { src: '/img/card-5.png' },
       ];
       const [currentPage, setCurrentPage] = useState(0);
       const handlePageChange = ({ selected }) => {
@@ -16,12 +16,16 @@ export const Courses = ({courses}) => {
       };
       const itemsPerPage = 6;//количество элементов на странице
       const offset = currentPage * itemsPerPage;
-      const paginatedData = images.slice(offset, offset + itemsPerPage);
+      const paginatedData = courses.slice(offset, offset + itemsPerPage);
 return (
       <>
       <S.Courses  >
-       {paginatedData.map((image) => (
-        <S.Link to='/CourseInfo/:id'><S.CourseImg src = {image.src}></S.CourseImg></S.Link>
+       {paginatedData?.sort((a, b) => a.order - b.order).map((course, index) => (
+        <S.Link to='/CourseInfo/:id'>
+          <S.Course image = {images[index].src}>
+          <S.CourseName>{course.nameRU}</S.CourseName>
+          </S.Course>
+          </S.Link>
       ))}
       </S.Courses>
 

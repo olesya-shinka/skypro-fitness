@@ -98,12 +98,11 @@ export const Course = styled.div`
   display: inline-block;
   position: relative;
   z-index: 0;
+  background-image: url(${props => props.image});
+  background-position: 50% 50%;
+  background-size: auto;
 
   `
-  //  background-image: url('img/card-1.png');
-  //background-position: 50% 50%;
-  //background-size: auto;
- //  background-image: url(${props => props.image});
 
 export const CourseName = styled.h2`
 color: #000;
