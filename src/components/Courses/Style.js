@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+import { NavLink } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-style: normal;
   }
-`
+`;
 
 export const Container = styled.div`
   background-color: #271a58;
@@ -75,12 +75,13 @@ export const SaleSticker = styled.image`
 `;
 export const Courses = styled.div`
   display: grid;
+  box-sizing: border-box
   margin-left: 140px;
   grid-gap: 37px 44px;
   grid-template-columns: repeat(3, 360px);
   position: relative;
 
-`
+`;
 
 export const Course = styled.div`
   background: tracnsparent;
@@ -93,11 +94,11 @@ export const Course = styled.div`
   display: inline-block;
   position: relative;
   z-index: 0;
-  background-image: url(${props => props.image});
+  background-image: url(${(props) => props.image});
   background-position: 50% 50%;
   background-size: auto;
 
-  `
+  `;
 
 export const CourseName = styled.h2`
   color: #000;
@@ -111,7 +112,17 @@ export const CourseName = styled.h2`
   width: 290px;
   padding-top: 30px;
   padding-left: 30px;
+  position: relative;
+  z-index: 1;
 `;
+export const CourseImg = styled.img`
+  height: 480px;
+  width: 360px;
+  border-radius: 30px;
+  background-position: 50% 50%;
+  background-size: cover;
+`;
+//z-index: -1; если указать то картинки совсем исчезают
 
 export const ButtonUp = styled.button`
   display: inline-flex;
@@ -140,7 +151,7 @@ export const ButtonUp = styled.button`
   :active {
     background: #ebffab;
   }
-`
+`;
 export const Link = styled(NavLink)`
-text-decoration: none;
-`
+  text-decoration: none;
+`;

@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
-import { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
 import * as S from "./Style";
 import { useEffect, useState } from 'react';
-import ReactPaginate from "react-paginate"; 
+import ReactPaginate from "react-paginate";
 export const Courses = ({courses}) => {
 
     const images = [
@@ -25,7 +25,7 @@ return (
       <>
       <S.Courses  >
        {paginatedData?.sort((a, b) => a.order - b.order).map((course, index) => (
-        <S.Link to='/CourseInfo/:id'>
+        <S.Link to='/CourseInfo/:id' key={index}>
           <S.Course image = {images[index].src}>
           <S.CourseName>{course.nameRU}</S.CourseName>
           </S.Course>
@@ -51,6 +51,7 @@ return (
 
         
 }
+
 //{images.map((image) => <S.Link to='/CourseInfo/:id'><S.CourseImg src = {image.src}></S.CourseImg></S.Link>)}
 // {courses?.sort((a, b) => a.order - b.order).map((course, id) => 
 //       <S.Link to='/CourseInfo/:id'>
