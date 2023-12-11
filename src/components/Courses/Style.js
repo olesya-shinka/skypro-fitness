@@ -1,22 +1,6 @@
 
 import { NavLink } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
-export const GlobalStyle = createGlobalStyle`
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-  }
-  @font-face {
-    font-family: "StratosSkyeng", sans-serif;
-    src: local("StratosSkyeng"), local("StratosSkyeng"),
-      url("../../../public/fonts/StratosSkyeng.woff2") format("woff2"),
-      url("../../../public/fonts/StratosSkyeng.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
-  } 
-`
+import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: #271A58;
