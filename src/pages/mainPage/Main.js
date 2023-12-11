@@ -4,6 +4,7 @@ import * as S from  './MainStyle';
 import { getCourses } from '../../Api';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPageCourses } from '../../store/slices/coursesSlice';
+import { PageCoursesSelector } from '../../store/selectors/PageCourses';
 //import { PageCoursesSelector } from '../../store/selectors/PageCourses';
 export const MainPage = () =>{
     const [courses, setСourses] = useState([]);
@@ -16,7 +17,7 @@ export const MainPage = () =>{
           .then((data) => {
            // console.log(data);
             setСourses(data)
-           //dispatch(getPageCourses(data))
+          ///dispatch(getPageCourses(data))
           })
          .catch((error) => {
            console.log(error.message);
