@@ -1,4 +1,5 @@
-import styled, { createGlobalStyle } from 'styled-components';
+/* eslint-disable prettier/prettier */
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -30,7 +31,7 @@ ul li {
   list-style: none;
 }
 
-`
+`;
 
 export const WrapperStyle = styled.div`
 width: 100%;

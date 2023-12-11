@@ -1,3 +1,7 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
+import { useEffect, useState } from "react";
 import * as S from "./Style";
 import { useEffect, useState } from 'react';
 import ReactPaginate from "react-paginate"; 

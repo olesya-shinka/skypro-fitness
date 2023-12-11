@@ -1,3 +1,8 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
@@ -266,4 +271,3 @@ export const SuccessText = styled.h2`
   margin: 0;
   margin-bottom: 10px;
 `;
-

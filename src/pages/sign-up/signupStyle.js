@@ -1,21 +1,5 @@
-import styled, { createGlobalStyle } from "styled-components";
-
-export const GlobalStyle = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  @font-face {
-    font-family: "StratosSkyeng", sans-serif;
-    src: local("StratosSkyeng"), local("StratosSkyeng"),
-      url("../../../public/fonts/StratosSkyeng.woff2") format("woff2"),
-      url("../../../public/fonts/StratosSkyeng.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
-  } 
-`;
+/* eslint-disable prettier/prettier */
+import styled from "styled-components";
   
 export const Login = styled.div`
     display: flex;
@@ -73,4 +57,10 @@ export const Login = styled.div`
     }
   `;
 
-  
+  export const error = styled.div`
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  font-family: "StratosSkyeng", sans-serif;
+  color: #DD4333;
+`;

@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
 import { Routes, Route } from "react-router-dom";
 import { MainPage } from "./pages/mainPage/Main";
 import CourseInfo from "./pages/description/description";

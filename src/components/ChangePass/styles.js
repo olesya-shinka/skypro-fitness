@@ -1,3 +1,8 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -41,26 +46,26 @@ export const ErrorMessage = styled.div`
 `;
 
 export const ModalFormLogin = styled.form`
-border-radius: 12px;
-background: #fff;
-display: flex;
-flex-direction: column;
-padding-top: 33px;
-position: relative;
-width: 360px;
-height: 400px;
-align-items: center;
+  border-radius: 12px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding-top: 33px;
+  position: relative;
+  width: 360px;
+  height: 400px;
+  align-items: center;
 `;
 export const Content = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 export const ModalFormLoginImg = styled.img`
-cursor: pointer;
-width: 220px;
-height: 35px;
+  cursor: pointer;
+  width: 220px;
+  height: 35px;
 `;
 
 export const ModalFormLoginInput = styled.div`

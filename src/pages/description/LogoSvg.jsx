@@ -1,3 +1,10 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 export default function LogoSvg () {
 return (
 <div>

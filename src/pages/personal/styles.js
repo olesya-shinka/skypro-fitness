@@ -1,3 +1,8 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import styled from "styled-components";
 
 export const Wrap = styled.div`
@@ -6,15 +11,17 @@ export const Wrap = styled.div`
   position: relative;
   width: 100%;
   background: #fafafa;
-  padding-left: calc(50% - 800px);
-  padding-right: calc(50% - 800px);
+  padding-left: calc(50% - 580px);
+  padding-right: calc(50% - 580px);
 `;
 export const Content = styled.div`
-  margin-left: 140px;
-  margin-right: 140px;
 `;
 
 export const Title = styled.div`
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 56px;
+  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -23,9 +30,16 @@ export const TitleText = styled.span`
   font-weight: 400;
   font-size: 48px;
   line-height: 56px;
-  font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings:
+    "pnum" on,
+    "lnum" on;
   color: #000000;
   padding-top: 74px;
+`;
+
+export const Cards = styled.div`
+  padding-top: 20px;
+  text-align: center;
 `;
 
 export const TitleTextLogin = styled.span`
@@ -34,7 +48,9 @@ export const TitleTextLogin = styled.span`
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings:
+    "pnum" on,
+    "lnum" on;
   color: #000000;
   padding-top: 40px;
 `;
@@ -44,7 +60,9 @@ export const TitleTextPass = styled.span`
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings:
+    "pnum" on,
+    "lnum" on;
   color: #000000;
   padding-top: 20px;
 `;
@@ -68,7 +86,9 @@ export const ChangeButton = styled.button`
   font-size: 18px;
   line-height: 24px;
   letter-spacing: -0.05px;
-  font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings:
+    "pnum" on,
+    "lnum" on;
   color: #ffffff;
   border: none;
   &:hover {
@@ -90,7 +110,9 @@ export const TitleCourse = styled.div`
   font-weight: 400;
   font-size: 48px;
   line-height: 56px;
-  font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings:
+    "pnum" on,
+    "lnum" on;
   color: #000000;
 `;
 
@@ -126,7 +148,9 @@ export const ProfButton = styled.button`
   font-weight: 400;
   font-size: 20px;
   line-height: 115%;
-  font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings:
+    "pnum" on,
+    "lnum" on;
   color: #000000;
   position: absolute;
   border: none;
@@ -134,4 +158,18 @@ export const ProfButton = styled.button`
 
 export const Text = styled.span`
   margin-left: 10px;
+`;
+
+export const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
+`;
+
+export const Courses = styled.div`
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  padding: 10px;
 `;

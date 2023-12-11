@@ -1,21 +1,9 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import styled, { createGlobalStyle } from "styled-components";
-export const GlobalStyle = createGlobalStyle`
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-  }
-  @font-face {
-    font-family: "StratosSkyeng", sans-serif;
-    src: local("StratosSkyeng"), local("StratosSkyeng"),
-      url("../../../public/fonts/StratosSkyeng.woff2") format("woff2"),
-      url("../../../public/fonts/StratosSkyeng.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
-  } 
-`
-
 export const Container = styled.div`
   background-color: #271A58;
   width: 100%;
