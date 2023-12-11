@@ -1,13 +1,13 @@
+/* eslint-disable prettier/prettier */
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import * as S from "./loginStyles.js";
 import LogoSvg from "../description/LogoSvg.jsx";
 import { login } from "../../authApi.js";
 import { setUser } from "../../store/slices/userSlice.js";
 
-
-export default function SignInPage() {
+export function SignInPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState(null);
@@ -18,7 +18,7 @@ export default function SignInPage() {
   //валидация
   const [errorsForm, setErrorsForm] = useState({
     email: "",
-    password: "",
+    password: ""
   });
 
   const validateForm = () => {
@@ -79,16 +79,13 @@ export default function SignInPage() {
             email: response.email,
             id: response.uid,
             token: response.accessToken,
-            password: password,
+            password: password
           })
         );
         setOffButton(true);
         navigate("/");
       } catch (error) {
-        if (
-          error.code === "auth/wrong-password" ||
-          error.code === "auth/user-not-found"
-        ) {
+        if (error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
           setError("Неправильная авторизация");
         } else {
           setError(error.message);
@@ -110,8 +107,7 @@ export default function SignInPage() {
             value={email}
             onChange={(event) => {
               setEmail(event.target.value);
-            }}
-          ></S.LoginFormText>
+            }}></S.LoginFormText>
           {errorsForm.email && <S.error>{errorsForm.email}</S.error>}
           <S.LoginFormText
             type="password"
@@ -119,14 +115,13 @@ export default function SignInPage() {
             value={password}
             onChange={(event) => {
               setPassword(event.target.value);
-            }}
-          ></S.LoginFormText>
+            }}></S.LoginFormText>
           {errorsForm.password && <S.error>{errorsForm.password}</S.error>}
         </S.LoginForm>
         {error && <S.error>{error}</S.error>}
 
         <S.GetBtn type="button" onClick={handleLogin} disabled={offButton}>
-        {offButton ? "Осуществляем вход" : "Войти"}
+          {offButton ? "Осуществляем вход" : "Войти"}
         </S.GetBtn>
         <S.RegBtn type="button">
           <Link to="/SignUp">Зарегистрироваться</Link>
@@ -135,3 +130,4 @@ export default function SignInPage() {
     </S.Login>
   );
 }
+export default SignInPage;

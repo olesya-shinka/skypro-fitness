@@ -1,99 +1,116 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-undef */
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import * as S from "./styles";
-import ReactPlayer from "react-player";
-import ProgressModal from "./../../components/LayoutModal/ProgressModal/ProgressModal";
-import SuccessModal from "./../../components/LayoutModal/SuccessModal/SuccessModal";
-import LayoutModal from "../../components/LayoutModal/layout/LayoutModal";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import ReactPlayer from "react-player/youtube";
+
+import { ExercisesList } from "../../components/Exercises/Exercises";
+import { ProgressExercises } from "../../components/ProgressExercises/ProgressExercises";
+import { ProgressModal } from "../../components/LayoutModal/ProgressModal/ProgressModal";
+import { SuccessModal } from "../../components/LayoutModal/SuccessModal/SuccessModal";
+import { SelectWorkout } from "../../components/SelectWorkout/SelectWorkout";
+import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
+
+import { selectWorkouts } from "../../store/slices/workoutsSlice";
+import { selectCourses } from "../../store/selectors/course";
+import { NavigateBlock } from "../../components/NavigationBlock/Navi";
+import { userCourses } from "../../Api";
+import { selectUser } from "../../store/selectors/user";
+import { selectUserCourses } from "../../store/selectors/progress";
 
 const WorkoutPage = () => {
+  const workoutId = useParams();
+  const dispatch = useDispatch();
+  const { id } = useSelector(selectUser);
+
+  const workoutList = useSelector(selectWorkouts);
+  const allCourses = useSelector(selectUserCourses);
+  let currentWorkout;
+
+  for (const course in allCourses) {
+    allCourses[course].workouts.map((wo) =>
+      wo._id === workoutId.id
+        ? wo.progress !== undefined
+          ? (currentWorkout = wo.progress)
+          : (currentWorkout = wo.exercises)
+        : ""
+    );
+  }
+
+  const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
+
+  const title = `${workout[0].name} / ${workout[0].details}`;
+
+  const coursesList = useSelector(selectCourses);
+  const currentCourse = coursesList.filter((course) => course.workout.includes(workoutId.id));
+
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
+  const [isTrainingModalShow, setIsTrainingModalShow] = useState(false);
 
   const handleClick = () => setIsProgressModalShow(true);
+
   const openClosedProgModal = () => {
-    setIsProgressModalShow(!isProgressModalShow);
+    setIsProgressModalShow(!isProgressModalShown);
   };
 
   const handleSendClick = () => {
+    setTimeout(() => {
+      dispatch(userCourses(id));
+    }, 500);
     setIsProgressModalShow(false);
     setIsSuccessModalShow(true);
+  };
+
+  const titleClick = () => {
+    setIsTrainingModalShow(true);
+    dispatch(userCourses(id));
+  };
+
+  const openClosedTrainingModal = () => {
+    setIsTrainingModalShow(!isTrainingModalShown);
   };
 
   return (
     <S.Container>
       <S.Header>
+      <NavigateBlock />
       </S.Header>
       <S.Main>
-        <S.Heading>Йога</S.Heading>
-        <S.Title>Красота и здоровье / Йога на каждый день / 1 день</S.Title>
+        <S.Heading>{currentCourse[0].name}</S.Heading>
+        <S.Title onClick={titleClick}>{workout[0].details ? title : workout[0].name}</S.Title>
         <S.Player>
-          <ReactPlayer
-            url={`www.youtube.com/embed/oqe98Dxivns`}
-            width="100%"
-            height="100%"
-          />
+          <ReactPlayer url={workout[0].video || ""} width="100%" height="100%" />
         </S.Player>
-        <S.Exercises onClick={handleClick}>
-          <S.ContentExercises>
-            <S.TitleExercises>Упражнения</S.TitleExercises>
-            <S.ListExercises>
-              <S.ListExercisesItem>
-                Наклон вперед (10 повторений)
-              </S.ListExercisesItem>
-              <S.ListExercisesItem>
-                Наклон назад (10 повторений)
-              </S.ListExercisesItem>
-              <S.ListExercisesItem>
-                Поднятие ног, согнутых в коленях (5 повторений)
-              </S.ListExercisesItem>
-            </S.ListExercises>
-            <S.ButtonProgress>Заполнить свой прогресс</S.ButtonProgress>
-          </S.ContentExercises>
-          <S.Progress>
-            <S.TitleProgress>Мой прогресс по тренировке:</S.TitleProgress>
-            <div className="percent-workout"></div>
-            <S.ListProgress>
-              Наклоны вперед{" "}
-              <img
-                className="percent-workout"
-                src="/img/1percent.svg"
-                alt="percent"
-                width={278}
-                height={36}
-              />
-            </S.ListProgress>
-
-            <S.ListProgress>
-              Наклоны назад{" "}
-              <img
-                className="percent-workout"
-                src="/img/2percent.svg"
-                alt="percent"
-                width={278}
-                height={36}
-              />
-            </S.ListProgress>
-
-            <S.ListProgress>
-              Поднятие ног, согнутых в коленях{" "}
-              <img
-                className="percent-workout"
-                src="/img/3percent.svg"
-                alt="percent"
-                width={278}
-                height={36}
-              />
-            </S.ListProgress>
-          </S.Progress>
-        </S.Exercises>
+        {currentWorkout && currentWorkout.length > 0 && (
+          <S.Exercises>
+            <ExercisesList exercises={currentWorkout} onClick={handleClick} />
+            <ProgressExercises exercises={currentWorkout} />
+          </S.Exercises>
+        )}
       </S.Main>
       {isProgressModalShow && (
         <LayoutModal onClick={openClosedProgModal}>
-          <ProgressModal onClick={handleSendClick} />
+          <ProgressModal
+            exercises={workout[0].exercises}
+            onClick={handleSendClick}
+            courseName={currentCourse[0].name}
+            workoutName={workoutId.id}
+          />
         </LayoutModal>
       )}
-      {isSuccessModalShow && (
-        <SuccessModal setIsSuccessModalShow={setIsSuccessModalShow} />
+      {isSuccessModalShow && <SuccessModal setIsSuccessModalShow={setIsSuccessModalShow} />}
+      {isTrainingModalShow && (
+        <LayoutModal onClick={openClosedTrainingModal}>
+          <SelectWorkout openClosedTrainingModal={openClosedTrainingModal} />
+        </LayoutModal>
       )}
     </S.Container>
   );

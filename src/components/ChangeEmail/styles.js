@@ -1,5 +1,9 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import styled from "styled-components";
-
 export const Wrapper = styled.div`
   position: fixed;
   left: 0px;
@@ -40,9 +44,9 @@ export const ModalFormLogin = styled.form`
 `;
 
 export const Content = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 export const ModalFormLoginImg = styled.img`
@@ -62,7 +66,6 @@ export const ModalFormLoginInput = styled.div`
 export const ModalFormLoginButtons = styled(ModalFormLoginInput)``;
 
 export const Text = styled.p`
-
   padding-top: 38px;
   padding-bottom: 20px;
   color: #000;

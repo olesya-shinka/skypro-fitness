@@ -1,4 +1,8 @@
-import { NavLink } from "react-router-dom";
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import styled from "styled-components";
 
 export const Sidebar = styled.div`

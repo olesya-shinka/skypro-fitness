@@ -1,9 +1,14 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import * as S from "./styles";
 import { ReactComponent as HandOk } from "./handOk.svg";
 import LayoutModal from "../layout/LayoutModal";
 import { useEffect } from "react";
 
-const SuccessModal = ({ setIsSuccessModalShow }) => {
+export const SuccessModal = ({ setIsSuccessModalShow }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsSuccessModalShow(false);

@@ -1,8 +1,15 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/prop-types */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 export default function LogoSvg () {
 return (
 <div>
   <svg
-    className="logo__svg"
+    classname="logo__svg"
     xmlns="http://www.w3.org/2000/svg"
     width={222}
     height={36}
@@ -71,7 +78,7 @@ return (
     />
     <mask
       id="mask0_26_1150"
-      colorInterpolationFilters="mask-type:alpha"
+      colorinterpolationfilters="mask-type:alpha"
       maskUnits="userSpaceOnUse"
       x={11}
       y={9}
@@ -99,9 +106,9 @@ return (
         width="20.9825"
         height="22.9216"
         filterUnits="userSpaceOnUse"
-        colorInterpolationFilters="sRGB"
+        colorinterpolationfilters="sRGB"
       >
-        <feFlood floodOpacity={0} result="BackgroundImageFix" />
+        <feFlood floodopacity={0} result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"

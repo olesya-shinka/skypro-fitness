@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -6,7 +9,7 @@ import LogoSvg from "../description/LogoSvg.jsx";
 import { register } from "../../authApi.js";
 import { setUser } from "../../store/slices/userSlice.js";
 
-export default function SignUpPage() {
+export function SignUpPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState(null);
@@ -18,7 +21,7 @@ export default function SignUpPage() {
   const [errorsForm, setErrorsForm] = useState({
     email: "",
     password: "",
-    confirmPassword: "",
+    confirmPassword: ""
   });
 
   const validateForm = () => {
@@ -95,7 +98,7 @@ export default function SignUpPage() {
             email: response.email,
             id: response.uid,
             token: response.accessToken,
-            password: password,
+            password: password
           })
         );
         setOffButton(true);
@@ -119,27 +122,24 @@ export default function SignUpPage() {
             value={email}
             onChange={(event) => {
               setEmail(event.target.value);
-            }}
-          ></S.LoginFormText>
-                    {errorsForm.email && <S.error>{errorsForm.email}</S.error>}
+            }}></S.LoginFormText>
+          {errorsForm.email && <S.error>{errorsForm.email}</S.error>}
           <S.LoginFormText
             placeholder="Пароль"
             type="password"
             value={password}
             onChange={(event) => {
               setPassword(event.target.value);
-            }}
-          ></S.LoginFormText>
-                    {errorsForm.password && <S.error>{errorsForm.password}</S.error>}
+            }}></S.LoginFormText>
+          {errorsForm.password && <S.error>{errorsForm.password}</S.error>}
           <S.LoginFormText
             placeholder="Повторите пароль"
             type="password"
             value={confirmPassword}
             onChange={(event) => {
               setConfirmPassword(event.target.value);
-            }}
-          ></S.LoginFormText>
-                    {errorsForm.confirmPassword && <S.error>{errorsForm.confirmPassword}</S.error>}
+            }}></S.LoginFormText>
+          {errorsForm.confirmPassword && <S.error>{errorsForm.confirmPassword}</S.error>}
         </S.LoginForm>
         {error && <S.error>{error}</S.error>}
         <S.RegBtn type="button" onClick={handleReg} disabled={offButton}>
@@ -149,3 +149,5 @@ export default function SignUpPage() {
     </S.Login>
   );
 }
+
+export default SignUpPage;
