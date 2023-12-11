@@ -1,15 +1,10 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
-import { Courses } from "../../components/Courses/Courses";
-import * as S from "./MainStyle";
-export const MainPage = () => {
-  return (
-    <>
-      <S.GlobalStyle />
-      <S.Container>
+import { Courses } from '../../components/Courses/Courses';
+import * as S from  './MainStyle';
+export const MainPage = () =>{
+    return (
+        <>
+        <S.GlobalStyle />
+    <S.Container>
         <S.Main>
           <S.Header>
             <S.Text>

@@ -1,27 +1,44 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import * as S from "./Style";
-export const Courses = () => {
-  return (
-    <S.Courses>
-      <S.CourseYoga>
-        <S.CourseName>Йога</S.CourseName>
-      </S.CourseYoga>
-      <S.CourseStrech>
-        <S.CourseName>Стретчинг</S.CourseName>
-      </S.CourseStrech>
-      <S.CourseDance>
-        <S.CourseName>Танцевальный фитнес</S.CourseName>
-      </S.CourseDance>
-      <S.CourseStep>
-        <S.CourseName>Степ-аэробика</S.CourseName>
-      </S.CourseStep>
-      <S.CourseBodyflex>
-        <S.CourseName>Бодифлекс</S.CourseName>
-      </S.CourseBodyflex>
-    </S.Courses>
-  );
-};
+export const Courses = ({courses}) => {
+    //для проверки гет запроса
+
+    const images = [
+      { src: '/img/profCard1.png' },
+      { src: '/img/profCard2.png' },
+      { src: '/img/profCard3.png' },
+      { src: '/img/profCard4.png' },
+      { src: '/img/profCard5.png' },
+      ];
+
+return (
+      <S.Courses  >
+
+{images.map((image) => <S.Link to='/CourseInfo/:id'><S.CourseImg src = {image.src}></S.CourseImg></S.Link>)}
+
+      </S.Courses>
+      
+      )
+
+        
+}
+   
+// {courses?.sort((a, b) => a.order - b.order).map((course, id) => 
+//       <S.Link to='/CourseInfo/:id'>
+//       <S.Course  key={id}   >
+//        <S.CourseName>{course.nameRU}</S.CourseName>
+//        <S.CourseImg src = {`/img/card-${id  + 1 }.png`}></S.CourseImg>
+//         </S.Course>
+//         </S.Link>
+        
+//         )}
+
+// {courses?.sort((a, b) => a.order - b.order).map((course, index) => 
+
+//       <S.Link to='/CourseInfo/:id'>
+//       <S.Course  key={index} image = {images[index] + 1}  >
+    
+//        <S.CourseName>{course.nameRU}</S.CourseName>
+//         </S.Course>
+//         </S.Link>
+        
+//         )}
