@@ -3,11 +3,11 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 export const Container = styled.div`
   background-color: #271A58;
   width: 100%;
-  height: 100%;
+
       `
   
 export const Main = styled.div`
