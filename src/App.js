@@ -5,6 +5,7 @@
 import { AppRoutes } from "./routes.js";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import GlobalStyle from "./global";
 
 import "./firebase";
 import { initializeUserFromLocalStorage } from "./store/slices/userSlice.js";
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <div>
+          <GlobalStyle />
       <AppRoutes user={user} />
     </div>
   );
