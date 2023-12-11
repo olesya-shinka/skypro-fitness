@@ -9,13 +9,11 @@ import User from "./User";
 import Logo from "./Logo";
 import ButtonEnter from "./ButtonEnter";
 
-export const NavigateBlock = () => {
+export const NavigateBlock = ({ login, onClick }) => {
   return (
     <S.Sidebar>
       <Logo />
-      {user ? <User /> : <ButtonEnter/>}
-      {/* позже будет логика: если юзер = true, то Имя, если false, то кнопка Войти */}
-      {/* <ButtonEnter /> */}
+      {login !== null ? <User /> : <ButtonEnter onClick={onClick} />}
     </S.Sidebar>
   );
 };

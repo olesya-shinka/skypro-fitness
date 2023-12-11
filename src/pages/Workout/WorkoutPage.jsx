@@ -30,7 +30,8 @@ const WorkoutPage = () => {
   const dispatch = useDispatch();
   const { id } = useSelector(selectUser);
 
-  const workoutList = useSelector(selectWorkouts);
+  
+  
   const allCourses = useSelector(selectUserCourses);
   let currentWorkout;
 
