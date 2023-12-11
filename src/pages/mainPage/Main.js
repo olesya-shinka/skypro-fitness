@@ -1,10 +1,11 @@
-import { Courses } from '../../components/Courses/Courses';
-import * as S from  './MainStyle';
-export const MainPage = () =>{
-    return (
-        <>
-        <S.GlobalStyle />
-    <S.Container>
+/* eslint-disable prettier/prettier */
+import { Courses } from "../../components/Courses/Courses";
+import * as S from "./MainStyle";
+export const MainPage = () => {
+  return (
+    <>
+      <S.GlobalStyle />
+      <S.Container>
         <S.Main>
           <S.Header>
             <S.Text>
