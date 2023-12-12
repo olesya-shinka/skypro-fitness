@@ -5,10 +5,10 @@ const databaseURL = process.env.REACT_APP_FIREBASE_DATABASEURL;
 export const BASE_URL = `${databaseURL}`;
 
 //https://fitness-pro-d307e-default-rtdb.europe-west1.firebasedatabase.app/courses
-export const COURSES = "/courses";
+export const COURSES = `${databaseURL}/courses`;
 
 //https://fitness-pro-d307e-default-rtdb.europe-west1.firebasedatabase.app/workouts
-export const WORKOUTS = "/workouts";
+export const WORKOUTS = `${databaseURL}/workouts`;
 
 export const USER_LOGIN = (id) => `/users/${id}.json?print=pretty`;
 export const USER_PASSWORD = (id) => `/users/${id}/password.json?print=pretty`;
