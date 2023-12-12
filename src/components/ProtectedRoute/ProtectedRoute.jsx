@@ -4,13 +4,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 import { Navigate, Outlet } from "react-router-dom";
-import MainBlock from "../MainBlock/MainBlock";
 
 export const ProtectedRoute = ({  redirectPath = "/Login", isAllowed }) => {
+  console.log(isAllowed)
   if (!isAllowed) {
     return <Navigate to={redirectPath} replace={true} />;
   }
 
- return  <MainBlock ><Outlet /></MainBlock> ;
+ return  <Outlet />
 };
 // 
