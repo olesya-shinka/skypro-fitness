@@ -30,6 +30,8 @@ const WorkoutPage = () => {
   const dispatch = useDispatch();
   const { id } = useSelector(selectUser);
   const workoutList = useSelector(selectWorkouts);
+  const workoutss = Array.from(workoutList);
+  console.log(workoutss);
 
   const allCourses = useSelector(selectUserCourses);
   let currentWorkout;
@@ -44,7 +46,7 @@ const WorkoutPage = () => {
     );
   }
 
-  const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
+  const workout = workoutss?.filter((workout) => workout._id === workoutId.id);
 
   const title = `${workout[0].name} / ${workout[0].details}`;
 
