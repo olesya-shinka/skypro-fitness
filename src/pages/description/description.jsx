@@ -91,7 +91,7 @@ console.log(courses);
     <S.Wrapper>
       <S.Container>
         <S.TitleBox>
-          <S.Title>{course.name}</S.Title>
+          <S.Title>{course.nameRU}</S.Title>
         </S.TitleBox>
 
         <S.ForYou>
