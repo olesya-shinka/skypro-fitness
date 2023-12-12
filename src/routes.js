@@ -11,6 +11,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 import SignInPage from "./pages/log-in/login";
 import { useSelector } from "react-redux";
 import { emailSelector } from "./store/selectors/user";
+import NotFound from "./pages/notFound/NotFound";
 
 export const AppRoutes = () => {
   const email = useSelector(emailSelector)
@@ -19,13 +20,13 @@ export const AppRoutes = () => {
       <Routes>
         <Route path="/Login" element={<SignInPage />} />
         <Route path="/SignUp" element={<SignUpPage />} />
-        <Route element={<ProtectedRoute isAllowed={Boolean(email)} />}>
           <Route path="/" element={<MainPage />} />
           <Route path="/CourseInfo/:id" element={<CourseInfo />} />
-          <Route path="/PersonalPage/:id" element={<PersonalPage />} />
+          <Route element={<ProtectedRoute isAllowed={Boolean(email)} />}>
+          <Route path="/PersonalPage" element={<PersonalPage />} />
           <Route path="/WorkoutPage/:id" element={<WorkoutPage />} />
       </Route>
-  
+      <Route path="*" element={<NotFound />} />
 
         
       </Routes>

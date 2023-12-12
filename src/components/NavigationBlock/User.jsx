@@ -21,7 +21,7 @@ const User = ({email}) => {
               <S.Menulink to="/">На главную</S.Menulink>
             </S.MenuItem>
             <S.MenuItem>
-              <S.Menulink to="/PersonalPage/:id">Профиль</S.Menulink>
+              <S.Menulink to="/PersonalPage">Профиль</S.Menulink>
             </S.MenuItem>
             <S.MenuItem>
               <S.Menulink to="/Login">Выйти</S.Menulink>
