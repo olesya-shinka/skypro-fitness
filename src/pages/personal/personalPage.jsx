@@ -13,8 +13,8 @@ import { ChangePass } from "../../components/ChangePass/ChangePass";
 import { selectUserCourses } from "../../store/selectors/progress";
 import { userCourses } from "../../Api";
 import { selectUser } from "../../store/selectors/user";
-import { selectCurrentWorkout } from "../../store/slices/workoutsSlice";
-import { selectProfileInfo } from "../../store/slices/userCourseSlice";
+// import { selectCurrentWorkout } from "../../store/slices/workoutsSlice";
+// import { selectProfileInfo } from "../../store/slices/userCourseSlice";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 import { CoursesCarts } from "./coursesCarts";
 
@@ -34,18 +34,19 @@ export const PersonalPage = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [modal, setModal] = useState(null);
   const { id } = useSelector(selectUser);
-  const { status } = useSelector(selectProfileInfo);
+  // const { status } = useSelector(selectProfileInfo);
 
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch(userCourses(id));
-    }, 500);
-  }, [dispatch]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     dispatch(userCourses(id));
+  //   }, 500);
+  // }, [dispatch]);
+
   const closeModal = () => {
     setModalVisible(false);
   };
-  const workouts = useSelector(selectCurrentWorkout);
-  if (workouts === null) return null;
+  // const workouts = useSelector(selectCurrentWorkout);
+  // if (workouts === null) return null;
 
   return (
     <S.Wrap>

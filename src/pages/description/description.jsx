@@ -13,9 +13,9 @@ import { selectWorkouts } from "../../store/slices/workoutsSlice";
 import { selectUserCourses } from "../../store/selectors/progress";
 import { getUserWorkouts, doNotAddCourse } from "../../Api";
 import { ButtonMain } from "../../components/ButtonMain/ButtonMain";
-import { SignInPage } from "../../pages/log-in/login";
-import { SignUpPage } from "../../pages/sign-up/signup";
-import * as S from "./descriptionStyle.jsx";
+import { SignInPage } from "../log-in/login";
+import { SignUpPage } from "../sign-up/signup";
+import * as S from "./descriptionStyle.js";
 import { NavigateBlock } from "../../components/NavigationBlock/Navi";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 

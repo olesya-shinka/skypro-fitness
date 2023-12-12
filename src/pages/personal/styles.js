@@ -11,21 +11,20 @@ export const Wrap = styled.div`
   position: relative;
   width: 100%;
   background: #fafafa;
-  padding-left: calc(50% - 800px);
-  padding-right: calc(50% - 800px);
+  padding-left: calc(50% - 580px);
+  padding-right: calc(50% - 580px);
 `;
 export const Content = styled.div`
-  margin-left: 140px;
-  margin-right: 140px;
 `;
 
 export const Title = styled.div`
   font-weight: 400;
   font-size: 48px;
   line-height: 56px;
-  padding-left: calc(50% - 580px);
-  padding-right: calc(50% - 580px);
   padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 export const TitleText = styled.span`
   font-weight: 400;

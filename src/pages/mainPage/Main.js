@@ -1,10 +1,28 @@
-/* eslint-disable prettier/prettier */
+import { useEffect, useState } from "react";
 import { Courses } from "../../components/Courses/Courses";
 import * as S from "./MainStyle";
+import { getCourses } from "../../Api";
 export const MainPage = () => {
+  const [courses, setСourses] = useState([]);
+  useEffect(() => {
+    getCourses()
+      .then((data) => {
+        console.log(data);
+        setСourses(data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, []);
+  const ButtonUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
   return (
     <>
-      <S.GlobalStyle />
       <S.Container>
         <S.Main>
           <S.Header>
@@ -16,9 +34,10 @@ export const MainPage = () => {
               <img src="/img/saleSticker.svg" alt="Sale Stiker"></img>
             </S.SaleSticker>
           </S.Header>
-          <Courses />
 
-          <S.ButtonUp>Наверх&#129045;</S.ButtonUp>
+          <Courses courses={courses} />
+
+          <S.ButtonUp onClick={ButtonUp}>Наверх&#129045;</S.ButtonUp>
         </S.Main>
       </S.Container>
     </>

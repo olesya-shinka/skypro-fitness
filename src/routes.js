@@ -10,17 +10,20 @@ import WorkoutPage from "./pages/Workout/WorkoutPage";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 import SignInPage from "./pages/log-in/login";
 
-export const AppRoutes = ({ user }) => {
-  return (
-    <Routes>
-      <Route path="Login" element={<SignInPage />} />
-      <Route path="SignUp" element={<SignUpPage />} />
-      <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
-        <Route path="/" element={<MainPage />} />
-        <Route path="CourseInfo" element={<CourseInfo />} />
-        <Route path="PersonalPage" element={<PersonalPage />} />
-        <Route path="/Workoutpage" element={<WorkoutPage />} />
+export const AppRoutes = ({user}) => {
+    return (
+      <Routes>
+        <Route path="/Login" element={<SignInPage />} />
+        <Route path="/SignUp" element={<SignUpPage />} />
+        <Route element={<ProtectedRoute isAllowed={Boolean(user)} />}>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/CourseInfo/:id" element={<CourseInfo />} />
+          <Route path="/PersonalPage/:id" element={<PersonalPage />} />
+          <Route path="/WorkoutPage/:id" element={<WorkoutPage />} />
       </Route>
-    </Routes>
-  );
-};
+  
+
+        
+      </Routes>
+    );
+  };
