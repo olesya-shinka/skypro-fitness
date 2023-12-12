@@ -26,7 +26,7 @@ export const Courses = ({ courses }) => {
         {paginatedData
           ?.sort((a, b) => a.order - b.order)
           .map((course, index) => (
-            <S.Link to={`/CourseInfo/${course._id}`} key={index}>
+            <S.Link to={`/CourseInfo/${course.id}`} key={course.key}>
               <S.Course image={images[index].src}>
                 <S.CourseName>{course.nameRU}</S.CourseName>
               </S.Course>
