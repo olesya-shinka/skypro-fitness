@@ -29,9 +29,8 @@ const WorkoutPage = () => {
   const workoutId = useParams();
   const dispatch = useDispatch();
   const { id } = useSelector(selectUser);
+  const workoutList = useSelector(selectWorkouts);
 
-  
-  
   const allCourses = useSelector(selectUserCourses);
   let currentWorkout;
 
@@ -82,7 +81,7 @@ const WorkoutPage = () => {
   return (
     <S.Container>
       <S.Header>
-      <NavigateBlock />
+        <NavigateBlock />
       </S.Header>
       <S.Main>
         <S.Heading>{currentCourse[0].name}</S.Heading>
