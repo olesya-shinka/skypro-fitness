@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useEffect, useState } from "react";
 import { Courses } from "../../components/Courses/Courses";
 import * as S from "./MainStyle";
