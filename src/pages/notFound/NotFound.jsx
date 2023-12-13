@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable consistent-return */
 import NotFoundContent from "../../components/NotFoundContent/NotFound";
 import * as S from "./styles";
