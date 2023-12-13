@@ -18,6 +18,7 @@ import { SuccessModal } from "../../components/LayoutModal/SuccessModal/SuccessM
 import { SelectWorkout } from "../../components/SelectWorkout/SelectWorkout";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 
+
 import { selectWorkouts } from "../../store/slices/workoutsSlice";
 import { selectCourses } from "../../store/selectors/course";
 import { NavigateBlock } from "../../components/NavigationBlock/Navi";
@@ -89,6 +90,7 @@ const WorkoutPage = () => {
   return (
     <S.Container>
       <S.Main>
+      <NavigateBlock page="Other" />
         <S.Heading>{currentCourse.nameRU}</S.Heading>
         <S.Title onClick={titleClick}>{workout.details ? title : workout.name}</S.Title>
         <S.Player>
