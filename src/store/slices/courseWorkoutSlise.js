@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   courseList: [],
-  selectedCourse: {},
+  currentCourse: {},
   workoutList: [],
   selectedWorkout: "",
   progress: {}
@@ -18,8 +18,8 @@ export const newCourseSlice = createSlice({
         ...action.payload[key]
       }));
     },
-    setSelectedCourse: (state, action) => {
-      state.selectedCourse = action.payload;
+    setCurrentCourse: (state, action) => {
+      state.currentCourse = action.payload;
     },
     setWorkoutList: (state, action) => {
       state.workoutList = Object.keys(action.payload).map((key) => ({
@@ -38,7 +38,7 @@ export const newCourseSlice = createSlice({
 
 export const {
   setCourseList,
-  setSelectedCourse,
+  setCurrentCourse,
   setWorkoutList,
   setSelectedWorkout,
   setPracticeProgress

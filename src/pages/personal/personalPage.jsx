@@ -14,7 +14,7 @@ import { selectUserCourses } from "../../store/selectors/progress";
 import { courseList } from "../../store/selectors/coursesNew";
 import { userCourses } from "../../Api";
 import { emailSelector, passwordSelector } from "../../store/selectors/user";
-import { setSelectedCourse } from "../../store/slices/courseWorkoutSlise";
+import { setCurrentCourse } from "../../store/slices/courseWorkoutSlise";
 // import { selectCurrentWorkout } from "../../store/slices/workoutsSlice";
 // import { selectProfileInfo } from "../../store/slices/userCourseSlice";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
@@ -54,7 +54,8 @@ export const PersonalPage = () => {
   // if (workouts === null) return null;
 
   const handleCard = (course) => {
-    dispatch(setSelectedCourse(course))
+    console.log(course)
+    dispatch(setCurrentCourse(course))
     localStorage.setItem('selectedCourse', JSON.stringify(course))
     setIsShowForm(true)
   }
@@ -84,7 +85,7 @@ export const PersonalPage = () => {
               <S.Prof key={index} id={course.id}>
                 <S.ProfCard src={course.img} alt="prof_card" />
 
-                <S.ProfButton onClick={handleCard}>
+                <S.ProfButton onClick={()=>{handleCard(course)}}>
                   Перейти →
                 </S.ProfButton>
               </S.Prof>
