@@ -60,7 +60,7 @@ export const MainPage = () => {
           {loading ? (
             <>
               <Courses courses={courses} />
-              <S.ButtonUp onClick={ButtonUp}>Наверх&#129045;</S.ButtonUp>
+              <S.ButtonUp onClick={ButtonUp}>Наверх ↑</S.ButtonUp>
             </>
           ) : (
             <S.LoadingCircle></S.LoadingCircle>
