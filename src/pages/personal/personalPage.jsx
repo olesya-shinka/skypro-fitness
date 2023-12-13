@@ -5,8 +5,7 @@
 /* eslint-disable prettier/prettier */
 import * as S from "./styles";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import SelectWorkout from "../../components/SelectWorkout/SelectWorkout";
 import { ChangeEmail } from "../../components/ChangeEmail/ChangeEmail";
 import { ChangePass } from "../../components/ChangePass/ChangePass";
@@ -18,14 +17,10 @@ import { emailSelector, passwordSelector } from "../../store/selectors/user";
 import { setCurrentCourse, setWorkoutList } from "../../store/slices/courseWorkoutSlise";
 // import { selectCurrentWorkout } from "../../store/slices/workoutsSlice";
 // import { selectProfileInfo } from "../../store/slices/userCourseSlice";
-import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
-import { CoursesCarts } from "./coursesCarts";
+// import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
+// import { CoursesCarts } from "./coursesCarts";
 
-// const courses = [
-//   { id: "1", title: "Йога", img: "/img/profCard1.png" },
-//   { id: "2", title: "Стретчинг", img: "/img/profCard2.png" },
-//   { id: "3", title: "Бодифлекс", img: "/img/profCard5.png" }
-// ];
+
 
 export const PersonalPage = () => {
   const [isEditEmail, setIsEditEmail] = useState(false);

@@ -40,7 +40,7 @@ export function SelectWorkout({ openClosedTrainingModal }) {
         <S.SelectTitle>Выберите тренировку</S.SelectTitle>
         <S.SelectList>
           {currentWorkouts?.map((workout, index) => (
-            <NavLink key={workout._id} to={`/workout/${workout._id}`}>
+            <NavLink key={workout._id} to={`/WorkoutPage/${workout._id}`}>
               <S.SelectItem onClick={openClosedTrainingModal}>
                 {workout.name}
               </S.SelectItem>
