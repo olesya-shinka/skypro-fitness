@@ -10,11 +10,12 @@ import { useDispatch } from "react-redux";
 import SelectWorkout from "../../components/SelectWorkout/SelectWorkout";
 import { ChangeEmail } from "../../components/ChangeEmail/ChangeEmail";
 import { ChangePass } from "../../components/ChangePass/ChangePass";
-import { selectUserCourses } from "../../store/selectors/progress";
+import { getWorkouts } from "../../Api";
+// import { selectUserCourses } from "../../store/selectors/progress";
 import { courseList } from "../../store/selectors/coursesNew";
-import { userCourses } from "../../Api";
+// import { userCourses } from "../../Api";
 import { emailSelector, passwordSelector } from "../../store/selectors/user";
-import { setCurrentCourse } from "../../store/slices/courseWorkoutSlise";
+import { setCurrentCourse, setWorkoutList } from "../../store/slices/courseWorkoutSlise";
 // import { selectCurrentWorkout } from "../../store/slices/workoutsSlice";
 // import { selectProfileInfo } from "../../store/slices/userCourseSlice";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
@@ -38,6 +39,16 @@ export const PersonalPage = () => {
   // const [modal, setModal] = useState(null);
   const email = useSelector(emailSelector);
   const password = useSelector(passwordSelector);
+
+  useEffect(() => {
+    getWorkouts()
+      .then((data) => {
+        dispatch(setWorkoutList(data));
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, []);
   // const { id } = useSelector(selectUser);
   // const { status } = useSelector(selectProfileInfo);
 

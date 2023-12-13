@@ -8,10 +8,8 @@
 import * as S from "./styles";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { currentCourseSelector, allWorkoutSelector } from "../../store/selectors/coursesNew";
-import { getWorkouts } from "../../Api";
-import { setWorkoutList } from "../../store/slices/courseWorkoutSlise";
 // import { selectCurrentWorkout } from "../../store/slices/workoutsSlice";
 // import { selectUserCourses } from "../../store/selectors/progress";
 // import { selectUser } from "../../store/selectors/user";
@@ -19,21 +17,9 @@ import { setWorkoutList } from "../../store/slices/courseWorkoutSlise";
 // import { getCurrentWorkouts } from "./utils";
 
 export function SelectWorkout({ openClosedTrainingModal }) {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    getWorkouts()
-      .then((data) => {
-        dispatch(setWorkoutList(data));
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }, []);
   const allWorkouts = useSelector(allWorkoutSelector);
   const currentCourse = useSelector(currentCourseSelector);
   const currentWorkoutList = currentCourse.workouts;
-  console.log(currentWorkoutList);
 
   // Состояние для отфильтрованных тренировок
   const [currentWorkouts, setCurrentWorkouts] = useState([]);
@@ -48,16 +34,14 @@ export function SelectWorkout({ openClosedTrainingModal }) {
     filterWorkout();
   }, []);
 
-  console.log(currentWorkouts);
-
   return (
     <S.SelectContainer>
       <S.SelectWrapper>
         <S.SelectTitle>Выберите тренировку</S.SelectTitle>
         <S.SelectList>
-          {currentWorkouts?.map((workout) => (
-            <NavLink to={`/workout/${workout._id}`}>
-              <S.SelectItem key={workout._id} onClick={openClosedTrainingModal}>
+          {currentWorkouts?.map((workout, index) => (
+            <NavLink key={workout._id} to={`/workout/${workout._id}`}>
+              <S.SelectItem onClick={openClosedTrainingModal}>
                 {workout.name}
               </S.SelectItem>
               <S.SelectItemType>{workout.details}</S.SelectItemType>
