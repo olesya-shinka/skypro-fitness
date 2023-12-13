@@ -27,6 +27,15 @@ export const SelectWrapper = styled.div`
   position: relative;
 `;
 
+export const SelectCloseIconSvg = styled.svg`
+  width: 20px;
+  height: 23px;
+  position: absolute;
+  top: 15px;
+  left: 410px;
+  cursor: pointer;
+`;
+
 export const SelectTitle = styled.div`
   font-size: 32px;
   margin-bottom: 40px;
