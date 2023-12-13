@@ -10,8 +10,9 @@ export const Wrapper = styled.div`
   height: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding-right: 20px;
   padding-bottom: 95px;
+  padding-left: 20px;
 `;
 
 export const Header = styled.header``;
@@ -28,10 +29,18 @@ export const TitleBox = styled.div`
   justify-content: space-between;
   border-radius: 30px;
   height: 310px;
+  backdrop-filter: blur(14.51865291595459px);
 `;
 
 export const Title = styled.h1`
   margin: 30px;
+  color: #000;
+font-variant-numeric: lining-nums proportional-nums;
+font-size: 64px;
+font-style: normal;
+line-height: 72px; /* 112.5% */
+letter-spacing: -0.8px;
+
 `;
 
 export const ForYou = styled.div`
@@ -92,10 +101,12 @@ export const Results = styled.div`
 `;
 
 export const ResultsText = styled.p`
-  font-size: 32px;
-  line-height: 40px;
-  margin-bottom: 35px;
-  text-align: center;
+  color: #000;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px; /* 133.333% */
 `;
 
 export const Application = styled.div`
@@ -106,12 +117,14 @@ export const Application = styled.div`
   max-height: 300px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 export const ApplicationText = styled.p`
-  font-size: 32px;
-  line-height: 40px;
-  margin-bottom: 35px;
-  text-align: center;
+color: #000;
+font-variant-numeric: lining-nums proportional-nums;
+font-size: 32px;
+font-style: normal;
+line-height: 40px; /* 125% */
+margin-bottom: 34px;
 `;
