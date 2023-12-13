@@ -4,6 +4,16 @@ import * as S from "./MainStyle";
 import { getCourses } from "../../Api";
 export const MainPage = () => {
   const [courses, setСourses] = useState([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    // Заводим таймер
+    const timerId = setInterval(() => setLoading(!loading), 5000);
+    // Данная функция вызывается при удалении компонента из DOM
+    return () => {
+      // Наводим порядок после удаления компонента
+      clearInterval(timerId);
+    };
+  }, []);
   useEffect(() => {
     getCourses()
       .then((data) => {
@@ -12,7 +22,8 @@ export const MainPage = () => {
       })
       .catch((error) => {
         console.log(error.message);
-      });
+      })
+      .finally(() => setLoading(false));
   }, []);
   const ButtonUp = () => {
     window.scrollTo({
@@ -34,10 +45,14 @@ export const MainPage = () => {
               <img src="/img/saleSticker.svg" alt="Sale Stiker"></img>
             </S.SaleSticker>
           </S.Header>
-
-          <Courses courses={courses} />
-
-          <S.ButtonUp onClick={ButtonUp}>Наверх&#129045;</S.ButtonUp>
+          {loading ? (
+            <>
+              <Courses courses={courses} />
+              <S.ButtonUp onClick={ButtonUp}>Наверх&#129045;</S.ButtonUp>
+            </>
+          ) : (
+            <S.LoadingCircle></S.LoadingCircle>
+          )}
         </S.Main>
       </S.Container>
     </>

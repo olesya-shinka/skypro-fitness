@@ -103,24 +103,30 @@ export const BurgerLine = styled.span`
 export const NavMenu = styled.div`
   display: block;
   visibility: visible;
+  position: absolute;
 `;
 
 export const MenuList = styled.ul`
   padding: 18px 0 10px 0;
   position: absolute;
   box-sizing: border-box;
+  list-style-type: none; 
 `;
 
 export const MenuItem = styled.li`
   padding: 5px 0;
   margin-bottom: 16px;
+  z-index: 9999;
   position: relative;
 `;
 
 export const Menulink = styled(NavLink)`
-  color: black;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  text-decoration: none;
+color: black;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+text-decoration: none;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
 `;

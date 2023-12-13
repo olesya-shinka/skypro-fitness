@@ -6,15 +6,21 @@ export const WrapperStyle = styled.div`
 width: 100%;
 min-height: 100%;
 overflow: scroll;
-background-color: rgb(250, 250, 250);
+background-color: (${(props) => props.color});
 
 `
 
 export const ContainerStyle = styled.div`
-max-width: 1920px;
+
 height: 100vh;
 margin: 0 auto;
 position: relative;
-background-color: rgb(250, 250, 250);
+background-color: (${(props) => props.color});
 
+`
+export const White = styled.div`
+background-color: #fafafa;
+`
+export const Violet = styled.div`
+background-color: #271a58;
 `

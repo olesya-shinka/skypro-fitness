@@ -3,7 +3,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
 import * as S from "./Style";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ReactPaginate from "react-paginate";
 export const Courses = ({courses}) => {
 
@@ -14,6 +14,7 @@ export const Courses = ({courses}) => {
       { src: '/img/card-4.png' },
       { src: '/img/card-5.png' },
       ];
+
       const [currentPage, setCurrentPage] = useState(0);
       const handlePageChange = ({ selected }) => {
         setCurrentPage(selected);
@@ -21,6 +22,8 @@ export const Courses = ({courses}) => {
       const itemsPerPage = 6;//количество элементов на странице
       const offset = currentPage * itemsPerPage;
       const paginatedData = courses.slice(offset, offset + itemsPerPage);
+
+    
 return (
       <>
       <S.Courses  >

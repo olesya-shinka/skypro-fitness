@@ -8,12 +8,22 @@ import * as S from "./styles";
 import User from "./User";
 import Logo from "./Logo";
 import ButtonEnter from "./ButtonEnter";
+import { useEffect, useState } from "react";
 
 
 export const NavigateBlock = ({ login, onClick }) => {
+  const[UrlBackgroundColor, setUrlBackgroundColor] = useState('');
+const getUrl = window.location.pathname;
+useEffect(() => {
+    if(getUrl === '/'){
+      setUrlBackgroundColor('#ffffff');
+    }else{
+        setUrlBackgroundColor('#black');
+    }
+  },[getUrl]);// фон меняется только при ручном обновлении страницы
   return (
-    <S.Sidebar>
-      <Logo />
+    <S.Sidebar  >
+      <Logo style={{fill: UrlBackgroundColor}} />
       {login !== null ? <User /> : <ButtonEnter onClick={onClick} />}
     </S.Sidebar>
   );
