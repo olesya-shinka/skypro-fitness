@@ -17,6 +17,7 @@ import { selectUser } from "../../store/selectors/user";
 // import { selectProfileInfo } from "../../store/slices/userCourseSlice";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 import { CoursesCarts } from "./coursesCarts";
+import NavigateBlock from "../../components/NavigationBlock/Navi";
 
 // const courses = [
 //   { id: "1", title: "Йога", img: "/img/profCard1.png" },
@@ -51,6 +52,7 @@ export const PersonalPage = () => {
   return (
     <S.Wrap>
       <S.Content>
+      <NavigateBlock type="Other" />
         <S.Title>
           <S.TitleText>Мой профиль</S.TitleText>
           <S.TitleTextLogin>

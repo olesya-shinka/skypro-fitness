@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Courses } from "../../components/Courses/Courses";
 import * as S from "./MainStyle";
 import { getCourses } from "../../Api";
+import NavigateBlock from "../../components/NavigationBlock/Navi";
 export const MainPage = () => {
   const [courses, setСourses] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ export const MainPage = () => {
   useEffect(() => {
     getCourses()
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         setСourses(data);
       })
       .catch((error) => {
@@ -36,6 +37,7 @@ export const MainPage = () => {
     <>
       <S.Container>
         <S.Main>
+          <NavigateBlock type="Main_Page" />
           <S.Header>
             <S.Text>
               <S.Title>Онлайн-тренировки для занятий дома</S.Title>

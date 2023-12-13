@@ -11,6 +11,6 @@ export const ProtectedRoute = ({  redirectPath = "/Login", isAllowed }) => {
     return <Navigate to={redirectPath} replace={true} />;
   }
 
- return  <MainBlock ><Outlet /></MainBlock> ;
+ return  <Outlet />
 };
-// 
+//  return  <MainBlock ><Outlet /></MainBlock> ;

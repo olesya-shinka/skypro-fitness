@@ -19,6 +19,15 @@ export const Sidebar = styled.div`
   padding-left: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
+  background-color: ${props => {
+    switch (props.yourProps) {
+          case "Main_Page":
+              return "#271a58";
+          case "Other":
+              return "#271a58";
+          default:
+  }
+ }};
 `;
 
 export const Enter = styled.button`

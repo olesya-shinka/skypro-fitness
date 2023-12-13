@@ -7,6 +7,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   background-color: #271A58;
   width: 100%;
+  height: 2400px;
 
   `
 export const LoadingCircle = styled.div`
