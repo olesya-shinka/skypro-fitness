@@ -26,7 +26,7 @@ export const MainPage = () => {
   useEffect(() => {
     getCourses()
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         // setСourses(data);
         dispatch(setCourseList(data));
       })
