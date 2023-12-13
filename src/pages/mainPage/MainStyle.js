@@ -83,7 +83,29 @@ export const Main = styled.div`
   margin-left: 140px;
   margin-right: 140px;
   `
-
+export const Sidebar = styled.div`
+  max-width: 1200px;
+  min-height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 10px;
+  row-gap: 10px;
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: ${props => {
+    switch (props.page) {
+          case "Main_Page":
+              return "#271a58";
+          case "Other":
+              return "#ffffff";
+          default:
+  }
+ }};
+`;
 export const Header = styled.div`
   display: flex;
   gap: 15px;
@@ -166,16 +188,3 @@ export const ButtonUp= styled.button`
     background: #EBFFAB;
   }
 `
-export const Sidebar = styled.div`
-  max-width: 1200px;
-  min-height: 100px;
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-  row-gap: 10px;
-  margin: 0 auto;
-  padding-right: 20px;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-`;

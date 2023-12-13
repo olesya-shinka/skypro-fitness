@@ -37,7 +37,7 @@ export const MainPage = () => {
     <>
       <S.Container>
         <S.Main>
-          <NavigateBlock type="Main_Page" />
+          <NavigateBlock page="Main_Page" />
           <S.Header>
             <S.Text>
               <S.Title>Онлайн-тренировки для занятий дома</S.Title>

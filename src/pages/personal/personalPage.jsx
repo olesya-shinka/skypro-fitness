@@ -52,7 +52,7 @@ export const PersonalPage = () => {
   return (
     <S.Wrap>
       <S.Content>
-      <NavigateBlock type="Other" />
+      <NavigateBlock page="Other" />
         <S.Title>
           <S.TitleText>Мой профиль</S.TitleText>
           <S.TitleTextLogin>

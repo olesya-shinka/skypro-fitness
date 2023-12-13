@@ -20,7 +20,7 @@ export const Sidebar = styled.div`
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: ${props => {
-    switch (props.yourProps) {
+    switch (props.page) {
           case "Main_Page":
               return "#271a58";
           case "Other":
@@ -67,6 +67,7 @@ export const User = styled.div`
   :hover {
     cursor: pointer;
   }
+  color: ${props => props.color || '#fff'};
 `;
 
 export const NameUser = styled.p`
@@ -74,13 +75,14 @@ export const NameUser = styled.p`
   font-size: 24px;
   line-height: 32px;
   border: 2px;
+  color: ${props => props.$color || '#fff'};
 `;
 
 export const Contain = styled.div`
   background-color: transparent;
   place-self: center start;
   cursor: pointer;
-`;
+ `;
 export const MainNav = styled.div`
   width: 244px;
   background-color: #181818;
@@ -127,6 +129,7 @@ export const MenuItem = styled.li`
   margin-bottom: 16px;
   z-index: 9999;
   position: relative;
+  color: ${props => props.color || '#fff'};
 `;
 
 export const Menulink = styled(NavLink)`
