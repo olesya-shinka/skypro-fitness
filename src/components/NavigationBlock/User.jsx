@@ -21,13 +21,13 @@ const User = () => {
         <S.NavMenu>
           <S.MenuList>
             <S.MenuItem>
-              <S.Menulink to="/">На главную</S.Menulink>
+              <S.Menulink to="/" color = {isMainPage ? "#ffffff" : "#000000"}>На главную</S.Menulink>
             </S.MenuItem>
             <S.MenuItem>
-              <S.Menulink to="/PersonalPage/:id">Профиль</S.Menulink>
+              <S.Menulink to="/PersonalPage/:id" color = {isMainPage ? "#ffffff" : "#000000"}>Профиль</S.Menulink>
             </S.MenuItem>
             <S.MenuItem>
-              <S.Menulink to="/Login">Выйти</S.Menulink>
+              <S.Menulink to="/Login" color = {isMainPage ? "#ffffff" : "#000000"}>Выйти</S.Menulink>
             </S.MenuItem>
           </S.MenuList>
         </S.NavMenu>

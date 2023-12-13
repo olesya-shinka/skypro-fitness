@@ -141,4 +141,5 @@ text-decoration: none;
 font-size: 20px;
 font-style: normal;
 font-weight: 400;
+color: ${props => props.color || '#fff'};
 `;
