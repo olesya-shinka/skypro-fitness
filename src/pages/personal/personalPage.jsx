@@ -19,7 +19,7 @@ import { setCurrentCourse, setWorkoutList } from "../../store/slices/courseWorko
 // import { selectProfileInfo } from "../../store/slices/userCourseSlice";
 // import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 // import { CoursesCarts } from "./coursesCarts";
-
+import NavigateBlock from "../../components/NavigationBlock/Navi";
 
 
 export const PersonalPage = () => {
@@ -69,6 +69,7 @@ export const PersonalPage = () => {
   return (
     <S.Wrap>
       <S.Content>
+      <NavigateBlock page="Other" />
         <S.Title>
           <S.TitleText>Мой профиль</S.TitleText>
           <S.TitleTextLogin>

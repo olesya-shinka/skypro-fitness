@@ -4,7 +4,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 import * as S from "./styles";
-//import ButtonEnter from "./ButtonEnter";
 import User from "./User";
 import Logo from "./Logo";
 import ButtonEnter from "./ButtonEnter";
@@ -18,7 +17,7 @@ const email = useSelector(emailSelector)
 const navigate = useNavigate();
 
   return (
-    <S.Sidebar>
+    <S.Sidebar  >
       <Logo />
       {email !== null ? <User email={email}/> : <ButtonEnter onClick={()=>{navigate("/Login")}} />}
     </S.Sidebar>
