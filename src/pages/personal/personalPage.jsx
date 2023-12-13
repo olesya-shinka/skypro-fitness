@@ -13,7 +13,7 @@ import { getWorkouts } from "../../Api";
 // import { selectUserCourses } from "../../store/selectors/progress";
 import { courseList } from "../../store/selectors/coursesNew";
 // import { userCourses } from "../../Api";
-import { emailSelector, passwordSelector } from "../../store/selectors/user";
+import { emailSelector, passwordSelector, idSelector } from "../../store/selectors/user";
 import { setCurrentCourse, setWorkoutList } from "../../store/slices/courseWorkoutSlise";
 // import { selectCurrentWorkout } from "../../store/slices/workoutsSlice";
 // import { selectProfileInfo } from "../../store/slices/userCourseSlice";
@@ -21,19 +21,26 @@ import { setCurrentCourse, setWorkoutList } from "../../store/slices/courseWorko
 // import { CoursesCarts } from "./coursesCarts";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
 
-
 export const PersonalPage = () => {
   const [isEditEmail, setIsEditEmail] = useState(false);
   const [isEditPass, setIsEditPass] = useState(false);
   const [isShowForm, setIsShowForm] = useState(false);
 
   const courses = useSelector(courseList);
+  const userId = useSelector(idSelector);
+  console.log(userId);
   // const courses = useSelector(courseList)
   const dispatch = useDispatch();
   // const [isModalVisible, setModalVisible] = useState(false);
   // const [modal, setModal] = useState(null);
   const email = useSelector(emailSelector);
   const password = useSelector(passwordSelector);
+
+  //получить курсы юзера
+  const filteredCourses = courses.filter(course => {
+    // Проверяем, есть ли пользователь с данным идентификатором в массиве users у курса
+    return course.users.id === userId;
+  });
 
   useEffect(() => {
     getWorkouts()
@@ -60,16 +67,16 @@ export const PersonalPage = () => {
   // if (workouts === null) return null;
 
   const handleCard = (course) => {
-    console.log(course)
-    dispatch(setCurrentCourse(course))
-    localStorage.setItem('selectedCourse', JSON.stringify(course))
-    setIsShowForm(true)
-  }
+    console.log(course);
+    dispatch(setCurrentCourse(course));
+    localStorage.setItem("selectedCourse", JSON.stringify(course));
+    setIsShowForm(true);
+  };
 
   return (
     <S.Wrap>
       <S.Content>
-      <NavigateBlock page="Other" />
+        <NavigateBlock page="Other" />
         <S.Title>
           <S.TitleText>Мой профиль</S.TitleText>
           <S.TitleTextLogin>
@@ -86,23 +93,24 @@ export const PersonalPage = () => {
           <S.ChangeButton onClick={() => setIsEditPass(true)}>Редактировать пароль</S.ChangeButton>
         </S.ChangeDate>
         <S.CourseWrap>
-        <S.Title>Мои курсы</S.Title>
-        <S.ProfList>
-            {courses.map((course, index) => (
+          <S.Title>Мои курсы</S.Title>
+          <S.ProfList>
+            {filteredCourses.map((course, index) => (
               <S.Prof key={index} id={course.id}>
                 <S.ProfCard src={course.img} alt="prof_card" />
 
-                <S.ProfButton onClick={()=>{handleCard(course)}}>
+                <S.ProfButton
+                  onClick={() => {
+                    handleCard(course);
+                  }}>
                   Перейти →
                 </S.ProfButton>
               </S.Prof>
             ))}
           </S.ProfList>
-          </S.CourseWrap>
+        </S.CourseWrap>
 
-        {isShowForm ? (
-          <SelectWorkout setIsShowForm={setIsShowForm}></SelectWorkout>
-        ) : null}
+        {isShowForm ? <SelectWorkout setIsShowForm={setIsShowForm}></SelectWorkout> : null}
         {/* <S.Cards>
             <CoursesCarts courses={Object.values(courses)} button={true} name="select" />
         </S.Cards>
