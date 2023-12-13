@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import * as S from "./styles";
 import { useState } from "react";
 
-const User = () => {
+const User = ({email}) => {
   const [openMenu, setOpenMenu] = useState(false);
   const toggleVisibility = () => setOpenMenu(!openMenu);
   const location = useLocation();
@@ -15,7 +15,7 @@ const User = () => {
   return (
     <S.User onClick={toggleVisibility}  color = {isMainPage ? "#ffffff" : "#000000"}>
       <img src="/img/avatar.png" alt="avatar" />
-      <S.NameUser $color = {isMainPage ? "#ffffff" : "#000000"}>name</S.NameUser>
+      <S.NameUser $color = {isMainPage ? "#ffffff" : "#000000"}>{email}</S.NameUser>
       &#9660;
       {openMenu ? (
         <S.NavMenu>
@@ -24,7 +24,7 @@ const User = () => {
               <S.Menulink to="/" color = {isMainPage ? "#ffffff" : "#000000"}>На главную</S.Menulink>
             </S.MenuItem>
             <S.MenuItem>
-              <S.Menulink to="/PersonalPage/:id" color = {isMainPage ? "#ffffff" : "#000000"}>Профиль</S.Menulink>
+              <S.Menulink to="/PersonalPage" color = {isMainPage ? "#ffffff" : "#000000"}>Профиль</S.Menulink>
             </S.MenuItem>
             <S.MenuItem>
               <S.Menulink to="/Login" color = {isMainPage ? "#ffffff" : "#000000"}>Выйти</S.Menulink>

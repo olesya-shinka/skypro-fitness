@@ -5,9 +5,10 @@
 /* eslint-disable prettier/prettier */
 import { Navigate, Outlet } from "react-router-dom";
 
-
-export const ProtectedRoute = ({  redirectPath = "/Login", isAllowed }) => {
-  if (!isAllowed) {
+export const ProtectedRoute = ({  redirectPath = "/Login" }) => {
+  const user = localStorage.getItem('email')
+ 
+  if (!user) {
     return <Navigate to={redirectPath} replace={true} />;
   }
 

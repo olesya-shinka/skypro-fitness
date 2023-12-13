@@ -24,33 +24,40 @@ import { NavigateBlock } from "../../components/NavigationBlock/Navi";
 import { userCourses } from "../../Api";
 import { selectUser } from "../../store/selectors/user";
 import { selectUserCourses } from "../../store/selectors/progress";
+import {
+  allWorkoutSelector,
+  currentCourseSelector,
+  courseList
+} from "../../store/selectors/coursesNew";
 
 const WorkoutPage = () => {
   const workoutId = useParams();
+  console.log(workoutId);
   const dispatch = useDispatch();
-  const { id } = useSelector(selectUser);
+  // const { id } = useSelector(selectUser);
 
-  
-  
-  const allCourses = useSelector(selectUserCourses);
-  let currentWorkout;
+  // const allCourses = useSelector(courseList);
+  const workoutList = useSelector(allWorkoutSelector);
+  const currentCourse = useSelector(currentCourseSelector);
+  // let currentWorkout;
 
-  for (const course in allCourses) {
-    allCourses[course].workouts.map((wo) =>
-      wo._id === workoutId.id
-        ? wo.progress !== undefined
-          ? (currentWorkout = wo.progress)
-          : (currentWorkout = wo.exercises)
-        : ""
-    );
-  }
+  // for (const course in allCourses) {
+  //   allCourses[course].workouts.map((wo) =>
+  //     wo._id === workoutId.id
+  //       ? wo.progress !== undefined
+  //         ? (currentWorkout = wo.progress)
+  //         : (currentWorkout = wo.exercises)
+  //       : ""
+  //   );
+  // }
 
   const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
+  console.log(workout);
 
-  const title = `${workout[0].name} / ${workout[0].details}`;
+  const title = `${workout.name} / ${workout.details}`;
 
-  const coursesList = useSelector(selectCourses);
-  const currentCourse = coursesList.filter((course) => course.workout.includes(workoutId.id));
+  // const coursesList = useSelector(selectCourses);
+  // const currentCourse = coursesList.filter((course) => course.workout.includes(workoutId.id));
 
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
@@ -81,28 +88,25 @@ const WorkoutPage = () => {
 
   return (
     <S.Container>
-      <S.Header>
-      <NavigateBlock />
-      </S.Header>
       <S.Main>
-        <S.Heading>{currentCourse[0].name}</S.Heading>
-        <S.Title onClick={titleClick}>{workout[0].details ? title : workout[0].name}</S.Title>
+        <S.Heading>{currentCourse.nameRU}</S.Heading>
+        <S.Title onClick={titleClick}>{workout.details ? title : workout.name}</S.Title>
         <S.Player>
-          <ReactPlayer url={workout[0].video || ""} width="100%" height="100%" />
+          <ReactPlayer url={workout.video || ""} width="100%" height="100%" />
         </S.Player>
-        {currentWorkout && currentWorkout.length > 0 && (
+        {/* {currentWorkout && currentWorkout.length > 0 && (
           <S.Exercises>
             <ExercisesList exercises={currentWorkout} onClick={handleClick} />
             <ProgressExercises exercises={currentWorkout} />
           </S.Exercises>
-        )}
+        )} */}
       </S.Main>
       {isProgressModalShow && (
         <LayoutModal onClick={openClosedProgModal}>
           <ProgressModal
-            exercises={workout[0].exercises}
+            exercises={workout.exercises}
             onClick={handleSendClick}
-            courseName={currentCourse[0].name}
+            courseName={currentCourse.name}
             workoutName={workoutId.id}
           />
         </LayoutModal>
