@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-key */
 /* eslint-disable prettier/prettier */
@@ -5,37 +6,49 @@
 /* eslint-disable no-undef */
 /* eslint-disable prettier/prettier */
 import * as S from "./styles";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { selectCurrentWorkout } from "../../store/slices/workoutsSlice";
-import { selectUserCourses } from "../../store/selectors/progress";
-import { selectUser } from "../../store/selectors/user";
-import { userCourses } from "../../Api";
-import { getCurrentWorkouts } from "./utils";
+import { useSelector } from "react-redux";
+import { currentCourseSelector, allWorkoutSelector } from "../../store/selectors/coursesNew";
+// import { selectCurrentWorkout } from "../../store/slices/workoutsSlice";
+// import { selectUserCourses } from "../../store/selectors/progress";
+// import { selectUser } from "../../store/selectors/user";
+// import { userCourses } from "../../Api";
+// import { getCurrentWorkouts } from "./utils";
 
 export function SelectWorkout({ openClosedTrainingModal }) {
-  const dispatch = useDispatch;
-  const { id } = useSelector(selectUser);
-  dispatch(userCourses(id));
+  const allWorkouts = useSelector(allWorkoutSelector);
+  const currentCourse = useSelector(currentCourseSelector);
+  const currentWorkoutList = currentCourse.workouts;
 
-  const workouts = useSelector(selectCurrentWorkout);
-  const currentUserCourses = useSelector(selectUserCourses);
+  // Состояние для отфильтрованных тренировок
+  const [currentWorkouts, setCurrentWorkouts] = useState([]);
 
-  const selectWorkouts = getCurrentWorkouts(currentUserCourses, workouts);
+  useEffect(() => {
+    const filterWorkout = () => {
+      const filteredWorkout = allWorkouts.filter((workout) =>
+        currentWorkoutList.includes(workout._id)
+      );
+      setCurrentWorkouts(filteredWorkout);
+    };
+    filterWorkout();
+  }, []);
 
   return (
     <S.SelectContainer>
-      <S.SelectTitle>Выберите тренировку</S.SelectTitle>
-      <S.SelectList>
-        {selectWorkouts?.map((workout) => (
-          <NavLink to={`/workout/${workout._id}`}>
-            <S.SelectItem key={workout._id} onClick={openClosedTrainingModal}>
-              {workout.name}
-            </S.SelectItem>
-            <S.SelectItemType>{workout.details}</S.SelectItemType>
-          </NavLink>
-        ))}
-      </S.SelectList>
+      <S.SelectWrapper>
+        <S.SelectTitle>Выберите тренировку</S.SelectTitle>
+        <S.SelectList>
+          {currentWorkouts?.map((workout, index) => (
+            <NavLink key={workout._id} to={`/WorkoutPage/${workout._id}`}>
+              <S.SelectItem onClick={openClosedTrainingModal}>
+                {workout.name}
+              </S.SelectItem>
+              <S.SelectItemType>{workout.details}</S.SelectItemType>
+            </NavLink>
+          ))}
+        </S.SelectList>
+      </S.SelectWrapper>
     </S.SelectContainer>
   );
 }

@@ -11,7 +11,7 @@ import "./firebase";
 import { initializeUserFromLocalStorage } from "./store/slices/userSlice.js";
 
 function App() {
-  const [user, setUser] = useState(true);
+  // const [user, setUser] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
   return (
     <div>
           <GlobalStyle />
-      <AppRoutes user={user} />
+      <AppRoutes />
     </div>
   );
 }

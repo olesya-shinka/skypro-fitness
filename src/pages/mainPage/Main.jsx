@@ -1,15 +1,23 @@
 /* eslint-disable prettier/prettier */
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Courses } from "../../components/Courses/Courses";
 import * as S from "./MainStyle";
 import { getCourses } from "../../Api";
+import { useDispatch } from "react-redux";
+import { setCourseList } from "../../store/slices/courseWorkoutSlise";
+import { useSelector } from "react-redux";
+import { courseList } from "../../store/selectors/coursesNew";
+
 export const MainPage = () => {
-  const [courses, setСourses] = useState([]);
+  // const [courses, setСourses] = useState([]);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     getCourses()
       .then((data) => {
-        console.log(data);
-        setСourses(data);
+        // console.log(data);
+        // setСourses(data);
+        dispatch(setCourseList(data));
       })
       .catch((error) => {
         console.log(error.message);
@@ -21,6 +29,7 @@ export const MainPage = () => {
       behavior: "smooth"
     });
   };
+  const courses = useSelector(courseList);
 
   return (
     <>

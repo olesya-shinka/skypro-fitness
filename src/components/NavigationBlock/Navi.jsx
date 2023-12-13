@@ -8,13 +8,19 @@ import * as S from "./styles";
 import User from "./User";
 import Logo from "./Logo";
 import ButtonEnter from "./ButtonEnter";
+import { useSelector } from "react-redux";
+import { emailSelector } from "../../store/selectors/user";
+import { useNavigate } from "react-router-dom";
 
 
-export const NavigateBlock = ({ login, onClick }) => {
+export const NavigateBlock = () => {
+const email = useSelector(emailSelector)
+const navigate = useNavigate();
+
   return (
     <S.Sidebar>
       <Logo />
-      {login !== null ? <User /> : <ButtonEnter onClick={onClick} />}
+      {email !== null ? <User email={email}/> : <ButtonEnter onClick={()=>{navigate("/Login")}} />}
     </S.Sidebar>
   );
 };
