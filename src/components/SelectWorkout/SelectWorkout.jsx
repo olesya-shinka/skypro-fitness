@@ -24,42 +24,47 @@ export function SelectWorkout({ openClosedTrainingModal }) {
   useEffect(() => {
     getWorkouts()
       .then((data) => {
-        dispatch(setWorkoutList(data))
+        dispatch(setWorkoutList(data));
       })
       .catch((error) => {
         console.log(error.message);
       });
   }, []);
-  const allWorkouts = useSelector(allWorkoutSelector)
+  const allWorkouts = useSelector(allWorkoutSelector);
   const currentCourse = useSelector(currentCourseSelector);
   const currentWorkoutList = currentCourse.workouts;
+  console.log(currentWorkoutList);
 
   // Состояние для отфильтрованных тренировок
   const [currentWorkouts, setCurrentWorkouts] = useState([]);
 
   useEffect(() => {
     const filterWorkout = () => {
-      const filteredWorkout = allWorkouts.filter(workout => currentWorkoutList.includes(workout._id));
+      const filteredWorkout = allWorkouts.filter((workout) =>
+        currentWorkoutList.includes(workout._id)
+      );
       setCurrentWorkouts(filteredWorkout);
     };
     filterWorkout();
-  }, []); 
+  }, []);
 
   console.log(currentWorkouts);
 
   return (
     <S.SelectContainer>
-      <S.SelectTitle>Выберите тренировку</S.SelectTitle>
-      <S.SelectList>
-        {currentWorkouts?.map((workout) => (
-          <NavLink to={`/workout/${workout._id}`}>
-            <S.SelectItem key={workout._id} onClick={openClosedTrainingModal}>
-              {workout.name}
-            </S.SelectItem>
-            <S.SelectItemType>{workout.details}</S.SelectItemType>
-          </NavLink>
-        ))}
-      </S.SelectList>
+      <S.SelectWrapper>
+        <S.SelectTitle>Выберите тренировку</S.SelectTitle>
+        <S.SelectList>
+          {currentWorkouts?.map((workout) => (
+            <NavLink to={`/workout/${workout._id}`}>
+              <S.SelectItem key={workout._id} onClick={openClosedTrainingModal}>
+                {workout.name}
+              </S.SelectItem>
+              <S.SelectItemType>{workout.details}</S.SelectItemType>
+            </NavLink>
+          ))}
+        </S.SelectList>
+      </S.SelectWrapper>
     </S.SelectContainer>
   );
 }
