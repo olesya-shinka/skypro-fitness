@@ -9,14 +9,14 @@ import * as S from "./styles";
 export const ChangeEmail = ({ setIsEditEmail }) => {
   const [error, setError] = useState(null);
   console.log(setError);
-  // const handleClose = () => {
-  //   setIsEditEmail(false);
-  // };
 
   return (
     <S.Wrapper>
       <S.ModalBlock>
-        {/* <S.Closer src="/img/close.png" alt="закрыть" onClick={handleClose} /> */}
+      <S.Closer src="/img/close.png" alt="закрыть" 
+          onClick={() => {
+            setIsEditEmail(false);
+          }} />
         <S.ModalFormLogin action="#">
           <S.ModalFormLoginImg src="/img/logo.png" alt="logo" />
           <S.Content>

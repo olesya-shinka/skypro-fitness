@@ -10,14 +10,13 @@ export const ChangePass = ({ setIsEditPass }) => {
   const [error, setError] = useState("");
   console.log(setError);
 
-  // const handleClose = () => {
-  //   setIsEditPass(false);
-  // };
-
   return (
     <S.Wrapper>
       <S.ModalBlock>
-        {/* <S.Closer src="/img/close.png" alt="закрыть" onClick={handleClose} /> */}
+      <S.Closer src="/img/close.png" alt="закрыть" 
+          onClick={() => {
+            setIsEditPass(false);
+          }} />
         <S.ModalFormLogin action="#">
           <S.ModalFormLoginImg src="/img/logo.png" alt="logo" />
 
