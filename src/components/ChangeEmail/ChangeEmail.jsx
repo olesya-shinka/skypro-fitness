@@ -54,9 +54,8 @@ export const ChangeEmail = ({ setIsEditEmail }) => {
   const handleChangeEmail = async () => {
     if (validateForm()) {
       try {
-        console.log(newEmail);
-        setIsEditEmail(false);
         const response = await changeLogin(newEmail, valueOldPass);
+        setIsEditEmail(false);
         console.log(response);
         dispatch(
           setEmail({

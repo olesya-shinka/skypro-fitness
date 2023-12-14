@@ -71,7 +71,7 @@ const userSlice = createSlice({
   }
 });
 
-export const { setUser, removeUser, initializeUserFromLocalStorage, setEmail } = userSlice.actions;
+export const { setUser, removeUser, initializeUserFromLocalStorage, setEmail, setPassword } = userSlice.actions;
 export default userSlice.reducer;
 export const userReducer = userSlice.reducer
 export { localStorageMiddleware };
