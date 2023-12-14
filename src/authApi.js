@@ -36,36 +36,6 @@ export async function logout() {
   await signOut(getAuth());
 }
 
-//изменение эмейла
-// export async function changeLogin(email, valueOldPass) {
-//   const auth = getAuth();
-//   CheckCredential(auth, valueOldPass)
-//   await firebaseEmailReset(getAuth().currentUser, email).then(() => {
-//   console.log('done');
-// }).catch((error) => {
-//   console.error(error.message);
-//   });
-// }
-
-// async function CheckCredential(auth, valueOldPass) {
-
-//   const credential = EmailAuthProvider.credential(
-//       auth.currentUser.email,
-//       valueOldPass
-//  );
-//  await reauthenticateWithCredential(auth.currentUser, credential);
-// }
-// async function firebaseEmailReset(user, newEmail) {
-
-//   try {
-//       await verifyBeforeUpdateEmail(user, newEmail);
-//       await signOut(getAuth());
-//       window.location.reload();
-//   } catch (error) {
-//       console.error(error.message);
-//   }
-// }
-
 export async function changeLogin(newEmail, valueOldPass) {
   const auth = getAuth();
 
