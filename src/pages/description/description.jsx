@@ -64,7 +64,16 @@ const images = [
     console.log(1);
     // navigate("/");
   }
-
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    // Заводим таймер
+    const timerId = setInterval(() => setLoading(!loading), 5000);
+    // Данная функция вызывается при удалении компонента из DOM
+    return () => {
+      // Наводим порядок после удаления компонента
+      clearInterval(timerId);
+    };
+  }, []);
   // const addCourse = () => {
   //   const idCourse = course[0]._id;
   //   const name = course[0].name;
@@ -100,7 +109,7 @@ const images = [
     <S.Wrapper>
       <S.Container>
       <NavigateBlock page="Other" />
-        <S.TitleBox src = {'/img/card-1.png'}> 
+      {loading ? (<><S.TitleBox src = {'/img/card-1.png'}> 
           <S.Title>{course.nameRU}</S.Title>
           <S.CourseImg src = {image.src}></S.CourseImg>
           
@@ -142,6 +151,8 @@ const images = [
           />
         </S.Application>
         {/* // )} */}
+      </>) : (<S.LoadingCircle></S.LoadingCircle>)}
+        
       </S.Container>
       {isModalVisible && (
         <LayoutModal onClick={openCloseModal}>
