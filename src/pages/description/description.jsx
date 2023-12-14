@@ -100,7 +100,7 @@ const images = [
     <S.Wrapper>
       <S.Container>
       <NavigateBlock page="Other" />
-        <S.TitleBox src = {'/img/card-1.png'}> 
+        <S.TitleBox> 
           <S.Title>{course.nameRU}</S.Title>
           <S.CourseImg src = {image.src}></S.CourseImg>
           
