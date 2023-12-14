@@ -97,9 +97,9 @@ export const PersonalPage = () => {
           <S.Title>Мои курсы</S.Title>
           <S.ProfList>
             {filteredCourses.map((course, index) => (
-              <S.Prof key={index} id={course.id}>
-                <S.ProfCard src={images[index].src} alt="prof_card" />
-
+              <S.Prof key={index} id={course.id}><S.CourseName>{course.nameRU}</S.CourseName>
+                <S.ProfCard src={images[index].src} alt="prof_card" ></S.ProfCard >
+                    
                 <S.ProfButton
                   onClick={() => {
                     handleCard(course);
@@ -120,3 +120,5 @@ export const PersonalPage = () => {
     </S.Wrap>
   );
 };
+
+//<S.Course src={images[index].src} alt="prof_card" ><S.CourseName>{course.nameRU}</S.CourseName> </S.Course>
