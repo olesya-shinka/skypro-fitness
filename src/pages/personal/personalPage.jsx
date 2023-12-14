@@ -74,8 +74,6 @@ export const PersonalPage = () => {
     localStorage.setItem("selectedCourse", JSON.stringify(course));
     setIsShowForm(true);
   };
-  const params = useParams();
-  const image = images.find((image) => image.id === Number(params.id));
   return (
     <S.Wrap>
       <S.Content>
@@ -100,7 +98,7 @@ export const PersonalPage = () => {
           <S.ProfList>
             {filteredCourses.map((course, index) => (
               <S.Prof key={index} id={course.id}>
-                <S.ProfCard src = {image.src} alt="prof_card" />
+                <S.ProfCard src={images[index].src} alt="prof_card" />
 
                 <S.ProfButton
                   onClick={() => {
