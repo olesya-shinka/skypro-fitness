@@ -35,55 +35,18 @@ import {
 } from "../../store/slices/courseWorkoutSlise";
 
 const WorkoutPage = () => {
-  //const workoutId = useParams();
-  // const exerciseId = useParams();
-  const [isProgressModalShow, setIsProgressModalShow] = useState(false);
-  const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
+  const workoutId = useParams();
+  console.log(workoutId);
   const dispatch = useDispatch();
-  const workoutList = useSelector(allWorkoutSelector);
-  const exercises = useSelector(listExercises);
-  let currentCourse = useSelector(currentCourseSelector);
-  let currentWorkout;
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const timerId = setInterval(() => setLoading(!loading), 2000);
-    return () => {
-      clearInterval(timerId);
-    };
-  }, []);
-
-  // useEffect(() => {
-  //   getWorkouts()
-  //     .then((data) => {
-  //       dispatch(setWorkoutList(data));
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.message);
-  //     })
-  //     .finally(() => setLoading(false));
-  // }, []);
-
-  // useEffect(() => {
-  //   getExecises()
-  //     .then((data) => {
-  //       dispatch(setExercisesList(data));
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.message);
-  //     });
-  // }, []);
-
-  // const workouts = [];
-  // const allWorkouts = Object.keys(workouts).map((workout) => {
-  //   return { id: _id, name: workouts[workout], video: workouts[video], user_id: workouts[user_id] };
-  // });
-  // console.log(allWorkouts);
+  // const { id } = useSelector(selectUser);
 
   // const allCourses = useSelector(courseList);
+  const workoutList = useSelector(allWorkoutSelector);
+  const currentCourse = useSelector(currentCourseSelector);
+  // let currentWorkout;
 
-  // for (const workout in workoutList) {
-  //   workoutList[workout].workouts.map((wo) =>
+  // for (const course in allCourses) {
+  //   allCourses[course].workouts.map((wo) =>
   //     wo._id === workoutId.id
   //       ? wo.progress !== undefined
   //         ? (currentWorkout = wo.progress)
@@ -91,33 +54,40 @@ const WorkoutPage = () => {
   //       : ""
   //   );
   // }
-  // for (const exercise in workoutList) {
-  //   workoutList[exercise]._id.map((wo) =>
-  //     wo._id === exerciseId.id
-  //       ? wo.progress !== undefined
-  //         ? (currentExercise = wo.progress)
-  //         : (currentExercise = wo.exercises)
-  //       : ""
-  //   );
-  // }
 
-  //const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
-  // const exercise = exercises?.filter((exercise) => workout.exercise.name === exercise);
+  const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
+  console.log(workout);
 
-  const title = `${workoutList.name}`;
+  const title = `${workout.name} / ${workout.details}`;
+
+  // const coursesList = useSelector(selectCourses);
+  // const currentCourse = coursesList.filter((course) => course.workout.includes(workoutId.id));
+
+  const [isProgressModalShow, setIsProgressModalShow] = useState(false);
+  const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
+  const [isTrainingModalShow, setIsTrainingModalShow] = useState(false);
 
   const handleClick = () => setIsProgressModalShow(true);
 
   const openClosedProgModal = () => {
-    setIsProgressModalShow(!isProgressModalShow);
+    setIsProgressModalShow(!isProgressModalShown);
   };
 
   const handleSendClick = () => {
     setTimeout(() => {
-      dispatch(currentCourse(id));
+      dispatch(userCourses(id));
     }, 500);
     setIsProgressModalShow(false);
     setIsSuccessModalShow(true);
+  };
+
+  const titleClick = () => {
+    setIsTrainingModalShow(true);
+    dispatch(userCourses(id));
+  };
+
+  const openClosedTrainingModal = () => {
+    setIsTrainingModalShow(!isTrainingModalShow);
   };
 
   return (
