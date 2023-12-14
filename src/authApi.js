@@ -5,7 +5,7 @@ import {
   reauthenticateWithCredential,
   EmailAuthProvider,
   updateEmail,
-  // sendEmailVerification,
+  sendEmailVerification,
   updatePassword
 } from "firebase/auth";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
@@ -47,7 +47,7 @@ export async function changeLogin(newEmail, valueOldPass) {
     );
 
     // Отправка подтверждения по электронной почте
-    // await sendEmailVerification(auth.currentUser);
+    await sendEmailVerification(auth.currentUser);
 
     // Изменение адреса электронной почты
     await updateEmail(auth.currentUser, newEmail);

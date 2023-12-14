@@ -56,13 +56,13 @@ const userSlice = createSlice({
     },
 
     setEmail(state, action) {
-      state.email = action.payload.newEmail;
-      localStorage.setItem("email", state.newEmail);
+      state.email = action.payload.email;
+      localStorage.setItem("email", state.email);
     },
 
     setPassword(state, action) {
-      state.password = action.payload.newPassword;
-      localStorage.setItem("password", state.newPassword);
+      state.password = action.payload.password;
+      localStorage.setItem("password", state.password);
     },
 
     initializeUserFromLocalStorage() {
