@@ -52,7 +52,12 @@ const userSlice = createSlice({
       localStorage.removeItem("email");
       localStorage.removeItem("token");
       localStorage.removeItem("id");
-      localStorage.setItem("password");
+      localStorage.removeItem("password");
+    },
+
+    setEmail(state, action) {
+      state.email = action.payload.email;
+      localStorage.setItem("email", state.email);
     },
 
     initializeUserFromLocalStorage() {
@@ -61,7 +66,7 @@ const userSlice = createSlice({
   }
 });
 
-export const { setUser, removeUser, initializeUserFromLocalStorage } = userSlice.actions;
+export const { setUser, removeUser, initializeUserFromLocalStorage, setEmail } = userSlice.actions;
 export default userSlice.reducer;
 export const userReducer = userSlice.reducer
 export { localStorageMiddleware };

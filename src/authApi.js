@@ -1,6 +1,13 @@
 /* eslint-disable prettier/prettier */
-import firebase from "firebase/compat/app";
-import { getAuth, createUserWithEmailAndPassword, reauthenticateWithCredential, EmailAuthProvider, verifyBeforeUpdateEmail, updatePassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+  updateEmail,
+  sendEmailVerification,
+  updatePassword
+} from "firebase/auth";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 export async function register(email, password) {
   try {
@@ -29,52 +36,71 @@ export async function logout() {
   await signOut(getAuth());
 }
 
+//изменение эмейла
+// export async function changeLogin(email, valueOldPass) {
+//   const auth = getAuth();
+//   CheckCredential(auth, valueOldPass)
+//   await firebaseEmailReset(getAuth().currentUser, email).then(() => {
+//   console.log('done');
+// }).catch((error) => {
+//   console.error(error.message);
+//   });
+// }
 
-//изменение эмейла 
-export async function changeLogin(login, valueOldPass) {
+// async function CheckCredential(auth, valueOldPass) {
+
+//   const credential = EmailAuthProvider.credential(
+//       auth.currentUser.email,
+//       valueOldPass
+//  );
+//  await reauthenticateWithCredential(auth.currentUser, credential);
+// }
+// async function firebaseEmailReset(user, newEmail) {
+
+//   try {
+//       await verifyBeforeUpdateEmail(user, newEmail);
+//       await signOut(getAuth());
+//       window.location.reload();
+//   } catch (error) {
+//       console.error(error.message);
+//   }
+// }
+
+export async function changeLogin(newEmail, valueOldPass) {
   const auth = getAuth();
-  CheckCredential(auth, valueOldPass)
-await firebaseEmailReset(auth.currentUser, login).then(() => {
-  console.log('done');
-}).catch((error) => {
-  console.error(error.message);
-  });
-}
 
-async function CheckCredential(auth, valueOldPass) {
-
-  const credential = EmailAuthProvider.credential(
-      auth.currentUser.email,
-      valueOldPass
- );
- await reauthenticateWithCredential(auth.currentUser, credential);
-}
-async function firebaseEmailReset(user, newEmail) {
-    
   try {
-      await verifyBeforeUpdateEmail(user, newEmail);
-      await firebase.auth().signOut();
-      window.location.reload();
+    // Повторная аутентификация перед изменением адреса электронной почты
+    await reauthenticateWithCredential(
+      auth.currentUser,
+      EmailAuthProvider.credential(auth.currentUser.email, valueOldPass)
+    );
+
+    // Отправка подтверждения по электронной почте
+    await sendEmailVerification(auth.currentUser);
+
+    // Изменение адреса электронной почты
+    await updateEmail(auth.currentUser, newEmail);
+
+    // Опционально: разлогиниваем пользователя
+    // await signOut(auth);
+
+    console.log("done");
   } catch (error) {
-      console.error(error.message);
+    console.error(error.message);
+    throw error;
   }
 }
 
 //изменение пароля
 async function CheckCredentialPass(valueOldPass, user) {
   const oldPassword = valueOldPass;
-  const credential = EmailAuthProvider.credential(
-    user.currentUser.email,
-    oldPassword
- );
- await reauthenticateWithCredential(user.currentUser, credential);
+  const credential = EmailAuthProvider.credential(user.currentUser.email, oldPassword);
+  await reauthenticateWithCredential(user.currentUser, credential);
 }
 
-
-
-
 export async function changePassword(valueOldPass, newPassword) {
-  const user = getAuth()
-  await CheckCredentialPass(valueOldPass, user)
+  const user = getAuth();
+  await CheckCredentialPass(valueOldPass, user);
   await updatePassword(user.currentUser, newPassword);
 }
