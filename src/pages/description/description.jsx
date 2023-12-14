@@ -90,6 +90,7 @@ export default function CourseInfo() {
   return (
     <S.Wrapper>
       <S.Container>
+      <NavigateBlock page="Other" />
         <S.TitleBox>
           <S.Title>{course.nameRU}</S.Title>
         </S.TitleBox>

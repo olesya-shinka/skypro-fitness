@@ -17,7 +17,7 @@ import { currentCourseSelector, allWorkoutSelector } from "../../store/selectors
 // import { userCourses } from "../../Api";
 // import { getCurrentWorkouts } from "./utils";
 
-export function SelectWorkout({ openClosedTrainingModal }) {
+export function SelectWorkout({ setIsShowForm }) {
   const allWorkouts = useSelector(allWorkoutSelector);
   const currentCourse = useSelector(currentCourseSelector);
   const currentWorkoutList = currentCourse.workouts;
@@ -38,11 +38,16 @@ export function SelectWorkout({ openClosedTrainingModal }) {
   return (
     <S.SelectContainer>
       <S.SelectWrapper>
+      <S.SelectCloseIconSvg onClick={() => {setIsShowForm(false)}}>
+          <use xlinkHref="/icons/sprite.svg#icon-close" />
+        </S.SelectCloseIconSvg>
         <S.SelectTitle>Выберите тренировку</S.SelectTitle>
         <S.SelectList>
           {currentWorkouts?.map((workout, index) => (
             <NavLink key={workout._id} to={`/WorkoutPage/${workout._id}`}>
-              <S.SelectItem onClick={openClosedTrainingModal}>{workout.name}</S.SelectItem>
+              <S.SelectItem>
+                {workout.name}
+              </S.SelectItem>
               <S.SelectItemType>{workout.details}</S.SelectItemType>
             </NavLink>
           ))}
