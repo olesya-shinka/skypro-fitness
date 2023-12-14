@@ -20,7 +20,7 @@ import { NavigateBlock } from "../../components/NavigationBlock/Navi";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 import { courseList } from "../../store/selectors/coursesNew";
 import { emailSelector, idSelector } from "../../store/selectors/user";
-
+import { images } from "../../components/images/Images.jsx";
 export default function CourseInfo() {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
@@ -50,14 +50,6 @@ export default function CourseInfo() {
     setRegister(true);
   };
 console.log(courses);
-
-const images = [
-  {  id: 1, src: "/img/card-1.png" },
-  {  id: 2, src: "/img/card-2.png" },
-  {  id: 4, src: "/img/card-3.png" },
-  {  id: 0, src: "/img/card-4.png" },
-  {  id: 3, src: "/img/card-5.png" }
-];
   const course = courses.find((course) => course.id === courseId);
   const image = images.find((image) => image.id === Number(params.id));
   if (course === undefined) {

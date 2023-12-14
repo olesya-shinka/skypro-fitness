@@ -19,7 +19,9 @@ import { setCurrentCourse, setWorkoutList } from "../../store/slices/courseWorko
 // import { selectProfileInfo } from "../../store/slices/userCourseSlice";
 // import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 // import { CoursesCarts } from "./coursesCarts";
+import { images } from "../../components/images/Images";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
+import { useParams } from "react-router-dom";
 
 export const PersonalPage = () => {
   const [isEditEmail, setIsEditEmail] = useState(false);
@@ -72,7 +74,8 @@ export const PersonalPage = () => {
     localStorage.setItem("selectedCourse", JSON.stringify(course));
     setIsShowForm(true);
   };
-
+  const params = useParams();
+  const image = images.find((image) => image.id === Number(params.id));
   return (
     <S.Wrap>
       <S.Content>
@@ -97,7 +100,7 @@ export const PersonalPage = () => {
           <S.ProfList>
             {filteredCourses.map((course, index) => (
               <S.Prof key={index} id={course.id}>
-                <S.ProfCard src={course.img} alt="prof_card" />
+                <S.ProfCard src = {image.src} alt="prof_card" />
 
                 <S.ProfButton
                   onClick={() => {
