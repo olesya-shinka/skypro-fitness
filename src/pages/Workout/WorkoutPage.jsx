@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
+import { useEffect } from "react";
 
 import { ExercisesList } from "../../components/Exercises/Exercises";
 import { ProgressExercises } from "../../components/ProgressExercises/ProgressExercises";
@@ -18,28 +19,36 @@ import { SuccessModal } from "../../components/LayoutModal/SuccessModal/SuccessM
 import { SelectWorkout } from "../../components/SelectWorkout/SelectWorkout";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 
-
-import { selectWorkouts } from "../../store/slices/workoutsSlice";
-import { selectCourses } from "../../store/selectors/course";
 import { NavigateBlock } from "../../components/NavigationBlock/Navi";
-import { userCourses } from "../../Api";
-import { selectUser } from "../../store/selectors/user";
-import { selectUserCourses } from "../../store/selectors/progress";
+
 import {
   allWorkoutSelector,
   currentCourseSelector,
-  courseList
+  courseList,
+  listExercises
 } from "../../store/selectors/coursesNew";
+import { getExecises } from "../../Api";
+import { setExercisesList } from "../../store/slices/courseWorkoutSlise";
 
 const WorkoutPage = () => {
   const workoutId = useParams();
-  console.log(workoutId);
   const dispatch = useDispatch();
   // const { id } = useSelector(selectUser);
 
+  useEffect(() => {
+    getExecises()
+      .then((data) => {
+        dispatch(setExercisesList(data));
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }, []);
+
   // const allCourses = useSelector(courseList);
   const workoutList = useSelector(allWorkoutSelector);
-  const currentCourse = useSelector(currentCourseSelector);
+  const exercises = useSelector(listExercises);
+  let currentCourse = useSelector(currentCourseSelector);
   // let currentWorkout;
 
   // for (const course in allCourses) {
@@ -52,13 +61,12 @@ const WorkoutPage = () => {
   //   );
   // }
 
-  const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
-  console.log(workout);
+  const workout = workoutList?.filter((workout) => workout.includes(workout._id));
+  const exercise = exercises?.filter((exercise) => workout.exercise.includes(exercise.name));
+  // let currentWorkout = workout.includes(workoutId.exercises)
+  // console.log(currentWorkout)
 
-  const title = `${workout.name} / ${workout.details}`;
-
-  // const coursesList = useSelector(selectCourses);
-  // const currentCourse = coursesList.filter((course) => course.workout.includes(workoutId.id));
+  const title = `${workout.name} / ${workout.exercises} / ${exercise.name}`;
 
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
@@ -67,12 +75,12 @@ const WorkoutPage = () => {
   const handleClick = () => setIsProgressModalShow(true);
 
   const openClosedProgModal = () => {
-    setIsProgressModalShow(!isProgressModalShown);
+    setIsProgressModalShow(!isProgressModalShow);
   };
 
   const handleSendClick = () => {
     setTimeout(() => {
-      dispatch(userCourses(id));
+      dispatch(currentCourse(id));
     }, 500);
     setIsProgressModalShow(false);
     setIsSuccessModalShow(true);
@@ -80,21 +88,21 @@ const WorkoutPage = () => {
 
   const titleClick = () => {
     setIsTrainingModalShow(true);
-    dispatch(userCourses(id));
+    dispatch(currentCourse(id));
   };
 
   const openClosedTrainingModal = () => {
-    setIsTrainingModalShow(!isTrainingModalShown);
+    setIsTrainingModalShow(!isTrainingModalShow);
   };
 
   return (
     <S.Container>
       <S.Main>
-      <NavigateBlock page="Other" />
-        <S.Heading>{currentCourse.nameRU}</S.Heading>
-        <S.Title onClick={titleClick}>{workout.details ? title : workout.name}</S.Title>
+        <NavigateBlock page="Other" />
+        <S.Heading>{currentCourse.name}</S.Heading>
+        <S.Title onClick={titleClick}>{title}</S.Title>
         <S.Player>
-          <ReactPlayer url={workout.video || ""} width="100%" height="100%" />
+          <ReactPlayer url={exercise.video} width="100%" height="100%" />
         </S.Player>
         {/* {currentWorkout && currentWorkout.length > 0 && (
           <S.Exercises>

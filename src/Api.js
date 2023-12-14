@@ -52,47 +52,18 @@ export async function getWorkouts() {
   return oArr;
 }
 
-export const userCourses = createAsyncThunk(
-  "profile/userCourses",
-  async (id, { extra: { databaseURL, api }, rejectWithValue }) => {
-    try {
-      const response = await databaseURL.get(api.USER_COURSES(id));
-
-      if (response.statusText !== "OK") {
-        throw new Error("Что-то пошло не так");
-      }
-      const { data } = await response;
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
-
-export const newCourse = createAsyncThunk(
-  "profile/newCourse",
-  async (
-    { id, idCourse, name, pathName, workouts },
-    { extra: { databaseURL, api }, rejectWithValue }
-  ) => {
-    try {
-      const response = await databaseURL.post(api.ADD_COURSE(id), {
-        _id: idCourse,
-        name: name,
-        pathName: pathName,
-        workouts: workouts
-      });
-
-      if (response.statusText !== "OK") {
-        throw new Error("Что-то пошло не так");
-      }
-      const { data } = await response;
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
+export async function getExecises() {
+  const oSnapshot = await get(query(ref(getDatabase(), `exercises`)));
+  const oArr = [];
+  let oDeed;
+  oSnapshot.forEach((oDoc) => {
+    oDeed = oDoc.val();
+    oDeed.key = oDoc.key;
+    oArr.push(oDeed);
+  });
+  console.log("exercises", oArr);
+  return oArr;
+}
 
 export const addProgress = createAsyncThunk(
   "profile/addProgress",
@@ -141,28 +112,6 @@ export const doNotAddCourse = (userCoursesList, course) => {
   return existingCourses.includes(course[0].pathName);
 };
 
-export const loadWorkouts = createAsyncThunk(
-  "workouts/all",
-  async (_, { extra: { databaseURL, api }, rejectWithValue }) => {
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        skipAuth: true
-      };
-      const response = await databaseURL.get(api.WORKOUTS, config);
-      if (response.statusText !== "OK") {
-        throw new Error("Что-то пошло не так");
-      }
-      const { data } = await response;
-
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
 export const getCurrentExercises = () => {};
 
 export const getUserProgress = (data, exercises) => {
@@ -181,46 +130,3 @@ export const getUserProgress = (data, exercises) => {
 
   return progress;
 };
-
-export const getCurrentCourseDetails = (userProfile, courseName, exercises) => {
-  let currentCourseId;
-  let currentCourse;
-  let currentWorkoutIndex;
-
-  for (const courseId in userProfile) {
-    if (userProfile[courseId].name === courseName) {
-      currentCourseId = courseId;
-      currentCourse = userProfile[courseId];
-    }
-  }
-
-  currentCourse.workouts.map((wo, woIndex) =>
-    wo.exercises.map((ex) =>
-      exercises.map((userEx) => (userEx.name === ex.name ? (currentWorkoutIndex = woIndex) : ""))
-    )
-  );
-
-  return currentCourseId, currentWorkoutIndex;
-};
-export const loadCourses = createAsyncThunk(
-  "courses/all",
-  async (_, { extra: { databaseURL, api }, rejectWithValue }) => {
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        skipAuth: true
-      };
-      const response = await databaseURL.get(api.COURSES, config);
-      if (response.statusText !== "OK") {
-        throw new Error("Что-то пошло не так");
-      }
-      const { data } = await response;
-
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);

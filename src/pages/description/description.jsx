@@ -6,12 +6,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { newCourse, userCourses } from "../../Api";
+//import { newCourse, userCourses } from "../../Api";
 import { selectUser } from "../../store/selectors/user";
-import { selectCourses } from "../../store/selectors/course";
-import { selectWorkouts } from "../../store/slices/workoutsSlice";
-import { selectUserCourses } from "../../store/selectors/progress";
-import { getUserWorkouts, doNotAddCourse } from "../../Api";
+// import { selectCourses } from "../../store/selectors/course";
+// import { selectWorkouts } from "../../store/slices/workoutsSlice";
+// import { selectUserCourses } from "../../store/selectors/progress";
+// import { getUserWorkouts, doNotAddCourse } from "../../Api";
 import { ButtonMain } from "../../components/ButtonMain/ButtonMain";
 import { SignInPage } from "../log-in/login";
 import { SignUpPage } from "../sign-up/signup";
