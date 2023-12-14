@@ -109,7 +109,7 @@ const images = [
     <S.Wrapper>
       <S.Container>
       <NavigateBlock page="Other" />
-      {loading ? (<><S.TitleBox src = {'/img/card-1.png'}> 
+      {loading ? (<><S.TitleBox> 
           <S.Title>{course.nameRU}</S.Title>
           <S.CourseImg src = {image.src}></S.CourseImg>
           
