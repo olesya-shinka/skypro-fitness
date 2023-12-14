@@ -56,8 +56,13 @@ const userSlice = createSlice({
     },
 
     setEmail(state, action) {
-      state.email = action.payload.email;
-      localStorage.setItem("email", state.email);
+      state.email = action.payload.newEmail;
+      localStorage.setItem("email", state.newEmail);
+    },
+
+    setPassword(state, action) {
+      state.password = action.payload.newPassword;
+      localStorage.setItem("password", state.newPassword);
     },
 
     initializeUserFromLocalStorage() {
