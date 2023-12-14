@@ -52,18 +52,18 @@ export async function getWorkouts() {
   return oArr;
 }
 
-export async function getExecises() {
-  const oSnapshot = await get(query(ref(getDatabase(), `exercises`)));
-  const oArr = [];
-  let oDeed;
-  oSnapshot.forEach((oDoc) => {
-    oDeed = oDoc.val();
-    oDeed.key = oDoc.key;
-    oArr.push(oDeed);
-  });
-  console.log("exercises", oArr);
-  return oArr;
-}
+// export async function getExecises() {
+//   const oSnapshot = await get(query(ref(getDatabase(), `workouts/_id/`)));
+//   const oArr = [];
+//   let oDeed;
+//   oSnapshot.forEach((oDoc) => {
+//     oDeed = oDoc.val();
+//     oDeed.key = oDoc.key;
+//     oArr.push(oDeed);
+//   });
+//   console.log("name", oArr);
+//   return oArr;
+// }
 
 export const addProgress = createAsyncThunk(
   "profile/addProgress",

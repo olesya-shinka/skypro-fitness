@@ -27,34 +27,63 @@ import {
   courseList,
   listExercises
 } from "../../store/selectors/coursesNew";
-import { getExecises } from "../../Api";
-import { setExercisesList } from "../../store/slices/courseWorkoutSlise";
+import { getExecises, getWorkouts } from "../../Api";
+import {
+  setExercisesList,
+  setSelectedWorkout,
+  setWorkoutList
+} from "../../store/slices/courseWorkoutSlise";
 
 const WorkoutPage = () => {
- // const workoutId = useParams();
+  //const workoutId = useParams();
+  // const exerciseId = useParams();
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
   const dispatch = useDispatch();
-  // const { id } = useSelector(selectUser);
-
-  useEffect(() => {
-    getExecises()
-      .then((data) => {
-        dispatch(setExercisesList(data));
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }, []);
-
-  // const allCourses = useSelector(courseList);
   const workoutList = useSelector(allWorkoutSelector);
   const exercises = useSelector(listExercises);
   let currentCourse = useSelector(currentCourseSelector);
-  // let currentWorkout;
+  let currentWorkout;
+  const [loading, setLoading] = useState(false);
 
-  // for (const course in allCourses) {
-  //   allCourses[course].workouts.map((wo) =>
+  useEffect(() => {
+    const timerId = setInterval(() => setLoading(!loading), 2000);
+    return () => {
+      clearInterval(timerId);
+    };
+  }, []);
+
+  // useEffect(() => {
+  //   getWorkouts()
+  //     .then((data) => {
+  //       dispatch(setWorkoutList(data));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //     })
+  //     .finally(() => setLoading(false));
+  // }, []);
+
+  // useEffect(() => {
+  //   getExecises()
+  //     .then((data) => {
+  //       dispatch(setExercisesList(data));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //     });
+  // }, []);
+
+  // const workouts = [];
+  // const allWorkouts = Object.keys(workouts).map((workout) => {
+  //   return { id: _id, name: workouts[workout], video: workouts[video], user_id: workouts[user_id] };
+  // });
+  // console.log(allWorkouts);
+
+  // const allCourses = useSelector(courseList);
+
+  // for (const workout in workoutList) {
+  //   workoutList[workout].workouts.map((wo) =>
   //     wo._id === workoutId.id
   //       ? wo.progress !== undefined
   //         ? (currentWorkout = wo.progress)
@@ -62,13 +91,20 @@ const WorkoutPage = () => {
   //       : ""
   //   );
   // }
+  // for (const exercise in workoutList) {
+  //   workoutList[exercise]._id.map((wo) =>
+  //     wo._id === exerciseId.id
+  //       ? wo.progress !== undefined
+  //         ? (currentExercise = wo.progress)
+  //         : (currentExercise = wo.exercises)
+  //       : ""
+  //   );
+  // }
 
-  const workout = workoutList?.filter((workout) => workout.includes(workout._id));
-  const exercise = exercises?.filter((exercise) => workout.exercise.includes(exercise.name));
-  // let currentWorkout = workout.includes(workoutId.exercises)
-  // console.log(currentWorkout)
+  //const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
+  // const exercise = exercises?.filter((exercise) => workout.exercise.name === exercise);
 
-  const title = `${workout._id} / ${workout.exercises} / ${exercise.name}`;
+  const title = `${workoutList.name}`;
 
   const handleClick = () => setIsProgressModalShow(true);
 
@@ -88,22 +124,22 @@ const WorkoutPage = () => {
     <S.Container>
       <S.Main>
         <NavigateBlock page="Other" />
-        <S.Heading>{currentCourse.name}</S.Heading>
-        <S.Title onClick={titleClick}>{title}</S.Title>
+        <S.Heading>{workoutList.name}</S.Heading>
+        <S.Title>{workoutList.name}</S.Title>
         <S.Player>
-          <ReactPlayer url={exercise.video} width="100%" height="100%" />
+          <ReactPlayer url={exercises.video} width="100%" height="100%" />
         </S.Player>
-        {/* {currentWorkout && currentWorkout.length > 0 && (
+        {currentWorkout && currentWorkout.length > 0 && (
           <S.Exercises>
-            <ExercisesList exercises={currentWorkout} onClick={handleClick} />
+            <ExercisesList exercises={exercises} onClick={handleClick} />
             <ProgressExercises exercises={currentWorkout} />
           </S.Exercises>
-        )} */}
+        )}
       </S.Main>
       {isProgressModalShow && (
         <LayoutModal onClick={openClosedProgModal}>
           <ProgressModal
-            exercises={workout.exercises}
+            exercises={workoutId.exercises}
             onClick={handleSendClick}
             courseName={currentCourse.name}
             workoutName={workoutId.id}
