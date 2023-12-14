@@ -31,7 +31,9 @@ import { getExecises } from "../../Api";
 import { setExercisesList } from "../../store/slices/courseWorkoutSlise";
 
 const WorkoutPage = () => {
-  const workoutId = useParams();
+ // const workoutId = useParams();
+  const [isProgressModalShow, setIsProgressModalShow] = useState(false);
+  const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
   const dispatch = useDispatch();
   // const { id } = useSelector(selectUser);
 
@@ -66,11 +68,7 @@ const WorkoutPage = () => {
   // let currentWorkout = workout.includes(workoutId.exercises)
   // console.log(currentWorkout)
 
-  const title = `${workout.name} / ${workout.exercises} / ${exercise.name}`;
-
-  const [isProgressModalShow, setIsProgressModalShow] = useState(false);
-  const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
-  const [isTrainingModalShow, setIsTrainingModalShow] = useState(false);
+  const title = `${workout._id} / ${workout.exercises} / ${exercise.name}`;
 
   const handleClick = () => setIsProgressModalShow(true);
 
@@ -84,15 +82,6 @@ const WorkoutPage = () => {
     }, 500);
     setIsProgressModalShow(false);
     setIsSuccessModalShow(true);
-  };
-
-  const titleClick = () => {
-    setIsTrainingModalShow(true);
-    dispatch(currentCourse(id));
-  };
-
-  const openClosedTrainingModal = () => {
-    setIsTrainingModalShow(!isTrainingModalShow);
   };
 
   return (
@@ -119,12 +108,6 @@ const WorkoutPage = () => {
             courseName={currentCourse.name}
             workoutName={workoutId.id}
           />
-        </LayoutModal>
-      )}
-      {isSuccessModalShow && <SuccessModal setIsSuccessModalShow={setIsSuccessModalShow} />}
-      {isTrainingModalShow && (
-        <LayoutModal onClick={openClosedTrainingModal}>
-          <SelectWorkout openClosedTrainingModal={openClosedTrainingModal} />
         </LayoutModal>
       )}
     </S.Container>
