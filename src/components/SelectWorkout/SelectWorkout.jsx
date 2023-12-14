@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-key */
@@ -41,9 +42,7 @@ export function SelectWorkout({ openClosedTrainingModal }) {
         <S.SelectList>
           {currentWorkouts?.map((workout, index) => (
             <NavLink key={workout._id} to={`/WorkoutPage/${workout._id}`}>
-              <S.SelectItem onClick={openClosedTrainingModal}>
-                {workout.name}
-              </S.SelectItem>
+              <S.SelectItem onClick={openClosedTrainingModal}>{workout.name}</S.SelectItem>
               <S.SelectItemType>{workout.details}</S.SelectItemType>
             </NavLink>
           ))}

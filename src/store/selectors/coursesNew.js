@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export const courseList = (store) => store.newCourse.courseList;
 
 export const currentCourseSelector = (store) => store.newCourse.currentCourse;
