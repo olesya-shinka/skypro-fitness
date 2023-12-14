@@ -2,28 +2,27 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  background-color: #383838;
-`;
-
-export const Container = styled.div`
-  max-width: 1920px;
+  width: 100vw;
   height: 100vh;
-  margin: 0 auto;
-  position: relative;
-  background-color: #181818;
-`;
-
-export const Content = styled.main`
-  -webkit-box-flex: 1;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  background-color: black;
+  color: white;
   display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  gap: 160px;
 `;
+export const Error = styled.p`
+  font-size: 100px;
+  font-weight: 900;
+  line-height: 30px;
+`;
+export const Text = styled.p`
+  font-size: 40px;
+  text-align: center;
+`;
+export const Link = styled.link`
+  font-size: 30px;
+  cursor: pointer;
+`;
+//fddfds
