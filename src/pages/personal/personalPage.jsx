@@ -28,7 +28,6 @@ export const PersonalPage = () => {
 
   const courses = useSelector(courseList);
   const userId = useSelector(idSelector);
-  console.log(userId);
   // const courses = useSelector(courseList)
   const dispatch = useDispatch();
   // const [isModalVisible, setModalVisible] = useState(false);
