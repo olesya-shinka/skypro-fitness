@@ -5,14 +5,9 @@
 import * as S from "./Style";
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import { images } from "../images/Images";
 export const Courses = ({ courses }) => {
-  const images = [
-    { src: "/img/card-1.png" },
-    { src: "/img/card-2.png" },
-    { src: "/img/card-3.png" },
-    { src: "/img/card-4.png" },
-    { src: "/img/card-5.png" }
-  ];
+
   const [currentPage, setCurrentPage] = useState(0);
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);

@@ -37,16 +37,17 @@ export function SelectWorkout({ setIsShowForm }) {
   return (
     <S.SelectContainer>
       <S.SelectWrapper>
-      <S.SelectCloseIconSvg onClick={() => {setIsShowForm(false)}}>
+        <S.SelectCloseIconSvg
+          onClick={() => {
+            setIsShowForm(false);
+          }}>
           <use xlinkHref="/icons/sprite.svg#icon-close" />
         </S.SelectCloseIconSvg>
         <S.SelectTitle>Выберите тренировку</S.SelectTitle>
         <S.SelectList>
           {currentWorkouts?.map((workout, index) => (
             <NavLink key={workout._id} to={`/WorkoutPage/${workout._id}`}>
-              <S.SelectItem>
-                {workout.name}
-              </S.SelectItem>
+              <S.SelectItem>{workout.name}</S.SelectItem>
               <S.SelectItemType>{workout.details}</S.SelectItemType>
             </NavLink>
           ))}
