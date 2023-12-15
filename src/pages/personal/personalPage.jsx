@@ -23,7 +23,7 @@ import { images } from "../../components/images/Images";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
 import { useParams } from "react-router-dom";
 
-export const PersonalPage = () => {
+export const PersonalPage = ({ loading }) => {
   const [isEditEmail, setIsEditEmail] = useState(false);
   const [isEditPass, setIsEditPass] = useState(false);
   const [isShowForm, setIsShowForm] = useState(false);
@@ -48,15 +48,6 @@ export const PersonalPage = () => {
   //   setIsTrainingModalShow(!isTrainingModalShow);
   // };
 
-  useEffect(() => {
-    getWorkouts()
-      .then((data) => {
-        dispatch(setWorkoutList(data));
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }, []);
   // const { id } = useSelector(selectUser);
   // const { status } = useSelector(selectProfileInfo);
 
@@ -99,20 +90,25 @@ export const PersonalPage = () => {
         </S.ChangeDate>
         <S.CourseWrap>
           <S.Title>Мои курсы</S.Title>
-          <S.ProfList>
-            {filteredCourses.map((course, index) => (
-              <S.Prof key={index} id={course.id}><S.CourseName>{course.nameRU}</S.CourseName>
-                <S.ProfCard src={images[index].src} alt="prof_card" ></S.ProfCard >
-                    
-                <S.ProfButton
-                  onClick={() => {
-                    handleCard(course);
-                  }}>
-                  Перейти →
-                </S.ProfButton>
-              </S.Prof>
-            ))}
-          </S.ProfList>
+          {loading ? (
+            <S.ProfList>
+              {filteredCourses.map((course, index) => (
+                <S.Prof key={index} id={course.id}>
+                  <S.CourseName>{course.nameRU}</S.CourseName>
+                  <S.ProfCard src={images[index].src} alt="prof_card"></S.ProfCard>
+
+                  <S.ProfButton
+                    onClick={() => {
+                      handleCard(course);
+                    }}>
+                    Перейти →
+                  </S.ProfButton>
+                </S.Prof>
+              ))}
+            </S.ProfList>
+          ) : (
+            <S.LoadingCircle></S.LoadingCircle>
+          )}
         </S.CourseWrap>
         {/* {isSuccessModalShow && <SuccessModal setIsSuccessModalShow={setIsSuccessModalShow} />}
         {isTrainingModalShow && (

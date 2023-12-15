@@ -1,20 +1,20 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { Courses } from "../../components/Courses/Courses";
 import * as S from "./MainStyle";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
 import { useSelector } from "react-redux";
 import { courseList } from "../../store/selectors/coursesNew";
 
-export const MainPage = ({ loading, setLoading }) => {
-  useEffect(() => {
-    // Заводим таймер
-    const timerId = setInterval(() => setLoading(!loading), 5000);
-    // Данная функция вызывается при удалении компонента из DOM
-    return () => {
-      // Наводим порядок после удаления компонента
-      clearInterval(timerId);
-    };
-  }, []);
+export const MainPage = ({ loading }) => {
+  // useEffect(() => {
+  //   // Заводим таймер
+  //   const timerId = setInterval(() => setLoading(!loading), 5000);
+  //   // Данная функция вызывается при удалении компонента из DOM
+  //   return () => {
+  //     // Наводим порядок после удаления компонента
+  //     clearInterval(timerId);
+  //   };
+  // }, []);
 
   const ButtonUp = () => {
     window.scrollTo({
