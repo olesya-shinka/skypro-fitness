@@ -11,12 +11,12 @@ import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 import SignInPage from "./pages/log-in/login";
 import NotFound from "./pages/notFound/NotFound";
 
-export const AppRoutes = () => {
+export const AppRoutes = ({ loading, setLoading }) => {
   return (
     <Routes>
       <Route path="/Login" element={<SignInPage />} />
       <Route path="/SignUp" element={<SignUpPage />} />
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPage loading={loading} setLoading={setLoading}/>} />
         <Route path="/CourseInfo/:id" element={<CourseInfo />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/PersonalPage" element={<PersonalPage />} />

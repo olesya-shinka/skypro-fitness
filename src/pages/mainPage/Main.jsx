@@ -1,18 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Courses } from "../../components/Courses/Courses";
 import * as S from "./MainStyle";
-import { getCourses } from "../../Api";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
-import { useDispatch } from "react-redux";
-import { setCourseList } from "../../store/slices/courseWorkoutSlise";
 import { useSelector } from "react-redux";
 import { courseList } from "../../store/selectors/coursesNew";
 
-export const MainPage = () => {
-  // const [courses, setСourses] = useState([]);
-  const dispatch = useDispatch();
-
-  const [loading, setLoading] = useState(false);
+export const MainPage = ({ loading, setLoading }) => {
   useEffect(() => {
     // Заводим таймер
     const timerId = setInterval(() => setLoading(!loading), 5000);
@@ -23,18 +16,6 @@ export const MainPage = () => {
     };
   }, []);
 
-  useEffect(() => {
-    getCourses()
-      .then((data) => {
-        // console.log(data);
-        // setСourses(data);
-        dispatch(setCourseList(data));
-      })
-      .catch((error) => {
-        console.log(error.message);
-      })
-      .finally(() => setLoading(false));
-  }, []);
   const ButtonUp = () => {
     window.scrollTo({
       top: 0,
