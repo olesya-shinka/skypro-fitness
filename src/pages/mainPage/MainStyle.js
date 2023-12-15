@@ -124,7 +124,7 @@ export const Title = styled.h1`
   line-height: 115%; 
   letter-spacing: -0.05px;
   font-family: "StratosSkyeng", sans-serif;
-  margin-top: 100px;
+
   opacity: 0.5;
     `
 export const Slogan = styled.p`
@@ -148,7 +148,6 @@ export const SaleSticker = styled.div`
   stroke-width: 2px;
   stroke: #FF8071;
   position: relative;
-  top: 80px;
 
 
 `

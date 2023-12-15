@@ -19,6 +19,7 @@ export const Sidebar = styled.div`
   padding-left: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
+  width: 100%;
   background-color: ${props => {
     switch (props.page) {
           case "Main_Page":
