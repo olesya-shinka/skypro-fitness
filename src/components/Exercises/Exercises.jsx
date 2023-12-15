@@ -6,7 +6,7 @@
 import * as S from "./styles";
 import ButtonMain from "../ButtonMain/ButtonMain";
 
-export const ExercisesList = ({ onClick, exercises }) => {
+export const ExercisesList = ({ handleClick, exercises }) => {
   return (
     <div className="content">
       <S.TitleExercises>Упражнения</S.TitleExercises>
@@ -15,7 +15,7 @@ export const ExercisesList = ({ onClick, exercises }) => {
           <S.ListExercisesItem key={i}>{exercise.name}</S.ListExercisesItem>
         ))}
       </S.ListExercises>
-      <ButtonMain content="Заполнить свой прогресс" onClick={onClick} />
+      <ButtonMain content="Заполнить свой прогресс" onClick={handleClick} />
     </div>
   );
 };
