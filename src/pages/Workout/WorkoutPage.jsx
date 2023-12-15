@@ -36,7 +36,6 @@ import {
 
 const WorkoutPage = () => {
   const workoutId = useParams();
-  console.log(workoutId);
   const dispatch = useDispatch();
   // const { id } = useSelector(selectUser);
 
@@ -58,7 +57,7 @@ const WorkoutPage = () => {
   const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
   console.log(workout);
 
-  const title = `${workout.name} / ${workout.details}`;
+  const title = `${workout.name}`;
 
   // const coursesList = useSelector(selectCourses);
   // const currentCourse = coursesList.filter((course) => course.workout.includes(workoutId.id));
@@ -70,7 +69,7 @@ const WorkoutPage = () => {
   const handleClick = () => setIsProgressModalShow(true);
 
   const openClosedProgModal = () => {
-    setIsProgressModalShow(!isProgressModalShown);
+    setIsProgressModalShow(!isProgressModalShow);
   };
 
   const handleSendClick = () => {
@@ -81,39 +80,23 @@ const WorkoutPage = () => {
     setIsSuccessModalShow(true);
   };
 
-  const titleClick = () => {
-    setIsTrainingModalShow(true);
-    dispatch(userCourses(id));
-  };
-
-  const openClosedTrainingModal = () => {
-    setIsTrainingModalShow(!isTrainingModalShow);
-  };
-
   return (
     <S.Container>
       <S.Main>
         <NavigateBlock page="Other" />
-        <S.Heading>{workoutList.name}</S.Heading>
-        <S.Title>{workoutList.name}</S.Title>
+        <S.Heading>{workout.name}</S.Heading>
+        <S.Title>{workout.name}</S.Title>
         <S.Player>
-          <ReactPlayer url={exercises.video} width="100%" height="100%" />
+          <ReactPlayer url={workout.video} width="100%" height="100%" />
         </S.Player>
-        {currentWorkout && currentWorkout.length > 0 && (
-          <S.Exercises>
-            <ExercisesList exercises={exercises} onClick={handleClick} />
-            <ProgressExercises exercises={currentWorkout} />
-          </S.Exercises>
-        )}
+        <S.Exercises>
+          <ExercisesList workout={workout.name} onClick={handleClick} />
+          <ProgressExercises />
+        </S.Exercises>
       </S.Main>
       {isProgressModalShow && (
         <LayoutModal onClick={openClosedProgModal}>
-          <ProgressModal
-            exercises={workoutId.exercises}
-            onClick={handleSendClick}
-            courseName={currentCourse.name}
-            workoutName={workoutId.id}
-          />
+          <ProgressModal onClick={handleSendClick} />
         </LayoutModal>
       )}
     </S.Container>
