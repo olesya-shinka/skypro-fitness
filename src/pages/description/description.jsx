@@ -21,7 +21,9 @@ import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 import { courseList } from "../../store/selectors/coursesNew";
 import { emailSelector, idSelector } from "../../store/selectors/user";
 import { images } from "../../components/images/Images.jsx";
+
 export default function CourseInfo() {
+  
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   const courseId = useParams().id;

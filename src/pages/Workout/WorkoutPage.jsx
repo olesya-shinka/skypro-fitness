@@ -46,12 +46,14 @@ export const WorkoutPage = () => {
       clearInterval(timerId);
     };
   }, []);
-
+  const courseId = useParams().id;
+  const courses = useSelector(courseList);
   const workoutList = useSelector(allWorkoutSelector);
-  const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
-  const exercises = workout?.filter((exercise) => workout.exercise === exercise);
-  const name = workout?.filter((name) => workout.name === name);
+  const workout = workoutList?.filter((workout) => workout._id === workoutId);
+  const exercises = workout?.find((exercise) => workout.exercise === exercise);
+  const name = workout?.find((name) => workout.name === name);
   const video = workout?.filter((video) => workout.video === video);
+  const course = courses.filter((course) => course.id === courseId);
   //const currentCourse = useSelector(currentCourseSelector);
 
   //let currentWorkout;
@@ -93,8 +95,8 @@ export const WorkoutPage = () => {
       {loading ? (
         <S.Main>
           <NavigateBlock page="Other" />
-          <S.Heading>{name}</S.Heading>
-          <S.Title>{name}</S.Title>
+          <S.Heading>{course.nameRu}</S.Heading>
+          <S.Title>{workout.name}</S.Title>
           <S.Player>
             <ReactPlayer url={video} width="100%" height="100%" />
           </S.Player>
