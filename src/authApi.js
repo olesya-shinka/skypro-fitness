@@ -4,9 +4,10 @@ import {
   createUserWithEmailAndPassword,
   reauthenticateWithCredential,
   EmailAuthProvider,
-  updateEmail,
+  // updateEmail,
   sendEmailVerification,
-  updatePassword
+  updatePassword,
+  verifyBeforeUpdateEmail
 } from "firebase/auth";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 export async function register(email, password) {
@@ -50,7 +51,7 @@ export async function changeLogin(newEmail, valueOldPass) {
     await sendEmailVerification(auth.currentUser);
 
     // Изменение адреса электронной почты
-    await updateEmail(auth.currentUser, newEmail);
+    await verifyBeforeUpdateEmail(auth.currentUser, newEmail);
 
     // Опционально: разлогиниваем пользователя
     // await signOut(auth);
