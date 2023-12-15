@@ -41,7 +41,7 @@ export const PersonalPage = () => {
   //получить курсы юзера
   const filteredCourses = courses.filter((course) => {
     // Проверяем, есть ли пользователь с данным идентификатором в массиве users у курса
-    return course.users.id === userId;
+    return course.users?.id === userId;
   });
   // const openClosedTrainingModal = () => {
   //   setIsTrainingModalShow(!isTrainingModalShow);
