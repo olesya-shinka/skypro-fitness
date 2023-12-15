@@ -14,11 +14,11 @@ const getProgressColor = (index) => {
 export const ProgressBlock = styled.div`
   padding: 32px 44px;
   border-radius: 30px;
-  background-color: ${({ theme }) => theme.colors.grayLight};
+  background-color: ${({ theme }) => theme.colors};
 `;
 
 export const ProgressTitle = styled.div`
-  font-size: ${({ theme }) => theme.fontSize.l};
+  font-size: ${({ theme }) => theme.fontSize};
   margin-bottom: 30px;
   text-align: center;
 `;

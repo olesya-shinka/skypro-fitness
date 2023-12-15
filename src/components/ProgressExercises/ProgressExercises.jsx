@@ -5,15 +5,19 @@
 /* eslint-disable prettier/prettier */
 import { calculator } from "./utils";
 import * as S from "./styles";
+import { listExercises } from "../../store/selectors/coursesNew";
+import { useSelector } from "react-redux";
 
-export const ProgressExercises = ({ exercises, progress }) => {
-  const currentExercises = exercises.exercises;
-
+export const ProgressExercises = ({ progress, workout }) => {
+  const exercisesList = useSelector(listExercises);
+  const exercise = exercisesList?.find((exercise) => workout.exercise === exercise);
+  console.log(exercise);
+  const currentExercises = exercise;
   const currentProgress = progress ? Object.keys(progress).map((key) => progress[key]) : null;
+
   return (
     <S.ProgressBlock>
       <S.ProgressTitle>Мой прогресс по тренировке:</S.ProgressTitle>
-
       <S.ProgressStats>
         {currentExercises && currentProgress
           ? currentExercises.map(({ name, quantity }, index) => {

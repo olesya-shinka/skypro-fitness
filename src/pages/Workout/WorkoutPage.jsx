@@ -25,7 +25,6 @@ import {
   allWorkoutSelector,
   currentCourseSelector,
   courseList,
-  listExercises
 } from "../../store/selectors/coursesNew";
 import { getExecises, getWorkouts } from "../../Api";
 import {
@@ -34,14 +33,18 @@ import {
   setWorkoutList
 } from "../../store/slices/courseWorkoutSlise";
 
-const WorkoutPage = () => {
+export const WorkoutPage = () => {
   const workoutId = useParams();
   const dispatch = useDispatch();
   // const { id } = useSelector(selectUser);
 
   // const allCourses = useSelector(courseList);
   const workoutList = useSelector(allWorkoutSelector);
+ // const workoutList = useSelector((state) => {state.workoutList});
   const currentCourse = useSelector(currentCourseSelector);
+  
+  const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
+  console.log(workout);
   // let currentWorkout;
 
   // for (const course in allCourses) {
@@ -54,10 +57,7 @@ const WorkoutPage = () => {
   //   );
   // }
 
-  const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
-  console.log(workout);
-
-  const title = `${workout.name}`;
+  const title = `${workout}`;
 
   // const coursesList = useSelector(selectCourses);
   // const currentCourse = coursesList.filter((course) => course.workout.includes(workoutId.id));
@@ -84,13 +84,13 @@ const WorkoutPage = () => {
     <S.Container>
       <S.Main>
         <NavigateBlock page="Other" />
-        <S.Heading>{workout.name}</S.Heading>
-        <S.Title>{workout.name}</S.Title>
+        <S.Heading>{workout}</S.Heading>
+        <S.Title>{workout}</S.Title>
         <S.Player>
           <ReactPlayer url={workout.video} width="100%" height="100%" />
         </S.Player>
         <S.Exercises>
-          <ExercisesList workout={workout.name} onClick={handleClick} />
+          <ExercisesList workout={workout.exercise} onClick={handleClick} />
           <ProgressExercises />
         </S.Exercises>
       </S.Main>
