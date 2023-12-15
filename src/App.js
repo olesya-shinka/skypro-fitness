@@ -6,8 +6,8 @@ import { AppRoutes } from "./routes.js";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import GlobalStyle from "./global";
-import { getCourses } from "./Api.js";
-import { setCourseList } from "./store/slices/courseWorkoutSlise.js";
+import { getCourses, getWorkouts } from "./Api.js";
+import { setCourseList, setWorkoutList } from "./store/slices/courseWorkoutSlise.js";
 
 import "./firebase";
 import { initializeUserFromLocalStorage } from "./store/slices/userSlice.js";
@@ -23,22 +23,21 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    getCourses()
-      .then((data) => {
-        // console.log(data);
-        // setСourses(data);
-        dispatch(setCourseList(data));
+    Promise.all([getCourses(), getWorkouts()])
+      .then(([coursesData, workoutsData]) => {
+        dispatch(setCourseList(coursesData));
+        dispatch(setWorkoutList(workoutsData));
       })
       .catch((error) => {
         console.log(error.message);
       })
-      .finally(() => setLoading(false));
+      .finally(() => setLoading(true));
   }, []);
 
   return (
     <div>
       <GlobalStyle />
-      <AppRoutes loading={loading} setLoading={setLoading}/>
+      <AppRoutes loading={loading} setLoading={setLoading} />
     </div>
   );
 }

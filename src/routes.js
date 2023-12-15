@@ -17,10 +17,10 @@ export const AppRoutes = ({ loading, setLoading }) => {
       <Route path="/Login" element={<SignInPage />} />
       <Route path="/SignUp" element={<SignUpPage />} />
         <Route path="/" element={<MainPage loading={loading} setLoading={setLoading}/>} />
-        <Route path="/CourseInfo/:id" element={<CourseInfo />} />
+        <Route path="/CourseInfo/:id" element={<CourseInfo loading={loading}/>} />
         <Route element={<ProtectedRoute />}>
-          <Route path="/PersonalPage" element={<PersonalPage />} />
-          <Route path="/WorkoutPage/:id" element={<WorkoutPage />} />
+          <Route path="/PersonalPage" element={<PersonalPage loading={loading}/>} />
+          <Route path="/WorkoutPage/:id" element={<WorkoutPage loading={loading}/>} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
