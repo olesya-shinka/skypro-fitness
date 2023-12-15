@@ -128,3 +128,12 @@ font-style: normal;
 line-height: 40px; /* 125% */
 margin-bottom: 34px;
 `;
+
+export const CourseImg = styled.img`
+  border-radius: 30px;
+  background-position: 50% 50%;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  fill: transparent
+  `;
