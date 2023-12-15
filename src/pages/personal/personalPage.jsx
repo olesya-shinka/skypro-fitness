@@ -19,7 +19,9 @@ import { setCurrentCourse, setWorkoutList } from "../../store/slices/courseWorko
 // import { selectProfileInfo } from "../../store/slices/userCourseSlice";
 // import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 // import { CoursesCarts } from "./coursesCarts";
+import { images } from "../../components/images/Images";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
+import { useParams } from "react-router-dom";
 
 export const PersonalPage = () => {
   const [isEditEmail, setIsEditEmail] = useState(false);
@@ -30,7 +32,6 @@ export const PersonalPage = () => {
 
   const courses = useSelector(courseList);
   const userId = useSelector(idSelector);
-  console.log(userId);
   // const courses = useSelector(courseList)
   const dispatch = useDispatch();
   // const [isModalVisible, setModalVisible] = useState(false);
@@ -41,7 +42,7 @@ export const PersonalPage = () => {
   //получить курсы юзера
   const filteredCourses = courses.filter((course) => {
     // Проверяем, есть ли пользователь с данным идентификатором в массиве users у курса
-    return course.users.id === userId;
+    return course.users?.id === userId;
   });
   // const openClosedTrainingModal = () => {
   //   setIsTrainingModalShow(!isTrainingModalShow);
@@ -77,14 +78,6 @@ export const PersonalPage = () => {
     localStorage.setItem("selectedCourse", JSON.stringify(course));
     setIsShowForm(true);
   };
-  // const handleSendClick = () => {
-  //   setTimeout(() => {
-  //     dispatch(currentCourse(id));
-  //   }, 500);
-  //   setIsProgressModalShow(false);
-  //   setIsSuccessModalShow(true);
-  // };
-
   return (
     <S.Wrap>
       <S.Content>
@@ -108,9 +101,9 @@ export const PersonalPage = () => {
           <S.Title>Мои курсы</S.Title>
           <S.ProfList>
             {filteredCourses.map((course, index) => (
-              <S.Prof key={index} id={course.id}>
-                <S.ProfCard src={course.img} alt="prof_card" />
-
+              <S.Prof key={index} id={course.id}><S.CourseName>{course.nameRU}</S.CourseName>
+                <S.ProfCard src={images[index].src} alt="prof_card" ></S.ProfCard >
+                    
                 <S.ProfButton
                   onClick={() => {
                     handleCard(course);
@@ -137,3 +130,5 @@ export const PersonalPage = () => {
     </S.Wrap>
   );
 };
+
+//<S.Course src={images[index].src} alt="prof_card" ><S.CourseName>{course.nameRU}</S.CourseName> </S.Course>

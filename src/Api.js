@@ -48,7 +48,6 @@ export async function getWorkouts() {
     oDeed.key = oDoc.key;
     oArr.push(oDeed);
   });
-  console.log("workouts", oArr);
   return oArr;
 }
 

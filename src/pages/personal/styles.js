@@ -122,8 +122,26 @@ export const ProfCard = styled.img`
   left: 0px;
   top: 0px;
   border-radius: 30px;
+  position: absolute;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Параметры тени */
 `;
+export const Course = styled.div`
+  background: tracnsparent;
+  box-shadow: -10px 10px 15.999px 0px rgba(0, 0, 0, 0.10), 10px -10px 16px 0px rgba(0, 0, 0, 0.10);
+2x;
+  color: black;
+  height: 480px;
+  width: 360px;
+  border-radius: 30px;
+  display: inline-block;
+  position: relative;
+  z-index: 0;
+  background-position: 50% 50%;
+  background-size: auto;
+
+  `;
+
+
 export const ProfList = styled.ul`
   padding: 0px;
   margin: 0px;
@@ -131,7 +149,7 @@ export const ProfList = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 140px;
 `;
 export const Prof = styled.div`
   position: relative;
@@ -172,4 +190,19 @@ export const Courses = styled.div`
   gap: 40px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   padding: 10px;
+`;
+export const CourseName = styled.h2`
+  color: #000;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: "StratosSkyeng", sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 110%;
+  letter-spacing: -0.5px;
+  width: 290px;
+  padding-top: 30px;
+  padding-left: 30px;
+  position: relative;
+  z-index: 1;
 `;

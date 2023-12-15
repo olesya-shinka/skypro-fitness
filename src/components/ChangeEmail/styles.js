@@ -131,3 +131,12 @@ export const ErrorMessage = styled.div`
   text-align: center;
   margin-top: 10px;
 `;
+export const SelectCloseIconSvg = styled.svg`
+  width: 20px;
+  height: 23px;
+  position: absolute;
+  top: 15px;
+  left: 350px;
+  cursor: pointer;
+
+`;
