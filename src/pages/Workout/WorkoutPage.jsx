@@ -6,11 +6,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 import * as S from "./styles";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
-import { useEffect } from "react";
 
 import { ExercisesList } from "../../components/Exercises/Exercises";
 import { ProgressExercises } from "../../components/ProgressExercises/ProgressExercises";
@@ -18,7 +17,6 @@ import { ProgressModal } from "../../components/LayoutModal/ProgressModal/Progre
 import { SuccessModal } from "../../components/LayoutModal/SuccessModal/SuccessModal";
 import { SelectWorkout } from "../../components/SelectWorkout/SelectWorkout";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
-
 import { NavigateBlock } from "../../components/NavigationBlock/Navi";
 
 import {
@@ -27,12 +25,6 @@ import {
   courseList
 } from "../../store/selectors/coursesNew";
 import { selectUser } from "../../store/selectors/user";
-import {
-  setExercisesList,
-  setSelectedWorkout,
-  setWorkoutList
-} from "../../store/slices/courseWorkoutSlise";
-import { listExercises } from "../../store/selectors/coursesNew";
 
 export const WorkoutPage = () => {
   const dispatch = useDispatch();
