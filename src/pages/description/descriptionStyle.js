@@ -128,3 +128,78 @@ font-style: normal;
 line-height: 40px; /* 125% */
 margin-bottom: 34px;
 `;
+
+export const CourseImg = styled.img`
+  border-radius: 30px;
+  background-position: 50% 50%;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  fill: transparent
+  `;
+  export const LoadingCircle = styled.div`
+  margin-top: 100px;
+  margin-left:140px;
+  position: relative;
+  text-align: center; 
+  padding: 20px;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+::before {
+  content: ''; /
+  position: absolute;
+  border: 2px solid #3D64FF; 
+  left: -20px;
+  opacity: 0;
+  right: -20px;
+  top: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  animation: pulse 2.5s linear infinite; 
+}
+@keyframes pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+::after,
+::before {
+  content: '';
+  position: absolute;
+  border: 2px solid #3D64FF;
+  left: -20px;
+  opacity: 0;
+  right: -20px;
+  top: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  animation: pulse 2.5s linear infinite;
+}
+
+::after {
+  animation-delay: 1.25s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+`

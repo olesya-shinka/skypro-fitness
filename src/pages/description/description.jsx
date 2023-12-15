@@ -20,11 +20,12 @@ import { NavigateBlock } from "../../components/NavigationBlock/Navi";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 import { courseList } from "../../store/selectors/coursesNew";
 import { emailSelector, idSelector } from "../../store/selectors/user";
-
+import { images } from "../../components/images/Images.jsx";
 export default function CourseInfo() {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   const courseId = useParams().id;
+  const params = useParams();
   const courses = useSelector(courseList);
   const email = useSelector(selectUser);
   // const courseList = useSelector(selectCourses);
@@ -40,7 +41,6 @@ export default function CourseInfo() {
   const [register, setRegister] = useState(false);
   const userId = useSelector(idSelector);
   console.log(courseId);
-
   const openCloseModal = () => {
     setModalVisible(!isModalVisible);
     setRegister(false);
@@ -51,11 +51,21 @@ export default function CourseInfo() {
   };
   console.log(courses);
   const course = courses.find((course) => course.id === courseId);
+  const image = images.find((image) => image.id === Number(params.id));
   if (course === undefined) {
     console.log(1);
     // navigate("/");
   }
-
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    // Заводим таймер
+    const timerId = setInterval(() => setLoading(!loading), 5000);
+    // Данная функция вызывается при удалении компонента из DOM
+    return () => {
+      // Наводим порядок после удаления компонента
+      clearInterval(timerId);
+    };
+  }, []);
   // const addCourse = () => {
   //   const idCourse = course[0]._id;
   //   const name = course[0].name;
@@ -86,13 +96,15 @@ export default function CourseInfo() {
   // }, [dispatch, id]);
 
   // const course = courseList?.filter((course) => course.pathName === title.title);
-
+//<S.CourseImg src = {`/img/card-${id  + 1 }.png`}></S.CourseImg>
   return (
     <S.Wrapper>
       <S.Container>
       <NavigateBlock page="Other" />
-        <S.TitleBox>
+      {loading ? (<><S.TitleBox> 
           <S.Title>{course.nameRU}</S.Title>
+          <S.CourseImg src = {image.src}></S.CourseImg>
+          
         </S.TitleBox>
 
         <S.ForYou>
@@ -131,6 +143,8 @@ export default function CourseInfo() {
           />
         </S.Application>
         {/* // )} */}
+      </>) : (<S.LoadingCircle></S.LoadingCircle>)}
+        
       </S.Container>
       {isModalVisible && (
         <LayoutModal onClick={openCloseModal}>
