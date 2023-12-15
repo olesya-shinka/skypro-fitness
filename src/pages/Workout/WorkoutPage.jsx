@@ -54,7 +54,7 @@ export const WorkoutPage = () => {
   const video = workout?.filter((video) => workout.video === video);
   //const currentCourse = useSelector(currentCourseSelector);
 
-  // let currentWorkout;
+  //let currentWorkout;
 
   // for (const course in allCourses) {
   //   allCourses[course].workouts.map((wo) =>
@@ -73,7 +73,6 @@ export const WorkoutPage = () => {
 
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
-  const [isTrainingModalShow, setIsTrainingModalShow] = useState(false);
 
   const handleClick = () => setIsProgressModalShow(true);
 
@@ -83,7 +82,7 @@ export const WorkoutPage = () => {
 
   const handleSendClick = () => {
     setTimeout(() => {
-      dispatch(userCourses(id));
+      dispatch();
     }, 500);
     setIsProgressModalShow(false);
     setIsSuccessModalShow(true);
@@ -112,6 +111,7 @@ export const WorkoutPage = () => {
           <ProgressModal onClick={handleSendClick} />
         </LayoutModal>
       )}
+      {isSuccessModalShow && <SuccessModal setIsSuccessModalShow={setIsSuccessModalShow} />}
     </S.Container>
   );
 };
