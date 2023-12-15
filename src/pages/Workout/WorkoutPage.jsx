@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
+import { useEffect } from "react";
 
 import { ExercisesList } from "../../components/Exercises/Exercises";
 import { ProgressExercises } from "../../components/ProgressExercises/ProgressExercises";
@@ -18,28 +19,43 @@ import { SuccessModal } from "../../components/LayoutModal/SuccessModal/SuccessM
 import { SelectWorkout } from "../../components/SelectWorkout/SelectWorkout";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 
-
-import { selectWorkouts } from "../../store/slices/workoutsSlice";
-import { selectCourses } from "../../store/selectors/course";
 import { NavigateBlock } from "../../components/NavigationBlock/Navi";
-import { userCourses } from "../../Api";
-import { selectUser } from "../../store/selectors/user";
-import { selectUserCourses } from "../../store/selectors/progress";
+
 import {
   allWorkoutSelector,
   currentCourseSelector,
   courseList
 } from "../../store/selectors/coursesNew";
+import { getExecises, getWorkouts } from "../../Api";
+import {
+  setExercisesList,
+  setSelectedWorkout,
+  setWorkoutList
+} from "../../store/slices/courseWorkoutSlise";
+import { listExercises } from "../../store/selectors/coursesNew";
 
-const WorkoutPage = () => {
+export const WorkoutPage = () => {
   const workoutId = useParams();
-  console.log(workoutId);
   const dispatch = useDispatch();
   // const { id } = useSelector(selectUser);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const timerId = setInterval(() => setLoading(!loading), 2000);
+    return () => {
+      clearInterval(timerId);
+    };
+  }, []);
 
   // const allCourses = useSelector(courseList);
   const workoutList = useSelector(allWorkoutSelector);
+  // const workoutList = useSelector((state) => {state.workoutList});
+  const exercisesList = useSelector(listExercises);
+  const exercises = exercisesList?.filter((exercise) => workout.exercise === exercise);
+  //const exercises = useSelector(listExercises);
   const currentCourse = useSelector(currentCourseSelector);
+
+  const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
+  console.log(workout);
   // let currentWorkout;
 
   // for (const course in allCourses) {
@@ -52,10 +68,7 @@ const WorkoutPage = () => {
   //   );
   // }
 
-  const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
-  console.log(workout);
-
-  const title = `${workout.name} / ${workout.details}`;
+  const title = `${workout}`;
 
   // const coursesList = useSelector(selectCourses);
   // const currentCourse = coursesList.filter((course) => course.workout.includes(workoutId.id));
@@ -67,7 +80,7 @@ const WorkoutPage = () => {
   const handleClick = () => setIsProgressModalShow(true);
 
   const openClosedProgModal = () => {
-    setIsProgressModalShow(!isProgressModalShown);
+    setIsProgressModalShow(!isProgressModalShow);
   };
 
   const handleSendClick = () => {
@@ -78,45 +91,27 @@ const WorkoutPage = () => {
     setIsSuccessModalShow(true);
   };
 
-  const titleClick = () => {
-    setIsTrainingModalShow(true);
-    dispatch(userCourses(id));
-  };
-
-  const openClosedTrainingModal = () => {
-    setIsTrainingModalShow(!isTrainingModalShown);
-  };
-
   return (
     <S.Container>
-      <S.Main>
-      <NavigateBlock page="Other" />
-        <S.Heading>{currentCourse.nameRU}</S.Heading>
-        <S.Title onClick={titleClick}>{workout.details ? title : workout.name}</S.Title>
-        <S.Player>
-          <ReactPlayer url={workout.video || ""} width="100%" height="100%" />
-        </S.Player>
-        {/* {currentWorkout && currentWorkout.length > 0 && (
+      {loading ? (
+        <S.Main>
+          <NavigateBlock page="Other" />
+          <S.Heading>{workout.name}</S.Heading>
+          <S.Title>{workout.name}</S.Title>
+          <S.Player>
+            <ReactPlayer url={workout.video} width="100%" height="100%" />
+          </S.Player>
           <S.Exercises>
-            <ExercisesList exercises={currentWorkout} onClick={handleClick} />
-            <ProgressExercises exercises={currentWorkout} />
+            <ExercisesList workout={exercises} onClick={handleClick} />
+            <ProgressExercises workout={exercises} />
           </S.Exercises>
-        )} */}
-      </S.Main>
+        </S.Main>
+      ) : (
+        <S.LoadingCircle />
+      )}
       {isProgressModalShow && (
         <LayoutModal onClick={openClosedProgModal}>
-          <ProgressModal
-            exercises={workout.exercises}
-            onClick={handleSendClick}
-            courseName={currentCourse.name}
-            workoutName={workoutId.id}
-          />
-        </LayoutModal>
-      )}
-      {isSuccessModalShow && <SuccessModal setIsSuccessModalShow={setIsSuccessModalShow} />}
-      {isTrainingModalShow && (
-        <LayoutModal onClick={openClosedTrainingModal}>
-          <SelectWorkout openClosedTrainingModal={openClosedTrainingModal} />
+          <ProgressModal onClick={handleSendClick} />
         </LayoutModal>
       )}
     </S.Container>

@@ -6,12 +6,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { newCourse, userCourses } from "../../Api";
+//import { newCourse, userCourses } from "../../Api";
 import { selectUser } from "../../store/selectors/user";
-import { selectCourses } from "../../store/selectors/course";
-import { selectWorkouts } from "../../store/slices/workoutsSlice";
-import { selectUserCourses } from "../../store/selectors/progress";
-import { getUserWorkouts, doNotAddCourse } from "../../Api";
+// import { selectCourses } from "../../store/selectors/course";
+// import { selectWorkouts } from "../../store/slices/workoutsSlice";
+// import { selectUserCourses } from "../../store/selectors/progress";
+// import { getUserWorkouts, doNotAddCourse } from "../../Api";
 import { ButtonMain } from "../../components/ButtonMain/ButtonMain";
 import { SignInPage } from "../log-in/login";
 import { SignUpPage } from "../sign-up/signup";
@@ -49,7 +49,7 @@ export default function CourseInfo() {
   const showSignup = () => {
     setRegister(true);
   };
-console.log(courses);
+  console.log(courses);
   const course = courses.find((course) => course.id === courseId);
   const image = images.find((image) => image.id === Number(params.id));
   if (course === undefined) {

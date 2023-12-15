@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`

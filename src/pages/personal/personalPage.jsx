@@ -27,6 +27,8 @@ export const PersonalPage = () => {
   const [isEditEmail, setIsEditEmail] = useState(false);
   const [isEditPass, setIsEditPass] = useState(false);
   const [isShowForm, setIsShowForm] = useState(false);
+  // const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
+  //const [isTrainingModalShow, setIsTrainingModalShow] = useState(false);
 
   const courses = useSelector(courseList);
   const userId = useSelector(idSelector);
@@ -38,10 +40,13 @@ export const PersonalPage = () => {
   const password = useSelector(passwordSelector);
 
   //получить курсы юзера
-  const filteredCourses = courses.filter(course => {
+  const filteredCourses = courses.filter((course) => {
     // Проверяем, есть ли пользователь с данным идентификатором в массиве users у курса
     return course.users?.id === userId;
   });
+  // const openClosedTrainingModal = () => {
+  //   setIsTrainingModalShow(!isTrainingModalShow);
+  // };
 
   useEffect(() => {
     getWorkouts()
@@ -109,6 +114,12 @@ export const PersonalPage = () => {
             ))}
           </S.ProfList>
         </S.CourseWrap>
+        {/* {isSuccessModalShow && <SuccessModal setIsSuccessModalShow={setIsSuccessModalShow} />}
+        {isTrainingModalShow && (
+          <LayoutModal onClick={openClosedTrainingModal}>
+            <SelectWorkout openClosedTrainingModal={openClosedTrainingModal} />
+          </LayoutModal>
+        )} */}
 
         {isShowForm ? <SelectWorkout setIsShowForm={setIsShowForm}></SelectWorkout> : null}
         {/* <S.Cards>

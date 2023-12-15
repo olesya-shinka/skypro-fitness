@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 

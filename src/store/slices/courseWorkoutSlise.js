@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -5,6 +6,7 @@ const initialState = {
   currentCourse: {},
   workoutList: [],
   selectedWorkout: "",
+  exercisesList:[],
   progress: {}
 };
 
@@ -32,6 +34,9 @@ export const newCourseSlice = createSlice({
     },
     setPracticeProgress: (state, action) => {
       state.progress = action.payload;
+    },
+    setExercisesList: (state, action) => {
+      state.exercises = action.payload;
     }
   }
 });
@@ -41,7 +46,8 @@ export const {
   setCurrentCourse,
   setWorkoutList,
   setSelectedWorkout,
-  setPracticeProgress
+  setPracticeProgress,
+  setExercisesList
 } = newCourseSlice.actions;
 
 export default newCourseSlice.reducer;

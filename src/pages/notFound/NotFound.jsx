@@ -1,8 +1,9 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable consistent-return */
 import NotFoundContent from "../../components/NotFoundContent/NotFound";
 import * as S from "./styles";
 
-export default function NotFound() {
+export function NotFound() {
   return (
     <S.Wrapper>
       <S.Container>
@@ -13,3 +14,4 @@ export default function NotFound() {
     </S.Wrapper>
   );
 }
+export default NotFound;

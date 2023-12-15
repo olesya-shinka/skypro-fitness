@@ -12,14 +12,13 @@ import SignInPage from "./pages/log-in/login";
 import NotFound from "./pages/notFound/NotFound";
 
 export const AppRoutes = () => {
-
   return (
     <Routes>
       <Route path="/Login" element={<SignInPage />} />
       <Route path="/SignUp" element={<SignUpPage />} />
         <Route path="/" element={<MainPage />} />
         <Route path="/CourseInfo/:id" element={<CourseInfo />} />
-        <Route element={<ProtectedRoute/>}>
+        <Route element={<ProtectedRoute />}>
           <Route path="/PersonalPage" element={<PersonalPage />} />
           <Route path="/WorkoutPage/:id" element={<WorkoutPage />} />
       </Route>
