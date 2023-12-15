@@ -5,73 +5,97 @@
 /* eslint-disable prettier/prettier */
 import styled from "styled-components";
 
-const getProgressColor = (index) => {
-  const colors = ["progressOrange", "progressBlue", "progressPurple"];
-  const order = index + 1;
-  return order % 2 === 0 ? colors[0] : order % 3 === 0 ? colors[1] : colors[2];
-};
-
-export const ProgressBlock = styled.div`
-  padding: 32px 44px;
-  border-radius: 30px;
-  background-color: ${({ theme }) => theme.colors};
+const Col1 = styled.div`
+  background-color: #565eef;
+`;
+const ColBg1 = styled.div`
+  background-color: #edecff;
+  border: 2px solid #565eef;
+`;
+const Col2 = styled.div`
+  background-color: #ff6d00;
+`;
+const ColBg2 = styled.div`
+  background-color: #fff2e0;
+  border: 2px solid #ff6d00;
+`;
+const Col3 = styled.div`
+  background-color: #9a48f1;
+`;
+const ColBg3 = styled.div`
+  background-color: #f9ebff;
+  border: 2px solid #9a48f1;
+`;
+const Col4 = styled.div`
+  background-color: #88ad1b;
 `;
 
-export const ProgressTitle = styled.div`
-  font-size: ${({ theme }) => theme.fontSize};
-  margin-bottom: 30px;
-  text-align: center;
+const ColBg4 = styled.div`
+  background-color: #f2fbd6;
+  border: 2px solid #88ad1b;
 `;
-
-export const ProgressStats = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+const Col5 = styled.div`
+  background-color: #007fff;
 `;
-
-export const ProgressStatsItem = styled.div`
-  display: flex;
-  align-items: center;
-  > div:last-child {
-    border: 2px solid
-      ${({ theme, $colorIndex = 0 }) => {
-        const color = getProgressColor($colorIndex);
-        return theme.colors[color];
-      }};
-    > div {
-      background: ${({ theme, $colorIndex = 0 }) => {
-        const color = getProgressColor($colorIndex);
-        return theme.colors[color];
-      }};
-    }
-  }
-`;
-
-export const ProgressName = styled.div`
-  font-size: ${({ theme }) => theme.fontSize.m};
-  max-width: 230px;
-`;
-
-export const ProgressBar = styled.div`
-  box-sizing: border-box;
-  width: 280px;
-  height: 40px;
-  border-radius: 22px;
-  overflow: hidden;
+const ColBg5 = styled.div`
+  background-color: #e6f9ff;
+  border: 2px solid #007fff;
 `;
 
 export const Progress = styled.div`
-  color: ${({ theme, $colorIndex = 0, $percentage = 0 }) => {
-    const color = getProgressColor($colorIndex);
-    return $percentage < 15 ? theme.colors[color] : theme.colors.white;
-  }};
-  width: ${({ $percentage }) => $percentage + "%"};
-  height: 100%;
+  padding: 36px 44px;
+  background-color: #f2f2f2;
+  border-radius: 30px;
+`;
+
+export const Title = styled.h2`
+  margin: 0 0 40px;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+`;
+
+export const ListExercises = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`;
+
+export const ListItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+`;
+
+export const NameExercise = styled.span`
+  max-width: 278px;
+`;
+
+export const ProgressBar = styled.div`
   position: relative;
-  > span {
-    position: absolute;
-    right: ${({ $percentage = 0 }) => {
-      return $percentage < 15 ? "-4rem" : "1rem";
-    }};
-  }
+  box-sizing: border-box;
+  overflow: hidden;
+  min-width: 278px;
+  height: 36px;
+  border-radius: 22px;
+  background-color: ${ColBg1} || ${ColBg2} || ${ColBg3} || ${ColBg4} || ${ColBg5};
+`;
+
+export const Done = styled.div`
+  position: absolute;
+  height: 100%;
+  border-radius: 22px 0px 0px 22px;
+  background-color: ${Col1} || ${Col2} || ${Col3} || ${Col4} || ${Col5};
+`;
+
+export const Percent = styled.span`
+  position: absolute;
+  text-align: center;
 `;

@@ -5,38 +5,35 @@
 /* eslint-disable prettier/prettier */
 import { calculator } from "./utils";
 import * as S from "./styles";
-import { listExercises } from "../../store/selectors/coursesNew";
-import { useSelector } from "react-redux";
 
-export const ProgressExercises = ({ progress, workout }) => {
-  const exercisesList = useSelector(listExercises);
-  const exercise = exercisesList?.find((exercise) => workout.exercise === exercise);
-  console.log(exercise);
-  const currentExercises = exercise;
-  const currentProgress = progress ? Object.keys(progress).map((key) => progress[key]) : null;
-
+export const ProgressExercises = ({ exercises }) => {
   return (
-    <S.ProgressBlock>
-      <S.ProgressTitle>Мой прогресс по тренировке:</S.ProgressTitle>
-      <S.ProgressStats>
-        {currentExercises && currentProgress
-          ? currentExercises.map(({ name, quantity }, index) => {
-              const done = Number(currentProgress[index]);
-              return (
-                <S.ProgressStatsItem $colorIndex={index} key={index}>
-                  <S.ProgressName>{name}</S.ProgressName>
+    <S.Progress>
+      <S.Title>Мой прогресс по тренировке:</S.Title>
+      <S.ListExercises>
+        {exercises?.map((exercise, i) => {
+          const percent = Math.round(
+            ((Number(exercise.exercisesDone) || 0) / exercise.count) * 100
+          );
 
-                  <S.ProgressBar>
-                    <S.Progress $percentage={calculator(done, quantity)}>
-                      <span>{calculator(done, quantity)} %</span>
-                    </S.Progress>
-                  </S.ProgressBar>
-                </S.ProgressStatsItem>
-              );
-            })
-          : null}
-      </S.ProgressStats>
-    </S.ProgressBlock>
+          return (
+            <S.ListItem key={i + 1}>
+              <S.NameExercise>{exercise.name.split("(")[0]}</S.NameExercise>
+              <S.ProgressBar>
+                <S.Done style={{ width: `${percent}%` }}></S.Done>
+                <S.Percent
+                  style={{
+                    left: `${percent}px`,
+                    color: percent > 0 ? "#fff" : "#000"
+                  }}>
+                  {percent}%
+                </S.Percent>
+              </S.ProgressBar>
+            </S.ListItem>
+          );
+        })}
+      </S.ListExercises>
+    </S.Progress>
   );
 };
 

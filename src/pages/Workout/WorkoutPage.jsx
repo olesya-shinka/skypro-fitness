@@ -24,7 +24,7 @@ import { NavigateBlock } from "../../components/NavigationBlock/Navi";
 import {
   allWorkoutSelector,
   currentCourseSelector,
-  courseList,
+  courseList
 } from "../../store/selectors/coursesNew";
 import { getExecises, getWorkouts } from "../../Api";
 import {
@@ -32,6 +32,7 @@ import {
   setSelectedWorkout,
   setWorkoutList
 } from "../../store/slices/courseWorkoutSlise";
+import { listExercises } from "../../store/selectors/coursesNew";
 
 export const WorkoutPage = () => {
   const workoutId = useParams();
@@ -40,9 +41,12 @@ export const WorkoutPage = () => {
 
   // const allCourses = useSelector(courseList);
   const workoutList = useSelector(allWorkoutSelector);
- // const workoutList = useSelector((state) => {state.workoutList});
+  // const workoutList = useSelector((state) => {state.workoutList});
+  const exercisesList = useSelector(listExercises);
+  const exercises = exercisesList?.filter((exercise) => workout.exercise === exercise);
+  //const exercises = useSelector(listExercises);
   const currentCourse = useSelector(currentCourseSelector);
-  
+
   const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
   console.log(workout);
   // let currentWorkout;
@@ -84,14 +88,14 @@ export const WorkoutPage = () => {
     <S.Container>
       <S.Main>
         <NavigateBlock page="Other" />
-        <S.Heading>{workout}</S.Heading>
-        <S.Title>{workout}</S.Title>
+        <S.Heading>{workout.name}</S.Heading>
+        <S.Title>{workout.name}</S.Title>
         <S.Player>
           <ReactPlayer url={workout.video} width="100%" height="100%" />
         </S.Player>
         <S.Exercises>
-          <ExercisesList workout={workout.exercise} onClick={handleClick} />
-          <ProgressExercises />
+          <ExercisesList workout={workout.exercises} onClick={handleClick} />
+          <ProgressExercises workout={exercises} />
         </S.Exercises>
       </S.Main>
       {isProgressModalShow && (
