@@ -49,7 +49,7 @@ export function SelectWorkout({ setIsShowForm }) {
           {currentWorkouts?.map((workout, index) => (
             <NavLink key={workout._id} to={`/WorkoutPage/${workout._id}`}>
               <S.SelectItem>{workout.name}</S.SelectItem>
-              <S.SelectItemType>{workout.details}</S.SelectItemType>
+              <S.SelectItemType></S.SelectItemType>
             </NavLink>
           ))}
         </S.SelectList>

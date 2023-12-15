@@ -36,8 +36,9 @@ import { listExercises } from "../../store/selectors/coursesNew";
 
 export const WorkoutPage = () => {
   const workoutId = useParams();
+
   const dispatch = useDispatch();
-  // const { id } = useSelector(selectUser);
+
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const timerId = setInterval(() => setLoading(!loading), 2000);
@@ -46,16 +47,13 @@ export const WorkoutPage = () => {
     };
   }, []);
 
-  // const allCourses = useSelector(courseList);
   const workoutList = useSelector(allWorkoutSelector);
-  // const workoutList = useSelector((state) => {state.workoutList});
-  const exercisesList = useSelector(listExercises);
-  const exercises = exercisesList?.filter((exercise) => workout.exercise === exercise);
-  //const exercises = useSelector(listExercises);
-  const currentCourse = useSelector(currentCourseSelector);
-
   const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
-  console.log(workout);
+  const exercises = workout?.filter((exercise) => workout.exercise === exercise);
+  const name = workout?.filter((name) => workout.name === name);
+  const video = workout?.filter((video) => workout.video === video);
+  //const currentCourse = useSelector(currentCourseSelector);
+
   // let currentWorkout;
 
   // for (const course in allCourses) {
@@ -68,7 +66,7 @@ export const WorkoutPage = () => {
   //   );
   // }
 
-  const title = `${workout}`;
+  //const title = `${workout.name}`;
 
   // const coursesList = useSelector(selectCourses);
   // const currentCourse = coursesList.filter((course) => course.workout.includes(workoutId.id));
@@ -96,10 +94,10 @@ export const WorkoutPage = () => {
       {loading ? (
         <S.Main>
           <NavigateBlock page="Other" />
-          <S.Heading>{workout.name}</S.Heading>
-          <S.Title>{workout.name}</S.Title>
+          <S.Heading>{name}</S.Heading>
+          <S.Title>{name}</S.Title>
           <S.Player>
-            <ReactPlayer url={workout.video} width="100%" height="100%" />
+            <ReactPlayer url={video} width="100%" height="100%" />
           </S.Player>
           <S.Exercises>
             <ExercisesList workout={exercises} onClick={handleClick} />

@@ -263,6 +263,7 @@ export const LoadingCircle = styled.div`
   border-radius: 50%;
   width: 80px;
   height: 80px;
+  margin-left: 500px;
 ::before {
   content: ''; /
   position: absolute;
