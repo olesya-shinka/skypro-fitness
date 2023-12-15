@@ -26,7 +26,7 @@ import {
   currentCourseSelector,
   courseList
 } from "../../store/selectors/coursesNew";
-import { getExecises, getWorkouts } from "../../Api";
+import { selectUser } from "../../store/selectors/user";
 import {
   setExercisesList,
   setSelectedWorkout,
@@ -35,10 +35,7 @@ import {
 import { listExercises } from "../../store/selectors/coursesNew";
 
 export const WorkoutPage = () => {
-  const workoutId = useParams();
-
   const dispatch = useDispatch();
-
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const timerId = setInterval(() => setLoading(!loading), 2000);
@@ -47,19 +44,18 @@ export const WorkoutPage = () => {
     };
   }, []);
   const courseId = useParams().id;
+  const workoutId = useParams().id;
   const courses = useSelector(courseList);
-  const workoutList = useSelector(allWorkoutSelector);
-  const workout = workoutList?.filter((workout) => workout._id === workoutId);
-  const exercises = workout?.find((exercise) => workout.exercise === exercise);
-  const name = workout?.find((name) => workout.name === name);
-  const video = workout?.filter((video) => workout.video === video);
-  const course = courses.filter((course) => course.id === courseId);
+  const course = courses.filter((course) => course.id === courseId.id);
+  const workouts = useSelector(allWorkoutSelector);
+  const workout = workouts?.filter((workout) => workout.id === workoutId.id);
+  console.log("workout", workout);
+
   //const currentCourse = useSelector(currentCourseSelector);
+  // let currentWorkout;
 
-  //let currentWorkout;
-
-  // for (const course in allCourses) {
-  //   allCourses[course].workouts.map((wo) =>
+  // for (const course in courses) {
+  //   courses[course].workouts.map((wo) =>
   //     wo._id === workoutId.id
   //       ? wo.progress !== undefined
   //         ? (currentWorkout = wo.progress)
@@ -98,11 +94,11 @@ export const WorkoutPage = () => {
           <S.Heading>{course.nameRu}</S.Heading>
           <S.Title>{workout.name}</S.Title>
           <S.Player>
-            <ReactPlayer url={video} width="100%" height="100%" />
+            <ReactPlayer url={workout.video} width="100%" height="100%" />
           </S.Player>
           <S.Exercises>
-            <ExercisesList workout={exercises} onClick={handleClick} />
-            <ProgressExercises workout={exercises} />
+            <ExercisesList onClick={handleClick} />
+            <ProgressExercises />
           </S.Exercises>
         </S.Main>
       ) : (
