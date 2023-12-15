@@ -38,6 +38,13 @@ export const WorkoutPage = () => {
   const workoutId = useParams();
   const dispatch = useDispatch();
   // const { id } = useSelector(selectUser);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    const timerId = setInterval(() => setLoading(!loading), 2000);
+    return () => {
+      clearInterval(timerId);
+    };
+  }, []);
 
   // const allCourses = useSelector(courseList);
   const workoutList = useSelector(allWorkoutSelector);
@@ -86,18 +93,22 @@ export const WorkoutPage = () => {
 
   return (
     <S.Container>
-      <S.Main>
-        <NavigateBlock page="Other" />
-        <S.Heading>{workout.name}</S.Heading>
-        <S.Title>{workout.name}</S.Title>
-        <S.Player>
-          <ReactPlayer url={workout.video} width="100%" height="100%" />
-        </S.Player>
-        <S.Exercises>
-          <ExercisesList workout={workout.exercises} onClick={handleClick} />
-          <ProgressExercises workout={exercises} />
-        </S.Exercises>
-      </S.Main>
+      {loading ? (
+        <S.Main>
+          <NavigateBlock page="Other" />
+          <S.Heading>{workout.name}</S.Heading>
+          <S.Title>{workout.name}</S.Title>
+          <S.Player>
+            <ReactPlayer url={workout.video} width="100%" height="100%" />
+          </S.Player>
+          <S.Exercises>
+            <ExercisesList workout={exercises} onClick={handleClick} />
+            <ProgressExercises workout={exercises} />
+          </S.Exercises>
+        </S.Main>
+      ) : (
+        <S.LoadingCircle />
+      )}
       {isProgressModalShow && (
         <LayoutModal onClick={openClosedProgModal}>
           <ProgressModal onClick={handleSendClick} />
