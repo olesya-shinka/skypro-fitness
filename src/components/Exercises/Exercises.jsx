@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export const ExercisesList = ({ onClick, exercises }) => {
   useEffect(() => console.log(exercises), [exercises]);
   return (
-    <div className="content">
+    <div>
       <S.TitleExercises>Упражнения</S.TitleExercises>
       <S.ListExercises>
         {exercises.map((exercise, i) => (

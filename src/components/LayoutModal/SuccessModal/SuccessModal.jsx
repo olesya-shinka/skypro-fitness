@@ -12,14 +12,13 @@ export const SuccessModal = ({ setIsShown }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsShown(false);
-    }, 2000);
+    }, 50000);
     return () => clearTimeout(timer);
   }, [setIsShown]);
-
   return (
     <LayoutModal>
       <S.ContentSuccess>
-        <S.SuccessText content="Ваш прогресс засчитан!" />
+        <S.SuccessText text="Ваш прогресс засчитан!" />
         <HandOk />
       </S.ContentSuccess>
     </LayoutModal>

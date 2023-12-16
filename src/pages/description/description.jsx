@@ -21,7 +21,7 @@ import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 import { courseList } from "../../store/selectors/coursesNew";
 import { emailSelector, idSelector } from "../../store/selectors/user";
 import { images } from "../../components/images/Images.jsx";
-import { SuccessModal } from "../../components/LayoutModal/SuccessModal/SuccessModal";
+import { Successfully } from "../../components/LayoutModal/SuccessModal/successfully";
 
 export default function CourseInfo() {
   const dispatch = useDispatch();
@@ -51,11 +51,11 @@ export default function CourseInfo() {
   const showSignup = () => {
     setRegister(true);
   };
- // console.log(courses);
+  // console.log(courses);
   const course = courses.find((course) => course.id === courseId);
   const image = images.find((image) => image.id === Number(params.id));
   if (course === undefined) {
-   // console.log(1);
+    // console.log(1);
     // navigate("/");
   }
   const [loading, setLoading] = useState(false);
@@ -100,7 +100,7 @@ export default function CourseInfo() {
   // const course = courseList?.filter((course) => course.pathName === title.title);
   //<S.CourseImg src = {`/img/card-${id  + 1 }.png`}></S.CourseImg>
 
-  const [isShown, setIsShown] = useState(true);
+  const [isShown, setIsShown] = useState(false);
   const toggleFIeldset = () => setIsShown(!isShown);
 
   return (
@@ -147,9 +147,9 @@ export default function CourseInfo() {
                 onClick={toggleFIeldset}
               />
               {isShown && (
-                <SuccessModal
-                  content="Вы успешно записались"
-                  setIsShown={setIsShown}></SuccessModal>
+                <LayoutModal>
+                  <Successfully setIsShown={setIsShown}></Successfully>
+                </LayoutModal>
               )}
             </S.Application>
           </>
