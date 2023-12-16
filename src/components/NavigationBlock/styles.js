@@ -33,9 +33,7 @@ export const Sidebar = styled.div`
 export const Enter = styled.button`
   border: none;
   border-radius: 46px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-left: 750px;
   cursor: pointer;
   line-height: 24px;
   letter-spacing: -0.05px;
