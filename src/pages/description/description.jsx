@@ -23,21 +23,13 @@ import { emailSelector, idSelector } from "../../store/selectors/user";
 import { images } from "../../components/images/Images.jsx";
 import { Successfully } from "../../components/LayoutModal/SuccessModal/successfully";
 
-export default function CourseInfo() {
+export default function CourseInfo({ loading }) {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   const courseId = useParams().id;
   const params = useParams();
   const courses = useSelector(courseList);
   const email = useSelector(selectUser);
-  // const courseList = useSelector(selectCourses);
-  // const userCoursesList = useSelector(selectUserCourses);
-
-  // const allWorkouts = useSelector(courseList);
-
-  // const userWorkouts = getUserWorkouts(allWorkouts, course);
-
-  // const isAlreadyAdded = doNotAddCourse(userCoursesList, course);
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [register, setRegister] = useState(false);
@@ -58,7 +50,7 @@ export default function CourseInfo() {
     // console.log(1);
     // navigate("/");
   }
-  const [loading, setLoading] = useState(false);
+  const [ setLoading] = useState(false);
   useEffect(() => {
     // Заводим таймер
     const timerId = setInterval(() => setLoading(!loading), 1000);
@@ -113,7 +105,6 @@ export default function CourseInfo() {
               <S.Title>{course.nameRU}</S.Title>
               <S.CourseImg src={image.src}></S.CourseImg>
             </S.TitleBox>
-
             <S.ForYou>
               <S.Heading>Подойдет для вас, если:</S.Heading>
               <S.ForYouList>
@@ -130,12 +121,9 @@ export default function CourseInfo() {
                 ))}
               </S.DirectionsList>
             </S.Directions>
-
             <S.Results>
               <S.ResultsText>{course.description}</S.ResultsText>
             </S.Results>
-
-            {/* {!isAlreadyAdded && ( */}
             <S.Application>
               <S.ApplicationText>
                 Оставьте заявку на пробное занятие, мы свяжемся с вами, поможем с выбором

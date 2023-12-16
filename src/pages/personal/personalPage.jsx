@@ -20,6 +20,7 @@ export const PersonalPage = ({ loading }) => {
   //const [isTrainingModalShow, setIsTrainingModalShow] = useState(false);
 
   const works = useSelector(allWorkoutSelector);
+  useEffect(() => console.log(works), [works]);
 
   const courses = useSelector(courseList);
   const userId = useSelector(idSelector);
@@ -48,6 +49,7 @@ export const PersonalPage = ({ loading }) => {
         console.log(error.message);
       });
   }, []);
+
   // const { id } = useSelector(selectUser);
   // const { status } = useSelector(selectProfileInfo);
 
@@ -90,16 +92,26 @@ export const PersonalPage = ({ loading }) => {
         </S.ChangeDate>
         <S.CourseWrap>
           <S.Title>Мои курсы</S.Title>
-          <S.ProfList>
-            {filteredCourses.map((course, index) => (
-              <S.Prof key={index} id={course.id}>
-                <S.CourseName>{course.nameRU}</S.CourseName>
-                <S.ProfCard src={images[index].src} alt="prof_card"></S.ProfCard>
 
-                <S.ProfButton onClick={() => {}}>Перейти →</S.ProfButton>
-              </S.Prof>
-            ))}
-          </S.ProfList>
+          {loading ? (
+            <S.ProfList>
+              {filteredCourses.map((course, index) => (
+                <S.Prof key={index} id={course.id}>
+                  <S.CourseName>{course.nameRU}</S.CourseName>
+                  <S.ProfCard src={images[index].src} alt="prof_card"></S.ProfCard>
+
+                  <S.ProfButton
+                    onClick={() => {
+                      handleCard(course);
+                    }}>
+                    Перейти →
+                  </S.ProfButton>
+                </S.Prof>
+              ))}
+            </S.ProfList>
+          ) : (
+            <S.LoadingCircle></S.LoadingCircle>
+          )}
         </S.CourseWrap>
         {isShowForm ? <SelectWorkout setIsShowForm={setIsShowForm}></SelectWorkout> : null}
       </S.Content>
