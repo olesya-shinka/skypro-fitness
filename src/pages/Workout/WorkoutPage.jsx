@@ -60,13 +60,11 @@ export const WorkoutPage = () => {
 
   return (
     <S.Container>
-      {loading ? (
-        <S.Main>
-          <NavigateBlock page="Other" />
-          <S.Heading>
-            {course.length > 0 ? course[0].nameRU : "название курса не получено"}
-          </S.Heading>
-          <S.Title>{workout.length > 0 ? workout[0].name : "название на получено"}</S.Title>
+      <S.Main>
+        <NavigateBlock page="Other" />
+        <S.Heading>{course.length > 0 ? course[0].nameRU : "название курса не получено"}</S.Heading>
+        <S.Title>{workout.length > 0 ? workout[0].name : "название на получено"}</S.Title>
+        {loading ? (
           <S.Player>
             <ReactPlayer
               url={workout.length > 0 ? workout[0].video : "видео не получено"}
@@ -74,21 +72,23 @@ export const WorkoutPage = () => {
               height="100%"
             />
           </S.Player>
-          <S.Exercises>
-            <ExercisesList
-              exercises={
-                workout.length > 0 && workout[0].exercises
-                  ? workout[0].exercises
-                  : ["список упражнений пуст"]
-              }
-              onClick={handleClick}
-            />
-            <ProgressExercises />
-          </S.Exercises>
-        </S.Main>
-      ) : (
-        <S.LoadingCircle />
-      )}
+        ) : (
+          <S.LoadingCircle />
+        )}
+        <S.Exercises>
+          <ExercisesList
+            exercises={
+              workout.length > 0 && workout[0].exercises
+                ? workout[0].exercises
+                : ["список упражнений пуст"]
+            }
+            onClick={handleClick}
+          />
+
+          <ProgressExercises />
+        </S.Exercises>
+      </S.Main>
+
       {isProgressModalShow && (
         <LayoutModal onClick={openClosedProgModal}>
           <ProgressModal onClick={handleSendClick} />
