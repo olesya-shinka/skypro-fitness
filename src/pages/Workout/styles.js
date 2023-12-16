@@ -35,6 +35,7 @@ export const Heading = styled.h1`
   font-weight: 400;
   font-size: 48px;
   line-height: 56px;
+  margin-top: 70px;
 `;
 
 export const Title = styled.h2`

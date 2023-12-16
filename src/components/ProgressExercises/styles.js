@@ -43,9 +43,9 @@ const ColBg5 = styled.div`
 `;
 
 export const Progress = styled.div`
-  padding: 36px 44px;
   background-color: #f2f2f2;
   border-radius: 30px;
+  max-width: 638px;
 `;
 
 export const Title = styled.h2`

@@ -23,7 +23,7 @@ import { emailSelector, idSelector } from "../../store/selectors/user";
 import { images } from "../../components/images/Images.jsx";
 import { Successfully } from "../../components/LayoutModal/SuccessModal/successfully";
 
-export default function CourseInfo({ loading }) {
+export default function CourseInfo() {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   const courseId = useParams().id;
@@ -50,7 +50,7 @@ export default function CourseInfo({ loading }) {
     // console.log(1);
     // navigate("/");
   }
-  const [ setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Заводим таймер
     const timerId = setInterval(() => setLoading(!loading), 1000);
