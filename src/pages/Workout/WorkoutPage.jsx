@@ -43,24 +43,6 @@ export const WorkoutPage = () => {
   const workout = workouts?.filter((workout) => workout.id === workoutId.id);
   console.log("workout", workout);
 
-  //const currentCourse = useSelector(currentCourseSelector);
-  // let currentWorkout;
-
-  // for (const course in courses) {
-  //   courses[course].workouts.map((wo) =>
-  //     wo._id === workoutId.id
-  //       ? wo.progress !== undefined
-  //         ? (currentWorkout = wo.progress)
-  //         : (currentWorkout = wo.exercises)
-  //       : ""
-  //   );
-  // }
-
-  //const title = `${workout.name}`;
-
-  // const coursesList = useSelector(selectCourses);
-  // const currentCourse = coursesList.filter((course) => course.workout.includes(workoutId.id));
-
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
 

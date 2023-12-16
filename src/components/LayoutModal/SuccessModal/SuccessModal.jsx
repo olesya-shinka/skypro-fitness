@@ -20,7 +20,7 @@ export const SuccessModal = ({ setIsSuccessModalShow }) => {
   return (
     <LayoutModal>
       <S.ContentSuccess>
-        <S.SuccessText>Ваш прогресс засчитан!</S.SuccessText>
+        <S.SuccessText content="Ваш прогресс засчитан!" />
         <HandOk />
       </S.ContentSuccess>
     </LayoutModal>

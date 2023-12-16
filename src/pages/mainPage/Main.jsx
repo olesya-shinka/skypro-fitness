@@ -15,7 +15,7 @@ export const MainPage = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Заводим таймер
-    const timerId = setInterval(() => setLoading(!loading), 5000);
+    const timerId = setInterval(() => setLoading(!loading), 1000);
     // Данная функция вызывается при удалении компонента из DOM
     return () => {
       // Наводим порядок после удаления компонента
