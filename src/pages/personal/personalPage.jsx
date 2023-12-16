@@ -12,7 +12,7 @@ import { images } from "../../components/images/Images";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
 import { allWorkoutSelector } from "../../store/selectors/coursesNew";
 
-export const PersonalPage = () => {
+export const PersonalPage = ({ loading }) => {
   const [isEditEmail, setIsEditEmail] = useState(false);
   const [isEditPass, setIsEditPass] = useState(false);
   const [isShowForm, setIsShowForm] = useState(false);
@@ -42,16 +42,12 @@ export const PersonalPage = () => {
   useEffect(() => {
     getWorkouts()
       .then((data) => {
-        console.log(data);
         dispatch(setWorkoutList(data));
       })
       .catch((error) => {
         console.log(error.message);
       });
   }, []);
-
-  useEffect(() => console.log(works), [works]);
-
   // const { id } = useSelector(selectUser);
   // const { status } = useSelector(selectProfileInfo);
 
@@ -99,12 +95,8 @@ export const PersonalPage = () => {
               <S.Prof key={index} id={course.id}>
                 <S.CourseName>{course.nameRU}</S.CourseName>
                 <S.ProfCard src={images[index].src} alt="prof_card"></S.ProfCard>
-                <S.ProfButton
-                  onClick={() => {
-                    handleCard(course);
-                  }}>
-                  Перейти →
-                </S.ProfButton>
+
+                <S.ProfButton onClick={() => {}}>Перейти →</S.ProfButton>
               </S.Prof>
             ))}
           </S.ProfList>
