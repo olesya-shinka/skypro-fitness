@@ -21,9 +21,9 @@ import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 import { courseList } from "../../store/selectors/coursesNew";
 import { emailSelector, idSelector } from "../../store/selectors/user";
 import { images } from "../../components/images/Images.jsx";
+import { SuccessModal } from "../../components/LayoutModal/SuccessModal/SuccessModal";
 
 export default function CourseInfo() {
-  
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   const courseId = useParams().id;
@@ -61,7 +61,7 @@ export default function CourseInfo() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Заводим таймер
-    const timerId = setInterval(() => setLoading(!loading), 5000);
+    const timerId = setInterval(() => setLoading(!loading), 1000);
     // Данная функция вызывается при удалении компонента из DOM
     return () => {
       // Наводим порядок после удаления компонента
@@ -98,55 +98,64 @@ export default function CourseInfo() {
   // }, [dispatch, id]);
 
   // const course = courseList?.filter((course) => course.pathName === title.title);
-//<S.CourseImg src = {`/img/card-${id  + 1 }.png`}></S.CourseImg>
+  //<S.CourseImg src = {`/img/card-${id  + 1 }.png`}></S.CourseImg>
+
+  const [isShown, setIsShown] = useState(true);
+  const toggleFIeldset = () => setIsShown(!isShown);
+
   return (
     <S.Wrapper>
       <S.Container>
-      <NavigateBlock page="Other" />
-      {loading ? (<><S.TitleBox> 
-          <S.Title>{course.nameRU}</S.Title>
-          <S.CourseImg src = {image.src}></S.CourseImg>
-          
-        </S.TitleBox>
+        <NavigateBlock page="Other" />
+        {loading ? (
+          <>
+            <S.TitleBox>
+              <S.Title>{course.nameRU}</S.Title>
+              <S.CourseImg src={image.src}></S.CourseImg>
+            </S.TitleBox>
 
-        <S.ForYou>
-          <S.Heading>Подойдет для вас, если:</S.Heading>
-          <S.ForYouList>
-            {course.fitting.map((reason, i) => (
-              <S.ForYouListItem key={i}>{reason}</S.ForYouListItem>
-            ))}
-          </S.ForYouList>
-        </S.ForYou>
-        <S.Directions>
-          <S.Heading>Направления:</S.Heading>
-          <S.DirectionsList>
-            {course.directions.map((direction, i) => (
-              <S.DirectionsListItem key={i}>{direction}</S.DirectionsListItem>
-            ))}
-          </S.DirectionsList>
-        </S.Directions>
+            <S.ForYou>
+              <S.Heading>Подойдет для вас, если:</S.Heading>
+              <S.ForYouList>
+                {course.fitting.map((reason, i) => (
+                  <S.ForYouListItem key={i}>{reason}</S.ForYouListItem>
+                ))}
+              </S.ForYouList>
+            </S.ForYou>
+            <S.Directions>
+              <S.Heading>Направления:</S.Heading>
+              <S.DirectionsList>
+                {course.directions.map((direction, i) => (
+                  <S.DirectionsListItem key={i}>{direction}</S.DirectionsListItem>
+                ))}
+              </S.DirectionsList>
+            </S.Directions>
 
-        <S.Results>
-          <S.ResultsText>{course.description}</S.ResultsText>
-        </S.Results>
+            <S.Results>
+              <S.ResultsText>{course.description}</S.ResultsText>
+            </S.Results>
 
-        {/* {!isAlreadyAdded && ( */}
-        <S.Application>
-          <S.ApplicationText>
-            Оставьте заявку на пробное занятие, мы свяжемся с вами, поможем с выбором направления и
-            тренера, с которым тренировки принесут здоровье и радость!
-          </S.ApplicationText>
-          <ButtonMain
-            style={{ padding: "10px" }}
-            content="Записаться на тренировку"
-            onClick={() => {
-              email ? addCourse() : openCloseModal();
-            }}
-          />
-        </S.Application>
-        {/* // )} */}
-      </>) : (<S.LoadingCircle></S.LoadingCircle>)}
-        
+            {/* {!isAlreadyAdded && ( */}
+            <S.Application>
+              <S.ApplicationText>
+                Оставьте заявку на пробное занятие, мы свяжемся с вами, поможем с выбором
+                направления и тренера, с которым тренировки принесут здоровье и радость!
+              </S.ApplicationText>
+              <ButtonMain
+                style={{ padding: "10px" }}
+                content="Записаться на тренировку"
+                onClick={toggleFIeldset}
+              />
+              {isShown && (
+                <SuccessModal
+                  content="Вы успешно записались"
+                  setIsShown={setIsShown}></SuccessModal>
+              )}
+            </S.Application>
+          </>
+        ) : (
+          <S.LoadingCircle></S.LoadingCircle>
+        )}
       </S.Container>
       {isModalVisible && (
         <LayoutModal onClick={openCloseModal}>

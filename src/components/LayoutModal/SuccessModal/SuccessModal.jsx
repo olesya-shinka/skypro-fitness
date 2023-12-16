@@ -8,14 +8,13 @@ import { ReactComponent as HandOk } from "./handOk.svg";
 import LayoutModal from "../layout/LayoutModal";
 import { useEffect } from "react";
 
-export const SuccessModal = ({ setIsSuccessModalShow }) => {
+export const SuccessModal = ({ setIsShown }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsSuccessModalShow(false);
-    }, 500);
-
+      setIsShown(false);
+    }, 2000);
     return () => clearTimeout(timer);
-  }, [setIsSuccessModalShow]);
+  }, [setIsShown]);
 
   return (
     <LayoutModal>

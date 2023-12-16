@@ -253,5 +253,5 @@ export const SuccessText = styled.h2`
   text-align: center;
   margin: 0;
   margin-bottom: 10px;
+  color: black;
 `;
-
