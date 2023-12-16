@@ -42,6 +42,7 @@ export const MainPage = () => {
     });
   };
   const courses = useSelector(courseList);
+  useEffect(() => console.log(courses), [courses]);
 
   return (
     <>

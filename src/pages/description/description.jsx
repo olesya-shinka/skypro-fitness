@@ -51,11 +51,11 @@ export default function CourseInfo() {
   const showSignup = () => {
     setRegister(true);
   };
-  console.log(courses);
+ // console.log(courses);
   const course = courses.find((course) => course.id === courseId);
   const image = images.find((image) => image.id === Number(params.id));
   if (course === undefined) {
-    console.log(1);
+   // console.log(1);
     // navigate("/");
   }
   const [loading, setLoading] = useState(false);

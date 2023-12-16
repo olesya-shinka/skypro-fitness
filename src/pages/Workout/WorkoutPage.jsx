@@ -1,10 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-undef */
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import * as S from "./styles";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,16 +8,13 @@ import { ExercisesList } from "../../components/Exercises/Exercises";
 import { ProgressExercises } from "../../components/ProgressExercises/ProgressExercises";
 import { ProgressModal } from "../../components/LayoutModal/ProgressModal/ProgressModal";
 import { SuccessModal } from "../../components/LayoutModal/SuccessModal/SuccessModal";
-import { SelectWorkout } from "../../components/SelectWorkout/SelectWorkout";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 import { NavigateBlock } from "../../components/NavigationBlock/Navi";
 
-import {
-  allWorkoutSelector,
-  currentCourseSelector,
-  courseList
-} from "../../store/selectors/coursesNew";
+import { allWorkoutSelector, courseList } from "../../store/selectors/coursesNew";
+
 import { selectUser } from "../../store/selectors/user";
+import { getProgress } from "../../Api";
 
 export const WorkoutPage = () => {
   const dispatch = useDispatch();
@@ -35,13 +25,14 @@ export const WorkoutPage = () => {
       clearInterval(timerId);
     };
   }, []);
-  const courseId = useParams().id;
-  const workoutId = useParams().id;
+  const workoutId = useParams().workoutId;
   const courses = useSelector(courseList);
-  const course = courses.filter((course) => course.id === courseId.id);
+  const course = courses.filter((course) => course.workouts.includes(workoutId));
   const workouts = useSelector(allWorkoutSelector);
-  const workout = workouts?.filter((workout) => workout.id === workoutId.id);
-  console.log("workout", workout);
+  const workout = workouts?.filter((workout) => workout._id === workoutId);
+  console.log(workouts);
+  console.log(workoutId);
+  console.log(workout);
 
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
@@ -60,18 +51,38 @@ export const WorkoutPage = () => {
     setIsSuccessModalShow(true);
   };
 
+  useEffect(() => {
+    getProgress({
+      user_id: selectUser.id,
+      workouts_id: workoutId
+    });
+  }, []);
+
   return (
     <S.Container>
       {loading ? (
         <S.Main>
           <NavigateBlock page="Other" />
-          <S.Heading>{course.nameRu}</S.Heading>
-          <S.Title>{workout.name}</S.Title>
+          <S.Heading>
+            {course.length > 0 ? course[0].nameRU : "название курса не получено"}
+          </S.Heading>
+          <S.Title>{workout.length > 0 ? workout[0].name : "название на получено"}</S.Title>
           <S.Player>
-            <ReactPlayer url={workout.video} width="100%" height="100%" />
+            <ReactPlayer
+              url={workout.length > 0 ? workout[0].video : "видео не получено"}
+              width="100%"
+              height="100%"
+            />
           </S.Player>
           <S.Exercises>
-            <ExercisesList onClick={handleClick} />
+            <ExercisesList
+              exercises={
+                workout.length > 0 && workout[0].exercises
+                  ? workout[0].exercises
+                  : ["список упражнений пуст"]
+              }
+              onClick={handleClick}
+            />
             <ProgressExercises />
           </S.Exercises>
         </S.Main>

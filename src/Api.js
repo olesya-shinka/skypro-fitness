@@ -1,6 +1,4 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-import { getDatabase, ref, query, get, push, set, remove } from "firebase/database";
+import { getDatabase, ref, query, get } from "firebase/database";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export async function getCourses() {
@@ -128,4 +126,25 @@ export const getUserProgress = (data, exercises) => {
   }
 
   return progress;
+};
+
+// ------------------------------------------------------
+// ------------------------------------------------------
+
+export const getProgress = async ({ user_id, workouts_id }) => {
+  const response = await fetch(
+    "https://fitness-pro-d307e-default-rtdb.europe-west1.firebasedatabase.app/progress.json",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        user_id,
+        workouts_id
+      })
+    }
+  );
+
+  console.log(response);
 };

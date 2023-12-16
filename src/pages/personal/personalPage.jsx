@@ -1,8 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import * as S from "./styles";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,18 +5,12 @@ import SelectWorkout from "../../components/SelectWorkout/SelectWorkout";
 import { ChangeEmail } from "../../components/ChangeEmail/ChangeEmail";
 import { ChangePass } from "../../components/ChangePass/ChangePass";
 import { getWorkouts } from "../../Api";
-// import { selectUserCourses } from "../../store/selectors/progress";
 import { courseList } from "../../store/selectors/coursesNew";
-// import { userCourses } from "../../Api";
 import { emailSelector, passwordSelector, idSelector } from "../../store/selectors/user";
 import { setCurrentCourse, setWorkoutList } from "../../store/slices/courseWorkoutSlise";
-// import { selectCurrentWorkout } from "../../store/slices/workoutsSlice";
-// import { selectProfileInfo } from "../../store/slices/userCourseSlice";
-// import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
-// import { CoursesCarts } from "./coursesCarts";
 import { images } from "../../components/images/Images";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
-import { useParams } from "react-router-dom";
+import { allWorkoutSelector } from "../../store/selectors/coursesNew";
 
 export const PersonalPage = () => {
   const [isEditEmail, setIsEditEmail] = useState(false);
@@ -29,6 +18,8 @@ export const PersonalPage = () => {
   const [isShowForm, setIsShowForm] = useState(false);
   // const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
   //const [isTrainingModalShow, setIsTrainingModalShow] = useState(false);
+
+  const works = useSelector(allWorkoutSelector);
 
   const courses = useSelector(courseList);
   const userId = useSelector(idSelector);
@@ -51,12 +42,16 @@ export const PersonalPage = () => {
   useEffect(() => {
     getWorkouts()
       .then((data) => {
+        console.log(data);
         dispatch(setWorkoutList(data));
       })
       .catch((error) => {
         console.log(error.message);
       });
   }, []);
+
+  useEffect(() => console.log(works), [works]);
+
   // const { id } = useSelector(selectUser);
   // const { status } = useSelector(selectProfileInfo);
 
@@ -101,9 +96,9 @@ export const PersonalPage = () => {
           <S.Title>Мои курсы</S.Title>
           <S.ProfList>
             {filteredCourses.map((course, index) => (
-              <S.Prof key={index} id={course.id}><S.CourseName>{course.nameRU}</S.CourseName>
-                <S.ProfCard src={images[index].src} alt="prof_card" ></S.ProfCard >
-                    
+              <S.Prof key={index} id={course.id}>
+                <S.CourseName>{course.nameRU}</S.CourseName>
+                <S.ProfCard src={images[index].src} alt="prof_card"></S.ProfCard>
                 <S.ProfButton
                   onClick={() => {
                     handleCard(course);
@@ -114,18 +109,7 @@ export const PersonalPage = () => {
             ))}
           </S.ProfList>
         </S.CourseWrap>
-        {/* {isSuccessModalShow && <SuccessModal setIsSuccessModalShow={setIsSuccessModalShow} />}
-        {isTrainingModalShow && (
-          <LayoutModal onClick={openClosedTrainingModal}>
-            <SelectWorkout openClosedTrainingModal={openClosedTrainingModal} />
-          </LayoutModal>
-        )} */}
-
         {isShowForm ? <SelectWorkout setIsShowForm={setIsShowForm}></SelectWorkout> : null}
-        {/* <S.Cards>
-            <CoursesCarts courses={Object.values(courses)} button={true} name="select" />
-        </S.Cards>
-        {isModalVisible && <LayoutModal onClick={closeModal}>{modal}</LayoutModal>} */}
       </S.Content>
     </S.Wrap>
   );
