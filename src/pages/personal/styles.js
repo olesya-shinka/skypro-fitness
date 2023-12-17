@@ -14,8 +14,7 @@ export const Wrap = styled.div`
   padding-left: calc(50% - 580px);
   padding-right: calc(50% - 580px);
 `;
-export const Content = styled.div`
-`;
+export const Content = styled.div``;
 
 export const Title = styled.div`
   font-weight: 400;
@@ -141,7 +140,6 @@ export const Course = styled.div`
 
   `;
 
-
 export const ProfList = styled.ul`
   padding: 0px;
   margin: 0px;
@@ -149,10 +147,11 @@ export const ProfList = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 140px;
+  gap: 110px;
 `;
 export const Prof = styled.div`
   position: relative;
+  margin-bottom: 340px;
 `;
 export const ProfButton = styled.button`
   width: 136px;
@@ -272,4 +271,4 @@ export const LoadingCircle = styled.div`
     opacity: 0;
   }
 }
-`
+`;
