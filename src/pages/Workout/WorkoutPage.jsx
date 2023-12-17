@@ -85,13 +85,18 @@ export const WorkoutPage = () => {
             onClick={handleClick}
           />
 
-          <ProgressExercises />
+          <ProgressExercises exercises={workout[0].exercises} />
         </S.Exercises>
       </S.Main>
 
       {isProgressModalShow && (
         <LayoutModal onClick={openClosedProgModal}>
-          <ProgressModal onClick={handleSendClick} />
+          <ProgressModal
+            onClick={handleSendClick}
+            exercises={workout[0].exercises}
+            course={course[0].nameRU}
+            workout={workout}
+          />
         </LayoutModal>
       )}
       {isSuccessModalShow && <SuccessModal setIsSuccessModalShow={setIsSuccessModalShow} />}

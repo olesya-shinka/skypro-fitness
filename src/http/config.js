@@ -16,5 +16,5 @@ export const WORKOUTS = `${databaseURL}/workouts.json`;
 // export const USER_COURSES = (id) => `/users/${id}/courses.json?print=pretty`;
 // export const ADD_COURSE = (id) => `/users/${id}/courses.json?print=pretty`;
 
-// export const ADD_PROGRESS = (id, courseId, workoutIndex) =>
-//   `/users/${id}/courses/${courseId}/workouts/${workoutIndex}/.json?print=pretty`;
+// export const ADD_PROGRESS = (id, courseId, workoutId) =>
+//   `/users/${id}/courses/${courseId}/workouts/${workoutId}/.json?print=pretty`;

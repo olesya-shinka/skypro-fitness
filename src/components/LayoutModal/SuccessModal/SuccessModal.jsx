@@ -8,17 +8,17 @@ import { ReactComponent as HandOk } from "./handOk.svg";
 import LayoutModal from "../layout/LayoutModal";
 import { useEffect } from "react";
 
-export const SuccessModal = ({ setIsShown }) => {
+export const SuccessModal = ({ setIsSuccessModalShow }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsShown(false);
-    }, 50000);
+      setIsSuccessModalShow(false);
+    }, 2000);
     return () => clearTimeout(timer);
-  }, [setIsShown]);
+  }, [setIsSuccessModalShow]);
   return (
     <LayoutModal>
       <S.ContentSuccess>
-        <S.SuccessText text="Ваш прогресс засчитан!" />
+        <S.SuccessText>Ваш прогресс засчитан!</S.SuccessText>
         <HandOk />
       </S.ContentSuccess>
     </LayoutModal>

@@ -43,11 +43,6 @@ export const Title = styled.h2`
   font-weight: 400;
   font-size: 32px;
   line-height: 40px;
-  :hover {
-    cursor: pointer;
-    color: #3f007d;
-    transform: scale(1.004);
-  }
 `;
 
 export const Player = styled.div`

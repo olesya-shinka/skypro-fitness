@@ -63,13 +63,13 @@ export async function getWorkouts() {
 // }
 
 export const addProgress = createAsyncThunk(
-  "profile/addProgress",
+  "progress",
   async (
-    { id, courseId, workoutIndex, progress },
+    { id, courseId, workoutId, progress },
     { extra: { databaseURL, api }, rejectWithValue }
   ) => {
     try {
-      const response = await databaseURL.patch(api.ADD_PROGRESS(id, courseId, workoutIndex), {
+      const response = await databaseURL.patch(api.ADD_PROGRESS(id, courseId, workoutId), {
         progress
       });
 
@@ -108,8 +108,6 @@ export const doNotAddCourse = (userCoursesList, course) => {
 
   return existingCourses.includes(course[0].pathName);
 };
-
-export const getCurrentExercises = () => {};
 
 export const getUserProgress = (data, exercises) => {
   const progress = [];

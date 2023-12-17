@@ -11,26 +11,26 @@ import { addProgress } from "../../../Api";
 import { selectUser } from "../../../store/selectors/user";
 import InputProgress from "../InputProgress/InputProgress";
 import { getUserProgress } from "../../../Api";
+import { userProgress } from "../../../store/selectors/progress";
 
-export const ProgressModal = ({ exercises, onClick, courseName }) => {
+export const ProgressModal = ({ exercises, onClick, course, workout }) => {
   const dispatch = useDispatch();
   const { id } = useSelector(selectUser);
-  const userProfile = useSelector((state) => state.profile.list);
 
   let currentCourseId;
   let currentCourse;
-  let currentWorkoutIndex;
+  let currentworkoutId;
 
-  for (const courseId in userProfile) {
-    if (userProfile[courseId].name === courseName) {
+  for (const courseId in userProgress) {
+    if (userProgress[courseId[0]].name === course) {
       currentCourseId = courseId;
-      currentCourse = userProfile[courseId];
+      currentCourse = userProgress[courseId];
     }
   }
 
-  currentCourse.workouts.map((wo, woIndex) =>
+  workout.map((wo, woIndex) =>
     wo.exercises.map((ex) =>
-      exercises.map((userEx) => (userEx.name === ex.name ? (currentWorkoutIndex = woIndex) : ""))
+      exercises.map((userEx) => (userEx.name === ex.name ? (currentworkoutId = woIndex) : ""))
     )
   );
 
@@ -41,7 +41,7 @@ export const ProgressModal = ({ exercises, onClick, courseName }) => {
       addProgress({
         id: id,
         courseId: currentCourseId,
-        workoutIndex: currentWorkoutIndex,
+        workout: currentworkoutId,
         progress: progress
       })
     );
@@ -63,8 +63,8 @@ export const ProgressModal = ({ exercises, onClick, courseName }) => {
       <S.TitleModal>Мой прогресс</S.TitleModal>
       <S.InputsModal>
         {exercises?.map((exercise) => (
-          <S.InputText key={exercise.id}>
-            {`Сколько раз вы сделали упражнение? "${exercise.name.split("(")[0]}" ?`}
+          <S.InputText key={exercise.name}>
+            {`Сколько раз вы сделали упражнение "${exercise.name.split("(")[0]}" ?`}
             <InputProgress name={exercise.name} register={register} errors={errors} />
           </S.InputText>
         ))}
