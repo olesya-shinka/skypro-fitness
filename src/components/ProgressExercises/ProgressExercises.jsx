@@ -7,7 +7,7 @@ export const ProgressExercises = ({ exercises }) => {
       <S.ListExercises>
         {exercises?.map((exercise, i) => {
           const percent = Math.round(
-            ((Number(exercise.exercisesDone) || 0) / exercise.count) * 100
+            ((Number(exercise.exercisesDone) || 0) / exercise.quantity) * 100
           );
 
           return (
