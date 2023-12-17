@@ -50,4 +50,4 @@ export const {
   setExercisesList
 } = newCourseSlice.actions;
 
-export default newCourseSlice.reducer;
+export default newCourseSlice?.reducer;
