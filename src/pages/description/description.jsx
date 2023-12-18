@@ -26,8 +26,9 @@ import { Successfully } from "../../components/LayoutModal/SuccessModal/successf
 export default function CourseInfo() {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
-  const courseId = useParams().id;
   const params = useParams();
+  const courseId = useParams().id;
+
   const courses = useSelector(courseList);
   const email = useSelector(selectUser);
 
@@ -93,7 +94,7 @@ export default function CourseInfo() {
   //<S.CourseImg src = {`/img/card-${id  + 1 }.png`}></S.CourseImg>
 
   const [isShown, setIsShown] = useState(false);
-  const toggleFIeldset = () => setIsShown(!isShown);
+  const toggleFIeldset = () => setIsShown(true);
 
   return (
     <S.Wrapper>
