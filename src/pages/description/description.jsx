@@ -144,7 +144,7 @@ export default function CourseInfo({loading}) {
           />
         </S.Application>
         {/* // )} */}
-      </>) : (<S.LoadingCircle></S.LoadingCircle>)}
+      </>) : (<S.LoadingBox><S.LoadingCircle></S.LoadingCircle></S.LoadingBox>)}
         
       </S.Container>
       {isModalVisible && (
