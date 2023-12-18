@@ -10,4 +10,4 @@ export const COURSES = `${databaseURL}/courses.json`;
 //https://fitness-pro-d307e-default-rtdb.europe-west1.firebasedatabase.app/workouts
 export const WORKOUTS = `${databaseURL}/workouts.json`;
 
-export const ADD_PROGRESS = (workoutId) => `${databaseURL}/progress/${workoutId}`;
+export const ADD_PROGRESS = (workoutId) => `${databaseURL}/progress/${workoutId}/.json`;
