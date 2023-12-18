@@ -4,6 +4,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 import styled from "styled-components";
+export const Wrapper = styled.div`
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export const ContentSuccess = styled.div`
   display: flex;
@@ -24,4 +36,14 @@ export const SuccessText = styled.h2`
   margin: 0;
   margin-bottom: 10px;
   color: black;
+`;
+export const closerBlog = styled.div`
+width: 100%;
+display: flex;
+justify-content: flex-end;
+`;
+
+export const Closer = styled.img`
+  padding: 10px;
+  cursor: pointer;
 `;

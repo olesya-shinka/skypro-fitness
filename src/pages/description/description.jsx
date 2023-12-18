@@ -4,14 +4,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-//import { newCourse, userCourses } from "../../Api";
-import { selectUser } from "../../store/selectors/user";
-// import { selectCourses } from "../../store/selectors/course";
-// import { selectWorkouts } from "../../store/slices/workoutsSlice";
-// import { selectUserCourses } from "../../store/selectors/progress";
-// import { getUserWorkouts, doNotAddCourse } from "../../Api";
 import { ButtonMain } from "../../components/ButtonMain/ButtonMain";
 import { SignInPage } from "../log-in/login";
 import { SignUpPage } from "../sign-up/signup";
@@ -19,17 +13,20 @@ import * as S from "./descriptionStyle.js";
 import { NavigateBlock } from "../../components/NavigationBlock/Navi";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 import { courseList } from "../../store/selectors/coursesNew";
-import { emailSelector, idSelector } from "../../store/selectors/user";
 import { images } from "../../components/images/Images.jsx";
 import { Successfully } from "../../components/LayoutModal/SuccessModal/successfully";
+import { idSelector } from "../../store/selectors/user";
+import { ref, get, update } from "firebase/database";
+import { getDatabase } from "firebase/database";
+
 
 export default function CourseInfo() {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
-  const courseId = useParams().id;
   const params = useParams();
+  const courseId = useParams().id;
+
   const courses = useSelector(courseList);
-  const email = useSelector(selectUser);
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [register, setRegister] = useState(false);
@@ -59,40 +56,42 @@ export default function CourseInfo() {
       clearInterval(timerId);
     };
   }, []);
-  // const addCourse = () => {
-  //   const idCourse = course[0]._id;
-  //   const name = course[0].name;
-  //   const pathName = course[0].pathName;
-  //   dispatch(
-  //     newCourse({
-  //       id: id,
-  //       idCourse: idCourse,
-  //       name: name,
-  //       pathName: pathName,
-  //       workouts: userWorkouts
-  //     })
-  //   );
-  //   navigate("/profile");
-  // };
 
   // const addCourse = () => {
   //   console.log("addCourse");
   //   // navigate("/PersonalPage");
   // };
 
-  // useEffect(() => {
-  //   if (id !== null) {
-  //     setTimeout(() => {
-  //       dispatch(userCourses(id));
-  //     }, 500);
-  //   }
-  // }, [dispatch, id]);
-
-  // const course = courseList?.filter((course) => course.pathName === title.title);
-  //<S.CourseImg src = {`/img/card-${id  + 1 }.png`}></S.CourseImg>
-
   const [isShown, setIsShown] = useState(false);
-  const toggleFIeldset = () => setIsShown(!isShown);
+const db = getDatabase();
+  const addUserToCourse = async () => {
+    try {
+      //получаем ссылку на объект курса в firebase
+      const courseRef = ref(db, `courses/${course._id}`);
+      console.log("courseRef", courseRef);
+
+      const snapshot = await get(courseRef);
+      const courseFirebase = snapshot.val();
+
+      if (courseFirebase?.users && Array.isArray(courseFirebase.users)) {
+        if (courseFirebase.users.includes(userId)) {
+          console.log("Пользователь уже записан на курс");
+          return;
+        }
+        courseFirebase.users.push(userId);
+      } else {
+        courseFirebase.users = [userId];
+      }
+
+      // Обновляем объект курса в базе данных
+      await update(courseRef, courseFirebase);
+      setIsShown(true);
+    } catch (error) {
+      console.error("Ошибка при добавлении пользователя курс", error);
+    }
+  };
+
+  // const toggleFIeldset = () => setIsShown(true);
 
   return (
     <S.Wrapper>
@@ -131,7 +130,7 @@ export default function CourseInfo() {
               <ButtonMain
                 style={{ padding: "10px" }}
                 content="Записаться на тренировку"
-                onClick={toggleFIeldset}
+                onClick={addUserToCourse}
               />
               {isShown && (
                 <LayoutModal>
