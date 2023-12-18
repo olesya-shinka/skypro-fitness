@@ -34,6 +34,7 @@ export const WorkoutPage = () => {
   const course = courses.filter((course) => course.workouts.includes(workoutId));
   const workouts = useSelector(allWorkoutSelector);
   const workout = workouts?.filter((workout) => workout._id === workoutId);
+
   const progresses = useSelector(userProgress);
   const progress = progresses?.filter((progress) => progress.workouts_id === progressId);
 

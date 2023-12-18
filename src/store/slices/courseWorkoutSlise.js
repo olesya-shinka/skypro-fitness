@@ -6,7 +6,7 @@ const initialState = {
   currentCourse: {},
   workoutList: [],
   selectedWorkout: "",
-  exercisesList: [],
+  // exercisesList: [],
   progress: []
 };
 
@@ -35,9 +35,9 @@ export const newCourseSlice = createSlice({
     setPracticeProgress: (state, action) => {
       state.progress = action.payload;
     },
-    setExercisesList: (state, action) => {
-      state.exercises = action.payload;
-    }
+    // setExercisesList: (state, action) => {
+    //   state.exercises = action.payload;
+    // }
   }
 });
 
@@ -47,7 +47,7 @@ export const {
   setWorkoutList,
   setSelectedWorkout,
   setPracticeProgress,
-  setExercisesList
+  // setExercisesList
 } = newCourseSlice.actions;
 
 export default newCourseSlice?.reducer;
