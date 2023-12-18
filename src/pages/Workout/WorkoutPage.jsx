@@ -48,9 +48,6 @@ export const WorkoutPage = () => {
   };
 
   const handleSendClick = () => {
-    setTimeout(() => {
-      dispatch();
-    }, 500);
     setIsProgressModalShow(false);
     setIsSuccessModalShow(true);
   };
