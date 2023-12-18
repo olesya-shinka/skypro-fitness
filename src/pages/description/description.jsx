@@ -20,7 +20,7 @@ import { ref, get, update } from "firebase/database";
 import { getDatabase } from "firebase/database";
 
 
-export default function CourseInfo() {
+export default function CourseInfo({loading}) {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   const params = useParams();
@@ -46,16 +46,16 @@ export default function CourseInfo() {
     // console.log(1);
     // navigate("/");
   }
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    // Заводим таймер
-    const timerId = setInterval(() => setLoading(!loading), 1000);
-    // Данная функция вызывается при удалении компонента из DOM
-    return () => {
-      // Наводим порядок после удаления компонента
-      clearInterval(timerId);
-    };
-  }, []);
+  // const [loading, setLoading] = useState(false);
+  // useEffect(() => {
+  //   // Заводим таймер
+  //   const timerId = setInterval(() => setLoading(!loading), 1000);
+  //   // Данная функция вызывается при удалении компонента из DOM
+  //   return () => {
+  //     // Наводим порядок после удаления компонента
+  //     clearInterval(timerId);
+  //   };
+  // }, []);
 
   // const addCourse = () => {
   //   console.log("addCourse");
