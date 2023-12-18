@@ -23,6 +23,7 @@ export const Modal = styled.div`
   padding: 33px 47px 44px;
   display: grid;
   justify-items: center;
+  max-width: 450px;
 `;
 
 export const ModalClose = styled.div`

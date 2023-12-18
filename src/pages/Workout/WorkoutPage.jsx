@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import * as S from "./styles";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,9 +13,11 @@ import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 import { NavigateBlock } from "../../components/NavigationBlock/Navi";
 
 import { allWorkoutSelector, courseList } from "../../store/selectors/coursesNew";
+import { setPracticeProgress } from "../../store/slices/courseWorkoutSlise";
 
-import { selectUser } from "../../store/selectors/user";
+//import { selectUser } from "../../store/selectors/user";
 import { getProgress } from "../../Api";
+import { userProgress } from "../../store/selectors/progress";
 
 export const WorkoutPage = () => {
   const dispatch = useDispatch();
@@ -26,13 +29,13 @@ export const WorkoutPage = () => {
     };
   }, []);
   const workoutId = useParams().workoutId;
+  const progressId = useParams().progressId;
   const courses = useSelector(courseList);
   const course = courses.filter((course) => course.workouts.includes(workoutId));
   const workouts = useSelector(allWorkoutSelector);
   const workout = workouts?.filter((workout) => workout._id === workoutId);
-  console.log(workouts);
-  console.log(workoutId);
-  console.log(workout);
+  const progresses = useSelector(userProgress);
+  const progress = progresses?.filter((progress) => progress.workouts_id === progressId);
 
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
@@ -53,9 +56,14 @@ export const WorkoutPage = () => {
 
   useEffect(() => {
     getProgress({
-      user_id: selectUser.id,
       workouts_id: workoutId
-    });
+    })
+      .then((data) => {
+        dispatch(setPracticeProgress(data));
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   }, []);
 
   return (

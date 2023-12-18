@@ -4,7 +4,7 @@ import * as S from "./MainStyle";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
 import { useSelector } from "react-redux";
 import { courseList } from "../../store/selectors/coursesNew";
-import { useEffect } from "react";
+//import { useEffect } from "react";
 
 export const MainPage = ({ loading }) => {
   // useEffect(() => {
@@ -24,7 +24,7 @@ export const MainPage = ({ loading }) => {
     });
   };
   const courses = useSelector(courseList);
-  useEffect(() => console.log(courses), [courses]);
+  //useEffect(() => console.log(courses), [courses]);
 
   return (
     <>

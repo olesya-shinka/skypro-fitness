@@ -23,3 +23,8 @@ export const Input = styled.input`
     border-bottom: 1px solid #580ea2;
   }
 `;
+
+export const ErrorMessage = styled.span`
+  color: red;
+  text-align: center;
+`;

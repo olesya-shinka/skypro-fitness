@@ -8,40 +8,23 @@ import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import ButtonMain from "../../ButtonMain/ButtonMain";
 import { addProgress } from "../../../Api";
-import { selectUser } from "../../../store/selectors/user";
+import { idSelector } from "../../../store/selectors/user";
 import InputProgress from "../InputProgress/InputProgress";
-import { getUserProgress } from "../../../Api";
+import { getUserProgress, postProgress, getProgress } from "../../../Api";
+import { courseList } from "../../../store/selectors/coursesNew";
 import { userProgress } from "../../../store/selectors/progress";
 
 export const ProgressModal = ({ exercises, onClick, course, workout }) => {
   const dispatch = useDispatch();
-  const { id } = useSelector(selectUser);
-
-  let currentCourseId;
-  let currentCourse;
-  let currentworkoutId;
-
-  for (const courseId in userProgress) {
-    if (userProgress[courseId[0]].name === course) {
-      currentCourseId = courseId;
-      currentCourse = userProgress[courseId];
-    }
-  }
-
-  workout.map((wo, woIndex) =>
-    wo.exercises.map((ex) =>
-      exercises.map((userEx) => (userEx.name === ex.name ? (currentworkoutId = woIndex) : ""))
-    )
-  );
+  const userId = useSelector(idSelector);
+  //const courses = useSelector(courseList);
 
   const addUserProgress = (data) => {
     const progress = getUserProgress(data, exercises);
 
     dispatch(
       addProgress({
-        id: id,
-        courseId: currentCourseId,
-        workout: currentworkoutId,
+        workoutId: workout._id,
         progress: progress
       })
     );

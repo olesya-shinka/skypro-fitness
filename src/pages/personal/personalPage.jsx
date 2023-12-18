@@ -10,7 +10,7 @@ import { emailSelector, passwordSelector, idSelector } from "../../store/selecto
 import { setCurrentCourse, setWorkoutList } from "../../store/slices/courseWorkoutSlise";
 import { images } from "../../components/images/Images";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
-import { allWorkoutSelector } from "../../store/selectors/coursesNew";
+//import { allWorkoutSelector } from "../../store/selectors/coursesNew";
 
 export const PersonalPage = ({ loading }) => {
   const [isEditEmail, setIsEditEmail] = useState(false);
@@ -19,8 +19,8 @@ export const PersonalPage = ({ loading }) => {
   // const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
   //const [isTrainingModalShow, setIsTrainingModalShow] = useState(false);
 
-  const works = useSelector(allWorkoutSelector);
-  useEffect(() => console.log(works), [works]);
+  // const works = useSelector(allWorkoutSelector);
+  //useEffect(() => console.log(works), [works]);
 
   const courses = useSelector(courseList);
   const userId = useSelector(idSelector);
@@ -66,7 +66,7 @@ export const PersonalPage = ({ loading }) => {
   // if (workouts === null) return null;
 
   const handleCard = (course) => {
-    console.log(course);
+    // console.log(course);
     dispatch(setCurrentCourse(course));
     localStorage.setItem("selectedCourse", JSON.stringify(course));
     setIsShowForm(true);

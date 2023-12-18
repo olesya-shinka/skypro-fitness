@@ -49,27 +49,27 @@ export async function getWorkouts() {
   return oArr;
 }
 
-// export async function getExecises() {
-//   const oSnapshot = await get(query(ref(getDatabase(), `workouts/_id/`)));
-//   const oArr = [];
-//   let oDeed;
-//   oSnapshot.forEach((oDoc) => {
-//     oDeed = oDoc.val();
-//     oDeed.key = oDoc.key;
-//     oArr.push(oDeed);
-//   });
-//   console.log("name", oArr);
-//   return oArr;
-// }
+export const getUserProgress = (data, exercises) => {
+  const progress = [];
+  for (const name in data) {
+    exercises.map((ex) =>
+      ex.name === name
+        ? progress.push({
+            exercisesDone: data[name],
+            quantity: ex.count,
+            name: ex.name
+          })
+        : ""
+    );
+  }
+  return progress;
+};
 
 export const addProgress = createAsyncThunk(
   "progress",
-  async (
-    { id, courseId, workoutId, progress },
-    { extra: { databaseURL, api }, rejectWithValue }
-  ) => {
+  async ({ workoutId, progress }, { extra: { databaseURL, api }, rejectWithValue }) => {
     try {
-      const response = await databaseURL.patch(api.ADD_PROGRESS(id, courseId, workoutId), {
+      const response = await databaseURL.patch(api.ADD_PROGRESS(workoutId), {
         progress
       });
 
@@ -84,52 +84,23 @@ export const addProgress = createAsyncThunk(
   }
 );
 
-export const getUserWorkouts = (allWorkouts, course) => {
-  const userWorkouts = [];
-
-  for (let i = 0; i < allWorkouts.length; i++) {
-    course[0].workout.map((workout) =>
-      workout === allWorkouts[i]._id ? userWorkouts.push(allWorkouts[i]) : ""
-    );
-  }
-
-  return userWorkouts;
-};
-
-export const doNotAddCourse = (userCoursesList, course) => {
-  const existingCourses = [];
-
-  let existingCourse;
-  for (const key in userCoursesList) {
-    existingCourse = userCoursesList[key].pathName;
-
-    existingCourses.push(existingCourse);
-  }
-
-  return existingCourses.includes(course[0].pathName);
-};
-
-export const getUserProgress = (data, exercises) => {
-  const progress = [];
-  for (const name in data) {
-    exercises.map((ex) =>
-      ex.name === name
-        ? progress.push({
-            exercisesDone: data[name],
-            count: ex.count,
-            name: ex.name
-          })
-        : ""
-    );
-  }
-
-  return progress;
-};
-
 // ------------------------------------------------------
 // ------------------------------------------------------
 
-export const getProgress = async ({ user_id, workouts_id }) => {
+export const getProgress = async () => {
+  const response = await fetch(
+    "https://fitness-pro-d307e-default-rtdb.europe-west1.firebasedatabase.app/progress.json",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+  );
+  console.log(response);
+};
+
+export const postProgress = async ({ workouts_id }) => {
   const response = await fetch(
     "https://fitness-pro-d307e-default-rtdb.europe-west1.firebasedatabase.app/progress.json",
     {
@@ -138,11 +109,9 @@ export const getProgress = async ({ user_id, workouts_id }) => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        user_id,
         workouts_id
       })
     }
   );
-
   console.log(response);
 };

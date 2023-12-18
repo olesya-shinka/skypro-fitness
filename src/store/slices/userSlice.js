@@ -5,7 +5,8 @@ const initialState = {
   email: null,
   token: null,
   id: null,
-  password: null
+  password: null,
+  progress: null
 };
 
 const localStorageMiddleware = (store) => (next) => (action) => {
@@ -14,14 +15,16 @@ const localStorageMiddleware = (store) => (next) => (action) => {
     const storedToken = localStorage.getItem("token");
     const storedId = localStorage.getItem("id");
     const storedPassword = localStorage.getItem("password");
+    const storedProgress = localStorage.getItem("progress");
 
-    if (storedEmail && storedToken && storedId && storedPassword) {
+    if (storedEmail && storedToken && storedId && storedPassword && storedProgress) {
       store.dispatch(
         userSlice.actions.setUser({
           email: storedEmail,
           token: storedToken,
           id: storedId,
-          password: storedPassword
+          password: storedPassword,
+          progress: storedProgress
         })
       );
     }
@@ -43,6 +46,7 @@ const userSlice = createSlice({
       localStorage.setItem("token", state.token);
       localStorage.setItem("id", state.id);
       localStorage.setItem("password", state.password);
+      localStorage.setItem("progress", state.progress);
     },
     removeUser(state) {
       state.email = null;
@@ -53,6 +57,7 @@ const userSlice = createSlice({
       localStorage.removeItem("token");
       localStorage.removeItem("id");
       localStorage.removeItem("password");
+      localStorage.removeItem("progress");
     },
 
     setEmail(state, action) {
@@ -65,13 +70,25 @@ const userSlice = createSlice({
       localStorage.setItem("password", state.password);
     },
 
+    setProgress(state, action) {
+      state.progress = action.payload.progress;
+      localStorage.setItem("progress", state.progress);
+    },
+
     initializeUserFromLocalStorage() {
       // Пустное действие, middleware будет обрабатывать это действие
     }
   }
 });
 
-export const { setUser, removeUser, initializeUserFromLocalStorage, setEmail, setPassword } = userSlice.actions;
+export const {
+  setUser,
+  removeUser,
+  initializeUserFromLocalStorage,
+  setEmail,
+  setPassword,
+  setProgress
+} = userSlice.actions;
 export default userSlice.reducer;
-export const userReducer = userSlice.reducer
+export const userReducer = userSlice.reducer;
 export { localStorageMiddleware };

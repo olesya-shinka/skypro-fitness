@@ -34,7 +34,6 @@ export default function CourseInfo() {
   const [isModalVisible, setModalVisible] = useState(false);
   const [register, setRegister] = useState(false);
   const userId = useSelector(idSelector);
-  console.log(courseId);
   const openCloseModal = () => {
     setModalVisible(!isModalVisible);
     setRegister(false);
@@ -76,10 +75,10 @@ export default function CourseInfo() {
   //   navigate("/profile");
   // };
 
-  const addCourse = () => {
-    console.log("addCourse");
-    // navigate("/PersonalPage");
-  };
+  // const addCourse = () => {
+  //   console.log("addCourse");
+  //   // navigate("/PersonalPage");
+  // };
 
   // useEffect(() => {
   //   if (id !== null) {

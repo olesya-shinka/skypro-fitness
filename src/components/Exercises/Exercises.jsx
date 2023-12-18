@@ -1,9 +1,9 @@
 import * as S from "./styles";
 import ButtonMain from "../ButtonMain/ButtonMain";
-import { useEffect } from "react";
+//import { useEffect } from "react";
 
 export const ExercisesList = ({ onClick, exercises }) => {
-  useEffect(() => console.log(exercises), [exercises]);
+  //useEffect(() => console.log(exercises), [exercises]);
   return (
     <div>
       <S.TitleExercises>Упражнения</S.TitleExercises>
