@@ -9,7 +9,6 @@ import newCourseReducer from "./slices/courseWorkoutSlise";
 export const store = configureStore({
   reducer: {
     user: authReducer,
-    exercises: newCourseReducer,
     newCourse: newCourseReducer
   },
   middleware: (getDefaultMiddleware) =>

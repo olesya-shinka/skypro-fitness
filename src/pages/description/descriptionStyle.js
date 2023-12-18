@@ -137,6 +137,12 @@ export const CourseImg = styled.img`
   background-size: contain;
   fill: transparent
   `;
+
+  export const LoadingBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  `
   export const LoadingCircle = styled.div`
   margin-top: 100px;
   margin-left:140px;

@@ -10,35 +10,23 @@ import { emailSelector, passwordSelector, idSelector } from "../../store/selecto
 import { setCurrentCourse, setWorkoutList } from "../../store/slices/courseWorkoutSlise";
 import { images } from "../../components/images/Images";
 import NavigateBlock from "../../components/NavigationBlock/Navi";
-//import { allWorkoutSelector } from "../../store/selectors/coursesNew";
 
 export const PersonalPage = ({ loading }) => {
   const [isEditEmail, setIsEditEmail] = useState(false);
   const [isEditPass, setIsEditPass] = useState(false);
   const [isShowForm, setIsShowForm] = useState(false);
-  // const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
-  //const [isTrainingModalShow, setIsTrainingModalShow] = useState(false);
-
-  // const works = useSelector(allWorkoutSelector);
-  //useEffect(() => console.log(works), [works]);
 
   const courses = useSelector(courseList);
   const userId = useSelector(idSelector);
-  // const courses = useSelector(courseList)
   const dispatch = useDispatch();
-  // const [isModalVisible, setModalVisible] = useState(false);
-  // const [modal, setModal] = useState(null);
   const email = useSelector(emailSelector);
   const password = useSelector(passwordSelector);
 
   //получить курсы юзера
-  const filteredCourses = courses.filter((course) => {
-    // Проверяем, есть ли пользователь с данным идентификатором в массиве users у курса
-    return course.users?.id === userId;
-  });
-  // const openClosedTrainingModal = () => {
-  //   setIsTrainingModalShow(!isTrainingModalShow);
-  // };
+
+  const coursesForUser = courses.filter(
+    (course) => course.users && course.users.some((user) => user === userId)
+  );
 
   useEffect(() => {
     getWorkouts()
@@ -49,21 +37,6 @@ export const PersonalPage = ({ loading }) => {
         console.log(error.message);
       });
   }, []);
-
-  // const { id } = useSelector(selectUser);
-  // const { status } = useSelector(selectProfileInfo);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     dispatch(userCourses(id));
-  //   }, 500);
-  // }, [dispatch]);
-
-  // const closeModal = () => {
-  //   setModalVisible(false);
-  // };
-  // const workouts = useSelector(selectCurrentWorkout);
-  // if (workouts === null) return null;
 
   const handleCard = (course) => {
     // console.log(course);
@@ -95,7 +68,7 @@ export const PersonalPage = ({ loading }) => {
 
           {loading ? (
             <S.ProfList>
-              {filteredCourses.map((course, index) => (
+              {coursesForUser.map((course, index) => (
                 <S.Prof key={index} id={course.id}>
                   <S.CourseName>{course.nameRU}</S.CourseName>
                   <S.ProfCard src={images[index].src} alt="prof_card"></S.ProfCard>
@@ -118,5 +91,3 @@ export const PersonalPage = ({ loading }) => {
     </S.Wrap>
   );
 };
-
-//<S.Course src={images[index].src} alt="prof_card" ><S.CourseName>{course.nameRU}</S.CourseName> </S.Course>
