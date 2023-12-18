@@ -18,11 +18,11 @@ import { Successfully } from "../../components/LayoutModal/SuccessModal/successf
 import { idSelector } from "../../store/selectors/user";
 import { ref, get, update } from "firebase/database";
 import { getDatabase } from "firebase/database";
+import { useNavigate } from "react-router-dom";
 
-
-export default function CourseInfo({loading}) {
+export default function CourseInfo({ loading }) {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const params = useParams();
   const courseId = useParams().id;
 
@@ -39,31 +39,12 @@ export default function CourseInfo({loading}) {
   const showSignup = () => {
     setRegister(true);
   };
-  // console.log(courses);
   const course = courses.find((course) => course.id === courseId);
   const image = images.find((image) => image.id === Number(params.id));
-  if (course === undefined) {
-    // console.log(1);
-    // navigate("/");
-  }
-  // const [loading, setLoading] = useState(false);
-  // useEffect(() => {
-  //   // Заводим таймер
-  //   const timerId = setInterval(() => setLoading(!loading), 1000);
-  //   // Данная функция вызывается при удалении компонента из DOM
-  //   return () => {
-  //     // Наводим порядок после удаления компонента
-  //     clearInterval(timerId);
-  //   };
-  // }, []);
-
-  // const addCourse = () => {
-  //   console.log("addCourse");
-  //   // navigate("/PersonalPage");
-  // };
 
   const [isShown, setIsShown] = useState(false);
-const db = getDatabase();
+  const db = getDatabase();
+
   const addUserToCourse = async () => {
     try {
       //получаем ссылку на объект курса в firebase
@@ -76,6 +57,7 @@ const db = getDatabase();
       if (courseFirebase?.users && Array.isArray(courseFirebase.users)) {
         if (courseFirebase.users.includes(userId)) {
           console.log("Пользователь уже записан на курс");
+          navigate('/PersonalPage')
           return;
         }
         courseFirebase.users.push(userId);
@@ -90,8 +72,6 @@ const db = getDatabase();
       console.error("Ошибка при добавлении пользователя курс", error);
     }
   };
-
-  // const toggleFIeldset = () => setIsShown(true);
 
   return (
     <S.Wrapper>
