@@ -40,7 +40,7 @@
 //   }
 // };
 
-import { ref, update } from "firebase/database";
+import { ref, set } from "firebase/database";
 import { getDatabase } from "firebase/database";
 
 export const updateProgress = async (userId, workoutId, exerciseNumber, progress) => {
@@ -53,7 +53,16 @@ export const updateProgress = async (userId, workoutId, exerciseNumber, progress
     console.log(userProgressRef);
 
     // Добавляем или обновляем прогресс для конкретного упражнения
-    await update(userProgressRef, { [exerciseId]: progress });
+    // await update(userProgressRef, { [exerciseId]: progress });
+    await set(
+      userProgressRef,
+      {
+        [userId]: {
+          [exerciseId]: progress
+        }
+      },
+      { merge: true }
+    );
 
     console.log("Прогресс обновлен успешно!");
   } catch (error) {
