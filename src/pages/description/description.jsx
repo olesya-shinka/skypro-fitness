@@ -19,6 +19,8 @@ import { idSelector } from "../../store/selectors/user";
 import { ref, get, update } from "firebase/database";
 import { getDatabase } from "firebase/database";
 import { useNavigate } from "react-router-dom";
+import { setCourseList } from "../../store/slices/courseWorkoutSlise";
+import { getCourses } from "../../Api";
 
 export default function CourseInfo({ loading }) {
   const dispatch = useDispatch();
@@ -67,6 +69,13 @@ export default function CourseInfo({ loading }) {
 
       // Обновляем объект курса в базе данных
       await update(courseRef, courseFirebase);
+      getCourses()
+      .then((data) => {
+        dispatch(setCourseList(data));
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
       setIsShown(true);
     } catch (error) {
       console.error("Ошибка при добавлении пользователя курс", error);
