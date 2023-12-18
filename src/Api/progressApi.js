@@ -19,7 +19,28 @@
 // };
 
 // второй вариант
-import { ref, get, update } from "firebase/database";
+// import { ref, update } from "firebase/database";
+// import { getDatabase } from "firebase/database";
+
+// export const updateProgress = async (userId, workoutId, exerciseNumber, progress) => {
+//   const db = getDatabase();
+//   try {
+//     const exerciseId = `${workoutId}_exercise${exerciseNumber}`;
+
+//     // Ссылка на документ в коллекции "userProgress"
+//     const progressRef = ref(db, "userProgress", userId, "exercises", exerciseId);
+//     console.log("Trying to update progress:", userId, workoutId, exerciseNumber, progress);
+
+//     // Обновляем прогресс
+//     await update(progressRef, { progress });
+
+//     console.log("Прогресс обновлен успешно!");
+//   } catch (error) {
+//     console.error("Ошибка при обновлении прогресса:", error);
+//   }
+// };
+
+import { ref, update } from "firebase/database";
 import { getDatabase } from "firebase/database";
 
 export const updateProgress = async (userId, workoutId, exerciseNumber, progress) => {
@@ -28,14 +49,11 @@ export const updateProgress = async (userId, workoutId, exerciseNumber, progress
     const exerciseId = `${workoutId}_exercise${exerciseNumber}`;
 
     // Ссылка на документ в коллекции "userProgress"
-    const progressRef = ref(db, "userProgress", userId, "exercises", exerciseId);
-    console.log("Trying to update progress:", userId, workoutId, exerciseNumber, progress);
+    const userProgressRef = ref(db, "userProgress", userId);
+    console.log(userProgressRef);
 
-    const snapshot = await get(progressRef);
-    const progressFirebase = snapshot.val();
-
-    // Добавляем или обновляем прогресс
-    await update(progressRef, progressFirebase);
+    // Добавляем или обновляем прогресс для конкретного упражнения
+    await update(userProgressRef, { [exerciseId]: progress });
 
     console.log("Прогресс обновлен успешно!");
   } catch (error) {
