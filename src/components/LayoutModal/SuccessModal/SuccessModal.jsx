@@ -12,11 +12,9 @@ export const SuccessModal = ({ setIsSuccessModalShow }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsSuccessModalShow(false);
-    }, 500);
-
+    }, 2000);
     return () => clearTimeout(timer);
   }, [setIsSuccessModalShow]);
-
   return (
     <LayoutModal>
       <S.ContentSuccess>

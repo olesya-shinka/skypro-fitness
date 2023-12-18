@@ -1,6 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
 import { Routes, Route } from "react-router-dom";
 import { MainPage } from "./pages/mainPage/Main";
 import CourseInfo from "./pages/description/description";
@@ -20,7 +17,7 @@ export const AppRoutes = ({ loading }) => {
       <Route path="/CourseInfo/:id" element={<CourseInfo loading={loading} />} />
       <Route element={<ProtectedRoute />}>
         <Route path="/PersonalPage" element={<PersonalPage loading={loading} />} />
-        <Route path="/WorkoutPage/:id" element={<WorkoutPage loading={loading} />} />
+        <Route path="/WorkoutPage/:workoutId" element={<WorkoutPage loading={loading} />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

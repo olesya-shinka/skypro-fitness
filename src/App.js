@@ -7,10 +7,15 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import GlobalStyle from "./global";
 import { getCourses, getWorkouts } from "./Api.js";
-import { setCourseList, setWorkoutList } from "./store/slices/courseWorkoutSlise.js";
+import {
+  setCourseList,
+  setWorkoutList,
+  setPracticeProgress
+} from "./store/slices/courseWorkoutSlise.js";
 
 import "./firebase";
 import { initializeUserFromLocalStorage } from "./store/slices/userSlice.js";
+import { waitFor } from "@testing-library/react";
 
 function App() {
   // const [user, setUser] = useState(true);
@@ -24,9 +29,10 @@ function App() {
 
   useEffect(() => {
     Promise.all([getCourses(), getWorkouts()])
-      .then(([coursesData, workoutsData]) => {
+      .then(([coursesData, workoutsData, progressData]) => {
         dispatch(setCourseList(coursesData));
         dispatch(setWorkoutList(workoutsData));
+        dispatch(setPracticeProgress(progressData));
       })
       .catch((error) => {
         console.log(error.message);

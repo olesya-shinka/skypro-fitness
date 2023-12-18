@@ -6,8 +6,8 @@ const initialState = {
   currentCourse: {},
   workoutList: [],
   selectedWorkout: "",
-  exercisesList:[],
-  progress: {}
+  exercisesList: [],
+  progress: []
 };
 
 export const newCourseSlice = createSlice({
@@ -50,4 +50,4 @@ export const {
   setExercisesList
 } = newCourseSlice.actions;
 
-export default newCourseSlice.reducer;
+export default newCourseSlice?.reducer;

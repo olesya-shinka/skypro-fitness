@@ -1,11 +1,4 @@
-/* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/jsx-key */
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-undef */
-/* eslint-disable prettier/prettier */
 import * as S from "./styles";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";

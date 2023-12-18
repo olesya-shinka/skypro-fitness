@@ -14,5 +14,14 @@ export const Btn = styled.button`
   cursor: pointer;
   line-height: 24px;
   letter-spacing: -0.05px;
+  background-color: rgba(88, 14, 162, 1);
+  color: white;
+  width: 275px;
+  height: 52px;
+  font-size: 18px;
+  :hover {
+    cursor: pointer;
+    color: white;
+    transform: scale(1.05);
 `;
 export default Btn;

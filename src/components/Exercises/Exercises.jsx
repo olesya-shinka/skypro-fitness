@@ -1,17 +1,14 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import * as S from "./styles";
 import ButtonMain from "../ButtonMain/ButtonMain";
+//import { useEffect } from "react";
 
 export const ExercisesList = ({ onClick, exercises }) => {
+  //useEffect(() => console.log(exercises), [exercises]);
   return (
-    <div className="content">
+    <div>
       <S.TitleExercises>Упражнения</S.TitleExercises>
       <S.ListExercises>
-        {exercises?.map((exercise, i) => (
+        {exercises.map((exercise, i) => (
           <S.ListExercisesItem key={i}>{exercise.name}</S.ListExercisesItem>
         ))}
       </S.ListExercises>

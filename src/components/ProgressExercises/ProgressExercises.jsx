@@ -1,9 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
-import { calculator } from "./utils";
 import * as S from "./styles";
 
 export const ProgressExercises = ({ exercises }) => {
@@ -13,7 +7,7 @@ export const ProgressExercises = ({ exercises }) => {
       <S.ListExercises>
         {exercises?.map((exercise, i) => {
           const percent = Math.round(
-            ((Number(exercise.exercisesDone) || 0) / exercise.count) * 100
+            ((Number(exercise.exercisesDone) || 0) / exercise.quantity) * 100
           );
 
           return (

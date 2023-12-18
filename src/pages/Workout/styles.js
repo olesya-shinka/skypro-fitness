@@ -35,6 +35,7 @@ export const Heading = styled.h1`
   font-weight: 400;
   font-size: 48px;
   line-height: 56px;
+  margin-top: 70px;
 `;
 
 export const Title = styled.h2`
@@ -42,11 +43,6 @@ export const Title = styled.h2`
   font-weight: 400;
   font-size: 32px;
   line-height: 40px;
-  :hover {
-    cursor: pointer;
-    color: #3f007d;
-    transform: scale(1.004);
-  }
 `;
 
 export const Player = styled.div`
@@ -263,6 +259,7 @@ export const LoadingCircle = styled.div`
   border-radius: 50%;
   width: 80px;
   height: 80px;
+  margin-left: 500px;
 ::before {
   content: ''; /
   position: absolute;
