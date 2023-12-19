@@ -17,7 +17,7 @@ import { setWorkoutList } from "../../../store/slices/courseWorkoutSlise";
 // import { courseList } from "../../../store/selectors/coursesNew";
 // import { userProgress } from "../../../store/selectors/progress";
 
-export const ProgressModal = ({ exercises, onClick, course, workout }) => {
+export const ProgressModal = ({ exercises, onClick, course, workout, setIsProgressModalShow }) => {
   const dispatch = useDispatch();
   const userId = useSelector(idSelector);
   const onSubmit = async (data) => {
@@ -93,22 +93,31 @@ export const ProgressModal = ({ exercises, onClick, course, workout }) => {
   //   onClick();
   // };
   return (
-    <S.FormModal onSubmit={handleSubmit(onSubmit)}>
-      <S.TitleModal>Мой прогресс</S.TitleModal>
-      <S.InputsModal>
-        {exercises?.map((exercise, index) => (
-          <S.InputText key={exercise.name}>
-            {`Сколько раз вы сделали упражнение "${exercise.name.split("(")[0]}" ?`}
-            <InputProgress
-              name={`exercise_${workout[0]._id}_exercise${index}`}
-              register={register}
-              errors={errors}
-            />
-          </S.InputText>
-        ))}
-      </S.InputsModal>
-      <ButtonMain type="submit" content="Отправить" />
-    </S.FormModal>
+      <S.FormModal onSubmit={handleSubmit(onSubmit)}>
+        <S.closerBlog>
+          <S.Closer
+            src="/img/close.png"
+            alt="закрыть"
+            onClick={() => {
+              setIsProgressModalShow(false);
+            }}
+          />
+        </S.closerBlog>
+        <S.TitleModal>Мой прогресс</S.TitleModal>
+        <S.InputsModal>
+          {exercises?.map((exercise, index) => (
+            <S.InputText key={exercise.name}>
+              {`Сколько раз вы сделали упражнение "${exercise.name.split("(")[0]}" ?`}
+              <InputProgress
+                name={`exercise_${workout[0]._id}_exercise${index}`}
+                register={register}
+                errors={errors}
+              />
+            </S.InputText>
+          ))}
+        </S.InputsModal>
+        <ButtonMain type="submit" content="Отправить" />
+      </S.FormModal>
   );
 };
 export default ProgressModal;
