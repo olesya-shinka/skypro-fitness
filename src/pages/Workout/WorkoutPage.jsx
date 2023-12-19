@@ -11,7 +11,7 @@ import { ProgressModal } from "../../components/LayoutModal/ProgressModal/Progre
 import { SuccessModal } from "../../components/LayoutModal/SuccessModal/SuccessModal";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 import { NavigateBlock } from "../../components/NavigationBlock/Navi";
-
+import { idSelector } from "../../store/selectors/user";
 import { allWorkoutSelector, courseList } from "../../store/selectors/coursesNew";
 import { setPracticeProgress } from "../../store/slices/courseWorkoutSlise";
 
@@ -22,6 +22,8 @@ import { userProgress } from "../../store/selectors/progress";
 export const WorkoutPage = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const userId = useSelector(idSelector);
+  console.log(userId);
   useEffect(() => {
     const timerId = setInterval(() => setLoading(!loading), 2000);
     return () => {
@@ -40,6 +42,7 @@ export const WorkoutPage = () => {
 
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
+  const [currentProgressUser, setCurrentProgressUser] = useState([]);
 
   const handleClick = () => setIsProgressModalShow(true);
 
@@ -56,6 +59,9 @@ export const WorkoutPage = () => {
     getProgressAll()
       .then((data) => {
         console.log(data);
+        const filteredArray = data?.filter((progress) => progress.key === userId);
+        setCurrentProgressUser(filteredArray);
+        console.log(currentProgressUser);
       })
       .catch((error) => {
         console.log(error.message);
