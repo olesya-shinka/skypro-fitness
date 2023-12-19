@@ -107,7 +107,7 @@ export const WorkoutPage = () => {
             onClick={handleClick}
           />
 
-          <ProgressExercises exercises={workout[0]?.exercises} />
+          <ProgressExercises exercises={workout[0]?.exercises} userId={userId} />
         </S.Exercises>
       </S.Main>
 

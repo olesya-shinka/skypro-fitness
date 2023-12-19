@@ -1,14 +1,17 @@
 import * as S from "./styles";
 
 export const ProgressExercises = ({ exercises }) => {
-  // const getProgressInPercent = ({ needed, id }) => {
-  //   const done = workoutProgress.find((item) => item.id === id).progress;
+  // getProgressInPercent = ({ exercises }) => {
+  // const getDone = ({ exercise, needed }) => {
+  //   const done = exercise.progress?.find((item) => item.id === userId)[0];
+  //   console.log(done);
   //   let result = (done / needed) * 100;
   //   if (result > 100) {
   //     result = 100;
   //   }
   //   return result;
   // };
+  // console.log(exercises);
 
   return (
     <S.Progress>
