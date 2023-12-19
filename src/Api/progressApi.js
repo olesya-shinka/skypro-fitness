@@ -95,10 +95,10 @@ export async function getProgressAll() {
 }
 
 export const updateProgress2 = async (userId, workoutId, exerciseNumber, progress) => {
-  const oRef = await push(ref(getDatabase(), `userProgress/${userId}/${workoutId}`));
-  await set(oRef, {
-    [exerciseNumber]: progress
-  });
+  const oRef = await push(
+    ref(getDatabase(), `workouts/${workoutId}/exercises/${exerciseNumber}/progress/${userId}`)
+  );
+  await set(oRef, progress);
   const oSnapshot = await get(query(oRef));
   const oArr = [];
   let oDeed;
