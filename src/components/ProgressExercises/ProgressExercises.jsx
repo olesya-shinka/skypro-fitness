@@ -18,9 +18,7 @@ export const ProgressExercises = ({ exercises }) => {
       <S.Title>Мой прогресс по тренировке:</S.Title>
       <S.ListExercises>
         {exercises?.map((exercise, i) => {
-          const percent = Math.round(
-            ((Number(exercise.exercisesDone) || 0) / exercise.quantity) * 100
-          );
+          const percent = 0;
 
           return (
             <S.ListItem key={i + 1}>
