@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ButtonMain from "../../ButtonMain/ButtonMain";
 import { idSelector } from "../../../store/selectors/user";
 import InputProgress from "../InputProgress/InputProgress";
-import { updateProgress } from "../../../Api/progressApi";
+import { updateProgress2 } from "../../../Api/progressApi";
 // import { addProgress } from "../../../Api";
 // import { getUserProgress, postProgress, getProgress } from "../../../Api";
 // import { courseList } from "../../../store/selectors/coursesNew";
@@ -39,7 +39,7 @@ export const ProgressModal = ({ exercises, onClick, course, workout }) => {
       const exerciseId = `${workout[0]._id}_exercise${exerciseNumber}`;
       const exerciseProgress = progress[exerciseId];
 
-      await updateProgress(userId, workout[0]._id, exerciseNumber, exerciseProgress);
+      await updateProgress2(userId, workout[0]._id, exerciseNumber, exerciseProgress);
     }
 
     // Диспетчим действие добавления прогресса в Redux (если это нужно)

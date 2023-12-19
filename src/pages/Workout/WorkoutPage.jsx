@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
-
+import { getProgressAll } from "../../Api/progressApi";
 import { ExercisesList } from "../../components/Exercises/Exercises";
 import { ProgressExercises } from "../../components/ProgressExercises/ProgressExercises";
 import { ProgressModal } from "../../components/LayoutModal/ProgressModal/ProgressModal";
@@ -36,7 +36,7 @@ export const WorkoutPage = () => {
   const workout = workouts?.filter((workout) => workout._id === workoutId);
 
   const progresses = useSelector(userProgress);
-  const progress = progresses?.filter((progress) => progress.workouts_id === progressId);
+  // const progress = progresses?.filter((progress) => progress.workouts_id === progressId);
 
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
@@ -53,16 +53,26 @@ export const WorkoutPage = () => {
   };
 
   useEffect(() => {
-    getProgress({
-      workouts_id: workoutId
-    })
+    getProgressAll()
       .then((data) => {
-        dispatch(setPracticeProgress(data));
+        console.log(data);
       })
       .catch((error) => {
         console.log(error.message);
       });
   }, []);
+
+  // useEffect(() => {
+  //   getProgress({
+  //     workouts_id: workoutId
+  //   })
+  //     .then((data) => {
+  //       dispatch(setPracticeProgress(data));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //     });
+  // }, []);
 
   return (
     <S.Container>
