@@ -90,7 +90,7 @@ export const ProgressModal = ({ exercises, onClick, course, workout }) => {
           <S.InputText key={exercise.name}>
             {`Сколько раз вы сделали упражнение "${exercise.name.split("(")[0]}" ?`}
             <InputProgress
-              name={`exercise_${workout[0]._id}_exercise${index + 1}`}
+              name={`exercise_${workout[0]._id}_exercise${index}`}
               register={register}
               errors={errors}
             />
