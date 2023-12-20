@@ -41,7 +41,7 @@ export  function ProgressModal  ({ exercises, onClick, course, workout })  {
 
     // Собираем данные о прогрессе из инпутов
     exercises.forEach((exercise, index) => {
-      const exerciseNumber = index + 1;
+      const exerciseNumber = index;
       const exerciseId = `${workout[0]._id}_exercise${exerciseNumber}`;
 
       // Значение прогресса из соответствующего инпута
@@ -53,12 +53,13 @@ export  function ProgressModal  ({ exercises, onClick, course, workout })  {
 
     // Добавляем или обновляем прогресс в базе данных
     for (let i = 0; i < exercises.length; i++) {
-      const exerciseNumber = i + 1;
+      const exerciseNumber = i;
       const exerciseId = `${workout[0]._id}_exercise${exerciseNumber}`;
       const exerciseProgress = progress[exerciseId];
 
-      await updateProgress(userId, workout[0]._id, exerciseNumber, exerciseProgress);
+      await updateProgress2(userId, workout[0]._id, exerciseNumber, exerciseProgress);
     }
+
     // Диспетчим действие добавления прогресса в Redux (если это нужно)
     // dispatch(
     //   addProgress({
