@@ -35,11 +35,11 @@ export const ProgressExercises = ({ exercises, userId }) => {
     <S.Progress>
       <S.Title>Мой прогресс по тренировке:</S.Title>
       <S.ListExercises>
-        {exercises?.map((exercise, i, index) => {
+        {exercises?.map((exercise, index) => {
           const percent = getDone({ needed: exercise.quantity });
 
           return (
-            <S.ListItem key={i + 1}>
+            <S.ListItem key={index}>
               <S.NameExercise>{exercise.name.split("(")[0]}</S.NameExercise>
               <S.ProgressBar
                 style={{
