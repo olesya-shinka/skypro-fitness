@@ -27,6 +27,30 @@ export function SelectWorkout({ setIsShowForm }) {
     };
     filterWorkout();
   }, []);
+  console.log(currentWorkouts);
+  const exercises = currentWorkouts[0].exercises;
+  console.log(exercises);
+
+  // const getDone = ({ needed }) => {
+  //   const targretProgress = exercises.find(
+  //     (exercise) => exercise.progress && exercise.progress[userId]
+  //   );
+  //   if (!targretProgress || !targretProgress.progress[userId]) {
+  //     console.log("Прогресс не найден, возвращено 0");
+  //     return 0;
+  //   }
+  //   const progressObject = targretProgress.progress[userId];
+  //   const progressIds = Object.keys(progressObject);
+  //   const lastProgressId = progressIds[progressIds.length - 1];
+  //   const done = progressObject[lastProgressId];
+  //   console.log(done);
+  //   let result = Math.round((done / needed) * 100);
+  //   console.log(needed);
+  //   if (result > 100) {
+  //     result = 100;
+  //   }
+  //   return result;
+  // };
 
   return (
     <S.SelectContainer>

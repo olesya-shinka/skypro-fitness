@@ -53,7 +53,8 @@ export const ProgressExercises = ({ exercises, userId }) => {
                   }}></S.Done>
                 <S.Percent
                   style={{
-                    color: percent > 0 ? "#fff" : "#000"
+                    color: percent > 0 ? "#fff" : "#000",
+                    left: `${percent}px`
                   }}>
                   {percent}%
                 </S.Percent>
