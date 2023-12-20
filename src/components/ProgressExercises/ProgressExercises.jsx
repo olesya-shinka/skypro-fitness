@@ -1,14 +1,24 @@
 import * as S from "./styles";
 
 export const ProgressExercises = ({ exercises }) => {
+  // getProgressInPercent = ({ exercises }) => {
+  //   const getDone = ({ exercise, needed }) => {
+  //     const done = exercise.progress?.find((item) => item.id === userId)[0];
+  //     console.log(done);
+  //     let result = (done / needed) * 100;
+  //     if (result > 100) {
+  //       result = 100;
+  //     }
+  //     return result;
+  //   };
+  //   console.log(exercises);
+
   return (
     <S.Progress>
       <S.Title>Мой прогресс по тренировке:</S.Title>
       <S.ListExercises>
         {exercises?.map((exercise, i) => {
-          const percent = Math.round(
-            ((Number(exercise.exercisesDone) || 0) / exercise.quantity) * 100
-          );
+          let percent = 0;
 
           return (
             <S.ListItem key={i + 1}>
@@ -30,5 +40,4 @@ export const ProgressExercises = ({ exercises }) => {
     </S.Progress>
   );
 };
-
 export default ProgressExercises;

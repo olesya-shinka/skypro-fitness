@@ -5,7 +5,7 @@
 /* eslint-disable prettier/prettier */
 import * as S from "./styles";
 
-const InputProgress = ({ register, errors, name }) => {
+const InputProgress = ({ register, errors, name, onchange }) => {
   return (
     <>
       <S.Input
@@ -17,6 +17,7 @@ const InputProgress = ({ register, errors, name }) => {
             return [/^\d+$/].every((pattern) => pattern.test(value)) || "Только цифры";
           }
         })}
+        onChange={onchange}
       />
       <S.ErrorMessage>{errors[name]?.message}</S.ErrorMessage>
     </>

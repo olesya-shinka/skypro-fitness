@@ -10,14 +10,32 @@ import ButtonMain from "../../ButtonMain/ButtonMain";
 import { idSelector } from "../../../store/selectors/user";
 import InputProgress from "../InputProgress/InputProgress";
 import { updateProgress } from "../../../Api/progressApi";
+import { useState } from "react";
 // import { addProgress } from "../../../Api";
 // import { getUserProgress, postProgress, getProgress } from "../../../Api";
 // import { courseList } from "../../../store/selectors/coursesNew";
 // import { userProgress } from "../../../store/selectors/progress";
 
-export const ProgressModal = ({ exercises, onClick, course, workout }) => {
+export  function ProgressModal  ({ exercises, onClick, course, workout })  {
   const dispatch = useDispatch();
+  const [values, setValues] = useState({});
+  const [complete, setComplete] = useState({});
   const userId = useSelector(idSelector);
+  const onChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: {
+        done: e.target.value,
+        goal: e.target.id,
+      },
+    });
+    if (e.target.value >= Number(e.target.id)) {
+      setComplete({
+        ...complete,
+        [e.target.name]: { done: 'complete' },
+      });
+    }
+  };
   const onSubmit = async (data) => {
     const progress = {};
 
@@ -41,7 +59,6 @@ export const ProgressModal = ({ exercises, onClick, course, workout }) => {
 
       await updateProgress(userId, workout[0]._id, exerciseNumber, exerciseProgress);
     }
-
     // Диспетчим действие добавления прогресса в Redux (если это нужно)
     // dispatch(
     //   addProgress({
@@ -52,6 +69,7 @@ export const ProgressModal = ({ exercises, onClick, course, workout }) => {
 
     onClick(); // Закрываем модальное окно или делаем что-то еще
   };
+  
 
   const {
     register,
@@ -87,12 +105,14 @@ export const ProgressModal = ({ exercises, onClick, course, workout }) => {
       <S.TitleModal>Мой прогресс</S.TitleModal>
       <S.InputsModal>
         {exercises?.map((exercise, index) => (
-          <S.InputText key={exercise.name}>
+          <S.InputText key={exercise.name}
+          >
             {`Сколько раз вы сделали упражнение "${exercise.name.split("(")[0]}" ?`}
             <InputProgress
               name={`exercise_${workout[0]._id}_exercise${index + 1}`}
               register={register}
               errors={errors}
+              onChange={onChange}
             />
           </S.InputText>
         ))}
