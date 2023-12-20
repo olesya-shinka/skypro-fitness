@@ -13,22 +13,36 @@ export const ProgressExercises = ({ exercises }) => {
   //   };
   //   console.log(exercises);
 
+  const colors = [
+    { fill: "#565EEF", bcg: "#EDECFF" },
+    { fill: "#FF6D00", bcg: "#FFF2E0" },
+    { fill: "#9A48F1", bcg: "#F9EBFF" },
+    { fill: "#00C90D", bcg: "#e6fae7" },
+    { fill: "#E40045", bcg: "#fce6ec" }
+  ];
+
   return (
     <S.Progress>
       <S.Title>Мой прогресс по тренировке:</S.Title>
       <S.ListExercises>
-        {exercises?.map((exercise, i) => {
+        {exercises?.map((exercise, i, index) => {
           let percent = 0;
 
           return (
             <S.ListItem key={i + 1}>
               <S.NameExercise>{exercise.name.split("(")[0]}</S.NameExercise>
-              <S.ProgressBar>
-                <S.Done style={{ width: `${percent}%` }}></S.Done>
+              <S.ProgressBar
+                style={{
+                  width: `${percent}%`,
+                  background: colors[index],
+                  border: `2px solid ${colors[index]?.bcg}`
+                }}>
+                <S.Done></S.Done>
                 <S.Percent
                   style={{
                     left: `${percent}px`,
-                    color: percent > 0 ? "#fff" : "#000"
+                    color: percent > 0 ? "#fff" : "#000",
+                    background: colors[index]?.fill
                   }}>
                   {percent}%
                 </S.Percent>
