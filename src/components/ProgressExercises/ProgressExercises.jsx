@@ -39,20 +39,24 @@ export const ProgressExercises = ({ exercises, userId }) => {
           const percent = getDone({ needed: exercise.quantity });
 
           return (
-            <S.ListItem key={index}>
+            <S.ListItem key={index + 1}>
               <S.NameExercise>{exercise.name.split("(")[0]}</S.NameExercise>
               <S.ProgressBar
                 style={{
-                  width: `${percent}%`,
-                  background: colors[index],
-                  border: `2px solid ${colors[index]?.bcg}`
+                  backgroundColor: colors[index].bcg,
+                  border: `2px solid ${colors[index]?.fill}`
                 }}>
-                <S.Done></S.Done>
+                <S.Done
+                  style={{
+                    width: `${percent}%`,
+                    backgroundColor: colors[index]?.fill
+                  }}></S.Done>
                 <S.Percent
                   style={{
-                    left: `${percent}px`,
-                    color: percent > 0 ? "#fff" : "#000",
-                    background: colors[index]?.fill
+                    // display: "flex",
+                    // textAlign: "right",
+                    // marginRight: `${100 - percent}%`,
+                    color: percent > 0 ? "#fff" : "#000"
                   }}>
                   {percent}%
                 </S.Percent>
