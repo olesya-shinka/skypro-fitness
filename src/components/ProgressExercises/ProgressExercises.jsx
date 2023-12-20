@@ -2,8 +2,13 @@ import * as S from "./styles";
 
 export const ProgressExercises = ({ exercises, userId }) => {
   const getDone = ({ needed }) => {
-    const targretProgress = exercises.find((exercise) => exercise.progress[userId]);
-    console.log(targretProgress);
+    const targretProgress = exercises.find(
+      (exercise) => exercise.progress && exercise.progress[userId]
+    );
+    if (!targretProgress || !targretProgress.progress[userId]) {
+      console.log("Прогресс не найден, возвращено 0");
+      return 0;
+    }
     const progressObject = targretProgress.progress[userId];
     // Получите первый ключ из объекта прогресса
     const firstProgressId = Object.keys(progressObject)[0];
