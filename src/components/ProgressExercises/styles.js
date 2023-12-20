@@ -1,8 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import styled from "styled-components";
 
 const Col1 = styled.div`
@@ -46,6 +41,9 @@ export const Progress = styled.div`
   background-color: #f2f2f2;
   border-radius: 30px;
   max-width: 638px;
+  padding: 32px 44px;
+  border-radius: 30px;
+  color: black;
 `;
 
 export const Title = styled.h2`

@@ -317,3 +317,15 @@ export const LoadingCircle = styled.div`
   }
 }
 `;
+export const WrapperModal = styled.div`
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
