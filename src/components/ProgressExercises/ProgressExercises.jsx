@@ -10,9 +10,9 @@ export const ProgressExercises = ({ exercises, userId }) => {
       return 0;
     }
     const progressObject = targretProgress.progress[userId];
-    // Получите первый ключ из объекта прогресса
-    const firstProgressId = Object.keys(progressObject)[0];
-    const done = progressObject[firstProgressId];
+    const progressIds = Object.keys(progressObject);
+    const lastProgressId = progressIds[progressIds.length - 1];
+    const done = progressObject[lastProgressId];
     console.log(done);
     let result = Math.round((done / needed) * 100);
     console.log(needed);
@@ -53,9 +53,6 @@ export const ProgressExercises = ({ exercises, userId }) => {
                   }}></S.Done>
                 <S.Percent
                   style={{
-                    // display: "flex",
-                    // textAlign: "right",
-                    // marginRight: `${100 - percent}%`,
                     color: percent > 0 ? "#fff" : "#000"
                   }}>
                   {percent}%
