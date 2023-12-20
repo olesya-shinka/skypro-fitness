@@ -11,12 +11,15 @@ import { idSelector } from "../../../store/selectors/user";
 import InputProgress from "../InputProgress/InputProgress";
 import { updateProgress } from "../../../Api/progressApi";
 import { useState } from "react";
+import { updateProgress2 } from "../../../Api/progressApi";
+import { getWorkouts } from "../../../Api";
+import { setWorkoutList } from "../../../store/slices/courseWorkoutSlise";
 // import { addProgress } from "../../../Api";
 // import { getUserProgress, postProgress, getProgress } from "../../../Api";
 // import { courseList } from "../../../store/selectors/coursesNew";
 // import { userProgress } from "../../../store/selectors/progress";
 
-export  function ProgressModal  ({ exercises, onClick, course, workout })  {
+export function ProgressModal({ exercises, onClick, course, workout }) {
   const dispatch = useDispatch();
   const [values, setValues] = useState({});
   const [complete, setComplete] = useState({});
@@ -26,13 +29,13 @@ export  function ProgressModal  ({ exercises, onClick, course, workout })  {
       ...values,
       [e.target.name]: {
         done: e.target.value,
-        goal: e.target.id,
-      },
+        goal: e.target.id
+      }
     });
     if (e.target.value >= Number(e.target.id)) {
       setComplete({
         ...complete,
-        [e.target.name]: { done: 'complete' },
+        [e.target.name]: { done: "complete" }
       });
     }
   };
@@ -59,6 +62,13 @@ export  function ProgressModal  ({ exercises, onClick, course, workout })  {
 
       await updateProgress2(userId, workout[0]._id, exerciseNumber, exerciseProgress);
     }
+    getWorkouts()
+      .then((data) => {
+        dispatch(setWorkoutList(data));
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
 
     // Диспетчим действие добавления прогресса в Redux (если это нужно)
     // dispatch(
@@ -70,7 +80,6 @@ export  function ProgressModal  ({ exercises, onClick, course, workout })  {
 
     onClick(); // Закрываем модальное окно или делаем что-то еще
   };
-  
 
   const {
     register,
@@ -106,8 +115,7 @@ export  function ProgressModal  ({ exercises, onClick, course, workout })  {
       <S.TitleModal>Мой прогресс</S.TitleModal>
       <S.InputsModal>
         {exercises?.map((exercise, index) => (
-          <S.InputText key={exercise.name}
-          >
+          <S.InputText key={exercise.name}>
             {`Сколько раз вы сделали упражнение "${exercise.name.split("(")[0]}" ?`}
             <InputProgress
               name={`exercise_${workout[0]._id}_exercise${index + 1}`}
@@ -121,5 +129,5 @@ export  function ProgressModal  ({ exercises, onClick, course, workout })  {
       <ButtonMain type="submit" content="Отправить" />
     </S.FormModal>
   );
-};
+}
 export default ProgressModal;
