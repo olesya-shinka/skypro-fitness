@@ -28,8 +28,8 @@ export function SelectWorkout({ setIsShowForm }) {
     filterWorkout();
   }, []);
   console.log(currentWorkouts);
-  const exercises = currentWorkouts[0].exercises;
-  console.log(exercises);
+  // const exercises = currentWorkouts[0].exercises;
+  // console.log(exercises);
 
   // const getDone = ({ needed }) => {
   //   const targretProgress = exercises.find(
