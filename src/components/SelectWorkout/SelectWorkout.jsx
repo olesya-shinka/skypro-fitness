@@ -24,15 +24,15 @@ export function SelectWorkout({ setIsShowForm }) {
     };
     filterWorkout();
   }, []);
-  console.log(currentWorkouts);
+  // console.log(currentWorkouts);
   const exercises = currentWorkouts[0]?.exercises;
-  console.log(exercises);
+  // console.log(exercises);
 
   // Создаем state с начальным состоянием
   const [workoutStatus, setWorkoutStatus] = useState({});
-  useEffect(() => {
-    console.log(workoutStatus);
-  }, [workoutStatus]);
+  // useEffect(() => {
+  //   console.log(workoutStatus);
+  // }, [workoutStatus]);
 
   useEffect(() => {
     const checkDone = () => {
