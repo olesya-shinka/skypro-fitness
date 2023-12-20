@@ -19,7 +19,7 @@ import { setWorkoutList } from "../../../store/slices/courseWorkoutSlise";
 // import { courseList } from "../../../store/selectors/coursesNew";
 // import { userProgress } from "../../../store/selectors/progress";
 
-export function ProgressModal({ exercises, onClick, course, workout }) {
+export function ProgressModal({ exercises, onClick, course, workout, setIsProgressModalShow }) {
   const dispatch = useDispatch();
   const [values, setValues] = useState({});
   const [complete, setComplete] = useState({});
@@ -112,13 +112,22 @@ export function ProgressModal({ exercises, onClick, course, workout }) {
   // };
   return (
     <S.FormModal onSubmit={handleSubmit(onSubmit)}>
+      <S.closerBlog>
+          <S.Closer
+            src="/img/close.png"
+            alt="закрыть"
+            onClick={() => {
+              setIsProgressModalShow(false);
+            }}
+          />
+        </S.closerBlog>
       <S.TitleModal>Мой прогресс</S.TitleModal>
       <S.InputsModal>
         {exercises?.map((exercise, index) => (
           <S.InputText key={exercise.name}>
             {`Сколько раз вы сделали упражнение "${exercise.name.split("(")[0]}" ?`}
             <InputProgress
-              name={`exercise_${workout[0]._id}_exercise${index + 1}`}
+              name={`exercise_${workout[0]._id}_exercise${index}`}
               register={register}
               errors={errors}
               onChange={onChange}
