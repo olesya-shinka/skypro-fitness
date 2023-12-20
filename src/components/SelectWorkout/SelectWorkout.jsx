@@ -65,6 +65,7 @@ export function SelectWorkout({ setIsShowForm }) {
       }
     }
   };
+  checkDone();
 
   // const getDone = ({ needed }) => {
   //   const targretProgress = exercises.find(
