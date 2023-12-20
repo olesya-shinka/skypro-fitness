@@ -57,26 +57,28 @@ export function SelectWorkout({ setIsShowForm }) {
             (exercise) => exercise.progress && exercise.progress[userId]
           );
           if (!targretProgress || !targretProgress.progress[userId]) {
-            console.log("Прогресс не найден, возвращено 0");
-            return 0;
-          }
-          const progressObject = targretProgress.progress[userId];
-          const progressIds = Object.keys(progressObject);
-          const lastProgressId = progressIds[progressIds.length - 1];
-          const done = progressObject[lastProgressId];
-
-          // Проверка, что прогресс равен количеству повторений
-          if (exercise.quantity > done) {
             setWorkoutStatus((prevStatus) => ({
               ...prevStatus,
               [currentWorkout._id]: false
             }));
-            return;
           } else {
-            setWorkoutStatus((prevStatus) => ({
-              ...prevStatus,
-              [currentWorkout._id]: true
-            }));
+            const progressObject = targretProgress.progress[userId];
+            const progressIds = Object.keys(progressObject);
+            const lastProgressId = progressIds[progressIds.length - 1];
+            const done = progressObject[lastProgressId];
+
+            // Проверка, что прогресс равен количеству повторений
+            if (exercise.quantity > done) {
+              setWorkoutStatus((prevStatus) => ({
+                ...prevStatus,
+                [currentWorkout._id]: false
+              }));
+            } else {
+              setWorkoutStatus((prevStatus) => ({
+                ...prevStatus,
+                [currentWorkout._id]: true
+              }));
+            }
           }
         }
       }
