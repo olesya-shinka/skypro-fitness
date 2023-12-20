@@ -14,7 +14,7 @@ export const ProgressExercises = ({ exercises, userId }) => {
     const firstProgressId = Object.keys(progressObject)[0];
     const done = progressObject[firstProgressId];
     console.log(done);
-    let result = (done / needed) * 100;
+    let result = Math.round((done / needed) * 100);
     console.log(needed);
     if (result > 100) {
       result = 100;
