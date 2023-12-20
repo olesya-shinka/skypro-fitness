@@ -5,17 +5,13 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { currentCourseSelector, allWorkoutSelector } from "../../store/selectors/coursesNew";
 import { idSelector } from "../../store/selectors/user";
-// import { selectCurrentWorkout } from "../../store/slices/workoutsSlice";
-// import { selectUserCourses } from "../../store/selectors/progress";
-// import { selectUser } from "../../store/selectors/user";
-// import { userCourses } from "../../Api";
-// import { getCurrentWorkouts } from "./utils";
 
 export function SelectWorkout({ setIsShowForm }) {
   const allWorkouts = useSelector(allWorkoutSelector);
   const currentCourse = useSelector(currentCourseSelector);
   const currentWorkoutList = currentCourse.workouts;
   const userId = useSelector(idSelector);
+
   // Состояние для отфильтрованных тренировок
   const [currentWorkouts, setCurrentWorkouts] = useState([]);
 
@@ -32,14 +28,8 @@ export function SelectWorkout({ setIsShowForm }) {
   const exercises = currentWorkouts[0]?.exercises;
   console.log(exercises);
 
-  const initialWorkoutState = {};
-  currentWorkouts.forEach((currentWorkout) => {
-    console.log(currentWorkout._id);
-    initialWorkoutState[currentWorkout._id] = false;
-  });
-
   // Создаем state с начальным состоянием
-  const [workoutStatus, setWorkoutStatus] = useState(initialWorkoutState);
+  const [workoutStatus, setWorkoutStatus] = useState({});
   useEffect(() => {
     console.log(workoutStatus);
   }, [workoutStatus]);
@@ -85,27 +75,6 @@ export function SelectWorkout({ setIsShowForm }) {
     };
     checkDone();
   }, [currentWorkouts, exercises, userId]);
-
-  // const getDone = ({ needed }) => {
-  //   const targretProgress = exercises.find(
-  //     (exercise) => exercise.progress && exercise.progress[userId]
-  //   );
-  //   if (!targretProgress || !targretProgress.progress[userId]) {
-  //     console.log("Прогресс не найден, возвращено 0");
-  //     return 0;
-  //   }
-  //   const progressObject = targretProgress.progress[userId];
-  //   const progressIds = Object.keys(progressObject);
-  //   const lastProgressId = progressIds[progressIds.length - 1];
-  //   const done = progressObject[lastProgressId];
-  //   console.log(done);
-  //   let result = Math.round((done / needed) * 100);
-  //   console.log(needed);
-  //   if (result > 100) {
-  //     result = 100;
-  //   }
-  //   return result;
-  // };
 
   return (
     <S.SelectContainer>
