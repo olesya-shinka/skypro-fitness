@@ -110,3 +110,31 @@ export const updateProgress2 = async (userId, workoutId, exerciseNumber, progres
   });
   return oArr;
 };
+
+// export const updateProgress3 = async ({ userId, workoutId, exerciseNumber, progress }) => {
+//   const db = getDatabase();
+//   try {
+//     //получаем ссылку на объект курса в firebase
+//     const courseRef = ref(
+//       db,
+//       `workouts/${workoutId}/exercises/${exerciseNumber}/progress/${userId}`
+//     );
+//     console.log("courseRef", courseRef);
+
+//     const snapshot = await get(courseRef);
+//     const courseFirebase = snapshot.val();
+
+//     // courseFirebase.progress = [progress];
+
+//     if (courseFirebase && Array.isArray(courseFirebase)) {
+//       courseFirebase.push(progress);
+//     } else {
+//       courseFirebase = [progress];
+//     }
+
+//     // Обновляем объект курса в базе данных
+//     await update(courseRef, courseFirebase);
+//   } catch (error) {
+//     console.error("Ошибка при добавлении пользователя курс", error);
+//   }
+// };
