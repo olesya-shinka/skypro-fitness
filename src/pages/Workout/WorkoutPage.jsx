@@ -23,7 +23,7 @@ export const WorkoutPage = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const userId = useSelector(idSelector);
-  console.log(userId);
+  // console.log(userId);
   useEffect(() => {
     const timerId = setInterval(() => setLoading(!loading), 2000);
     return () => {

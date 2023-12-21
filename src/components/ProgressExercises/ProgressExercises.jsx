@@ -13,15 +13,15 @@ export const ProgressExercises = ({ exercises, userId }) => {
     const progressIds = Object.keys(progressObject);
     const lastProgressId = progressIds[progressIds.length - 1];
     const done = progressObject[lastProgressId];
-    console.log(done);
+    // console.log(done);
     let result = Math.round((done / needed) * 100);
-    console.log(needed);
+    // console.log(needed);
     if (result > 100) {
       result = 100;
     }
     return result;
   };
-  console.log(exercises);
+  // console.log(exercises);
 
   const colors = [
     { fill: "#565EEF", bcg: "#EDECFF" },

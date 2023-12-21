@@ -4,16 +4,13 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { currentCourseSelector, allWorkoutSelector } from "../../store/selectors/coursesNew";
-// import { selectCurrentWorkout } from "../../store/slices/workoutsSlice";
-// import { selectUserCourses } from "../../store/selectors/progress";
-// import { selectUser } from "../../store/selectors/user";
-// import { userCourses } from "../../Api";
-// import { getCurrentWorkouts } from "./utils";
+import { idSelector } from "../../store/selectors/user";
 
 export function SelectWorkout({ setIsShowForm }) {
   const allWorkouts = useSelector(allWorkoutSelector);
   const currentCourse = useSelector(currentCourseSelector);
   const currentWorkoutList = currentCourse.workouts;
+  const userId = useSelector(idSelector);
 
   // Состояние для отфильтрованных тренировок
   const [currentWorkouts, setCurrentWorkouts] = useState([]);
@@ -27,30 +24,57 @@ export function SelectWorkout({ setIsShowForm }) {
     };
     filterWorkout();
   }, []);
-  console.log(currentWorkouts);
-  // const exercises = currentWorkouts[0].exercises;
+  // console.log(currentWorkouts);
+  const exercises = currentWorkouts[0]?.exercises;
   // console.log(exercises);
 
-  // const getDone = ({ needed }) => {
-  //   const targretProgress = exercises.find(
-  //     (exercise) => exercise.progress && exercise.progress[userId]
-  //   );
-  //   if (!targretProgress || !targretProgress.progress[userId]) {
-  //     console.log("Прогресс не найден, возвращено 0");
-  //     return 0;
-  //   }
-  //   const progressObject = targretProgress.progress[userId];
-  //   const progressIds = Object.keys(progressObject);
-  //   const lastProgressId = progressIds[progressIds.length - 1];
-  //   const done = progressObject[lastProgressId];
-  //   console.log(done);
-  //   let result = Math.round((done / needed) * 100);
-  //   console.log(needed);
-  //   if (result > 100) {
-  //     result = 100;
-  //   }
-  //   return result;
-  // };
+  // Создаем state с начальным состоянием
+  const [workoutStatus, setWorkoutStatus] = useState({});
+  // useEffect(() => {
+  //   console.log(workoutStatus);
+  // }, [workoutStatus]);
+
+  useEffect(() => {
+    const checkDone = () => {
+      for (let i = 0; i < currentWorkouts.length; i++) {
+        const currentWorkout = currentWorkouts[i];
+
+        // Проход по всем упражнениям в текущей тренировке
+        for (let j = 0; j < currentWorkout.exercises.length; j++) {
+          const exercise = currentWorkout.exercises[j];
+
+          const targretProgress = exercises.find(
+            (exercise) => exercise.progress && exercise.progress[userId]
+          );
+          if (!targretProgress || !targretProgress.progress[userId]) {
+            setWorkoutStatus((prevStatus) => ({
+              ...prevStatus,
+              [currentWorkout._id]: false
+            }));
+          } else {
+            const progressObject = targretProgress.progress[userId];
+            const progressIds = Object.keys(progressObject);
+            const lastProgressId = progressIds[progressIds.length - 1];
+            const done = progressObject[lastProgressId];
+
+            // Проверка, что прогресс равен количеству повторений
+            if (exercise.quantity > done) {
+              setWorkoutStatus((prevStatus) => ({
+                ...prevStatus,
+                [currentWorkout._id]: false
+              }));
+            } else {
+              setWorkoutStatus((prevStatus) => ({
+                ...prevStatus,
+                [currentWorkout._id]: true
+              }));
+            }
+          }
+        }
+      }
+    };
+    checkDone();
+  }, [currentWorkouts, exercises, userId]);
 
   return (
     <S.SelectContainer>
