@@ -1,9 +1,5 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import styled from "styled-components";
+
 export const Wrapper = styled.div`
   position: fixed;
   left: 0px;
@@ -38,9 +34,9 @@ export const SuccessText = styled.h2`
   color: black;
 `;
 export const closerBlog = styled.div`
-width: 100%;
-display: flex;
-justify-content: flex-end;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export const Closer = styled.img`

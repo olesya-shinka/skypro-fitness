@@ -1,15 +1,10 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import styled from "styled-components";
+
 export const Container = styled.div`
-  background-color: #271A58;
+  background-color: #271a58;
   width: 100%;
   height: 2400px;
-
-  `
+`;
 export const LoadingCircle = styled.div`
   margin-top: 100px;
   position: relative;
@@ -74,7 +69,7 @@ export const LoadingCircle = styled.div`
     opacity: 0;
   }
 }
-`
+`;
 
 export const Main = styled.div`
   display: flex;
@@ -82,7 +77,7 @@ export const Main = styled.div`
   align-items: center;
   margin-left: 140px;
   margin-right: 140px;
-  `
+`;
 export const Sidebar = styled.div`
   max-width: 1200px;
   min-height: 100px;
@@ -96,71 +91,70 @@ export const Sidebar = styled.div`
   padding-left: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: ${props => {
+  background-color: ${(props) => {
     switch (props.page) {
-          case "Main_Page":
-              return "#271a58";
-          case "Other":
-              return "#ffffff";
-          default:
-  }
- }};
+      case "Main_Page":
+        return "#271a58";
+      case "Other":
+        return "#ffffff";
+      default:
+    }
+  }};
 `;
 export const Header = styled.div`
   display: flex;
-  gap: 15px;
-  `
+  gap: 30px;
+`;
 export const Text = styled.div`
-display: flex;
-flex-direction: column;
-margin-left: -140px;
-`
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-left: -140px;
+  max-height: 110px;
+`;
 export const Title = styled.h1`
-  color: var(--monochrome-white-20, #FFF);
+  color: var(--monochrome-white-20, #fff);
   font-variant-numeric: lining-nums proportional-nums;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: 115%; 
+  line-height: 115%;
   letter-spacing: -0.05px;
   font-family: "StratosSkyeng", sans-serif;
-  margin-top: 100px;
   opacity: 0.5;
-    `
+`;
 export const Slogan = styled.p`
-  color: #F4F4FF;
+  color: #f4f4ff;
   font-variant-numeric: lining-nums proportional-nums;
   font-size: 60px;
   font-style: normal;
   font-weight: 400;
-  line-height: 91.5%; 
+  line-height: 91.5%;
   letter-spacing: -1.169px;
   font-family: "StratosSkyeng", sans-serif;
   width: 830px;
   height: 110px;
   margin-top: 17px;
   margin-bottom: 52px;
-     `
+`;
 export const SaleSticker = styled.div`
   width: 151.741px;
   height: 212.27px;
-  fill: #271A58;
+  fill: #271a58;
   stroke-width: 2px;
-  stroke: #FF8071;
+  stroke: #ff8071;
   position: relative;
-  top: 80px;
-
-
-`
+  padding-left: 140px;
+  padding-top: 38px;
+`;
 export const Courses = styled.div`
   display: grid;
   margin-left: 140px;
   grid-gap: 37px 44px;
   grid-template-columns: repeat(3, 360px);
-`
+`;
 
-
-export const ButtonUp= styled.button`
+export const ButtonUp = styled.button`
   display: inline-flex;
   width: 147px;
   height: 48px;
@@ -169,7 +163,7 @@ export const ButtonUp= styled.button`
   align-items: center;
   gap: 8px;
   border-radius: 46px;
-  background: #C7E957;
+  background: #c7e957;
   color: #000;
   text-align: center;
   font-variant-numeric: lining-nums proportional-nums;
@@ -177,14 +171,14 @@ export const ButtonUp= styled.button`
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 32px; 
+  line-height: 32px;
   letter-spacing: -0.1px;
   margin-top: 34px;
   margin-bottom: 60px;
-  :hover{
-    background: #DAF289;
+  :hover {
+    background: #daf289;
   }
-  :active{
-    background: #EBFFAB;
+  :active {
+    background: #ebffab;
   }
-`
+`;

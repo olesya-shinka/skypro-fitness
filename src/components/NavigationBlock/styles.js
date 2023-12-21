@@ -1,8 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
@@ -19,15 +14,15 @@ export const Sidebar = styled.div`
   padding-left: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: ${props => {
+  background-color: ${(props) => {
     switch (props.page) {
-          case "Main_Page":
-              return "#271a58";
-          case "Other":
-              return "#271a58";
-          default:
-  }
- }};
+      case "Main_Page":
+        return "#271a58";
+      case "Other":
+        return "#271a58";
+      default:
+    }
+  }};
 `;
 
 export const Enter = styled.button`
@@ -65,7 +60,7 @@ export const User = styled.div`
   :hover {
     cursor: pointer;
   }
-  color: ${props => props.color || '#fff'};
+  color: ${(props) => props.color || "#fff"};
 `;
 
 export const NameUser = styled.p`
@@ -73,14 +68,14 @@ export const NameUser = styled.p`
   font-size: 24px;
   line-height: 32px;
   border: 2px;
-  color: ${props => props.$color || '#fff'};
+  color: ${(props) => props.$color || "#fff"};
 `;
 
 export const Contain = styled.div`
   background-color: transparent;
   place-self: center start;
   cursor: pointer;
- `;
+`;
 export const MainNav = styled.div`
   width: 244px;
   background-color: #181818;
@@ -119,25 +114,23 @@ export const MenuList = styled.ul`
   padding: 18px 0 10px 0;
   position: absolute;
   box-sizing: border-box;
-  list-style-type: none; 
+  list-style-type: none;
+  float: left;
 `;
 
 export const MenuItem = styled.li`
-  padding: 5px 0;
+  padding: 2px 0;
   margin-bottom: 16px;
   z-index: 9999;
   position: relative;
-  color: ${props => props.color || '#fff'};
+  color: ${(props) => props.color || "#fff"};
 `;
 
 export const Menulink = styled(NavLink)`
-color: black;
-font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-text-decoration: none;
-font-weight: 400;
-font-size: 24px;
-line-height: 32px;
-color: ${props => props.color || '#fff'};
+  color: black;
+  font-weight: 400;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 18px;
+  color: ${(props) => props.color || "#fff"};
 `;
