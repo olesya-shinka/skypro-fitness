@@ -20,7 +20,7 @@ export async function register(email, password) {
     );
     return oUC.user;
   } catch (err) {
-    return err.code;
+    throw new Error(err.message);
   }
 }
 
@@ -29,7 +29,11 @@ export async function login(email, password) {
     const oUC = await signInWithEmailAndPassword(getAuth(), email, password);
     return oUC.user;
   } catch (err) {
-    return err.code;
+    if (err.code === 400) {
+      throw new Error(err.message);
+    }
+    throw new Error(err.message);
+    
   }
 }
 export async function logout() {
