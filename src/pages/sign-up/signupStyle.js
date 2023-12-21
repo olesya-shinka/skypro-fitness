@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Login = styled.div`
   display: flex;
   height: 100vh;
+  background-color: #f5f5f5;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
@@ -17,6 +18,7 @@ export const LoginBox = styled.div`
   background: #fff;
   flex-direction: column;
   align-items: center;
+  padding-top: 33px;
 `;
 
 export const LoginForm = styled.div`

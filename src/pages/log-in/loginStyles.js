@@ -22,6 +22,7 @@ export const GetBtn = styled.button`
 `;
 
 export const Login = styled.div`
+  background-color: #f5f5f5;
   display: flex;
   height: 100vh;
   flex-wrap: wrap;
@@ -37,8 +38,8 @@ export const LoginBox = styled.div`
   border-radius: 12px;
   background: #fff;
   flex-direction: column;
+  padding-top: 33px;
   align-items: center;
-  font-family: "StratosSkyeng", sans-serif;
 `;
 
 export const LoginForm = styled.div`

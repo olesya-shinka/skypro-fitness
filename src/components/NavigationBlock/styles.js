@@ -119,7 +119,7 @@ export const MenuList = styled.ul`
 `;
 
 export const MenuItem = styled.li`
-  padding: 5px 0;
+  padding: 2px 0;
   margin-bottom: 16px;
   z-index: 9999;
   position: relative;
@@ -129,11 +129,8 @@ export const MenuItem = styled.li`
 export const Menulink = styled(NavLink)`
   color: black;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
   text-decoration: none;
   font-weight: 400;
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 18px;
   color: ${(props) => props.color || "#fff"};
 `;
