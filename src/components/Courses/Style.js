@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
@@ -76,13 +75,17 @@ export const Course = styled.div`
   height: 480px;
   width: 360px;
   border-radius: 30px;
+  margin-top: 20px;
   display: inline-block;
   position: relative;
   z-index: 0;
   background-image: url(${(props) => props.image});
   background-position: 50% 50%;
   background-size: auto;
-
+  :hover{
+ transform: scale(1.03);
+ transition: 2seconds ease-in-out;
+  }
   `;
 
 export const CourseName = styled.h2`

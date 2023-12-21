@@ -1,8 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -23,12 +18,7 @@ export const Nav = styled.div`
   box-sizing: border-box;
 `;
 
-export const Main = styled.main`
-  padding-top: 42px;
-  padding-bottom: 94px;
-  padding-right: 20px;
-  padding-left: 20px;
-`;
+export const Main = styled.main``;
 
 export const Heading = styled.h1`
   margin: 0 0 40px;
@@ -68,11 +58,13 @@ export const TitleExercises = styled.h2`
   font-weight: 400;
   font-size: 32px;
   line-height: 40px;
+  font-family: "StratosSkyeng", sans-serif;
 `;
 
 export const ListExercises = styled.ul`
   max-width: 440px;
   margin: 0px 0px 40px;
+  font-family: "StratosSkyeng", sans-serif;
 `;
 
 export const ListExercisesItem = styled.li`

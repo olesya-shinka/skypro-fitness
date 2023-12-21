@@ -20,7 +20,7 @@ export const Title = styled.div`
   font-weight: 400;
   font-size: 48px;
   line-height: 56px;
-  padding-bottom: 40px;
+  font-family: "StratosSkyeng", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -39,10 +39,11 @@ export const TitleText = styled.span`
 export const Cards = styled.div`
   padding-top: 20px;
   text-align: center;
+  font-family: "StratosSkyeng", sans-serif;
 `;
 
 export const TitleTextLogin = styled.span`
-  font-family: "StratosSkyeng";
+  font-family: "StratosSkyeng", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -54,7 +55,7 @@ export const TitleTextLogin = styled.span`
   padding-top: 40px;
 `;
 export const TitleTextPass = styled.span`
-  font-family: "StratosSkyeng";
+  font-family: "StratosSkyeng", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -79,7 +80,7 @@ export const ChangeButton = styled.button`
   top: 360px;
   background: #580ea2;
   border-radius: 46px;
-  font-family: "StratosSkyeng";
+  font-family: "StratosSkyeng", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -104,7 +105,7 @@ export const CourseWrap = styled.div`
   align-items: flex-start;
 `;
 export const TitleCourse = styled.div`
-  font-family: "StratosSkyeng";
+  font-family: "StratosSkyeng", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 48px;
@@ -123,6 +124,10 @@ export const ProfCard = styled.img`
   border-radius: 30px;
   position: absolute;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Параметры тени */
+  :hover {
+    cursor: pointer;
+    transform: scale(1.03);
+  }
 `;
 export const Course = styled.div`
   background: tracnsparent;
@@ -148,6 +153,7 @@ export const ProfList = styled.ul`
   flex-direction: row;
   flex-wrap: wrap;
   gap: 110px;
+  margin-bottom: 300px;
 `;
 export const Prof = styled.div`
   position: relative;
@@ -160,7 +166,7 @@ export const ProfButton = styled.button`
   top: 410px;
   background: #c7e957;
   border-radius: 80px;
-  font-family: "StratosSkyeng";
+  font-family: "StratosSkyeng", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
