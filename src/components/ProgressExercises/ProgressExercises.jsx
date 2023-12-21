@@ -1,6 +1,7 @@
 import * as S from "./styles";
 
 export const ProgressExercises = ({ exercises, userId }) => {
+  console.log("все упражнения", exercises);
   const getDone = ({ needed }) => {
     const targretProgress = exercises.find(
       (exercise) => exercise.progress && exercise.progress[userId]
@@ -11,11 +12,13 @@ export const ProgressExercises = ({ exercises, userId }) => {
     }
     const progressObject = targretProgress.progress[userId];
     const progressIds = Object.keys(progressObject);
+    // console.log(progressIds);
     const lastProgressId = progressIds[progressIds.length - 1];
+    // console.log(lastProgressId);
     const done = progressObject[lastProgressId];
-    // console.log(done);
+    console.log("выполнено", done);
     let result = Math.round((done / needed) * 100);
-    // console.log(needed);
+    // console.log("нужно сделать", needed);
     if (result > 100) {
       result = 100;
     }
