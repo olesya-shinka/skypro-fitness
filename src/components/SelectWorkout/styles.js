@@ -82,7 +82,7 @@ border: 1px solid
 font-size: 20px;
 letter-spacing: -0.05px;
 text-align: center;
-padding: 12px 10px 17px;
+padding: 12px 30px 17px;
 cursor: pointer;
 position: relative;
 `;
@@ -93,7 +93,7 @@ height: 26px;
 position: absolute;
 left: 242px;
 top: 12px;
-color: #06B16E;
+fill: #06B16E;
 `;
 
 export const SelectItemType = styled.span`
