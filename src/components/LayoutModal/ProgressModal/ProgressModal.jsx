@@ -1,25 +1,15 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import * as S from "./styles";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import ButtonMain from "../../ButtonMain/ButtonMain";
 import { idSelector } from "../../../store/selectors/user";
 import InputProgress from "../InputProgress/InputProgress";
-import { updateProgress } from "../../../Api/progressApi";
 import { useState } from "react";
 import { updateProgress2 } from "../../../Api/progressApi";
 import { getWorkouts } from "../../../Api";
 import { setWorkoutList } from "../../../store/slices/courseWorkoutSlise";
-// import { addProgress } from "../../../Api";
-// import { getUserProgress, postProgress, getProgress } from "../../../Api";
-// import { courseList } from "../../../store/selectors/coursesNew";
-// import { userProgress } from "../../../store/selectors/progress";
 
-export function ProgressModal({ exercises, onClick, course, workout, setIsProgressModalShow }) {
+export function ProgressModal({ exercises, onClick, workout, setIsProgressModalShow }) {
   const dispatch = useDispatch();
   const [values, setValues] = useState({});
   const [complete, setComplete] = useState({});
@@ -70,14 +60,6 @@ export function ProgressModal({ exercises, onClick, course, workout, setIsProgre
         console.log(error.message);
       });
 
-    // Диспетчим действие добавления прогресса в Redux (если это нужно)
-    // dispatch(
-    //   addProgress({
-    //     workoutId: workout._id,
-    //     progress: progress
-    //   })
-    // );
-
     onClick(); // Закрываем модальное окно или делаем что-то еще
   };
 
@@ -87,40 +69,17 @@ export function ProgressModal({ exercises, onClick, course, workout, setIsProgre
     formState: { errors }
   } = useForm();
 
-  //const courses = useSelector(courseList);
-
-  // const addUserProgress = (data) => {
-  //   const progress = getUserProgress(data, exercises);
-
-  //   dispatch(
-  //     addProgress({
-  //       workoutId: workout._id,
-  //       progress: progress
-  //     })
-  //   );
-  // };
-
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors }
-  // } = useForm();
-
-  // const onSubmit = async (data) => {
-  //   addUserProgress(data);
-  //   onClick();
-  // };
   return (
     <S.FormModal onSubmit={handleSubmit(onSubmit)}>
       <S.closerBlog>
-          <S.Closer
-            src="/img/close.png"
-            alt="закрыть"
-            onClick={() => {
-              setIsProgressModalShow(false);
-            }}
-          />
-        </S.closerBlog>
+        <S.Closer
+          src="/img/close.png"
+          alt="закрыть"
+          onClick={() => {
+            setIsProgressModalShow(false);
+          }}
+        />
+      </S.closerBlog>
       <S.TitleModal>Мой прогресс</S.TitleModal>
       <S.InputsModal>
         {exercises?.map((exercise, index) => (

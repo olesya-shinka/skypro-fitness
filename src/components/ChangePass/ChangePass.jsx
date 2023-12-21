@@ -1,8 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import { useState, useEffect } from "react";
 import * as S from "./styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -80,10 +75,10 @@ export const ChangePass = ({ setIsEditPass }) => {
         console.log(response);
         dispatch(
           setPassword({
-            password: newPassword,
+            password: newPassword
           })
         );
-        console.log('yes')
+        console.log("yes");
         setOffButton(true);
       } catch (error) {
         setError(error.message);
@@ -104,12 +99,14 @@ export const ChangePass = ({ setIsEditPass }) => {
           }}
         />
         <S.ModalFormLogin action="#">
-        <Link to="/">
-          <S.ModalFormLoginImg src="/img/logo.png" alt="logo" />
+          <Link to="/">
+            <S.ModalFormLoginImg src="/img/logo.png" alt="logo" />
           </Link>
           <S.Content>
             <S.Text>Новый пароль:</S.Text>
-            {errorsForm.confirmPassword && <S.ErrorMessage>{errorsForm.confirmPassword}</S.ErrorMessage>}
+            {errorsForm.confirmPassword && (
+              <S.ErrorMessage>{errorsForm.confirmPassword}</S.ErrorMessage>
+            )}
             {errorsForm.newPassword && <S.ErrorMessage>{errorsForm.newPassword}</S.ErrorMessage>}
             {error && <S.ErrorMessage>{error}</S.ErrorMessage>}
             <S.ModalFormLoginInput>
@@ -132,10 +129,11 @@ export const ChangePass = ({ setIsEditPass }) => {
                 }}
               />
             </S.ModalFormLoginInput>
-
           </S.Content>
           <S.ModalFormLoginButtons>
-            <S.ModalButtonEnter onClick={handleChangePassword} disabled={offButton}>{offButton ? "Сохраняем новый пароль" : "Сохранить"}</S.ModalButtonEnter>
+            <S.ModalButtonEnter onClick={handleChangePassword} disabled={offButton}>
+              {offButton ? "Сохраняем новый пароль" : "Сохранить"}
+            </S.ModalButtonEnter>
           </S.ModalFormLoginButtons>
         </S.ModalFormLogin>
       </S.ModalBlock>
