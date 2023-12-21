@@ -39,7 +39,6 @@ export const PersonalPage = ({ loading }) => {
   }, []);
 
   const handleCard = (course) => {
-    // console.log(course);
     dispatch(setCurrentCourse(course));
     localStorage.setItem("selectedCourse", JSON.stringify(course));
     setIsShowForm(true);
