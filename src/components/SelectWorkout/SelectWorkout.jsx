@@ -30,9 +30,10 @@ export function SelectWorkout({ setIsShowForm }) {
 
   // Создаем state с начальным состоянием
   const [workoutStatus, setWorkoutStatus] = useState({});
-  // useEffect(() => {
-  //   console.log(workoutStatus);
-  // }, [workoutStatus]);
+  const isFinished = true;
+  useEffect(() => {
+    console.log(workoutStatus);
+  }, [workoutStatus]);
 
   useEffect(() => {
     const checkDone = () => {
@@ -89,8 +90,18 @@ export function SelectWorkout({ setIsShowForm }) {
         <S.SelectList>
           {currentWorkouts?.map((workout, index) => (
             <NavLink key={workout._id} to={`/WorkoutPage/${workout._id}`}>
-              <S.SelectItem>{workout.name}</S.SelectItem>
-              <S.SelectItemType>{workout.details}</S.SelectItemType>
+              <S.SelectItem
+                style={{
+                  color: workoutStatus[workout._id] ? "#06B16E" : "#000000",
+                  border: `1px solid ${workoutStatus[workout._id] ? "#06B16E" : "#000000"}`
+                }}>
+                {workout.name}
+                {workoutStatus[workout._id] && (
+                  <S.SelectItemCheckboxImg>
+                    <use xlinkHref="/img/isFinished.svg" />
+                  </S.SelectItemCheckboxImg>
+                )}
+              </S.SelectItem>
             </NavLink>
           ))}
         </S.SelectList>
@@ -99,3 +110,10 @@ export function SelectWorkout({ setIsShowForm }) {
   );
 }
 export default SelectWorkout;
+// isFinished ? (
+//   <S.SelectItemCheckboxImg>
+//     <use xlinkHref="/img/isFinished.svg" />
+//   </S.SelectItemCheckboxImg>
+// ) : (
+//   ""
+// )
