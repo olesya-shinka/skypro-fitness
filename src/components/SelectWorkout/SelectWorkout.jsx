@@ -41,7 +41,7 @@ export function SelectWorkout({ setIsShowForm }) {
         const currentWorkout = currentWorkouts[i];
 
         // Проход по всем упражнениям в текущей тренировке
-        for (let j = 0; j < currentWorkout.exercises.length; j++) {
+        for (let j = 0; j < currentWorkout.exercises?.length; j++) {
           const exercise = currentWorkout.exercises[j];
 
           const targretProgress = exercises.find(
