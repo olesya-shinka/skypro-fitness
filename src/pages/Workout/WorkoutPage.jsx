@@ -1,124 +1,130 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-undef */
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import * as S from "./styles";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
-
+import { getProgressAll } from "../../Api/progressApi";
 import { ExercisesList } from "../../components/Exercises/Exercises";
 import { ProgressExercises } from "../../components/ProgressExercises/ProgressExercises";
 import { ProgressModal } from "../../components/LayoutModal/ProgressModal/ProgressModal";
 import { SuccessModal } from "../../components/LayoutModal/SuccessModal/SuccessModal";
-import { SelectWorkout } from "../../components/SelectWorkout/SelectWorkout";
 import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
-
-
-import { selectWorkouts } from "../../store/slices/workoutsSlice";
-import { selectCourses } from "../../store/selectors/course";
 import { NavigateBlock } from "../../components/NavigationBlock/Navi";
-import { userCourses } from "../../Api";
-import { selectUser } from "../../store/selectors/user";
-import { selectUserCourses } from "../../store/selectors/progress";
-import {
-  allWorkoutSelector,
-  currentCourseSelector,
-  courseList
-} from "../../store/selectors/coursesNew";
+import { idSelector } from "../../store/selectors/user";
+import { allWorkoutSelector, courseList } from "../../store/selectors/coursesNew";
+// import { setPracticeProgress } from "../../store/slices/courseWorkoutSlise";
 
-const WorkoutPage = () => {
-  const workoutId = useParams();
-  console.log(workoutId);
+//import { selectUser } from "../../store/selectors/user";
+// import { getProgress } from "../../Api";
+// import { userProgress } from "../../store/selectors/progress";
+
+export const WorkoutPage = () => {
   const dispatch = useDispatch();
-  // const { id } = useSelector(selectUser);
+  const [loading, setLoading] = useState(false);
+  const userId = useSelector(idSelector);
+  // console.log(userId);
+  useEffect(() => {
+    const timerId = setInterval(() => setLoading(!loading), 2000);
+    return () => {
+      clearInterval(timerId);
+    };
+  }, []);
+  const workoutId = useParams().workoutId;
+  // const progressId = useParams().progressId;
+  const courses = useSelector(courseList);
+  const course = courses.filter((course) => course.workouts.includes(workoutId));
+  const workouts = useSelector(allWorkoutSelector);
+  const workout = workouts?.filter((workout) => workout._id === workoutId);
 
-  // const allCourses = useSelector(courseList);
-  const workoutList = useSelector(allWorkoutSelector);
-  const currentCourse = useSelector(currentCourseSelector);
-  // let currentWorkout;
-
-  // for (const course in allCourses) {
-  //   allCourses[course].workouts.map((wo) =>
-  //     wo._id === workoutId.id
-  //       ? wo.progress !== undefined
-  //         ? (currentWorkout = wo.progress)
-  //         : (currentWorkout = wo.exercises)
-  //       : ""
-  //   );
-  // }
-
-  const workout = workoutList?.filter((workout) => workout._id === workoutId.id);
-  console.log(workout);
-
-  const title = `${workout.name} / ${workout.details}`;
-
-  // const coursesList = useSelector(selectCourses);
-  // const currentCourse = coursesList.filter((course) => course.workout.includes(workoutId.id));
+  // const progresses = useSelector(userProgress);
+  // const progress = progresses?.filter((progress) => progress.workouts_id === progressId);
 
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
-  const [isTrainingModalShow, setIsTrainingModalShow] = useState(false);
+  // const [currentProgressUser, setCurrentProgressUser] = useState([]);
 
   const handleClick = () => setIsProgressModalShow(true);
 
   const openClosedProgModal = () => {
-    setIsProgressModalShow(!isProgressModalShown);
+    setIsProgressModalShow(!isProgressModalShow);
   };
 
   const handleSendClick = () => {
-    setTimeout(() => {
-      dispatch(userCourses(id));
-    }, 500);
     setIsProgressModalShow(false);
     setIsSuccessModalShow(true);
   };
 
-  const titleClick = () => {
-    setIsTrainingModalShow(true);
-    dispatch(userCourses(id));
-  };
+  // useEffect(() => {
+  //   getProgressAll()
+  //     .then((data) => {
+  //       console.log(data);
+  //       const filteredArray = data?.filter((progress) => progress.key === userId);
+  //       setCurrentProgressUser(filteredArray);
+  //       console.log(currentProgressUser);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //     });
+  // }, []);
 
-  const openClosedTrainingModal = () => {
-    setIsTrainingModalShow(!isTrainingModalShown);
-  };
+  // useEffect(() => {
+  //   getProgress({
+  //     workouts_id: workoutId
+  //   })
+  //     .then((data) => {
+  //       dispatch(setPracticeProgress(data));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //     });
+  // }, []);
 
   return (
     <S.Container>
       <S.Main>
-      <NavigateBlock page="Other" />
-        <S.Heading>{currentCourse.nameRU}</S.Heading>
-        <S.Title onClick={titleClick}>{workout.details ? title : workout.name}</S.Title>
-        <S.Player>
-          <ReactPlayer url={workout.video || ""} width="100%" height="100%" />
-        </S.Player>
-        {/* {currentWorkout && currentWorkout.length > 0 && (
-          <S.Exercises>
-            <ExercisesList exercises={currentWorkout} onClick={handleClick} />
-            <ProgressExercises exercises={currentWorkout} />
-          </S.Exercises>
-        )} */}
-      </S.Main>
-      {isProgressModalShow && (
-        <LayoutModal onClick={openClosedProgModal}>
-          <ProgressModal
-            exercises={workout.exercises}
-            onClick={handleSendClick}
-            courseName={currentCourse.name}
-            workoutName={workoutId.id}
+        <NavigateBlock page="Other" />
+        <S.Heading>{course.length > 0 ? course[0].nameRU : "название курса не получено"}</S.Heading>
+        <S.Title>{workout.length > 0 ? workout[0].name : "название на получено"}</S.Title>
+        {loading ? (
+          <S.Player>
+            <ReactPlayer
+              url={workout.length > 0 ? workout[0].video : "видео не получено"}
+              width="100%"
+              height="100%"
+            />
+          </S.Player>
+        ) : (
+          <S.LoadingCircle />
+        )}
+        <S.Exercises>
+          <ExercisesList
+            exercises={
+              workout.length > 0 && workout[0].exercises
+                ? workout[0].exercises
+                : ["список упражнений пуст"]
+            }
+            onClick={handleClick}
           />
-        </LayoutModal>
+
+          <ProgressExercises exercises={workout[0]?.exercises} userId={userId} />
+        </S.Exercises>
+      </S.Main>
+
+      {isProgressModalShow && (
+        <S.WrapperModal>
+          <LayoutModal onClick={openClosedProgModal}>
+            <ProgressModal
+              setIsProgressModalShow={setIsProgressModalShow}
+              onClick={handleSendClick}
+              exercises={workout[0].exercises}
+              course={course[0].nameRU}
+              workout={workout}
+            />
+          </LayoutModal>
+        </S.WrapperModal>
       )}
       {isSuccessModalShow && <SuccessModal setIsSuccessModalShow={setIsSuccessModalShow} />}
-      {isTrainingModalShow && (
-        <LayoutModal onClick={openClosedTrainingModal}>
-          <SelectWorkout openClosedTrainingModal={openClosedTrainingModal} />
-        </LayoutModal>
-      )}
     </S.Container>
   );
 };

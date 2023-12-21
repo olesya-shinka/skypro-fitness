@@ -1,39 +1,72 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
-import { calculator } from "./utils";
 import * as S from "./styles";
 
-export const ProgressExercises = ({ exercises, progress }) => {
-  const currentExercises = exercises.exercises;
+export const ProgressExercises = ({ exercises, userId }) => {
+  console.log("все упражнения", exercises);
+  const getDone = ({ needed }) => {
+    const targretProgress = exercises.find(
+      (exercise) => exercise.progress && exercise.progress[userId]
+    );
+    if (!targretProgress || !targretProgress.progress[userId]) {
+      console.log("Прогресс не найден, возвращено 0");
+      return 0;
+    }
+    const progressObject = targretProgress.progress[userId];
+    const progressIds = Object.keys(progressObject);
+    // console.log(progressIds);
+    const lastProgressId = progressIds[progressIds.length - 1];
+    // console.log(lastProgressId);
+    const done = progressObject[lastProgressId];
+    console.log("выполнено", done);
+    let result = Math.round((done / needed) * 100);
+    // console.log("нужно сделать", needed);
+    if (result > 100) {
+      result = 100;
+    }
+    return result;
+  };
+  // console.log(exercises);
 
-  const currentProgress = progress ? Object.keys(progress).map((key) => progress[key]) : null;
+  const colors = [
+    { fill: "#565EEF", bcg: "#EDECFF" },
+    { fill: "#FF6D00", bcg: "#FFF2E0" },
+    { fill: "#9A48F1", bcg: "#F9EBFF" },
+    { fill: "#00C90D", bcg: "#e6fae7" },
+    { fill: "#E40045", bcg: "#fce6ec" }
+  ];
+
   return (
-    <S.ProgressBlock>
-      <S.ProgressTitle>Мой прогресс по тренировке:</S.ProgressTitle>
+    <S.Progress>
+      <S.Title>Мой прогресс по тренировке:</S.Title>
+      <S.ListExercises>
+        {exercises?.map((exercise, index) => {
+          const percent = getDone({ needed: exercise.quantity });
 
-      <S.ProgressStats>
-        {currentExercises && currentProgress
-          ? currentExercises.map(({ name, quantity }, index) => {
-              const done = Number(currentProgress[index]);
-              return (
-                <S.ProgressStatsItem $colorIndex={index} key={index}>
-                  <S.ProgressName>{name}</S.ProgressName>
-
-                  <S.ProgressBar>
-                    <S.Progress $percentage={calculator(done, quantity)}>
-                      <span>{calculator(done, quantity)} %</span>
-                    </S.Progress>
-                  </S.ProgressBar>
-                </S.ProgressStatsItem>
-              );
-            })
-          : null}
-      </S.ProgressStats>
-    </S.ProgressBlock>
+          return (
+            <S.ListItem key={index + 1}>
+              <S.NameExercise>{exercise.name.split("(")[0]}</S.NameExercise>
+              <S.ProgressBar
+                style={{
+                  backgroundColor: colors[index].bcg,
+                  border: `2px solid ${colors[index]?.fill}`
+                }}>
+                <S.Done
+                  style={{
+                    width: `${percent}%`,
+                    backgroundColor: colors[index]?.fill
+                  }}></S.Done>
+                <S.Percent
+                  style={{
+                    color: percent > 0 ? "#fff" : "#000",
+                    left: `${percent}px`
+                  }}>
+                  {percent}%
+                </S.Percent>
+              </S.ProgressBar>
+            </S.ListItem>
+          );
+        })}
+      </S.ListExercises>
+    </S.Progress>
   );
 };
-
 export default ProgressExercises;

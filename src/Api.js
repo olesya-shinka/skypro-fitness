@@ -1,6 +1,4 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-import { getDatabase, ref, query, get, push, set, remove } from "firebase/database";
+import { getDatabase, ref, query, get } from "firebase/database";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export async function getCourses() {
@@ -51,56 +49,27 @@ export async function getWorkouts() {
   return oArr;
 }
 
-export const userCourses = createAsyncThunk(
-  "profile/userCourses",
-  async (id, { extra: { databaseURL, api }, rejectWithValue }) => {
-    try {
-      const response = await databaseURL.get(api.USER_COURSES(id));
-
-      if (response.statusText !== "OK") {
-        throw new Error("Что-то пошло не так");
-      }
-      const { data } = await response;
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
+export const getUserProgress = (data, exercises) => {
+  const progress = [];
+  for (const name in data) {
+    exercises.map((ex) =>
+      ex.name === name
+        ? progress.push({
+            exercisesDone: data[name],
+            quantity: ex.count,
+            name: ex.name
+          })
+        : ""
+    );
   }
-);
-
-export const newCourse = createAsyncThunk(
-  "profile/newCourse",
-  async (
-    { id, idCourse, name, pathName, workouts },
-    { extra: { databaseURL, api }, rejectWithValue }
-  ) => {
-    try {
-      const response = await databaseURL.post(api.ADD_COURSE(id), {
-        _id: idCourse,
-        name: name,
-        pathName: pathName,
-        workouts: workouts
-      });
-
-      if (response.statusText !== "OK") {
-        throw new Error("Что-то пошло не так");
-      }
-      const { data } = await response;
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
+  return progress;
+};
 
 export const addProgress = createAsyncThunk(
-  "profile/addProgress",
-  async (
-    { id, courseId, workoutIndex, progress },
-    { extra: { databaseURL, api }, rejectWithValue }
-  ) => {
+  "progress",
+  async ({ workoutId, progress }, { extra: { databaseURL, api }, rejectWithValue }) => {
     try {
-      const response = await databaseURL.patch(api.ADD_PROGRESS(id, courseId, workoutIndex), {
+      const response = await databaseURL.patch(api.ADD_PROGRESS(workoutId), {
         progress
       });
 
@@ -115,111 +84,34 @@ export const addProgress = createAsyncThunk(
   }
 );
 
-export const getUserWorkouts = (allWorkouts, course) => {
-  const userWorkouts = [];
+// ------------------------------------------------------
+// ------------------------------------------------------
 
-  for (let i = 0; i < allWorkouts.length; i++) {
-    course[0].workout.map((workout) =>
-      workout === allWorkouts[i]._id ? userWorkouts.push(allWorkouts[i]) : ""
-    );
-  }
-
-  return userWorkouts;
-};
-
-export const doNotAddCourse = (userCoursesList, course) => {
-  const existingCourses = [];
-
-  let existingCourse;
-  for (const key in userCoursesList) {
-    existingCourse = userCoursesList[key].pathName;
-
-    existingCourses.push(existingCourse);
-  }
-
-  return existingCourses.includes(course[0].pathName);
-};
-
-export const loadWorkouts = createAsyncThunk(
-  "workouts/all",
-  async (_, { extra: { databaseURL, api }, rejectWithValue }) => {
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        skipAuth: true
-      };
-      const response = await databaseURL.get(api.WORKOUTS, config);
-      if (response.statusText !== "OK") {
-        throw new Error("Что-то пошло не так");
+export const getProgress = async () => {
+  const response = await fetch(
+    "https://fitness-pro-d307e-default-rtdb.europe-west1.firebasedatabase.app/progress.json",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
       }
-      const { data } = await response;
-
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
     }
-  }
-);
-export const getCurrentExercises = () => {};
-
-export const getUserProgress = (data, exercises) => {
-  const progress = [];
-  for (const name in data) {
-    exercises.map((ex) =>
-      ex.name === name
-        ? progress.push({
-            exercisesDone: data[name],
-            count: ex.count,
-            name: ex.name
-          })
-        : ""
-    );
-  }
-
-  return progress;
-};
-
-export const getCurrentCourseDetails = (userProfile, courseName, exercises) => {
-  let currentCourseId;
-  let currentCourse;
-  let currentWorkoutIndex;
-
-  for (const courseId in userProfile) {
-    if (userProfile[courseId].name === courseName) {
-      currentCourseId = courseId;
-      currentCourse = userProfile[courseId];
-    }
-  }
-
-  currentCourse.workouts.map((wo, woIndex) =>
-    wo.exercises.map((ex) =>
-      exercises.map((userEx) => (userEx.name === ex.name ? (currentWorkoutIndex = woIndex) : ""))
-    )
   );
-
-  return currentCourseId, currentWorkoutIndex;
+  console.log(response);
 };
-export const loadCourses = createAsyncThunk(
-  "courses/all",
-  async (_, { extra: { databaseURL, api }, rejectWithValue }) => {
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        skipAuth: true
-      };
-      const response = await databaseURL.get(api.COURSES, config);
-      if (response.statusText !== "OK") {
-        throw new Error("Что-то пошло не так");
-      }
-      const { data } = await response;
 
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+export const postProgress = async ({ workouts_id }) => {
+  const response = await fetch(
+    "https://fitness-pro-d307e-default-rtdb.europe-west1.firebasedatabase.app/progress.json",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        workouts_id
+      })
     }
-  }
-);
+  );
+  console.log(response);
+};

@@ -1,8 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -23,18 +18,14 @@ export const Nav = styled.div`
   box-sizing: border-box;
 `;
 
-export const Main = styled.main`
-  padding-top: 42px;
-  padding-bottom: 94px;
-  padding-right: 20px;
-  padding-left: 20px;
-`;
+export const Main = styled.main``;
 
 export const Heading = styled.h1`
   margin: 0 0 40px;
   font-weight: 400;
   font-size: 48px;
   line-height: 56px;
+  margin-top: 70px;
 `;
 
 export const Title = styled.h2`
@@ -42,11 +33,6 @@ export const Title = styled.h2`
   font-weight: 400;
   font-size: 32px;
   line-height: 40px;
-  :hover {
-    cursor: pointer;
-    color: #3f007d;
-    transform: scale(1.004);
-  }
 `;
 
 export const Player = styled.div`
@@ -72,11 +58,13 @@ export const TitleExercises = styled.h2`
   font-weight: 400;
   font-size: 32px;
   line-height: 40px;
+  font-family: "StratosSkyeng", sans-serif;
 `;
 
 export const ListExercises = styled.ul`
   max-width: 440px;
   margin: 0px 0px 40px;
+  font-family: "StratosSkyeng", sans-serif;
 `;
 
 export const ListExercisesItem = styled.li`
@@ -253,4 +241,83 @@ export const SuccessText = styled.h2`
   text-align: center;
   margin: 0;
   margin-bottom: 10px;
+`;
+
+export const LoadingCircle = styled.div`
+  margin-top: 100px;
+  position: relative;
+  text-align: center; 
+  padding: 20px;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-left: 500px;
+::before {
+  content: ''; /
+  position: absolute;
+  border: 2px solid #3D64FF; 
+  left: -20px;
+  opacity: 0;
+  right: -20px;
+  top: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  animation: pulse 2.5s linear infinite; 
+}
+@keyframes pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+::after,
+::before {
+  content: '';
+  position: absolute;
+  border: 2px solid #3D64FF;
+  left: -20px;
+  opacity: 0;
+  right: -20px;
+  top: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  animation: pulse 2.5s linear infinite;
+}
+
+::after {
+  animation-delay: 1.25s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+`;
+export const WrapperModal = styled.div`
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

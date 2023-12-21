@@ -70,30 +70,30 @@ export const SelectList = styled.div`
 `;
 
 export const SelectItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  line-height: 23px;
-  width: 278px;
-  border-radius: 26px;
-  border: 1px solid
-    ${({ $isFinished }) => ($isFinished ? "#06B16E" : "#000000")};
-  font-size: 20px;
-  letter-spacing: -0.05px;
-  text-align: center;
-  padding: 12px 10px 17px;
-  cursor: pointer;
-  position: relative;
-  color: ${({ $isFinished }) => ($isFinished ? "#06B16E" : "#000000")};
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+line-height: 23px;
+width: 278px;
+border-radius: 26px;
+border: 1px solid
+  // ${({ $workoutStatus }) => ($workoutStatus ? "#06B16E" : "#06B16E")};
+font-size: 20px;
+letter-spacing: -0.05px;
+text-align: center;
+padding: 12px 30px 17px;
+cursor: pointer;
+position: relative;
 `;
 
 export const SelectItemCheckboxImg = styled.svg`
-  width: 28px;
-  height: 26px;
-  position: absolute;
-  left: 242px;
-  top: 12px;
+width: 28px;
+height: 26px;
+position: absolute;
+left: 242px;
+top: 12px;
+fill: #06B16E;
 `;
 
 export const SelectItemType = styled.span`
