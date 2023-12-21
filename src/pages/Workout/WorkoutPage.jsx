@@ -23,18 +23,12 @@ export const WorkoutPage = () => {
     };
   }, []);
   const workoutId = useParams().workoutId;
-  // const progressId = useParams().progressId;
   const courses = useSelector(courseList);
   const course = courses.filter((course) => course.workouts.includes(workoutId));
   const workouts = useSelector(allWorkoutSelector);
   const workout = workouts?.filter((workout) => workout._id === workoutId);
-
-  // const progresses = useSelector(userProgress);
-  // const progress = progresses?.filter((progress) => progress.workouts_id === progressId);
-
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
-  // const [currentProgressUser, setCurrentProgressUser] = useState([]);
 
   const handleClick = () => setIsProgressModalShow(true);
 
