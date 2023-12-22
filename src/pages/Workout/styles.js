@@ -4,9 +4,17 @@ export const Container = styled.div`
   padding-left: calc(50% - 580px);
   padding-right: calc(50% - 580px);
   background-color: rgba(250, 250, 250, 1);
+  @media (max-width: 1274px) {
+    padding-left: calc(50% - 450px);
+    padding-right: calc(50% - 450px);
+  }
   @media (max-width: 1024px) {
     padding-left: calc(50% - 450px);
     padding-right: calc(50% - 450px);
+  }
+  @media (max-width: 768px) {
+    padding-left: calc(50% - 345px);
+    padding-right: calc(50% - 345px);
   }
 `;
 
@@ -21,6 +29,9 @@ export const Heading = styled.h1`
   @media (max-width: 1024px) {
     font-size: 44px;
   }
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -30,6 +41,9 @@ export const Title = styled.h2`
   line-height: 40px;
   @media (max-width: 1024px) {
     font-size: 28px;
+  }
+  @media (max-width: 768px) {
+    font-size: 24px;
   }
 `;
 
@@ -59,6 +73,9 @@ export const TitleExercises = styled.h2`
   font-family: "StratosSkyeng", sans-serif;
   @media (max-width: 1024px) {
     font-size: 28px;
+  }
+  @media (max-width: 768px) {
+    font-size: 24px;
   }
 `;
 

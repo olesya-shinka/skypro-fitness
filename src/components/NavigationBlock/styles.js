@@ -23,9 +23,13 @@ export const Sidebar = styled.div`
       default:
     }
   }};
+
   @media (max-width: 1024px) {
     max-width: 1000px;
     min-height: 100px;
+  }
+  @media (max-width: 768px) {
+    max-width: 750px;
   }
 `;
 
@@ -52,8 +56,14 @@ export const Enter = styled.button`
   a {
     text-decoration: none;
   }
+  @media (max-width: 1274px) {
+    margin-left: 680px;
+  }
   @media (max-width: 1024px) {
     margin-left: 450px;
+  }
+  @media (max-width: 768px) {
+    margin-left: 350px;
   }
 `;
 
@@ -71,6 +81,12 @@ export const User = styled.div`
   @media (max-width: 1024px) {
     margin-left: 350px;
   }
+  @media (max-width: 1274px) {
+    margin-left: 500px;
+  }
+  @media (max-width: 768px) {
+    margin-left: 195px;
+  }
 `;
 
 export const NameUser = styled.p`
@@ -81,6 +97,9 @@ export const NameUser = styled.p`
   color: ${(props) => props.$color || "#fff"};
   @media (max-width: 1024px) {
     font-size: 20px;
+  }
+  @media (max-width: 1024px) {
+    font-size: 16px;
   }
 `;
 
@@ -146,6 +165,9 @@ export const Menulink = styled(NavLink)`
   font-weight: 400;
   font-size: 18px;
   color: ${(props) => props.color || "#fff"};
+  @media (max-width: 1024px) {
+    font-size: 14px;
+  }
   @media (max-width: 1024px) {
     font-size: 14px;
   }

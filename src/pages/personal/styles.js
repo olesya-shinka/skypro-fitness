@@ -13,12 +13,30 @@ export const Wrap = styled.div`
   background: #fafafa;
   padding-left: calc(50% - 580px);
   padding-right: calc(50% - 580px);
+  @media (max-width: 1274px) {
+    padding-left: calc(50% - 450px);
+    padding-right: calc(50% - 450px);
+
+  }
   @media (max-width: 1024px) {
     padding-left: calc(50% - 450px);
     padding-right: calc(50% - 450px);
   }
+  @media (max-width: 768px) {
+    padding-left: calc(50% - 350px);
+    padding-right: calc(50% - 350px);
+  }
 `;
-export const Content = styled.div``;
+export const Content = styled.div`
+@media (max-width: 1024px) {
+  padding-left: calc(50% - 450px);
+  padding-right: calc(50% - 450px);
+}
+@media (max-width: 1024px) {
+  padding-left: calc(50% - 350px);
+  padding-right: calc(50% - 350px);
+}
+`;
 
 export const Title = styled.div`
   font-weight: 400;
@@ -44,6 +62,9 @@ export const TitleText = styled.span`
   @media (max-width: 1024px) {
     font-size: 44px;
   }
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
 `;
 
 export const Cards = styled.div`
@@ -65,6 +86,9 @@ export const TitleTextLogin = styled.span`
   padding-top: 40px;
   @media (max-width: 1024px) {
     font-size: 20px;
+  }
+  @media (max-width: 768px) {
+    font-size: 18px;
   }
 `;
 export const TitleTextPass = styled.span`
@@ -235,6 +259,12 @@ export const CourseName = styled.h2`
   padding-left: 30px;
   position: relative;
   z-index: 1;
+  @media (max-width: 1024px) {
+    font-size: 32px;
+  }
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
 `;
 
 export const LoadingCircle = styled.div`

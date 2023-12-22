@@ -13,6 +13,11 @@ export const Wrapper = styled.div`
     min-height: 100px;
     font-size: 24px;
   }
+  @media (max-width: 768px) {
+    max-width: 700px;
+    min-height: 80px;
+    font-size: 20px;
+  }
 `;
 
 export const Container = styled.div`
@@ -46,6 +51,9 @@ export const Title = styled.h1`
   @media (max-width: 1024px) {
     font-size: 44px;
   }
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
 `;
 
 export const ForYou = styled.div`
@@ -61,6 +69,9 @@ export const Heading = styled.h2`
   @media (max-width: 1024px) {
     font-size: 32px;
   }
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
 `;
 
 export const ForYouList = styled.ol`
@@ -69,6 +80,9 @@ export const ForYouList = styled.ol`
   justify-content: space-between;
   gap: 87px;
   max-height: 128px;
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
 `;
 
 export const ForYouListItem = styled.li`
@@ -117,6 +131,12 @@ export const ResultsText = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 32px; /* 133.333% */
+  @media (max-width: 1024px) {
+    font-size: 24px;
+  }
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 export const Application = styled.div`
@@ -139,6 +159,9 @@ export const ApplicationText = styled.p`
   margin-bottom: 34px;
   @media (max-width: 1024px) {
     font-size: 24px;
+  }
+  @media (max-width: 768px) {
+    font-size: 20px;
   }
 `;
 

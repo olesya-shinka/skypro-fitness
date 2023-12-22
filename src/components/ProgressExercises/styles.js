@@ -7,6 +7,9 @@ export const Progress = styled.div`
   padding: 32px 44px;
   border-radius: 30px;
   color: black;
+  @media (max-width: 768px) {
+    max-width: 317px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -18,6 +21,9 @@ export const Title = styled.h2`
   @media (max-width: 1024px) {
     font-size: 28px;
   }
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 export const ListExercises = styled.ul`
@@ -27,6 +33,9 @@ export const ListExercises = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
 `;
 
 export const ListItem = styled.li`
@@ -39,10 +48,17 @@ export const ListItem = styled.li`
   @media (max-width: 1024px) {
     font-size: 20px;
   }
+  @media (max-width: 768px) {
+    font-size: 18px;
+    display: block;
+  }
 `;
 
 export const NameExercise = styled.span`
   max-width: 278px;
+  @media (max-width: 768px) {
+    max-width: 150px;
+  }
 `;
 
 export const ProgressBar = styled.div`
@@ -52,6 +68,9 @@ export const ProgressBar = styled.div`
   min-width: 278px;
   height: 36px;
   border-radius: 22px;
+  @media (max-width: 768px) {
+    min-width: 130px;
+  }
 `;
 
 export const Done = styled.div`

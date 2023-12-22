@@ -35,6 +35,9 @@ export const SuccessText = styled.h2`
   @media (max-width: 1024px) {
     font-size: 32px;
   }
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
 `;
 export const closerBlog = styled.div`
   width: 100%;

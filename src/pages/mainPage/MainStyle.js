@@ -82,10 +82,20 @@ export const Main = styled.div`
 export const Header = styled.div`
   display: flex;
   gap: 30px;
-  @media (max-width: 1064px) {
+  @media (max-width: 1274px) {
+    gap: 10px;
+    padding-left: calc(50% - 371px);
+    padding-right: calc(50% - 450px);
+    margin-left: -84px;
+  }
+  @media (max-width: 1024px) {
     gap: 0px;
     padding-left: calc(50% - 450px);
     padding-right: calc(50% - 450px);
+  }
+  @media (max-width: 768px) {
+    gap: 0px;
+    padding-left: calc(50% - 332px);
   }
 `;
 export const Text = styled.div`
@@ -111,6 +121,9 @@ export const Title = styled.h1`
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+  @media (max-width: 1024px) {
+    font-size: 12px;
+  }
 `;
 export const Slogan = styled.p`
   color: #f4f4ff;
@@ -125,9 +138,17 @@ export const Slogan = styled.p`
   height: 110px;
   margin-top: 17px;
   margin-bottom: 52px;
+  @media (max-width: 1274px) {
+    font-size: 44px;
+    width: 630px;
+  }
   @media (max-width: 1024px) {
     font-size: 44px;
     width: 630px;
+  }
+  @media (max-width: 1024px) {
+    font-size: 32px;
+    width: 450px;
   }
 `;
 export const SaleSticker = styled.div`
@@ -139,6 +160,10 @@ export const SaleSticker = styled.div`
   position: relative;
   padding-left: 140px;
   padding-top: 38px;
+  @media (max-width: 1274px) {
+    padding-left: 0px;
+    padding-top: 0px;
+  }
   @media (max-width: 1024px) {
     padding-left: 0px;
     padding-top: 0px;
