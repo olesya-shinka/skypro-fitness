@@ -8,13 +8,26 @@ export const Wrapper = styled.div`
   padding-right: 20px;
   padding-bottom: 95px;
   padding-left: 20px;
+  @media (max-width: 1024px) {
+    max-width: 1000px;
+    min-height: 100px;
+    font-size: 24px;
+  }
+  @media (max-width: 768px) {
+    max-width: 700px;
+    min-height: 80px;
+    font-size: 20px;
+  }
 `;
-
-export const Header = styled.header``;
 
 export const Container = styled.div`
   font-size: 24px;
   line-height: 32px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+    padding-left: calc(50% - 450px);
+    padding-right: calc(50% - 450px);
+  }
 `;
 
 export const TitleBox = styled.div`
@@ -35,6 +48,12 @@ export const Title = styled.h1`
   font-style: normal;
   line-height: 72px; /* 112.5% */
   letter-spacing: -0.8px;
+  @media (max-width: 1024px) {
+    font-size: 44px;
+  }
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
 `;
 
 export const ForYou = styled.div`
@@ -47,6 +66,12 @@ export const Heading = styled.h2`
   line-height: 48px;
   margin-top: 75px;
   margin-bottom: 20px;
+  @media (max-width: 1024px) {
+    font-size: 32px;
+  }
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
 `;
 
 export const ForYouList = styled.ol`
@@ -55,6 +80,9 @@ export const ForYouList = styled.ol`
   justify-content: space-between;
   gap: 87px;
   max-height: 128px;
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
 `;
 
 export const ForYouListItem = styled.li`
@@ -103,6 +131,12 @@ export const ResultsText = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 32px; /* 133.333% */
+  @media (max-width: 1024px) {
+    font-size: 24px;
+  }
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 export const Application = styled.div`
@@ -114,6 +148,12 @@ export const Application = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-image: url("/icons/phone.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  @media (max-width: 768px) {
+    background-image: none;
+  }
 `;
 
 export const ApplicationText = styled.p`
@@ -123,6 +163,19 @@ export const ApplicationText = styled.p`
   font-style: normal;
   line-height: 40px; /* 125% */
   margin-bottom: 34px;
+  width: 823px;
+  @media (max-width: 1274px) {
+    font-size: 24px;
+    width: 650px;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 24px;
+    width: 550px;
+  }
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 export const CourseImg = styled.img`

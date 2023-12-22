@@ -15,7 +15,7 @@ const User = ({ email }) => {
   const location = useLocation();
   const isMainPage = location.pathname === "/";
   const dispatch = useDispatch();
-
+  
   const handleExit = () => {
     dispatch(removeUser());
   };
