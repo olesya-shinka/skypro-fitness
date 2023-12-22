@@ -1,8 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { passwordSelector } from "../../store/selectors/user";
@@ -59,10 +54,10 @@ export const ChangeEmail = ({ setIsEditEmail }) => {
         console.log(response);
         dispatch(
           setEmail({
-            email: newEmail,
+            email: newEmail
           })
         );
-        console.log('yes')
+        console.log("yes");
         setOffButton(true);
       } catch (error) {
         setError(error.message);
