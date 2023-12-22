@@ -39,6 +39,7 @@ export function SelectWorkout({ setIsShowForm }) {
     const checkDone = () => {
       for (let i = 0; i < currentWorkouts.length; i++) {
         const currentWorkout = currentWorkouts[i];
+        let allExercisesDone = true;
 
         // Проход по всем упражнениям в текущей тренировке
         for (let j = 0; j < currentWorkout.exercises?.length; j++) {
@@ -50,8 +51,10 @@ export function SelectWorkout({ setIsShowForm }) {
               ...prevStatus,
               [currentWorkout._id]: false
             }));
+            allExercisesDone = false; // Устанавливаем флаг в false, так как не все упражнения выполнены
+            break;
           } else {
-            const progressUser = exercise?.progress[userId];
+            const progressUser = exercise.progress[userId];
             const progressIds = Object.keys(progressUser);
             const lastProgressId = progressIds[progressIds.length - 1];
             const done = progressUser[lastProgressId];
@@ -63,13 +66,16 @@ export function SelectWorkout({ setIsShowForm }) {
                 ...prevStatus,
                 [currentWorkout._id]: false
               }));
-            } else {
-              setWorkoutStatus((prevStatus) => ({
-                ...prevStatus,
-                [currentWorkout._id]: true
-              }));
+              allExercisesDone = false; // Устанавливаем флаг в false, так как не все упражнения выполнены
+              break;
             }
           }
+        }
+        if (allExercisesDone) {
+          setWorkoutStatus((prevStatus) => ({
+            ...prevStatus,
+            [currentWorkout._id]: true
+          }));
         }
       }
     };
