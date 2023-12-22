@@ -15,6 +15,9 @@ export const Title = styled.h2`
   font-size: 32px;
   line-height: 40px;
   text-align: center;
+  @media (max-width: 1024px) {
+    font-size: 28px;
+  }
 `;
 
 export const ListExercises = styled.ul`
@@ -33,6 +36,9 @@ export const ListItem = styled.li`
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
 `;
 
 export const NameExercise = styled.span`

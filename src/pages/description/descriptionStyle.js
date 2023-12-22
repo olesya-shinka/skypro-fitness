@@ -8,13 +8,21 @@ export const Wrapper = styled.div`
   padding-right: 20px;
   padding-bottom: 95px;
   padding-left: 20px;
+  @media (max-width: 1024px) {
+    max-width: 1000px;
+    min-height: 100px;
+    font-size: 24px;
+  }
 `;
-
-export const Header = styled.header``;
 
 export const Container = styled.div`
   font-size: 24px;
   line-height: 32px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+    padding-left: calc(50% - 450px);
+    padding-right: calc(50% - 450px);
+  }
 `;
 
 export const TitleBox = styled.div`
@@ -35,6 +43,9 @@ export const Title = styled.h1`
   font-style: normal;
   line-height: 72px; /* 112.5% */
   letter-spacing: -0.8px;
+  @media (max-width: 1024px) {
+    font-size: 44px;
+  }
 `;
 
 export const ForYou = styled.div`
@@ -47,6 +58,9 @@ export const Heading = styled.h2`
   line-height: 48px;
   margin-top: 75px;
   margin-bottom: 20px;
+  @media (max-width: 1024px) {
+    font-size: 32px;
+  }
 `;
 
 export const ForYouList = styled.ol`
@@ -123,6 +137,9 @@ export const ApplicationText = styled.p`
   font-style: normal;
   line-height: 40px; /* 125% */
   margin-bottom: 34px;
+  @media (max-width: 1024px) {
+    font-size: 24px;
+  }
 `;
 
 export const CourseImg = styled.img`

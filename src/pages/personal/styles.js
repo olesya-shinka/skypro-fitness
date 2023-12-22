@@ -13,6 +13,10 @@ export const Wrap = styled.div`
   background: #fafafa;
   padding-left: calc(50% - 580px);
   padding-right: calc(50% - 580px);
+  @media (max-width: 1024px) {
+    padding-left: calc(50% - 450px);
+    padding-right: calc(50% - 450px);
+  }
 `;
 export const Content = styled.div``;
 
@@ -24,6 +28,9 @@ export const Title = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  @media (max-width: 1024px) {
+    font-size: 44px;
+  }
 `;
 export const TitleText = styled.span`
   font-weight: 400;
@@ -34,6 +41,9 @@ export const TitleText = styled.span`
     "lnum" on;
   color: #000000;
   padding-top: 74px;
+  @media (max-width: 1024px) {
+    font-size: 44px;
+  }
 `;
 
 export const Cards = styled.div`
@@ -53,6 +63,9 @@ export const TitleTextLogin = styled.span`
     "lnum" on;
   color: #000000;
   padding-top: 40px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
 `;
 export const TitleTextPass = styled.span`
   font-family: "StratosSkyeng", sans-serif;
@@ -65,6 +78,9 @@ export const TitleTextPass = styled.span`
     "lnum" on;
   color: #000000;
   padding-top: 20px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
 `;
 export const ChangeDate = styled.div`
   padding-top: 40px;
@@ -98,6 +114,9 @@ export const ChangeButton = styled.button`
   &:active {
     background-color: #271a58;
   }
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
 `;
 export const CourseWrap = styled.div`
   display: flex;
@@ -128,6 +147,10 @@ export const ProfCard = styled.img`
     cursor: pointer;
     transform: scale(1.03);
   }
+  @media (max-width: 1024px) {
+    height: 400px;
+    width: 300px;
+  }
 `;
 export const Course = styled.div`
   background: tracnsparent;
@@ -142,7 +165,6 @@ export const Course = styled.div`
   z-index: 0;
   background-position: 50% 50%;
   background-size: auto;
-
   `;
 
 export const ProfList = styled.ul`
@@ -177,6 +199,9 @@ export const ProfButton = styled.button`
   color: #000000;
   position: absolute;
   border: none;
+  @media (max-width: 1024px) {
+    top: 340px;
+  }
 `;
 
 export const Text = styled.span`

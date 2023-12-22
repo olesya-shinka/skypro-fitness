@@ -5,6 +5,9 @@ export const TitleExercises = styled.h2`
   font-weight: 400;
   font-size: 32px;
   line-height: 40px;
+  @media (max-width: 1024px) {
+    font-size: 28px;
+  }
 `;
 
 export const ListExercises = styled.ul`
@@ -18,4 +21,7 @@ export const ListExercisesItem = styled.li`
   line-height: 32px;
   list-style: inside;
   padding-left: 20px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
 `;

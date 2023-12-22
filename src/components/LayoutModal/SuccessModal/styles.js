@@ -32,6 +32,9 @@ export const SuccessText = styled.h2`
   margin: 0;
   margin-bottom: 10px;
   color: black;
+  @media (max-width: 1024px) {
+    font-size: 32px;
+  }
 `;
 export const closerBlog = styled.div`
   width: 100%;
