@@ -1,28 +1,26 @@
+/* eslint-disable no-unused-vars */
 import * as S from "./styles";
 
 export const ProgressExercises = ({ exercises, userId }) => {
   console.log("все упражнения", exercises);
   const getDone = ({ needed, exercise }) => {
     console.log(exercise);
-    if (!exercise?.progress || !Array.isArray(exercise?.progress)) {
+    if (!exercise?.progress) {
       console.log("Прогресс не найден или не является массивом, возвращено 0");
       return 0;
     }
-    const progressCurrentEx = exercise?.progress;
+    const progressUser = exercise?.progress[userId];
 
-    const targretProgress = progressCurrentEx?.find(
-      (progressCurrentEx) => progressCurrentEx[userId]
-    );
-    if (!targretProgress || !targretProgress[userId]) {
+    if (!progressUser) {
       console.log("Прогресс не найден, возвращено 0");
       return 0;
     }
-    const progressObject = targretProgress[userId];
-    const progressIds = Object.keys(progressObject);
+
+    const progressIds = Object.keys(progressUser);
     // console.log(progressIds);
     const lastProgressId = progressIds[progressIds.length - 1];
     // console.log(lastProgressId);
-    const done = progressObject[lastProgressId];
+    const done = progressUser[lastProgressId];
     console.log("выполнено", done);
     let result = Math.round((done / needed) * 100);
     // console.log("нужно сделать", needed);
