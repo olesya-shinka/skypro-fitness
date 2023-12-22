@@ -4,12 +4,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-unused-vars */
+
+import { Link } from "react-router-dom";
+
 /* eslint-disable prettier/prettier */
 export default function LogoSvg() {
   return (
     <div>
+      <Link to ="/">
       <svg
-        classname="logo__svg"
+        className="logo__svg"
         xmlns="http://www.w3.org/2000/svg"
         width={222}
         height={36}
@@ -105,12 +109,13 @@ export default function LogoSvg() {
             height="22.9216"
             filterUnits="userSpaceOnUse"
             colorInterpolationFilters="sRGB">
-            <feFlood floodopacity={0} result="BackgroundImageFix" />
+            <feFlood floodOpacity={0} result="BackgroundImageFix" />
             <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
             <feGaussianBlur stdDeviation="0.730621" result="effect1_foregroundBlur_26_1150" />
           </filter>
         </defs>
       </svg>
+      </Link>
     </div>
   );
 }
