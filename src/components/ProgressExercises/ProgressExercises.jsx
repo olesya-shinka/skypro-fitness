@@ -2,34 +2,27 @@
 import * as S from "./styles";
 
 export const ProgressExercises = ({ exercises, userId }) => {
-  console.log("все упражнения", exercises);
   const getDone = ({ needed, exercise }) => {
-    console.log(exercise);
     if (!exercise?.progress) {
-      console.log("Прогресс не найден или не является массивом, возвращено 0");
       return 0;
     }
+
     const progressUser = exercise?.progress[userId];
 
     if (!progressUser) {
-      console.log("Прогресс не найден, возвращено 0");
       return 0;
     }
 
     const progressIds = Object.keys(progressUser);
-    // console.log(progressIds);
     const lastProgressId = progressIds[progressIds.length - 1];
-    // console.log(lastProgressId);
     const done = progressUser[lastProgressId];
-    console.log("выполнено", done);
+
     let result = Math.round((done / needed) * 100);
-    // console.log("нужно сделать", needed);
     if (result > 100) {
       result = 100;
     }
     return result;
   };
-  // console.log(exercises);
 
   const colors = [
     { fill: "#565EEF", bcg: "#EDECFF" },
