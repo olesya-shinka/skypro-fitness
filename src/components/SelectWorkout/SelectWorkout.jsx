@@ -43,20 +43,19 @@ export function SelectWorkout({ setIsShowForm }) {
         // Проход по всем упражнениям в текущей тренировке
         for (let j = 0; j < currentWorkout.exercises?.length; j++) {
           const exercise = currentWorkout.exercises[j];
+          console.log(exercise);
 
-          const targretProgress = exercises.find(
-            (exercise) => exercise.progress && exercise.progress[userId]
-          );
-          if (!targretProgress || !targretProgress.progress[userId]) {
+          if (!exercise.progress || !exercise.progress[userId]) {
             setWorkoutStatus((prevStatus) => ({
               ...prevStatus,
               [currentWorkout._id]: false
             }));
           } else {
-            const progressObject = targretProgress.progress[userId];
-            const progressIds = Object.keys(progressObject);
+            const progressUser = exercise?.progress[userId];
+            const progressIds = Object.keys(progressUser);
             const lastProgressId = progressIds[progressIds.length - 1];
-            const done = progressObject[lastProgressId];
+            const done = progressUser[lastProgressId];
+            console.log("done", done);
 
             // Проверка, что прогресс равен количеству повторений
             if (exercise.quantity > done) {
