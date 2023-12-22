@@ -30,10 +30,6 @@ export function SelectWorkout({ setIsShowForm }) {
 
   // Создаем state с начальным состоянием
   const [workoutStatus, setWorkoutStatus] = useState({});
-  const isFinished = true;
-  useEffect(() => {
-    console.log(workoutStatus);
-  }, [workoutStatus]);
 
   useEffect(() => {
     const checkDone = () => {
@@ -44,7 +40,6 @@ export function SelectWorkout({ setIsShowForm }) {
         // Проход по всем упражнениям в текущей тренировке
         for (let j = 0; j < currentWorkout.exercises?.length; j++) {
           const exercise = currentWorkout.exercises[j];
-          console.log(exercise);
 
           if (!exercise.progress || !exercise.progress[userId]) {
             setWorkoutStatus((prevStatus) => ({
@@ -58,7 +53,6 @@ export function SelectWorkout({ setIsShowForm }) {
             const progressIds = Object.keys(progressUser);
             const lastProgressId = progressIds[progressIds.length - 1];
             const done = progressUser[lastProgressId];
-            console.log("done", done);
 
             // Проверка, что прогресс равен количеству повторений
             if (exercise.quantity > done) {

@@ -51,7 +51,6 @@ export const updateProgress = async (userId, workoutId, exerciseNumber, progress
 
     // Ссылка на документ в коллекции "userProgress"
     const userProgressRef = ref(db, "userProgress", userId);
-    console.log(userProgressRef);
 
     // Добавляем или обновляем прогресс для конкретного упражнения
     // await update(userProgressRef, { [exerciseId]: progress });

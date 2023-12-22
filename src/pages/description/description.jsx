@@ -55,7 +55,6 @@ export default function CourseInfo({ loading }) {
     try {
       //получаем ссылку на объект курса в firebase
       const courseRef = ref(db, `courses/${course._id}`);
-      console.log("courseRef", courseRef);
 
       const snapshot = await get(courseRef);
       const courseFirebase = snapshot.val();
