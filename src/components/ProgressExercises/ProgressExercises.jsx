@@ -2,15 +2,22 @@ import * as S from "./styles";
 
 export const ProgressExercises = ({ exercises, userId }) => {
   console.log("все упражнения", exercises);
-  const getDone = ({ needed }) => {
-    const targretProgress = exercises.find(
-      (exercise) => exercise.progress && exercise.progress[userId]
+  const getDone = ({ needed, exercise }) => {
+    console.log(exercise);
+    if (!exercise?.progress || !Array.isArray(exercise?.progress)) {
+      console.log("Прогресс не найден или не является массивом, возвращено 0");
+      return 0;
+    }
+    const progressCurrentEx = exercise?.progress;
+
+    const targretProgress = progressCurrentEx?.find(
+      (progressCurrentEx) => progressCurrentEx[userId]
     );
-    if (!targretProgress || !targretProgress.progress[userId]) {
+    if (!targretProgress || !targretProgress[userId]) {
       console.log("Прогресс не найден, возвращено 0");
       return 0;
     }
-    const progressObject = targretProgress.progress[userId];
+    const progressObject = targretProgress[userId];
     const progressIds = Object.keys(progressObject);
     // console.log(progressIds);
     const lastProgressId = progressIds[progressIds.length - 1];
@@ -39,7 +46,10 @@ export const ProgressExercises = ({ exercises, userId }) => {
       <S.Title>Мой прогресс по тренировке:</S.Title>
       <S.ListExercises>
         {exercises?.map((exercise, index) => {
-          const percent = getDone({ needed: exercise.quantity });
+          const percent = getDone({
+            needed: exercise.quantity,
+            exercise: exercise
+          });
 
           return (
             <S.ListItem key={index + 1}>
