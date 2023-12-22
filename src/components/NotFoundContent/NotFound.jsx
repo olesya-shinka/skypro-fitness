@@ -9,7 +9,7 @@ function NotFoundContent() {
       <S.ProblemBig>404</S.ProblemBig>
       <S.Problem>
         <S.ProblemDis>Страница не найдена</S.ProblemDis>
-        <S.ProblemImg src="./../img/icon/crying.svg" alt="crying smile" />
+        <S.ProblemImg src="/icons/crying.png" alt="crying smile" />
       </S.Problem>
       <S.GoToMainButton
         onClick={() => {

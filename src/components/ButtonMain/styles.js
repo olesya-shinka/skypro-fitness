@@ -14,6 +14,12 @@ export const White = styled.button`
   background-color: #fff;
   border: 1px solid #d0cece;
   color: #000000;
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
   :hover {
     background-color: #d0cece;
   }
@@ -29,6 +35,12 @@ export const Violet = styled.button`
   padding: 10px;
   background-color: #580ea2;
   color: #fff;
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
   :hover {
     background-color: #3f007d;
   }

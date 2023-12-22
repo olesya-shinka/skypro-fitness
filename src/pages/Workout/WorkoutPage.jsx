@@ -1,10 +1,8 @@
-/* eslint-disable no-unused-vars */
 import * as S from "./styles";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
-import { getProgressAll } from "../../Api/progressApi";
 import { ExercisesList } from "../../components/Exercises/Exercises";
 import { ProgressExercises } from "../../components/ProgressExercises/ProgressExercises";
 import { ProgressModal } from "../../components/LayoutModal/ProgressModal/ProgressModal";
@@ -13,14 +11,8 @@ import { LayoutModal } from "../../components/LayoutModal/layout/LayoutModal";
 import { NavigateBlock } from "../../components/NavigationBlock/Navi";
 import { idSelector } from "../../store/selectors/user";
 import { allWorkoutSelector, courseList } from "../../store/selectors/coursesNew";
-// import { setPracticeProgress } from "../../store/slices/courseWorkoutSlise";
-
-//import { selectUser } from "../../store/selectors/user";
-// import { getProgress } from "../../Api";
-// import { userProgress } from "../../store/selectors/progress";
 
 export const WorkoutPage = () => {
-  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const userId = useSelector(idSelector);
   // console.log(userId);
@@ -31,18 +23,12 @@ export const WorkoutPage = () => {
     };
   }, []);
   const workoutId = useParams().workoutId;
-  // const progressId = useParams().progressId;
   const courses = useSelector(courseList);
   const course = courses.filter((course) => course.workouts.includes(workoutId));
   const workouts = useSelector(allWorkoutSelector);
   const workout = workouts?.filter((workout) => workout._id === workoutId);
-
-  // const progresses = useSelector(userProgress);
-  // const progress = progresses?.filter((progress) => progress.workouts_id === progressId);
-
   const [isProgressModalShow, setIsProgressModalShow] = useState(false);
   const [isSuccessModalShow, setIsSuccessModalShow] = useState(false);
-  // const [currentProgressUser, setCurrentProgressUser] = useState([]);
 
   const handleClick = () => setIsProgressModalShow(true);
 
@@ -54,31 +40,6 @@ export const WorkoutPage = () => {
     setIsProgressModalShow(false);
     setIsSuccessModalShow(true);
   };
-
-  // useEffect(() => {
-  //   getProgressAll()
-  //     .then((data) => {
-  //       console.log(data);
-  //       const filteredArray = data?.filter((progress) => progress.key === userId);
-  //       setCurrentProgressUser(filteredArray);
-  //       console.log(currentProgressUser);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.message);
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   getProgress({
-  //     workouts_id: workoutId
-  //   })
-  //     .then((data) => {
-  //       dispatch(setPracticeProgress(data));
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.message);
-  //     });
-  // }, []);
 
   return (
     <S.Container>

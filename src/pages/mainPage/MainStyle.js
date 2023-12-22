@@ -75,35 +75,28 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 140px;
-  margin-right: 140px;
+  padding-left: calc(50% - 580px);
+  padding-right: calc(50% - 580px);
 `;
-export const Sidebar = styled.div`
-  max-width: 1200px;
-  min-height: 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  column-gap: 10px;
-  row-gap: 10px;
-  margin: 0 auto;
-  padding-right: 20px;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: ${(props) => {
-    switch (props.page) {
-      case "Main_Page":
-        return "#271a58";
-      case "Other":
-        return "#ffffff";
-      default:
-    }
-  }};
-`;
+
 export const Header = styled.div`
   display: flex;
   gap: 30px;
+  @media (max-width: 1274px) {
+    gap: 10px;
+    padding-left: calc(50% - 371px);
+    padding-right: calc(50% - 450px);
+    margin-left: -84px;
+  }
+  @media (max-width: 1024px) {
+    gap: 0px;
+    padding-left: calc(50% - 450px);
+    padding-right: calc(50% - 450px);
+  }
+  @media (max-width: 768px) {
+    gap: 0px;
+    padding-left: calc(50% - 332px);
+  }
 `;
 export const Text = styled.div`
   display: flex;
@@ -111,6 +104,9 @@ export const Text = styled.div`
   margin-top: 30px;
   margin-left: -140px;
   max-height: 110px;
+  @media (max-width: 1024px) {
+    margin-left: 0px;
+  }
 `;
 export const Title = styled.h1`
   color: var(--monochrome-white-20, #fff);
@@ -122,6 +118,12 @@ export const Title = styled.h1`
   letter-spacing: -0.05px;
   font-family: "StratosSkyeng", sans-serif;
   opacity: 0.5;
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+  @media (max-width: 1024px) {
+    font-size: 12px;
+  }
 `;
 export const Slogan = styled.p`
   color: #f4f4ff;
@@ -136,6 +138,18 @@ export const Slogan = styled.p`
   height: 110px;
   margin-top: 17px;
   margin-bottom: 52px;
+  @media (max-width: 1274px) {
+    font-size: 44px;
+    width: 630px;
+  }
+  @media (max-width: 1024px) {
+    font-size: 44px;
+    width: 30px;
+  }
+  @media (max-width: 1024px) {
+    font-size: 32px;
+    width: 450px;
+  }
 `;
 export const SaleSticker = styled.div`
   width: 151.741px;
@@ -146,12 +160,14 @@ export const SaleSticker = styled.div`
   position: relative;
   padding-left: 140px;
   padding-top: 38px;
-`;
-export const Courses = styled.div`
-  display: grid;
-  margin-left: 140px;
-  grid-gap: 37px 44px;
-  grid-template-columns: repeat(3, 360px);
+  @media (max-width: 1274px) {
+    padding-left: 0px;
+    padding-top: 0px;
+  }
+  @media (max-width: 1024px) {
+    padding-left: 0px;
+    padding-top: 0px;
+  }
 `;
 
 export const ButtonUp = styled.button`

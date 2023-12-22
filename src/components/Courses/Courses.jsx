@@ -1,13 +1,8 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/prop-types */
 import * as S from "./Style";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ReactPaginate from "react-paginate";
 import { images } from "../images/Images";
 export const Courses = ({ courses }) => {
-
   const [currentPage, setCurrentPage] = useState(0);
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
@@ -42,25 +37,3 @@ export const Courses = ({ courses }) => {
     </>
   );
 };
-
-//{images.map((image) => <S.Link to='/CourseInfo/:id'><S.CourseImg src = {image.src}></S.CourseImg></S.Link>)}
-// {courses?.sort((a, b) => a.order - b.order).map((course, id) =>
-//       <S.Link to='/CourseInfo/:id'>
-//       <S.Course  key={id}   >
-//        <S.CourseName>{course.nameRU}</S.CourseName>
-//        <S.CourseImg src = {`/img/card-${id  + 1 }.png`}></S.CourseImg>
-//         </S.Course>
-//         </S.Link>
-
-//         )}
-
-// {courses?.sort((a, b) => a.order - b.order).map((course, index) =>
-
-//       <S.Link to='/CourseInfo/:id'>
-//       <S.Course  key={index} image = {images[index] + 1}  >
-
-//        <S.CourseName>{course.nameRU}</S.CourseName>
-//         </S.Course>
-//         </S.Link>
-
-//         )}

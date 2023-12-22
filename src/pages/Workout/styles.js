@@ -4,18 +4,18 @@ export const Container = styled.div`
   padding-left: calc(50% - 580px);
   padding-right: calc(50% - 580px);
   background-color: rgba(250, 250, 250, 1);
-`;
-
-export const Header = styled.header`
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const Nav = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
+  @media (max-width: 1274px) {
+    padding-left: calc(50% - 450px);
+    padding-right: calc(50% - 450px);
+  }
+  @media (max-width: 1024px) {
+    padding-left: calc(50% - 345px);
+    padding-right: calc(50% - 345px);
+  }
+  @media (max-width: 768px) {
+    padding-left: calc(50% - 345px);
+    padding-right: calc(50% - 345px);
+  }
 `;
 
 export const Main = styled.main``;
@@ -26,6 +26,12 @@ export const Heading = styled.h1`
   font-size: 48px;
   line-height: 56px;
   margin-top: 70px;
+  @media (max-width: 1024px) {
+    font-size: 44px;
+  }
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -33,6 +39,12 @@ export const Title = styled.h2`
   font-weight: 400;
   font-size: 32px;
   line-height: 40px;
+  @media (max-width: 1024px) {
+    font-size: 28px;
+  }
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 export const Player = styled.div`
@@ -59,6 +71,12 @@ export const TitleExercises = styled.h2`
   font-size: 32px;
   line-height: 40px;
   font-family: "StratosSkyeng", sans-serif;
+  @media (max-width: 1024px) {
+    font-size: 28px;
+  }
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 export const ListExercises = styled.ul`

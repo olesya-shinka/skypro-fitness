@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   reauthenticateWithCredential,
   EmailAuthProvider,
-  updateEmail,
+  verifyBeforeUpdateEmail,
   sendEmailVerification,
   updatePassword
 } from "firebase/auth";
@@ -54,15 +54,12 @@ export async function changeLogin(newEmail, valueOldPass) {
     await sendEmailVerification(auth.currentUser);
 
     // Изменение адреса электронной почты
-    await updateEmail(auth.currentUser, newEmail);
-
-    // Опционально: разлогиниваем пользователя
-    // await signOut(auth);
+    await  verifyBeforeUpdateEmail(auth.currentUser, newEmail);
 
     console.log("done");
   } catch (error) {
     console.error(error.message);
-    throw error;
+    throw new Error(error.message);
   }
 }
 
