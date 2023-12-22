@@ -9,8 +9,8 @@ export const Container = styled.div`
     padding-right: calc(50% - 450px);
   }
   @media (max-width: 1024px) {
-    padding-left: calc(50% - 450px);
-    padding-right: calc(50% - 450px);
+    padding-left: calc(50% - 345px);
+    padding-right: calc(50% - 345px);
   }
   @media (max-width: 768px) {
     padding-left: calc(50% - 345px);

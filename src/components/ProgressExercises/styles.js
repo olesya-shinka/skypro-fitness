@@ -7,6 +7,9 @@ export const Progress = styled.div`
   padding: 32px 44px;
   border-radius: 30px;
   color: black;
+  @media (max-width: 1024px) {
+    max-width: 317px;
+  }
   @media (max-width: 768px) {
     max-width: 317px;
   }
@@ -47,6 +50,7 @@ export const ListItem = styled.li`
   line-height: 32px;
   @media (max-width: 1024px) {
     font-size: 20px;
+    display: block;
   }
   @media (max-width: 768px) {
     font-size: 18px;
@@ -68,6 +72,9 @@ export const ProgressBar = styled.div`
   min-width: 278px;
   height: 36px;
   border-radius: 22px;
+  @media (max-width: 1024px) {
+    min-width: 100px;
+  }
   @media (max-width: 768px) {
     min-width: 130px;
   }

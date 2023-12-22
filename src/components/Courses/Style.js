@@ -9,14 +9,14 @@ export const Courses = styled.div`
   grid-template-columns: repeat(3, 3fr);
   position: relative;
   @media (max-width: 1274px) {
-    gap: 37px 55px;
+    gap: 37px 65px;
     align-self: center;
-    grid-template-columns: repeat(auto-fit, 3fr);
+    grid-template-columns: repeat(3, 250px);
   }
   @media (max-width: 1024px) {
     gap: 37px 70px;
     align-self: center;
-    grid-template-columns: repeat(2, 3fr);
+    grid-template-columns: repeat(2, 300px);
   }
 `;
 
@@ -24,6 +24,7 @@ export const Course = styled.div`
   background: tracnsparent;
   box-shadow: -10px 10px 15.999px 0px rgba(0, 0, 0, 0.10), 10px -10px 16px 0px rgba(0, 0, 0, 0.10);
 2x;
+  grid-column: span 3;
   color: black;
   height: 480px;
   width: 360px;
@@ -38,6 +39,10 @@ export const Course = styled.div`
  transition: 2seconds ease-in-out;
   }
   @media (max-width: 1274px) {
+    height: 400px;
+    width: 300px;
+  }
+  @media (max-width: 1024px) {
     height: 400px;
     width: 300px;
   }
@@ -59,9 +64,6 @@ export const CourseName = styled.h2`
   z-index: 1;
   @media (max-width: 1024px) {
     font-size: 32px;
-  }
-  @media (max-width: 768px) {
-    font-size: 28px;
   }
 `;
 

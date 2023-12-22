@@ -148,6 +148,12 @@ export const Application = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-image: url("/icons/phone.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  @media (max-width: 768px) {
+    background-image: none;
+  }
 `;
 
 export const ApplicationText = styled.p`
@@ -157,8 +163,15 @@ export const ApplicationText = styled.p`
   font-style: normal;
   line-height: 40px; /* 125% */
   margin-bottom: 34px;
+  width: 823px;
+  @media (max-width: 1274px) {
+    font-size: 24px;
+    width: 650px;
+  }
+
   @media (max-width: 1024px) {
     font-size: 24px;
+    width: 550px;
   }
   @media (max-width: 768px) {
     font-size: 20px;

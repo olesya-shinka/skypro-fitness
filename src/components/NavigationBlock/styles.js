@@ -23,13 +23,12 @@ export const Sidebar = styled.div`
       default:
     }
   }};
-
   @media (max-width: 1024px) {
     max-width: 1000px;
     min-height: 100px;
   }
-  @media (max-width: 768px) {
-    max-width: 750px;
+  @media (max-width: 1274px) {
+    max-width: 1200px;
   }
 `;
 
@@ -56,14 +55,8 @@ export const Enter = styled.button`
   a {
     text-decoration: none;
   }
-  @media (max-width: 1274px) {
-    margin-left: 680px;
-  }
   @media (max-width: 1024px) {
     margin-left: 450px;
-  }
-  @media (max-width: 768px) {
-    margin-left: 350px;
   }
 `;
 
@@ -78,14 +71,14 @@ export const User = styled.div`
     cursor: pointer;
   }
   color: ${(props) => props.color || "#fff"};
-  @media (max-width: 1024px) {
-    margin-left: 350px;
-  }
   @media (max-width: 1274px) {
-    margin-left: 500px;
+    margin-left: 480px;
+  }
+  @media (max-width: 1024px) {
+    margin-left: 260px;
   }
   @media (max-width: 768px) {
-    margin-left: 195px;
+    margin-left: 186px;
   }
 `;
 
@@ -97,9 +90,6 @@ export const NameUser = styled.p`
   color: ${(props) => props.$color || "#fff"};
   @media (max-width: 1024px) {
     font-size: 20px;
-  }
-  @media (max-width: 1024px) {
-    font-size: 16px;
   }
 `;
 
@@ -168,7 +158,7 @@ export const Menulink = styled(NavLink)`
   @media (max-width: 1024px) {
     font-size: 14px;
   }
-  @media (max-width: 1024px) {
-    font-size: 14px;
+  @media (max-width: 768px) {
+    font-size: 12px;
   }
 `;

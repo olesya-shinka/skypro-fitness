@@ -144,7 +144,7 @@ export const Slogan = styled.p`
   }
   @media (max-width: 1024px) {
     font-size: 44px;
-    width: 630px;
+    width: 30px;
   }
   @media (max-width: 1024px) {
     font-size: 32px;
