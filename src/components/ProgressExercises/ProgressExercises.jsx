@@ -1,30 +1,28 @@
+/* eslint-disable no-unused-vars */
 import * as S from "./styles";
 
 export const ProgressExercises = ({ exercises, userId }) => {
-  console.log("все упражнения", exercises);
-  const getDone = ({ needed }) => {
-    const targretProgress = exercises.find(
-      (exercise) => exercise.progress && exercise.progress[userId]
-    );
-    if (!targretProgress || !targretProgress.progress[userId]) {
-      console.log("Прогресс не найден, возвращено 0");
+  const getDone = ({ needed, exercise }) => {
+    if (!exercise?.progress) {
       return 0;
     }
-    const progressObject = targretProgress.progress[userId];
-    const progressIds = Object.keys(progressObject);
-    // console.log(progressIds);
+
+    const progressUser = exercise?.progress[userId];
+
+    if (!progressUser) {
+      return 0;
+    }
+
+    const progressIds = Object.keys(progressUser);
     const lastProgressId = progressIds[progressIds.length - 1];
-    // console.log(lastProgressId);
-    const done = progressObject[lastProgressId];
-    console.log("выполнено", done);
+    const done = progressUser[lastProgressId];
+
     let result = Math.round((done / needed) * 100);
-    // console.log("нужно сделать", needed);
     if (result > 100) {
       result = 100;
     }
     return result;
   };
-  // console.log(exercises);
 
   const colors = [
     { fill: "#565EEF", bcg: "#EDECFF" },
@@ -39,7 +37,10 @@ export const ProgressExercises = ({ exercises, userId }) => {
       <S.Title>Мой прогресс по тренировке:</S.Title>
       <S.ListExercises>
         {exercises?.map((exercise, index) => {
-          const percent = getDone({ needed: exercise.quantity });
+          const percent = getDone({
+            needed: exercise.quantity,
+            exercise: exercise
+          });
 
           return (
             <S.ListItem key={index + 1}>

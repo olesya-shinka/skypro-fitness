@@ -33,7 +33,6 @@ export async function getCourses2() {
     throw new Error("Ошибка сервера");
   }
   const courses = await response.json();
-  console.log(courses);
   return courses;
 }
 
